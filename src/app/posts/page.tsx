@@ -1,15 +1,19 @@
 import { getSortedPosts } from '@/lib/markdown';
+import { commonMetaData } from '@/lib/meta';
 import dayjs from 'dayjs';
-import { Metadata } from 'next';
 import Link from 'next/link';
 
 const TITLE = 'Posts';
 const DESCRIPTION = 'Explore a collection of articles and tutorials on my journey as a developer.';
 
-export const metadata: Metadata = {
-    title: TITLE,
-    description: DESCRIPTION,
-};
+export async function generateMetadata() {
+    const metaData = commonMetaData({
+        title: TITLE,
+        description: DESCRIPTION,
+    });
+
+    return metaData;
+}
 
 export default async function PostsList() {
     const posts = await getSortedPosts();

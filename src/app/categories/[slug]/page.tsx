@@ -1,26 +1,20 @@
 import { getCategoryList, getSortedPosts } from '@/lib/markdown';
+import { commonMetaData } from '@/lib/meta';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
-    const categories = await getCategoryList();
-    const category = categories.find((category) => category.name === slug.replace('%20', ' '));
+    const category = slug.replace('%20', ' ');
 
-    if (!category) {
-        return {
-            title: {
-                absolute: 'Category Not Found',
-            },
-        };
-    }
-
-    return {
+    const metaData = commonMetaData({
         title: {
-            absolute: `Category: ${category.name}`,
+            absolute: `Category: ${category}`,
         },
-        description: `Explore a collection of articles and tutorials within the ${category.name} category on my journey as a developer.`,
-    };
+        description: `Explore a collection of articles and tutorials within the ${category} category on my journey as a developer.`,
+    });
+
+    return metaData;
 }
 
 export async function generateStaticParams() {

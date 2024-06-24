@@ -1,21 +1,20 @@
+import { BASE_URL } from '@/constants';
 import { getCategoryList, getSortedPosts } from '@/lib/markdown';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const URL = 'https://pyyupsk.is-a.dev';
-
     const posts = await getSortedPosts();
     const categories = await getCategoryList();
 
     const allPosts = posts.map((post) => ({
-        url: `${URL}/posts/${post.slug}`,
+        url: `${BASE_URL}/posts/${post.slug}`,
         lastModified: new Date(post.frontmatter.published),
         priority: 0.64,
         changeFrequency: 'daily',
     })) as MetadataRoute.Sitemap;
 
     const allCategories = categories.map((category) => ({
-        url: `${URL}/categories/${category.name}`,
+        url: `${BASE_URL}/categories/${category.name}`,
         lastModified: new Date(),
         priority: 0.64,
         changeFrequency: 'daily',
@@ -23,25 +22,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
         {
-            url: `${URL}/`, // Home Page
+            url: `${BASE_URL}/`, // Home Page
             lastModified: new Date(),
             priority: 1.0,
             changeFrequency: 'weekly',
         },
         {
-            url: `${URL}/posts`, // Posts Page
+            url: `${BASE_URL}/posts`, // Posts Page
             lastModified: new Date(),
             priority: 0.8,
             changeFrequency: 'daily',
         },
         {
-            url: `${URL}/archive`, // Archive Page
+            url: `${BASE_URL}/archive`, // Archive Page
             lastModified: new Date(),
             priority: 0.8,
             changeFrequency: 'weekly',
         },
         {
-            url: `${URL}/categories`, // Categories Page
+            url: `${BASE_URL}/categories`, // Categories Page
             lastModified: new Date(),
             priority: 0.8,
             changeFrequency: 'weekly',

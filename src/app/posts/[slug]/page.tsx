@@ -1,4 +1,5 @@
 import { getPostBySlug, getSlugs } from '@/lib/markdown';
+import { commonMetaData } from '@/lib/meta';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -7,17 +8,23 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
     const post = await getPostBySlug(slug);
 
     if (!post) {
-        return notFound();
+        return {
+            title: {
+                absolute: 'Not Found',
+            },
+        };
     }
 
     const { content, frontmatter } = post;
 
-    return {
+    const metaData = commonMetaData({
         title: {
             absolute: frontmatter.title,
         },
         description: frontmatter.description || content.substring(0, 100),
-    };
+    });
+
+    return metaData;
 }
 
 export async function generateStaticParams() {
