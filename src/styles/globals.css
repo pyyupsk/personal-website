@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global color variables */
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 216.52 33.33% 27.06%;
+        --muted: 0 0% 90%;
+        --muted-foreground: 216.52 17.22% 32.15%;
+        --popover: 220 5% 98%;
+        --popover-foreground: 216.52 33.33% 27.06%;
+        --card: 0 0% 95%;
+        --card-foreground: 216.52 33.33% 27.06%;
+        --border: 0 0% 96%;
+        --input: 0 0% 89.41%;
+        --primary: 220 100% 70%;
+        --primary-foreground: 220 5% 95%;
+        --secondary: 0 0% 90.2%;
+        --secondary-foreground: 216.52 33.33% 27.06%;
+        --accent: 0 0% 90.2%;
+        --accent-foreground: 216.52 33.33% 27.06%;
+        --destructive: 360 61.24% 60.31%;
+        --destructive-foreground: 220 5% 95%;
+        --ring: 220 100% 70%;
+        --radius: 0.625rem;
+    }
+
+    /* Dark mode */
+    .dark {
+        --background: 0 0% 14.62%;
+        --foreground: 216.52 33.33% 95.29%;
+        --muted: 0 0% 20%;
+        --muted-foreground: 216.52 17.22% 75.69%;
+        --popover: 0 0% 14.51%;
+        --popover-foreground: 216.52 33.33% 95.29%;
+        --card: 0 0% 17%;
+        --card-foreground: 216.52 33.33% 95.29%;
+        --border: 0 0% 24.77%;
+        --input: 0 0% 24.59%;
+        --primary: 220 100% 70%;
+        --primary-foreground: 220 5% 5%;
+        --secondary: 0 0% 29.8%;
+        --secondary-foreground: 216.52 33.33% 95.29%;
+        --accent: 0 0% 29.8%;
+        --accent-foreground: 216.52 33.33% 95.29%;
+        --destructive: 0 61.39% 60.39%;
+        --destructive-foreground: 220 5% 5%;
+        --ring: 220 100% 70%;
+    }
+}
+
+/* Global styles */
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply min-h-screen bg-background text-left leading-normal text-foreground antialiased;
+        background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+        background-size: 7px 7px;
+        scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+        @apply h-2 w-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-muted-foreground;
+    }
+
+    ::-moz-selection {
+        @apply bg-primary/45 text-foreground/80;
+    }
+
+    ::selection {
+        @apply bg-primary/45 text-foreground/80;
+    }
+
+    .write-vertical-right {
+        writing-mode: vertical-rl;
+    }
+
+    a {
+        @apply w-fit border-b-2 border-b-foreground px-[2px] text-foreground no-underline transition duration-300 hover:bg-foreground hover:text-background;
+    }
+
+    .normal {
+        @apply w-fit border-none px-0 leading-normal hover:bg-transparent hover:text-foreground;
+    }
+}
+
+/* Typography and prose styles */
+@layer base {
+    .prose {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @apply relative mb-4 mt-8 scroll-m-20;
+        }
+
+        :is(h1, h2, h3, h4, h5, h6) a {
+            @apply border-none;
+        }
+
+        :is(h1, h2, h3, h4, h5, h6) a:hover {
+            background: none;
+            color: inherit;
+        }
+
+        .anchor-icon {
+            @apply absolute -left-6;
+        }
+
+        img {
+            @apply mx-auto my-8 rounded-md;
+        }
+
+        blockquote {
+            @apply border-l-4 pl-4;
+        }
+
+        .rehype-code-title {
+            @apply w-full rounded-t-md border bg-card px-4 py-2 text-foreground;
+        }
+
+        .rehype-code-title + pre {
+            @apply mt-0 rounded-t-none border-t-0;
+        }
+
+        pre {
+            @apply overflow-x-auto rounded-md border p-4;
+        }
+    }
+}
