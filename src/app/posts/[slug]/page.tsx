@@ -46,15 +46,17 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
             <article key={slug} className="prose dark:prose-invert max-w-none">
                 <header>
                     <h2 className="text-3xl font-bold">{title}</h2>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-col md:flex-row">
                         <span>
                             Posted at <time>{dayjs(published).format('MMMM D, YYYY')}</time>{' '}
                         </span>
-                        {categories.map((category) => (
-                            <Link key={category} href={`/categories/${category}`} className="font-medium">
-                                #{category}
-                            </Link>
-                        ))}
+                        <div className="flex flex-wrap gap-2">
+                            {categories.map((category) => (
+                                <Link key={category} href={`/categories/${category}`} className="font-medium">
+                                    #{category}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </header>
                 {description && <p>{description}</p>}

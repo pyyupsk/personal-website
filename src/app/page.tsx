@@ -1,5 +1,4 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { author } from '@/data/author';
 import { bio } from '@/data/bio';
 import { education } from '@/data/education';
@@ -64,8 +63,8 @@ export default async function Home() {
 
     return (
         <article className="prose dark:prose-invert max-w-none">
-            <h1>
-                👋 Hi there! I&apos;m {author.name.en} ({author.name.jp})
+            <h1 className="flex items-center gap-2">
+                👋 Hi there! I&apos;m {author.name.en} <span className="hidden sm:block">({author.name.jp})</span>
             </h1>
             <p>
                 I am a full-stack developer with over {experienceYears} years of experience. I am passionate about
@@ -135,8 +134,10 @@ export default async function Home() {
                 {posts.slice(0, POST_LIMIT).map((post) => (
                     <li key={post.slug}>
                         <header className="flex flex-col gap-4">
-                            <h4 className="w-fit border-b-2 border-b-foreground px-[2px] text-foreground">
-                                <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+                            <h4>
+                                <Link href={`/posts/${post.slug}`} className="underline-offset-8 underline">
+                                    {post.frontmatter.title}
+                                </Link>
                             </h4>
                             <div className="pl-[0.1875rem]">
                                 <span>Posted at</span>{' '}
@@ -156,13 +157,7 @@ export default async function Home() {
                     </li>
                 ))}
             </ul>
-            <div className="flex justify-end">
-                <Link href="/posts" className="normal">
-                    <Button variant="outline" size="sm">
-                        View All Posts
-                    </Button>
-                </Link>
-            </div>
+            <Link href="/posts">View All Posts →</Link>
         </article>
     );
 }

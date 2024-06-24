@@ -3,12 +3,13 @@ import { HeaderComponent } from './header';
 
 export function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="flex flex-row-reverse justify-between gap-8 px-8 container">
-            <aside className="sticky top-0 bottom-0 h-screen py-20 px-8 min-w-64 max-w-64 flex flex-col justify-between items-start gap-8">
+        <div className="flex flex-col md:flex-row-reverse justify-between gap-8 px-8 container items-center md:items-start">
+            <aside className="md:sticky top-0 md:h-screen py-6 md:py-20 px-8 min-w-64 max-w-64 flex flex-col justify-between items-start gap-8">
                 <HeaderComponent />
-                <FooterComponent />
+                <FooterComponent className="hidden md:flex" />
             </aside>
-            <main className="py-20 w-full px-8">{children}</main>
+            <main className="md:py-20 w-full md:px-8">{children}</main>
+            <FooterComponent className="flex md:hidden py-6" />
         </div>
     );
 }
