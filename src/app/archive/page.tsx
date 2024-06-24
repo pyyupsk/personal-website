@@ -1,8 +1,17 @@
 import { getSortedPosts, Post } from '@/lib/markdown';
 import dayjs from 'dayjs';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
-export default async function Archive() {
+const TITLE = 'Archive';
+const DESCRIPTION = 'An archive of all my posts sorted by year.';
+
+export const metadata: Metadata = {
+    title: TITLE,
+    description: DESCRIPTION,
+};
+
+export default async function ArchiveList() {
     const sortedPosts = await getSortedPosts();
     const postsByYear = groupPostsByYear(sortedPosts);
 

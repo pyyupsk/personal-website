@@ -1,7 +1,16 @@
 import { getCategoryList } from '@/lib/markdown';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
-export default async function CategoriesPage() {
+const TITLE = 'Categories';
+const DESCRIPTION = 'The list of categories on my post collection.';
+
+export const metadata: Metadata = {
+    title: TITLE,
+    description: DESCRIPTION,
+};
+
+export default async function CategoriesList() {
     const categoryData = await getCategoryList();
 
     return (

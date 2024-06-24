@@ -1,4 +1,3 @@
-import { addDynamicIconSelectors } from '@iconify/tailwind';
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
@@ -102,7 +101,7 @@ const config = {
             },
         },
     },
-    plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography'), addDynamicIconSelectors],
+    plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 } satisfies Config;
 
 export default config;

@@ -3,12 +3,29 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+    const post = await getPostBySlug(slug);
+
+    if (!post) {
+        return notFound();
+    }
+
+    const { content, frontmatter } = post;
+
+    return {
+        title: {
+            absolute: frontmatter.title,
+        },
+        description: frontmatter.description || content.substring(0, 100),
+    };
+}
+
 export async function generateStaticParams() {
     const slugs = await getSlugs();
     return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Post({ params: { slug } }: { params: { slug: string } }) {
+export default async function PostPage({ params: { slug } }: { params: { slug: string } }) {
     const post = await getPostBySlug(slug);
 
     if (!post) {

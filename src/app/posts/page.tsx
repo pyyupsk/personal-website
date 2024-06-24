@@ -1,6 +1,15 @@
 import { getSortedPosts } from '@/lib/markdown';
 import dayjs from 'dayjs';
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+const TITLE = 'Posts';
+const DESCRIPTION = 'Explore a collection of articles and tutorials on my journey as a developer.';
+
+export const metadata: Metadata = {
+    title: TITLE,
+    description: DESCRIPTION,
+};
 
 export default async function PostsList() {
     const posts = await getSortedPosts();
