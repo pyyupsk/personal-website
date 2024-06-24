@@ -45,8 +45,17 @@ export function HeaderComponent() {
                 <ul className="space-x-1 flex">
                     {socials.map((social) => (
                         <li key={social.name}>
-                            <Link href={social.href} target="_blank" rel="noopener noreferrer" className="normal">
-                                <social.icon className="w-5 h-5 hover:text-foreground/90 transition" />
+                            <Link
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="normal"
+                                aria-label={social.name}
+                            >
+                                <social.icon
+                                    className="w-5 h-5 hover:text-foreground/90 transition"
+                                    aria-hidden="true"
+                                />
                             </Link>
                         </li>
                     ))}
