@@ -1,32 +1,27 @@
 import { author } from '@/data/author';
-import Link from 'next/link';
 
-export function Footer() {
-    const year = new Date().getFullYear();
+export function FooterComponent() {
+    const currentYear = new Date().getFullYear();
+    const {
+        name: { en: authorNameEn, jp: authorNameJp },
+    } = author;
 
     return (
         <footer className="text-sm font-semibold flex flex-col gap-2">
             <p>
-                &copy; {year}
-                <Link href="/" className="ml-1 font-serif">
-                    {author.name.en} ({author.name.jp})
-                </Link>
+                &copy; {currentYear} {authorNameEn} ({authorNameJp})
             </p>
             <p>
                 Inspired by{' '}
-                <Link
-                    href="https://github.com/sumimakito/hexo-theme-typography"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://github.com/sumimakito/hexo-theme-typography" target="_blank" rel="noopener noreferrer">
                     Hexo Typography
-                </Link>
+                </a>
             </p>
             <p>
                 Our color theme utilizes{' '}
-                <Link href="https://github.com/pyyupsk/Koyou" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/pyyupsk/Koyou" target="_blank" rel="noopener noreferrer">
                     Koyou
-                </Link>
+                </a>
             </p>
         </footer>
     );

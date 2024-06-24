@@ -85,7 +85,7 @@
         @apply bg-primary/45 text-foreground/80;
     }
 
-    .write-vertical-right {
+    .writing-vertical-right {
         writing-mode: vertical-rl;
     }
 

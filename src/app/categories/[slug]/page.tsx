@@ -17,7 +17,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     );
 
     return (
-        <section className="flex flex-col gap-1">
+        <section className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold">Category: {params.slug.replace('%20', ' ')}</h2>
             <ul className="flex flex-col gap-2 pl-6">
                 {postsByCategory.map((post) => (
@@ -25,9 +25,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
                         <Link href={`/posts/${post.slug}`} className="text-xl font-semibold">
                             {post.frontmatter.title}
                         </Link>
-                        <time className="pl-[0.1875rem]">
-                            {dayjs(post.frontmatter.published).format('D MMMM YYYY')}
-                        </time>
+                        <time>{dayjs(post.frontmatter.published).format('D MMMM YYYY')}</time>
                     </li>
                 ))}
             </ul>

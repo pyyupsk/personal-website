@@ -18,35 +18,35 @@ const socials = [
     { name: 'Instagram', href: author.socials.instagram, icon: FlowbiteInstagramSolid },
 ];
 
-export function Header() {
+export function HeaderComponent() {
     return (
-        <header className="justify-between items-start flex flex-col flex-grow">
+        <header className="flex justify-between items-start flex-col flex-grow">
             <hgroup
                 className={cn(
-                    'cursor-pointer px-[10px] pb-[45px] write-vertical-right items-start border-l-2 border-l-foreground group',
+                    'cursor-pointer px-[10px] pb-[45px] writing-vertical-right items-start border-l-2 border-l-foreground group',
                     'transition-all duration-800 ease-in-out',
                     'hover:bg-foreground hover:pt-[15px] hover:pb-[calc(45px-15px)]',
                 )}
             >
-                <Link href="/" className="font-bold normal group-hover:text-background">
-                    <h3 className="text-xl font-serif">{author.name.en}</h3>
+                <Link href="/" className="font-bold group-hover:text-background normal">
+                    <h3 className="text-xl font-serif mt-2">{author.name.en}</h3>
                     <h1 className="text-4xl font-serifjp">{author.name.jp}</h1>
                 </Link>
             </hgroup>
 
             <nav className="font-bold flex flex-col gap-4">
                 <ul>
-                    {navs.map((nav) => (
-                        <li key={nav.name} className="text-lg">
-                            <Link href={nav.href}>{nav.name}</Link>
+                    {navs.map((navItem) => (
+                        <li key={navItem.name} className="text-lg">
+                            <Link href={navItem.href}>{navItem.name}</Link>
                         </li>
                     ))}
                 </ul>
                 <ul className="space-x-1 flex">
-                    {socials.map((soc) => (
-                        <li key={soc.name}>
-                            <Link href={soc.href} target="_blank" rel="noopener noreferrer" className="normal">
-                                <soc.icon className="w-5 h-5 hover:text-foreground/90 transition" />
+                    {socials.map((social) => (
+                        <li key={social.name}>
+                            <Link href={social.href} target="_blank" rel="noopener noreferrer" className="normal">
+                                <social.icon className="w-5 h-5 hover:text-foreground/90 transition" />
                             </Link>
                         </li>
                     ))}

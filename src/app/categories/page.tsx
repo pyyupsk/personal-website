@@ -1,19 +1,19 @@
 import { getCategoryList } from '@/lib/markdown';
 import Link from 'next/link';
 
-export default async function Categories() {
-    const categories = await getCategoryList();
+export default async function CategoriesPage() {
+    const categoryData = await getCategoryList();
 
     return (
-        <section className="flex flex-col gap-1">
+        <section className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold">Categories</h2>
             <ul className="flex flex-col gap-2 pl-6">
-                {categories.map((category) => (
-                    <li key={category.name} className="flex flex-col gap-1">
-                        <Link href={`/categories/${category.name}`} className="text-xl font-semibold">
-                            {category.name}
+                {categoryData.map(({ name, count }) => (
+                    <li key={name} className="flex flex-col gap-1">
+                        <Link href={`/categories/${name}`} className="text-xl font-semibold">
+                            {name}
                         </Link>
-                        <p className="pl-[0.1875rem]">{category.count} posts</p>
+                        <p>{count} posts</p>
                     </li>
                 ))}
             </ul>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
-import Layout from '@/components/layout';
+import { Layout } from '@/components/layout';
 import { ThemeProvider } from '@/components/theme-provider';
 import { fontSans, fontSerif, fontSerifJP } from '@/fonts';
 import { cn } from '@/utils/cn';

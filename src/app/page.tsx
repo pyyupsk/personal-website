@@ -12,8 +12,55 @@ import Link from 'next/link';
 
 const POST_LIMIT = 3;
 
+type RenderSection =
+    | {
+          title: string;
+          data: { title: string | number; subtitle?: string; description: string }[];
+          type: 'list';
+      }
+    | {
+          title: string;
+          data: { title: string | number; description: string; items: string[] }[];
+          type: 'grid';
+      };
+
 export default async function Home() {
     const posts = await getSortedPosts();
+
+    const renderSection = ({ title, data, type }: RenderSection) => (
+        <section>
+            <h3>{title}</h3>
+            {type === 'list' ? (
+                <ul>
+                    {data.map(({ title, subtitle, description }) => (
+                        <li key={title}>
+                            <h4>{title}</h4>
+                            {subtitle && <p>{subtitle}</p>}
+                            <p>{description}</p>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    {data.map(({ title, description, items }) => (
+                        <div key={title} className="prose dark:prose-invert">
+                            <h4>{title}</h4>
+                            <p className="line-clamp-2">{description}</p>
+                            {items && (
+                                <div className="flex flex-wrap gap-1">
+                                    {items.map((item) => (
+                                        <Badge key={item} size="sm">
+                                            {item}
+                                        </Badge>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </section>
+    );
 
     return (
         <article className="prose dark:prose-invert max-w-none">
@@ -24,17 +71,17 @@ export default async function Home() {
                 I am a full-stack developer with over {experienceYears} years of experience. I am passionate about
                 creating innovative solutions that have a positive impact on people&apos;s lives. As a freelance
                 developer, I am constantly seeking new challenges to take on. If you would like to{' '}
-                <Link href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
+                <a href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
                     contact me
-                </Link>
+                </a>
                 , please feel free to contact me. Currently, I am working at{' '}
-                <Link href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
                     Juniper Nexus
-                </Link>
+                </a>
                 , an esports club and guild. Feel free to explore some of my code and projects on{' '}
-                <Link href={author.socials.github} target="_blank" rel="noopener noreferrer">
+                <a href={author.socials.github} target="_blank" rel="noopener noreferrer">
                     GitHub
-                </Link>
+                </a>
                 .
             </p>
             <h2>About Me</h2>
@@ -43,73 +90,46 @@ export default async function Home() {
                 passionate about creating responsive and efficient web solutions and dedicated to delivering
                 high-quality work. I am seeking opportunities to utilize my skills and expertise in innovative projects.
             </p>
-            <h3>Education</h3>
-            <ul>
-                {education.map((edu) => (
-                    <li key={edu.name}>
-                        <h4>{edu.name}</h4>
-                        <p>
-                            {edu.date} · {edu.degree}
-                        </p>
-                        <p>{edu.description}</p>
-                    </li>
-                ))}
-            </ul>
-            <h3>Experience</h3>
-            <ul>
-                {experience.map((exp) => (
-                    <li key={exp.name}>
-                        <h4>{exp.name}</h4>
-                        <p>{exp.date}</p>
-                        <p>{exp.description}</p>
-                    </li>
-                ))}
-            </ul>
-            <h3>Bio</h3>
-            <ul>
-                {bio.map((bio) => (
-                    <li key={bio.year}>
-                        <h4>{bio.year}</h4>
-                        <p>{bio.description}</p>
-                    </li>
-                ))}
-            </ul>
-            <h3>Skills</h3>
-            <div className="grid grid-cols-2 gap-4">
-                {skills.map((skill) => (
-                    <div key={skill.title}>
-                        <h4>{skill.title}</h4>
-                        <p className="line-clamp-2">{skill.description}</p>
-                        <div className="flex flex-wrap gap-1">
-                            {skill.items.map((item) => (
-                                <Badge key={item} size="sm">
-                                    {item}
-                                </Badge>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <h3>Projects</h3>
-            <div className="grid grid-cols-2 gap-4">
-                {projects.map((project) => (
-                    <div key={project.title}>
-                        <h4>
-                            <Link href={project.url} target="_blank" rel="noopener noreferrer">
-                                {project.title}
-                            </Link>
-                        </h4>
-                        <p className="line-clamp-2">{project.description}</p>
-                        <div className="flex flex-wrap gap-1">
-                            {project.tags.map((tag) => (
-                                <Badge key={tag} size="sm">
-                                    {tag}
-                                </Badge>
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
+            {renderSection({
+                title: 'Education',
+                data: education.map(({ name, date, degree, description }) => ({
+                    title: name,
+                    subtitle: `${date} · ${degree}`,
+                    description,
+                })),
+                type: 'list',
+            })}
+            {renderSection({
+                title: 'Experience',
+                data: experience.map(({ name, date, description }) => ({
+                    title: name,
+                    subtitle: date,
+                    description,
+                })),
+                type: 'list',
+            })}
+            {renderSection({
+                title: 'Bio',
+                data: bio.map(({ year, description }) => ({
+                    title: year,
+                    description,
+                })),
+                type: 'list',
+            })}
+            {renderSection({
+                title: 'Skills',
+                data: skills,
+                type: 'grid',
+            })}
+            {renderSection({
+                title: 'Projects',
+                data: projects.map((project) => ({
+                    title: project.title,
+                    description: project.description,
+                    items: project.tags,
+                })),
+                type: 'grid',
+            })}
             <h3>Writing</h3>
             <ul>
                 {posts.slice(0, POST_LIMIT).map((post) => (
