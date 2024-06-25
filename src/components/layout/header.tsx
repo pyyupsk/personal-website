@@ -9,8 +9,8 @@ import { FlowbiteMailBoxSolid } from '../icons/FlowbiteMailBoxSolid';
 const navs = [
     { name: 'About', href: '/' },
     { name: 'Posts', href: '/posts' },
-    { name: 'Archive', href: '/archive' },
-    { name: 'Categories', href: '/categories' },
+    { name: 'Archive', href: '/posts/archive' },
+    { name: 'Categories', href: '/posts/categories' },
 ];
 
 const socials = [
