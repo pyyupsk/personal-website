@@ -1,17 +1,13 @@
+import { author } from '@/data';
 import { getCategoryList } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 
-const TITLE = 'Categories';
-const DESCRIPTION = 'The list of categories on my post collection.';
-
 export async function generateMetadata() {
-    const metaData = commonMetaData({
-        title: TITLE,
-        description: DESCRIPTION,
-    });
+    const title = 'Explore Categories';
+    const description = `Discover a diverse range of topics in tech and development curated by ${author.name.en} (${author.name.jp}), a seasoned full-stack developer. Explore articles on web development, UI/UX design, backend services, and more. Gain insights and practical knowledge to advance your skills and projects.`;
 
-    return metaData;
+    return commonMetaData({ title, description });
 }
 
 export default async function CategoriesList() {
@@ -23,9 +19,9 @@ export default async function CategoriesList() {
             <ul className="flex flex-col gap-2 pl-6">
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
-                        <Link href={`/categories/${name}`} className="text-xl font-semibold">
-                            {name}
-                        </Link>
+                        <h2 className="text-xl font-semibold">
+                            <Link href={`/categories/${name}`}>{name}</Link>
+                        </h2>
                         <p>{count} posts</p>
                     </li>
                 ))}

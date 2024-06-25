@@ -1,163 +1,146 @@
-import { Badge } from '@/components/ui/badge';
-import { author } from '@/data/author';
-import { bio } from '@/data/bio';
-import { education } from '@/data/education';
-import { experience, experienceYears } from '@/data/experience';
-import { projects } from '@/data/projects';
-import { skills } from '@/data/skills';
+import { SectionComponent, SectionProps } from '@/components/Section';
+import { author, bio, education, experience, experienceYears, projects, skills } from '@/data';
 import { getSortedPosts } from '@/lib/markdown';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 
 const POST_LIMIT = 3;
 
-type RenderSection =
-    | {
-          title: string;
-          data: { title: string | number; subtitle?: string; description: string }[];
-          type: 'list';
-      }
-    | {
-          title: string;
-          data: { title: string | number; description: string; items: string[] }[];
-          type: 'grid';
-      };
-
 export default async function Home() {
     const posts = await getSortedPosts();
 
-    const renderSection = ({ title, data, type }: RenderSection) => (
-        <section>
-            <h3>{title}</h3>
-            {type === 'list' ? (
-                <ul>
-                    {data.map(({ title, subtitle, description }) => (
-                        <li key={title}>
-                            <h4>{title}</h4>
-                            {subtitle && <p>{subtitle}</p>}
-                            <p>{description}</p>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {data.map(({ title, description, items }) => (
-                        <div key={title} className="prose dark:prose-invert">
-                            <h4>{title}</h4>
-                            <p className="line-clamp-2">{description}</p>
-                            {items && (
-                                <div className="flex flex-wrap gap-1">
-                                    {items.map((item) => (
-                                        <Badge key={item} size="sm">
-                                            {item}
-                                        </Badge>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            )}
-        </section>
-    );
+    const sections: SectionProps[] = [
+        {
+            title: 'Education',
+            data: education.map(({ name, date, degree, description }) => ({
+                title: name,
+                subtitle: `${date} · ${degree}`,
+                description,
+            })),
+            type: 'list',
+        },
+        {
+            title: 'Experience',
+            data: experience.map(({ name, date, description }) => ({
+                title: name,
+                subtitle: date,
+                description,
+            })),
+            type: 'list',
+        },
+        {
+            title: 'Bio',
+            data: bio.map(({ year, description }) => ({
+                title: year,
+                description,
+            })),
+            type: 'list',
+        },
+        {
+            title: 'Skills',
+            data: skills,
+            type: 'grid',
+        },
+        {
+            title: 'Projects',
+            data: projects.map(({ title, description, tags, url }) => ({
+                title,
+                description,
+                url,
+                items: tags,
+            })),
+            type: 'grid',
+        },
+    ];
 
     return (
         <article className="prose dark:prose-invert max-w-none">
-            <h1 className="flex items-center gap-2">
-                👋 Hi there! I&apos;m {author.name.en} <span className="hidden sm:block">({author.name.jp})</span>
-            </h1>
-            <p>
-                I am a full-stack developer with over {experienceYears} years of experience. I am passionate about
-                creating innovative solutions that have a positive impact on people&apos;s lives. As a freelance
-                developer, I am constantly seeking new challenges to take on. If you would like to{' '}
-                <a href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
-                    contact me
-                </a>
-                , please feel free to contact me. Currently, I am working at{' '}
-                <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
-                    Juniper Nexus
-                </a>
-                , an esports club and guild. Feel free to explore some of my code and projects on{' '}
-                <a href={author.socials.github} target="_blank" rel="noopener noreferrer">
-                    GitHub
-                </a>
-                .
-            </p>
-            <h2>About Me</h2>
-            <p>
-                Enthusiastic and results-driven freelance developer with a strong background in web development. I am
-                passionate about creating responsive and efficient web solutions and dedicated to delivering
-                high-quality work. I am seeking opportunities to utilize my skills and expertise in innovative projects.
-            </p>
-            {renderSection({
-                title: 'Education',
-                data: education.map(({ name, date, degree, description }) => ({
-                    title: name,
-                    subtitle: `${date} · ${degree}`,
-                    description,
-                })),
-                type: 'list',
-            })}
-            {renderSection({
-                title: 'Experience',
-                data: experience.map(({ name, date, description }) => ({
-                    title: name,
-                    subtitle: date,
-                    description,
-                })),
-                type: 'list',
-            })}
-            {renderSection({
-                title: 'Bio',
-                data: bio.map(({ year, description }) => ({
-                    title: year,
-                    description,
-                })),
-                type: 'list',
-            })}
-            {renderSection({
-                title: 'Skills',
-                data: skills,
-                type: 'grid',
-            })}
-            {renderSection({
-                title: 'Projects',
-                data: projects.map((project) => ({
-                    title: project.title,
-                    description: project.description,
-                    items: project.tags,
-                })),
-                type: 'grid',
-            })}
-            <h3>Writing</h3>
-            <ul>
-                {posts.slice(0, POST_LIMIT).map((post) => (
-                    <li key={post.slug}>
-                        <header className="flex flex-col gap-4">
-                            <h4>
-                                <Link href={`/posts/${post.slug}`} className="underline-offset-8 underline">
-                                    {post.frontmatter.title}
-                                </Link>
-                            </h4>
-                            <div className="pl-[0.1875rem]">
-                                <span>Posted at</span>{' '}
-                                <time>{dayjs(post.frontmatter.published).format('MMMM D, YYYY')}</time>
+            <section>
+                <h1>
+                    👋 Hello, I&apos;m {author.name.en} ({author.name.jp}).
+                </h1>
+                <p>
+                    A dedicated full-stack developer who was passionate about creating impactful solutions through
+                    technology.
+                </p>
+                <p>
+                    With over {experienceYears} years of experience in the field, I have honed my skills in web
+                    development, backend services, and UI/UX design. My journey began at a young age with a fascination
+                    for technology, and I quickly transitioned into freelance work, collaborating on diverse projects
+                    from web applications to e-commerce platforms. Notably, I contributed as the main developer for the
+                    Modified version of the
+                    <a href="https://hello.vrchat.com/" target="_blank" rel="noopener noreferrer">
+                        VRChat
+                    </a>{' '}
+                    SDK, enhancing user experiences within the virtual reality community.
+                </p>
+                <p>
+                    My passion lies in solving complex problems and crafting intuitive user experiences that make a
+                    difference. I thrive on challenges and am continuously exploring new technologies to expand my skill
+                    set and stay ahead in this dynamic field.
+                </p>
+                <p>
+                    Currently, I am contributing to the success of{' '}
+                    <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
+                        Juniper Nexus
+                    </a>
+                    , an esports club and guild, where I serve as the administrator and lead developer. In addition to
+                    my role at{' '}
+                    <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
+                        Juniper Nexus
+                    </a>
+                    , I engage in freelance opportunities, collaborating closely with clients to deliver tailored
+                    solutions that meet their unique needs.
+                </p>
+                <p>
+                    Outside of coding, I enjoy exploring new technologies and contributing to open-source projects on
+                    GitHub. I am an avid reader with a keen interest in technology trends and advancements. These
+                    activities not only provide balance but also inspire my creativity and problem-solving skills.
+                </p>
+                <p>
+                    Thank you for visiting my profile. Whether you&apos;re looking to collaborate on a project or simply
+                    interested in connecting, I look forward to hearing from you. Feel free to explore my work on GitHub
+                    at{' '}
+                    <a href={author.socials.github} target="_blank" rel="noopener noreferrer">
+                        pyyupsk
+                    </a>{' '}
+                    and reach out through{' '}
+                    <a href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
+                        email
+                    </a>
+                    .
+                </p>
+            </section>
+            {sections.map((section) => (
+                <SectionComponent key={section.title} {...section} />
+            ))}
+            <section>
+                <h3>Writing</h3>
+                <ul>
+                    {posts.slice(0, POST_LIMIT).map((post) => (
+                        <li key={post.slug}>
+                            <Link href={`/posts/${post.slug}`} className="text-xl leading-6">
+                                {post.frontmatter.title}
+                            </Link>
+                            <div className="flex gap-2 flex-wrap mt-4">
+                                <time dateTime={post.frontmatter.published}>
+                                    {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                    })}
+                                </time>
                                 {post.frontmatter.categories.map((category) => (
-                                    <Link
-                                        key={category}
-                                        href={`/categories/${category}`}
-                                        className="ml-4 font-semibold"
-                                    >
+                                    <Link key={category} href={`/categories/${category}`} className="font-medium">
                                         #{category}
                                     </Link>
                                 ))}
                             </div>
-                        </header>
-                        <p className="line-clamp-4 pl-[0.1875rem]">{post.frontmatter.description || post.content}</p>
-                    </li>
-                ))}
-            </ul>
-            <Link href="/posts">View All Posts →</Link>
+                            <p className="line-clamp-3">{post.frontmatter.description || post.content}</p>
+                        </li>
+                    ))}
+                </ul>
+                <Link href="/posts">View All Posts →</Link>
+            </section>
         </article>
     );
 }

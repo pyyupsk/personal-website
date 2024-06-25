@@ -1,6 +1,5 @@
 import { getPostBySlug, getSlugs } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -9,22 +8,16 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 
     if (!post) {
         return {
-            title: {
-                absolute: 'Not Found',
-            },
+            title: 'Not Found',
         };
     }
 
     const { content, frontmatter } = post;
 
-    const metaData = commonMetaData({
-        title: {
-            absolute: frontmatter.title,
-        },
-        description: frontmatter.description || content.substring(0, 100),
-    });
+    const title = frontmatter.title;
+    const description = frontmatter.description || content.substring(0, 100);
 
-    return metaData;
+    return commonMetaData({ title, description });
 }
 
 export async function generateStaticParams() {
@@ -43,12 +36,19 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
 
     return (
         <section className="flex flex-col gap-4">
-            <article key={slug} className="prose dark:prose-invert max-w-none">
-                <header>
-                    <h2 className="text-3xl font-bold">{title}</h2>
-                    <div className="flex gap-2 flex-col md:flex-row">
+            <article>
+                <header className="flex flex-col gap-4 pb-4 border-b border-foreground border-dashed">
+                    <h1 className="text-3xl font-extrabold">{title}</h1>
+                    <div className="flex flex-col md:flex-row">
                         <span>
-                            Posted at <time>{dayjs(published).format('MMMM D, YYYY')}</time>{' '}
+                            Posted at{' '}
+                            <time>
+                                {new Date(published).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })}
+                            </time>
                         </span>
                         <div className="flex flex-wrap gap-2">
                             {categories.map((category) => (
@@ -58,9 +58,12 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
                             ))}
                         </div>
                     </div>
+                    {description && <p>{description}</p>}
                 </header>
-                {description && <p>{description}</p>}
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    className="prose dark:prose-invert max-w-[46rem] mt-4"
+                />
             </article>
         </section>
     );

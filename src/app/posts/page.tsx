@@ -1,18 +1,13 @@
+import { author } from '@/data';
 import { getSortedPosts } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 
-const TITLE = 'Posts';
-const DESCRIPTION = 'Explore a collection of articles and tutorials on my journey as a developer.';
-
 export async function generateMetadata() {
-    const metaData = commonMetaData({
-        title: TITLE,
-        description: DESCRIPTION,
-    });
+    const title = 'Latest Articles and Posts';
+    const description = `Explore insightful articles by ${author.name.en} (${author.name.jp}), a skilled full-stack developer passionate about web development and innovative tech solutions dive into actionable tips and techniques for enhancing your development workflow and building efficient web applications.`;
 
-    return metaData;
+    return commonMetaData({ title, description });
 }
 
 export default async function PostsList() {
@@ -22,12 +17,16 @@ export default async function PostsList() {
         <section className="flex flex-col gap-[1.875rem]">
             {posts.map((post) => (
                 <article key={post.slug} className="space-y-4">
-                    <h2 className="text-2xl font-semibold">
+                    <h2 className="text-xl font-semibold">
                         <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
                     </h2>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap">
                         <time dateTime={post.frontmatter.published}>
-                            {dayjs(post.frontmatter.published).format('MMMM D, YYYY')}
+                            {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}
                         </time>
                         {post.frontmatter.categories.map((category) => (
                             <Link key={category} href={`/categories/${category}`} className="font-medium">
@@ -35,7 +34,7 @@ export default async function PostsList() {
                             </Link>
                         ))}
                     </div>
-                    <p>{post.frontmatter.description || post.content}</p>
+                    <p className="line-clamp-3">{post.frontmatter.description || post.content}</p>
                 </article>
             ))}
         </section>

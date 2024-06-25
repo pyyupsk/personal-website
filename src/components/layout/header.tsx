@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FlowbiteDiscordSolid } from '../icons/FlowbiteDiscordSolid';
 import { FlowbiteGithubSolid } from '../icons/FlowbiteGithubSolid';
 import { FlowbiteInstagramSolid } from '../icons/FlowbiteInstagramSolid';
+import { FlowbiteMailBoxSolid } from '../icons/FlowbiteMailBoxSolid';
 
 const navs = [
     { name: 'About', href: '/' },
@@ -13,6 +14,7 @@ const navs = [
 ];
 
 const socials = [
+    { name: 'Email', href: `mailto:${author.socials.email}`, icon: FlowbiteMailBoxSolid },
     { name: 'GitHub', href: author.socials.github, icon: FlowbiteGithubSolid },
     { name: 'Discord', href: author.socials.discord, icon: FlowbiteDiscordSolid },
     { name: 'Instagram', href: author.socials.instagram, icon: FlowbiteInstagramSolid },

@@ -1,20 +1,14 @@
+import { author } from '@/data';
 import { getCategoryList, getSortedPosts } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
-    const category = slug.replace('%20', ' ');
+    const title = `Explore ${slug} Articles`;
+    const description = `Explore insightful articles on ${slug} curated by ${author.name.en} (${author.name.jp}), a seasoned full-stack developer. Dive into practical tips and in-depth discussions on ${slug}. Enhance your skills and stay updated with the latest trends in ${slug}.`;
 
-    const metaData = commonMetaData({
-        title: {
-            absolute: `Category: ${category}`,
-        },
-        description: `Explore a collection of articles and tutorials within the ${category} category on my journey as a developer.`,
-    });
-
-    return metaData;
+    return commonMetaData({ title, description });
 }
 
 export async function generateStaticParams() {
@@ -31,7 +25,7 @@ export default async function CategoryPage({ params: { slug } }: { params: { slu
         return notFound();
     }
 
-    const postsByCategory = posts.filter((post) => post.frontmatter.categories.includes(slug.replace('%20', ' ')));
+    const postsByCategory = posts.filter((post) => post.frontmatter.categories.includes(slug));
 
     return (
         <section className="flex flex-col gap-4">
@@ -42,7 +36,13 @@ export default async function CategoryPage({ params: { slug } }: { params: { slu
                         <Link href={`/posts/${post.slug}`} className="text-xl font-semibold">
                             {post.frontmatter.title}
                         </Link>
-                        <time>{dayjs(post.frontmatter.published).format('D MMMM YYYY')}</time>
+                        <time>
+                            {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}
+                        </time>
                     </li>
                 ))}
             </ul>
