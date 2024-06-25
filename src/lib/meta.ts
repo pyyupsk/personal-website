@@ -3,13 +3,12 @@ import { author } from '@/data/author';
 import type { Metadata } from 'next';
 import { TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 
-export const commonMetaData = ({
-    title,
-    description,
-}: {
+type CommonMetaData = {
     title: string | TemplateString;
     description: string;
-}): Metadata => ({
+};
+
+export const commonMetaData = ({ title, description }: CommonMetaData): Metadata => ({
     title,
     description,
     authors: [{ name: author.name.jp, url: BASE_URL }],

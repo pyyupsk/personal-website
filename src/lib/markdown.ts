@@ -17,7 +17,7 @@ import { unified } from 'unified';
 
 const POST_DIR = path.join(process.cwd(), 'src', 'content', 'posts');
 
-type Category = {
+export type Category = {
     name: string;
     count: number;
 };
@@ -104,10 +104,7 @@ export async function getPostBySlug(slug: string) {
         } as Options)
         .use(rehypeCodeTitles)
         .use(rehypeShiki, {
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark',
-            },
+            theme: 'one-light',
             transformers: [transformerNotationDiff(), transformerMetaHighlight(), transformerNotationFocus()],
         } as RehypeShikiOptions)
         .use(rehypeStringify)
