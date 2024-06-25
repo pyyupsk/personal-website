@@ -1,7 +1,7 @@
 ---
 title: 'Create a Blog Post with Syntax Highlighting in Next.js'
 published: 2024-05-03
-categories: [Next.js, Markdown, Syntax Highlighting]
+categories: [Next.js, Markdown, Syntax-Highlighting]
 description: 'Learn how to create a dynamic blog using Next.js with Markdown parsing and syntax highlighting. Follow step-by-step instructions from setting up a Next.js project with Tailwind CSS to integrating Shiki for code block highlighting. Dive into web development with practical examples and enhance your blogging experience!'
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: 'How to Set Up Git Hooks in a Next.js Project'
 published: 2024-05-05
-categories: [Next.js, Git, Git Hooks]
-description: 'Learn how to set up Git hooks in your Next.js project to automate tasks like linting, formatting, and branch name validation. This tutorial covers installing tools like Husky, CommitLint, Lint-Staged, ESLint, Prettier, and Validate-Branch-Name, ensuring consistent code quality and enhancing your development workflow.'
+categories: [Next.js, Git, Git-Hooks]
 ---
 
 In modern web development, it's crucial to maintain a high standard of code quality and enforce best practices. Git
