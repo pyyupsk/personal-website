@@ -27,9 +27,9 @@ export default async function ArchiveList() {
             <ul className="flex flex-col gap-2 pl-6">
                 {posts.map((post) => (
                     <li key={post.slug} className="flex flex-col gap-1">
-                        <h2 className="text-xl font-semibold">
+                        <h3 className="text-xl font-semibold">
                             <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
-                        </h2>
+                        </h3>
                         <time>
                             {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',

@@ -19,9 +19,9 @@ export default async function CategoriesList() {
             <ul className="flex flex-col gap-2 pl-6">
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
-                        <h2 className="text-xl font-semibold">
+                        <h3 className="text-xl font-semibold">
                             <Link href={`/posts/categories/${name}`}>{name}</Link>
-                        </h2>
+                        </h3>
                         <p>{count} posts</p>
                     </li>
                 ))}

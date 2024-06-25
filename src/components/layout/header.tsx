@@ -8,6 +8,7 @@ import { FlowbiteMailBoxSolid } from '../icons/FlowbiteMailBoxSolid';
 
 const navs = [
     { name: 'About', href: '/' },
+    { name: 'Music', href: '/music' },
     { name: 'Posts', href: '/posts' },
     { name: 'Archive', href: '/posts/archive' },
     { name: 'Categories', href: '/posts/categories' },
