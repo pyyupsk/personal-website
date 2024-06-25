@@ -15,10 +15,8 @@
         "start": "next start"
     },
     "dependencies": {
-        "@radix-ui/react-slot": "^1.1.0",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
-        "dayjs": "^1.11.11",
         "gray-matter": "^4.0.3",
         "hast-util-to-string": "^3.0.0",
         "hastscript": "^9.0.0",

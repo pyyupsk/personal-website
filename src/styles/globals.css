@@ -78,11 +78,11 @@
     }
 
     ::-moz-selection {
-        @apply bg-primary/45 text-foreground/80;
+        @apply bg-foreground text-background;
     }
 
     ::selection {
-        @apply bg-primary/45 text-foreground/80;
+        @apply bg-foreground text-background;
     }
 
     .writing-vertical-right {
@@ -144,7 +144,7 @@
         }
 
         .anchor-icon {
-            @apply absolute -left-4 md:-left-6 top-0;
+            @apply absolute -left-4 top-0 md:-left-6;
         }
 
         img {
