@@ -1,7 +1,7 @@
 ---
 title: 'Optimizing Next.js: A Comprehensive Performance Guide'
 published: 2024-05-05
-categories: ['Next.js', 'Performance']
+categories: ['Next.js', 'Performance-Optimization']
 description: 'Discover essential tips and techniques to optimize the performance of your Next.js applications. Learn about rendering strategies, incremental static regeneration, code splitting, client-side caching, memoization, image optimization, and minimizing client-side JavaScript to build faster and more efficient web experiences.'
 ---
 
