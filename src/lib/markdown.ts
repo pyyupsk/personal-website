@@ -80,14 +80,7 @@ export async function getCategoryList(): Promise<Category[]> {
     return Object.entries(categories).map(([name, count]) => ({ name, count }));
 }
 
-export async function getPostBySlug(slug: string) {
-    const allBlogPosts = await getCollection(POST_DIR);
-    const post = allBlogPosts.find((post) => post.slug === slug);
-
-    if (!post) {
-        return null;
-    }
-
+async function processMarkdown(markdown: string) {
     const createSROnlyLabel = (text: string) => {
         const escapedText = encodeURIComponent(text);
         const node = h('span.sr-only', `Section titled ${escapedText}`);
@@ -126,9 +119,22 @@ export async function getPostBySlug(slug: string) {
                 createSROnlyLabel(toString(heading)),
             ],
         })
-        .process(post.content);
+        .process(markdown);
 
-    return { ...post, content: processor.toString() };
+    return processor.toString();
+}
+
+export async function getPostBySlug(slug: string) {
+    const allBlogPosts = await getCollection(POST_DIR);
+    const post = allBlogPosts.find((post) => post.slug === slug);
+
+    if (!post) {
+        return null;
+    }
+
+    const processor = await processMarkdown(post.content);
+
+    return { ...post, content: processor };
 }
 
 async function getCollection(dir: string): Promise<Post[]> {

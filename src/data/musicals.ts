@@ -1,4 +1,4 @@
-export const music = [
+export const musicals = [
     {
         title: 'Wanna be your - รักไม่สิ้นสุด',
         published: '2024-06-15',

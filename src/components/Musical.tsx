@@ -9,7 +9,8 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { music } from '@/data/music';
+import { musicals as data } from '@/data';
+import { env } from '@/env';
 import { getRelativeTime } from '@/utils/date';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -55,10 +56,10 @@ export function MusicalComponent() {
         const fetchSnippets = async () => {
             try {
                 const fetchedSnippets = await Promise.all(
-                    music.map(async (item) => {
+                    data.map(async (item) => {
                         const videoId = extractVideoId(item.url);
                         const response = await fetch(
-                            `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&type=video&key=AIzaSyC5XYHdF6wfY_1V9F-upB_T55vciPOu8ro`,
+                            `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&type=video&key=${env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
                         );
 
                         if (!response.ok) {
@@ -99,12 +100,12 @@ export function MusicalComponent() {
                                     width={500}
                                     height={500}
                                     className="aspect-video rounded-md object-cover"
+                                    loading="lazy"
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
                                 <h3 className="text-xl font-semibold">{musical.title}</h3>
                                 <time>{getRelativeTime(new Date(musical.publishedAt))}</time>
-
                                 <div style={{ WebkitMaskImage: 'linear-gradient(0deg, transparent 0%, black 100%)' }}>
                                     <p className="line-clamp-4 text-start">{musical.description}</p>
                                 </div>
