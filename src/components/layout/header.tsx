@@ -24,19 +24,20 @@ const socials = [
 export function HeaderComponent() {
     return (
         <header className="flex justify-between items-center md:items-start flex-col flex-grow w-full">
-            <hgroup
-                className={cn(
-                    'w-full md:w-fit text-center md:text-start',
-                    'cursor-pointer md:px-[10px] md:pb-[45px] md:writing-vertical-right items-start md:border-l-2 border-l-foreground group',
-                    'transition-all duration-800 ease-in-out',
-                    'md:hover:bg-foreground md:hover:pt-[15px] md:hover:pb-[calc(45px-15px)]',
-                )}
-            >
-                <Link href="/" className="font-bold md:group-hover:text-background normal">
+            <Link href="/" className="normal">
+                <hgroup
+                    className={cn(
+                        'w-full md:w-fit text-center md:text-start font-bold',
+                        'cursor-pointer md:px-[10px] md:pb-[45px] md:writing-vertical-right items-start',
+                        'md:border-l-2 border-l-foreground',
+                        'transition-all duration-800 ease-in-out',
+                        'md:hover:bg-foreground md:hover:text-background md:hover:pt-[15px] md:hover:pb-[calc(45px-15px)]',
+                    )}
+                >
                     <h3 className="text-xl font-serif mt-2">{author.name.en}</h3>
                     <h1 className="text-4xl font-serifjp">{author.name.jp}</h1>
-                </Link>
-            </hgroup>
+                </hgroup>
+            </Link>
 
             <nav className="font-semibold flex flex-col gap-4 items-center md:items-start">
                 <ul className="flex md:flex-col gap-2 md:gap-0">

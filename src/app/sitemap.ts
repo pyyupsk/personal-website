@@ -17,14 +17,15 @@ export default async function sitemap(): Promise<Sitemap[]> {
     const categories = await getCategoryList();
 
     const homePage = generatePageMetadata(BASE_URL, 'weekly');
+    const musicPage = generatePageMetadata(`${BASE_URL}/music`, 'weekly');
     const postsPage = generatePageMetadata(`${BASE_URL}/posts`, 'daily');
-    const archivePage = generatePageMetadata(`${BASE_URL}/archive`, 'weekly');
-    const categoriesPage = generatePageMetadata(`${BASE_URL}/categories`, 'weekly');
+    const archivePage = generatePageMetadata(`${BASE_URL}/archive`, 'daily');
+    const categoriesPage = generatePageMetadata(`${BASE_URL}/categories`, 'daily');
 
     const allPosts = generatePostMetadata(posts);
     const allCategories = generateCategoryMetadata(categories);
 
-    return [homePage, postsPage, archivePage, categoriesPage, ...allPosts, ...allCategories];
+    return [homePage, musicPage, postsPage, archivePage, categoriesPage, ...allPosts, ...allCategories];
 }
 
 function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequency']): Sitemap {
