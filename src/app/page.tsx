@@ -67,7 +67,7 @@ export default async function Home() {
                     development, backend services, and UI/UX design. My journey began at a young age with a fascination
                     for technology, and I quickly transitioned into freelance work, collaborating on diverse projects
                     from web applications to e-commerce platforms. Notably, I contributed as the main developer for the
-                    Modified version of the
+                    Modified version of the{' '}
                     <a href="https://hello.vrchat.com/" target="_blank" rel="noopener noreferrer">
                         VRChat
                     </a>{' '}
@@ -139,7 +139,9 @@ export default async function Home() {
                         </li>
                     ))}
                 </ul>
-                <Link href="/posts">View All Posts →</Link>
+                <Link href="/posts" className="after:arrow-right">
+                    View All Posts
+                </Link>
             </section>
         </article>
     );

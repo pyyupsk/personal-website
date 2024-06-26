@@ -44,6 +44,7 @@ const config = {
                         '--tw-prose-quotes': 'hsl(var(--foreground))',
                         '--tw-prose-quote-borders': 'hsl(var(--foreground))',
                         '--tw-prose-code': 'hsl(var(--foreground))',
+                        '--tw-prose-pre-bg': '#22272e',
                     },
                 },
             },

@@ -1,4 +1,3 @@
-import { FlowbiteLinkOutline } from './icons/FlowbiteLinkOutline';
 import { Badge } from './ui/badge';
 
 type ListSection = {
@@ -33,14 +32,7 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                 <ul>
                     {data.map((entry) => (
                         <li key={`${entry.title}-${entry.description}`}>
-                            <h4 className="flex gap-2 items-center">
-                                {entry.title}
-                                {entry.url && (
-                                    <a href={entry.url} target="_blank" rel="noreferrer">
-                                        <FlowbiteLinkOutline />
-                                    </a>
-                                )}
-                            </h4>
+                            <h4 className="flex gap-2 items-center">{entry.title}</h4>
                             {entry.subtitle && <p>{entry.subtitle}</p>}
                             <p>{entry.description}</p>
                         </li>
@@ -51,11 +43,12 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                     {data.map((entry) => (
                         <div key={`${entry.title}-${entry.description}`} className="prose dark:prose-invert">
                             <h4 className="flex gap-2 items-center">
-                                {entry.title}
-                                {entry.url && (
-                                    <a href={entry.url} target="_blank" rel="noreferrer">
-                                        <FlowbiteLinkOutline />
+                                {entry.url ? (
+                                    <a href={entry.url} target="_blank" rel="noreferrer" className="no-hover">
+                                        {entry.title}
                                     </a>
+                                ) : (
+                                    entry.title
                                 )}
                             </h4>
                             <p className="line-clamp-2">{entry.description}</p>

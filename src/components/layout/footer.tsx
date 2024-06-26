@@ -14,7 +14,12 @@ export function FooterComponent({ className }: { className?: string }) {
             </p>
             <p>
                 Inspired by{' '}
-                <a href="https://github.com/sumimakito/hexo-theme-typography" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="https://github.com/sumimakito/hexo-theme-typography"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-after"
+                >
                     Hexo Typography
                 </a>
             </p>

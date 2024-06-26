@@ -97,7 +97,7 @@ async function processMarkdown(markdown: string) {
         } as Options)
         .use(rehypeCodeTitles)
         .use(rehypeShiki, {
-            theme: 'one-light',
+            theme: 'github-dark-dimmed',
             transformers: [transformerNotationDiff(), transformerMetaHighlight(), transformerNotationFocus()],
         } as RehypeShikiOptions)
         .use(rehypeStringify)

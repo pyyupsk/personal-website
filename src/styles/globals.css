@@ -77,10 +77,7 @@
         @apply rounded-full bg-muted-foreground;
     }
 
-    ::-moz-selection {
-        @apply bg-foreground text-background;
-    }
-
+    ::-moz-selection,
     ::selection {
         @apply bg-foreground text-background;
     }
@@ -90,11 +87,44 @@
     }
 
     a {
-        @apply w-fit border-b-2 border-b-foreground px-[2px] text-foreground no-underline transition duration-300 hover:bg-foreground hover:text-background;
+        @apply border-b-2 border-b-foreground text-foreground transition duration-300 after:transition after:duration-300 hover:bg-foreground hover:text-background;
     }
 
-    .normal {
+    a[target='_blank']::after {
+        @apply -mb-[2px] ml-1 inline-block h-4 w-4 bg-foreground;
+        mask: url('/icons/gravity-ui--arrow-up-right-from-square.svg') no-repeat center / contain;
+        -webkit-mask: url('/icons/gravity-ui--arrow-up-right-from-square.svg') no-repeat center / contain;
+    }
+
+    a[target='_blank']:hover::after {
+        @apply bg-background;
+    }
+
+    :is(a.no-after)::after,
+    :is(a.normal)::after {
+        @apply hidden;
+    }
+
+    :is(a.normal) {
         @apply w-fit border-none px-0 leading-normal hover:bg-transparent hover:text-foreground;
+    }
+
+    :is(a.no-hover):hover {
+        @apply bg-transparent text-foreground;
+    }
+
+    :is(a.no-hover):hover::after {
+        @apply bg-foreground;
+    }
+
+    .arrow-right {
+        @apply -mb-[2px] ml-1 inline-block h-4 w-4 bg-foreground;
+        mask: url('/icons/gravity-ui--arrow-right.svg') no-repeat center / contain;
+        -webkit-mask: url('/icons/gravity-ui--arrow-right.svg') no-repeat center / contain;
+    }
+
+    .arrow-right:hover {
+        @apply bg-background;
     }
 }
 
@@ -156,15 +186,15 @@
         }
 
         .rehype-code-title {
-            @apply w-full rounded-t-md border bg-card px-4 py-2 text-foreground;
+            @apply w-full rounded-t-md bg-[#181b20] px-4 py-2 text-white before:content-["File:_"];
         }
 
         .rehype-code-title + pre {
-            @apply mt-0 rounded-t-none border-t-0;
+            @apply mt-0 rounded-t-none;
         }
 
         pre {
-            @apply overflow-x-auto rounded-md border p-4;
+            @apply overflow-x-auto rounded-md p-4;
         }
     }
 }
