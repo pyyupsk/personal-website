@@ -15,7 +15,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
-const POST_DIR = join(process.cwd(), 'src', 'content', 'posts');
+const ARTICLE_DIR = join(process.cwd(), 'src', 'content', 'articles');
 
 export type Category = {
     name: string;
@@ -29,7 +29,7 @@ type Frontmatter = {
     description: string;
 };
 
-export type Post = {
+export type Article = {
     slug: string;
     content: string;
     frontmatter: Frontmatter;
@@ -37,24 +37,24 @@ export type Post = {
 
 export async function getSlugs(): Promise<string[]> {
     try {
-        const entries = await readdir(POST_DIR);
+        const entries = await readdir(ARTICLE_DIR);
         const files = entries.filter((file) => file.endsWith('.md'));
-        const posts = await Promise.all(
+        const articles = await Promise.all(
             files.map(async (file) => {
                 const slug = parameterize(basename(file, '.md'));
                 return slug;
             }),
         );
-        return posts;
+        return articles;
     } catch (error) {
-        console.error(`Failed to read posts from directory ${POST_DIR}`, error);
+        console.error(`Failed to read articles from directory ${ARTICLE_DIR}`, error);
         return [];
     }
 }
 
-export async function getSortedPosts() {
-    const allBlogPosts = await getCollection(POST_DIR);
-    const sorted = allBlogPosts.sort((a, b) => {
+export async function getSortedArticles() {
+    const allBlogArticles = await getCollection(ARTICLE_DIR);
+    const sorted = allBlogArticles.sort((a, b) => {
         const dateA = new Date(a.frontmatter.published);
         const dateB = new Date(b.frontmatter.published);
         return dateA > dateB ? -1 : 1;
@@ -62,10 +62,10 @@ export async function getSortedPosts() {
     return sorted;
 }
 
-export async function getCategoryList(): Promise<Category[]> {
-    const allBlogPosts = await getCollection(POST_DIR);
-    const categories = allBlogPosts
-        .map((post) => post.frontmatter.categories)
+export async function getCategories(): Promise<Category[]> {
+    const allBlogArticles = await getCollection(ARTICLE_DIR);
+    const categories = allBlogArticles
+        .map((article) => article.frontmatter.categories)
         .flat()
         .reduce(
             (acc, category) => {
@@ -124,24 +124,24 @@ async function processMarkdown(markdown: string) {
     return processor.toString();
 }
 
-export async function getPostBySlug(slug: string) {
-    const allBlogPosts = await getCollection(POST_DIR);
-    const post = allBlogPosts.find((post) => post.slug === slug);
+export async function getArticleBySlug(slug: string) {
+    const allBlogArticles = await getCollection(ARTICLE_DIR);
+    const article = allBlogArticles.find((article) => article.slug === slug);
 
-    if (!post) {
+    if (!article) {
         return null;
     }
 
-    const processor = await processMarkdown(post.content);
+    const processor = await processMarkdown(article.content);
 
-    return { ...post, content: processor };
+    return { ...article, content: processor };
 }
 
-async function getCollection(dir: string): Promise<Post[]> {
+async function getCollection(dir: string): Promise<Article[]> {
     try {
         const entries = await readdir(dir);
         const files = entries.filter((file) => file.endsWith('.md'));
-        const posts = await Promise.all(
+        const articles = await Promise.all(
             files.map(async (filename) => {
                 const filePath = join(dir, filename);
                 const fileContents = await readFile(filePath, 'utf8');
@@ -151,12 +151,12 @@ async function getCollection(dir: string): Promise<Post[]> {
                     slug,
                     content,
                     frontmatter,
-                } as Post;
+                } as Article;
             }),
         );
-        return posts;
+        return articles;
     } catch (error) {
-        console.error(`Failed to read posts from directory ${dir}`, error);
+        console.error(`Failed to read articles from directory ${dir}`, error);
         return [];
     }
 }
