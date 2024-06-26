@@ -1,7 +1,7 @@
 ---
 title: 'How to Set Up Git Hooks in a Next.js Project'
 published: 2024-05-05
-categories: [Next.js, Git, Git-Hooks]
+categories: ['Next.js', 'Git', 'Git-Hooks']
 ---
 
 In modern web development, it's crucial to maintain a high standard of code quality and enforce best practices. Git
