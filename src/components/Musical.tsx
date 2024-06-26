@@ -15,6 +15,7 @@ import { getRelativeTime } from '@/utils/date';
 import { YouTubeEmbed } from '@next/third-parties/google';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { FlowbiteAngleRightOutline } from './icons/FlowbiteAngleRightOutline';
 
 type Response = {
     items: Item[];
@@ -89,43 +90,45 @@ export function MusicalComponent() {
 
     return (
         <ul className="flex flex-col gap-[1.875rem] pl-6">
-            {musicals.map((musical) => (
-                <Dialog key={musical.title}>
-                    <DialogOverlay className="fixed inset-0 bg-background/50 backdrop-blur-sm" />
-                    <DialogTrigger>
-                        <li key={musical.title} className="flex flex-col md:flex-row gap-6 text-start">
-                            <div className="relative md:min-w-[300px] w-full">
-                                <Image
-                                    src={musical.thumbnails.high.url}
-                                    alt={musical.title}
-                                    width={500}
-                                    height={500}
-                                    className="aspect-video rounded-md object-cover"
-                                    loading="lazy"
-                                />
+            {musicals.map((musical, index) => (
+                <li key={index} className="flex flex-col md:flex-row gap-6 text-start">
+                    <div className="relative md:min-w-[300px] w-full">
+                        <Image
+                            src={musical.thumbnails.high.url}
+                            alt={musical.title}
+                            width={500}
+                            height={500}
+                            className="aspect-video rounded-md object-cover"
+                        />
+                    </div>
+                    <div className="flex gap-2">
+                        <div className="flex flex-col gap-2">
+                            <h2 className="text-lg md:text-xl font-semibold">{musical.title}</h2>
+                            <time>{getRelativeTime(new Date(musical.publishedAt))}</time>
+                            <div style={{ WebkitMaskImage: 'linear-gradient(0deg, transparent 0%, black 100%)' }}>
+                                <p className="line-clamp-4 text-start">{musical.description}</p>
                             </div>
-                            <div className="flex flex-col gap-2">
-                                <h4 className="text-lg md:text-xl font-semibold">{musical.title}</h4>
-                                <time>{getRelativeTime(new Date(musical.publishedAt))}</time>
-                                <div style={{ WebkitMaskImage: 'linear-gradient(0deg, transparent 0%, black 100%)' }}>
-                                    <p className="line-clamp-4 text-start">{musical.description}</p>
-                                </div>
-                            </div>
-                        </li>
-                    </DialogTrigger>
-                    <DialogContent className="pr-0 rounded-lg">
-                        <DialogHeader>
-                            <DialogTitle className="text-start text-lg md:text-xl font-semibold">
-                                {musical.title}
-                            </DialogTitle>
-                        </DialogHeader>
-                        <DialogDescription className="max-h-[50vh] overflow-auto pr-4 gap-4 flex flex-col">
-                            <YouTubeEmbed videoid={extractVideoId(musical.url)} />
-                            <div className="border-b border-foreground border-dashed"></div>
-                            <p className="whitespace-pre-wrap text-base">{musical.description}</p>
-                        </DialogDescription>
-                    </DialogContent>
-                </Dialog>
+                        </div>
+                        <Dialog>
+                            <DialogOverlay className="fixed inset-0 bg-background/50 backdrop-blur-sm" />
+                            <DialogTrigger>
+                                <FlowbiteAngleRightOutline className="h-6 w-6" />
+                            </DialogTrigger>
+                            <DialogContent className="pr-0 rounded-lg">
+                                <DialogHeader>
+                                    <DialogTitle className="text-start text-lg md:text-xl font-semibold">
+                                        {musical.title}
+                                    </DialogTitle>
+                                </DialogHeader>
+                                <DialogDescription className="max-h-[50vh] overflow-auto pr-4 gap-4 flex flex-col">
+                                    <YouTubeEmbed videoid={extractVideoId(musical.url)} />
+                                    <div className="border-b border-foreground border-dashed"></div>
+                                    <p className="whitespace-pre-wrap text-base">{musical.description}</p>
+                                </DialogDescription>
+                            </DialogContent>
+                        </Dialog>
+                    </div>
+                </li>
             ))}
         </ul>
     );

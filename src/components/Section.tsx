@@ -28,12 +28,12 @@ export type SectionProps = ListSection | GridSection;
 export function SectionComponent({ title, data, type }: SectionProps) {
     return (
         <section>
-            <h3>{title}</h3>
+            <h2>{title}</h2>
             {type === 'list' ? (
                 <ul>
                     {data.map((entry) => (
                         <li key={`${entry.title}-${entry.description}`}>
-                            <h4 className="flex gap-2 items-center">{entry.title}</h4>
+                            <h3 className="flex gap-2 items-center">{entry.title}</h3>
                             {entry.subtitle && <p>{entry.subtitle}</p>}
                             <p>{entry.description}</p>
                         </li>
@@ -43,7 +43,7 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {data.map((entry) => (
                         <div key={`${entry.title}-${entry.description}`} className="prose dark:prose-invert">
-                            <h4 className="flex gap-2 items-center">
+                            <h3 className="flex gap-2 items-center">
                                 {entry.url ? (
                                     <Link href={entry.url} target="_blank" rel="noreferrer" className="no-hover">
                                         {entry.title}
@@ -51,7 +51,7 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                                 ) : (
                                     entry.title
                                 )}
-                            </h4>
+                            </h3>
                             <p className="line-clamp-2">{entry.description}</p>
                             {entry.items && (
                                 <div className="flex flex-wrap gap-1">

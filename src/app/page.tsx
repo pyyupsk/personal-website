@@ -55,9 +55,9 @@ export default async function Home() {
     return (
         <article className="prose dark:prose-invert max-w-none">
             <section>
-                <h2 className="mt-0">
+                <h1 className="mt-0">
                     👋 Hello, I&apos;m {author.name.en} (<span className="font-serifjp">{author.name.jp}</span>).
-                </h2>
+                </h1>
                 <p>
                     A dedicated full-stack developer who was passionate about creating impactful solutions through
                     technology.
@@ -114,15 +114,15 @@ export default async function Home() {
                 <SectionComponent key={section.title} {...section} />
             ))}
             <section>
-                <h3>Articles & Tutorials</h3>
+                <h2>Articles & Tutorials</h2>
                 <ul>
                     {articles.slice(0, ARTICLE_LIMIT).map((article) => (
                         <li key={article.slug}>
-                            <h4>
+                            <h3>
                                 <Link href={`/articles/${article.slug}`} prefetch={false}>
                                     {article.frontmatter.title}
                                 </Link>
-                            </h4>
+                            </h3>
                             <div className="flex gap-2 flex-wrap mt-4">
                                 <time>
                                     {new Date(article.frontmatter.published).toLocaleDateString('en-US', {

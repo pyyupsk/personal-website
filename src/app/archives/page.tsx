@@ -23,15 +23,15 @@ export default async function ArchiveList() {
 
     return Object.entries(articlesByYear).map(([year, articles]) => (
         <section key={year} className="flex flex-col gap-4 mb-4">
-            <h2 className="text-xl md:text-2xl font-semibold">{year}</h2>
+            <h1 className="text-xl md:text-2xl font-semibold">{year}</h1>
             <ul className="flex flex-col gap-2 pl-6">
                 {articles.map((article) => (
                     <li key={article.slug} className="flex flex-col gap-1">
-                        <h3 className="text-lg md:text-xl font-semibold">
+                        <h2 className="text-lg md:text-xl font-semibold">
                             <Link href={`/articles/${article.slug}`} prefetch={false}>
                                 {article.frontmatter.title}
                             </Link>
-                        </h3>
+                        </h2>
                         <time>
                             {new Date(article.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',

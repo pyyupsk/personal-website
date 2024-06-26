@@ -15,16 +15,16 @@ export default async function CategoriesList() {
 
     return (
         <section className="flex flex-col gap-4">
-            <h2 className="text-xl md:text-2xl font-semibold">Categories</h2>
+            <h1 className="text-xl md:text-2xl font-semibold">Categories</h1>
             <ul className="flex flex-col gap-2 pl-6">
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
-                        <h3 className="text-lg md:text-xl font-semibold">
+                        <h2 className="text-lg md:text-xl font-semibold">
                             <Link href={`/categories/${name}`} prefetch={false}>
                                 {name}
                             </Link>
-                        </h3>
-                        <p>{count} articles</p>
+                        </h2>
+                        <span>{count} articles</span>
                     </li>
                 ))}
             </ul>

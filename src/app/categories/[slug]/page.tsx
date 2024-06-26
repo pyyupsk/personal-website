@@ -29,15 +29,15 @@ export default async function CategoryPage({ params: { slug } }: { params: { slu
 
     return (
         <section className="flex flex-col gap-4">
-            <h2 className="text-xl md:text-2xl font-semibold">Category: {slug.replace('%20', ' ')}</h2>
+            <h1 className="text-xl md:text-2xl font-semibold">Category: {slug}</h1>
             <ul className="flex flex-col gap-2 pl-6">
                 {articlesByCategory.map((article) => (
                     <li key={article.slug} className="flex flex-col gap-1">
-                        <h3 className="text-lg md:text-xl font-semibold">
+                        <h2 className="text-lg md:text-xl font-semibold">
                             <Link href={`/articles/${article.slug}`} prefetch={false}>
                                 {article.frontmatter.title}
                             </Link>
-                        </h3>
+                        </h2>
                         <time>
                             {new Date(article.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',
