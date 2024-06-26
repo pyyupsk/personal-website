@@ -1,7 +1,7 @@
 ---
 title: 'Roadmap to Becoming a Competent Backend Developer in One Year'
 published: 2024-06-26
-categories: ['Backend Development', 'Programming', 'Career Development']
+categories: ['Backend-Development', 'Programming', 'Career-Development']
 description: 'Learn how to become a skilled backend developer in just one year with this comprehensive roadmap. Master key skills like programming languages, version control, data structures, databases, and more.'
 ---
 
