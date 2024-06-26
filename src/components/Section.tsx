@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Badge } from './ui/badge';
 
 type ListSection = {
@@ -44,9 +45,9 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                         <div key={`${entry.title}-${entry.description}`} className="prose dark:prose-invert">
                             <h4 className="flex gap-2 items-center">
                                 {entry.url ? (
-                                    <a href={entry.url} target="_blank" rel="noreferrer" className="no-hover">
+                                    <Link href={entry.url} target="_blank" rel="noreferrer" className="no-hover">
                                         {entry.title}
-                                    </a>
+                                    </Link>
                                 ) : (
                                     entry.title
                                 )}

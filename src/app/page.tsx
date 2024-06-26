@@ -1,12 +1,12 @@
 import { SectionComponent, SectionProps } from '@/components/Section';
 import { author, bio, education, experience, experienceYears, projects, skills } from '@/data';
-import { getSortedPosts } from '@/lib/markdown';
+import { getSortedArticles } from '@/lib/markdown';
 import Link from 'next/link';
 
-const POST_LIMIT = 3;
+const ARTICLE_LIMIT = 3;
 
 export default async function Home() {
-    const posts = await getSortedPosts();
+    const articles = await getSortedArticles();
 
     const sections: SectionProps[] = [
         {
@@ -68,9 +68,9 @@ export default async function Home() {
                     for technology, and I quickly transitioned into freelance work, collaborating on diverse projects
                     from web applications to e-commerce platforms. Notably, I contributed as the main developer for the
                     Modified version of the{' '}
-                    <a href="https://hello.vrchat.com/" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://hello.vrchat.com/" target="_blank" rel="noopener noreferrer">
                         VRChat
-                    </a>{' '}
+                    </Link>{' '}
                     SDK, enhancing user experiences within the virtual reality community.
                 </p>
                 <p>
@@ -80,14 +80,14 @@ export default async function Home() {
                 </p>
                 <p>
                     Currently, I am contributing to the success of{' '}
-                    <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
                         Juniper Nexus
-                    </a>
+                    </Link>
                     , an esports club and guild, where I serve as the administrator and lead developer. In addition to
                     my role at{' '}
-                    <a href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://discord.gg/juniper-nexus" target="_blank" rel="noopener noreferrer">
                         Juniper Nexus
-                    </a>
+                    </Link>
                     , I engage in freelance opportunities, collaborating closely with clients to deliver tailored
                     solutions that meet their unique needs.
                 </p>
@@ -100,13 +100,13 @@ export default async function Home() {
                     Thank you for visiting my profile. Whether you&apos;re looking to collaborate on a project or simply
                     interested in connecting, I look forward to hearing from you. Feel free to explore my work on GitHub
                     at{' '}
-                    <a href={author.socials.github} target="_blank" rel="noopener noreferrer">
+                    <Link href={author.socials.github} target="_blank" rel="noopener noreferrer">
                         pyyupsk
-                    </a>{' '}
+                    </Link>{' '}
                     and reach out through{' '}
-                    <a href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
+                    <Link href={`mailto:${author.socials.email}`} target="_blank" rel="noopener noreferrer">
                         email
-                    </a>
+                    </Link>
                     .
                 </p>
             </section>
@@ -114,35 +114,35 @@ export default async function Home() {
                 <SectionComponent key={section.title} {...section} />
             ))}
             <section>
-                <h3>Writing</h3>
+                <h3>Articles & Tutorials</h3>
                 <ul>
-                    {posts.slice(0, POST_LIMIT).map((post) => (
-                        <li key={post.slug}>
+                    {articles.slice(0, ARTICLE_LIMIT).map((article) => (
+                        <li key={article.slug}>
                             <h4>
-                                <Link href={`/posts/${post.slug}`} prefetch={false}>
-                                    {post.frontmatter.title}
+                                <Link href={`/articles/${article.slug}`} prefetch={false}>
+                                    {article.frontmatter.title}
                                 </Link>
                             </h4>
                             <div className="flex gap-2 flex-wrap mt-4">
                                 <time>
-                                    {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
+                                    {new Date(article.frontmatter.published).toLocaleDateString('en-US', {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',
                                     })}
                                 </time>
-                                {post.frontmatter.categories.map((category) => (
+                                {article.frontmatter.categories.map((category) => (
                                     <Link key={category} href={`/categories/${category}`} prefetch={false}>
                                         #{category}
                                     </Link>
                                 ))}
                             </div>
-                            <p className="line-clamp-3">{post.frontmatter.description || post.content}</p>
+                            <p className="line-clamp-3">{article.frontmatter.description || article.content}</p>
                         </li>
                     ))}
                 </ul>
-                <Link href="/posts" className="after:arrow-right" prefetch={false}>
-                    View All Posts
+                <Link href="/articles" className="after:arrow-right" prefetch={false}>
+                    View All Articles
                 </Link>
             </section>
         </article>

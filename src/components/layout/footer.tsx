@@ -1,5 +1,6 @@
 import { author } from '@/data/author';
 import { cn } from '@/utils/cn';
+import Link from 'next/link';
 
 export function FooterComponent({ className }: { className?: string }) {
     const currentYear = new Date().getFullYear();
@@ -14,14 +15,14 @@ export function FooterComponent({ className }: { className?: string }) {
             </p>
             <p>
                 Inspired by{' '}
-                <a
+                <Link
                     href="https://github.com/sumimakito/hexo-theme-typography"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="no-after"
                 >
                     Hexo Typography
-                </a>
+                </Link>
             </p>
         </footer>
     );

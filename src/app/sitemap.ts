@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { Category, getCategoryList, getSortedPosts, Post } from '@/lib/markdown';
+import { Article, Category, getCategories, getSortedArticles } from '@/lib/markdown';
 import { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
 type Sitemap = {
@@ -13,19 +13,19 @@ type Sitemap = {
 };
 
 export default async function sitemap(): Promise<Sitemap[]> {
-    const posts = await getSortedPosts();
-    const categories = await getCategoryList();
+    const articles = await getSortedArticles();
+    const categories = await getCategories();
 
-    const homePage = generatePageMetadata(BASE_URL, 'weekly');
-    const musicPage = generatePageMetadata(`${BASE_URL}/music`, 'weekly');
-    const postsPage = generatePageMetadata(`${BASE_URL}/posts`, 'daily');
-    const archivePage = generatePageMetadata(`${BASE_URL}/archive`, 'daily');
+    const aboutPage = generatePageMetadata(BASE_URL, 'weekly');
+    const compositionsPage = generatePageMetadata(`${BASE_URL}/songs`, 'weekly');
+    const articlesPage = generatePageMetadata(`${BASE_URL}/articles`, 'daily');
     const categoriesPage = generatePageMetadata(`${BASE_URL}/categories`, 'daily');
+    const archivesPage = generatePageMetadata(`${BASE_URL}/archives`, 'daily');
 
-    const allPosts = generatePostMetadata(posts);
+    const allArticles = generateArticleMetadata(articles);
     const allCategories = generateCategoryMetadata(categories);
 
-    return [homePage, musicPage, postsPage, archivePage, categoriesPage, ...allPosts, ...allCategories];
+    return [aboutPage, compositionsPage, articlesPage, archivesPage, categoriesPage, ...allArticles, ...allCategories];
 }
 
 function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequency']): Sitemap {
@@ -37,9 +37,9 @@ function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequ
     };
 }
 
-function generatePostMetadata(posts: Post[]): Sitemap[] {
-    return posts.map(({ slug, frontmatter: { published } }) => ({
-        url: `${BASE_URL}/posts/${slug}`,
+function generateArticleMetadata(articles: Article[]): Sitemap[] {
+    return articles.map(({ slug, frontmatter: { published } }) => ({
+        url: `${BASE_URL}/articles/${slug}`,
         lastModified: new Date(published),
         priority: 0.64,
         changeFrequency: 'daily',

@@ -12,6 +12,7 @@ import {
 import { musicals as data } from '@/data/musicals';
 import { env } from '@/env';
 import { getRelativeTime } from '@/utils/date';
+import { YouTubeEmbed } from '@next/third-parties/google';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -119,13 +120,7 @@ export function MusicalComponent() {
                             </DialogTitle>
                         </DialogHeader>
                         <DialogDescription className="max-h-[50vh] overflow-auto pr-4 gap-4 flex flex-col">
-                            <iframe
-                                className="aspect-video w-full rounded-md"
-                                src={`https://www.youtube.com/embed/${extractVideoId(musical.url)}`}
-                                title={musical.title}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            />
+                            <YouTubeEmbed videoid={extractVideoId(musical.url)} />
                             <div className="border-b border-foreground border-dashed"></div>
                             <p className="whitespace-pre-wrap text-base">{musical.description}</p>
                         </DialogDescription>

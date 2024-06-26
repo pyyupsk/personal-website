@@ -1,5 +1,5 @@
 import { author } from '@/data/author';
-import { getCategoryList, getSortedPosts } from '@/lib/markdown';
+import { getCategories, getSortedArticles } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,34 +12,34 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 }
 
 export async function generateStaticParams() {
-    const categories = await getCategoryList();
+    const categories = await getCategories();
     return categories.map((category) => ({
         slug: category.name,
     }));
 }
 
 export default async function CategoryPage({ params: { slug } }: { params: { slug: string } }) {
-    const posts = await getSortedPosts();
+    const articles = await getSortedArticles();
 
-    if (!posts) {
+    if (!articles) {
         return notFound();
     }
 
-    const postsByCategory = posts.filter((post) => post.frontmatter.categories.includes(slug));
+    const articlesByCategory = articles.filter((article) => article.frontmatter.categories.includes(slug));
 
     return (
         <section className="flex flex-col gap-4">
             <h2 className="text-xl md:text-2xl font-semibold">Category: {slug.replace('%20', ' ')}</h2>
             <ul className="flex flex-col gap-2 pl-6">
-                {postsByCategory.map((post) => (
-                    <li key={post.slug} className="flex flex-col gap-1">
+                {articlesByCategory.map((article) => (
+                    <li key={article.slug} className="flex flex-col gap-1">
                         <h3 className="text-lg md:text-xl font-semibold">
-                            <Link href={`/posts/${post.slug}`} prefetch={false}>
-                                {post.frontmatter.title}
+                            <Link href={`/articles/${article.slug}`} prefetch={false}>
+                                {article.frontmatter.title}
                             </Link>
                         </h3>
                         <time>
-                            {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
+                            {new Date(article.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric',

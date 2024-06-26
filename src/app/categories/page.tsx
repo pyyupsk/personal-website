@@ -1,5 +1,5 @@
 import { author } from '@/data/author';
-import { getCategoryList } from '@/lib/markdown';
+import { getCategories } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ export async function generateMetadata() {
 }
 
 export default async function CategoriesList() {
-    const categoryData = await getCategoryList();
+    const categoryData = await getCategories();
 
     return (
         <section className="flex flex-col gap-4">
@@ -20,11 +20,11 @@ export default async function CategoriesList() {
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
                         <h3 className="text-lg md:text-xl font-semibold">
-                            <Link href={`/posts/categories/${name}`} prefetch={false}>
+                            <Link href={`/categories/${name}`} prefetch={false}>
                                 {name}
                             </Link>
                         </h3>
-                        <p>{count} posts</p>
+                        <p>{count} articles</p>
                     </li>
                 ))}
             </ul>

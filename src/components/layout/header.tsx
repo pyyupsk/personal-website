@@ -6,12 +6,12 @@ import { FlowbiteGithubSolid } from '../icons/FlowbiteGithubSolid';
 import { FlowbiteInstagramSolid } from '../icons/FlowbiteInstagramSolid';
 import { FlowbiteMailBoxSolid } from '../icons/FlowbiteMailBoxSolid';
 
-const navs = [
-    { name: 'About', href: '/' },
-    { name: 'Music', href: '/music' },
-    { name: 'Posts', href: '/posts' },
-    { name: 'Archive', href: '/posts/archive' },
-    { name: 'Categories', href: '/posts/categories' },
+const navLinks = [
+    { name: 'About Me', href: '/' },
+    { name: 'My Compositions', href: '/songs' },
+    { name: 'Articles & Tutorials', href: '/articles' },
+    { name: 'Categories', href: '/categories' },
+    { name: 'Archives', href: '/archives' },
 ];
 
 const socials = [
@@ -41,7 +41,7 @@ export function HeaderComponent() {
 
             <nav className="font-semibold flex flex-col gap-4 items-center md:items-start">
                 <ul className="flex md:flex-col gap-2 md:gap-0">
-                    {navs.map((navItem) => (
+                    {navLinks.map((navItem) => (
                         <li key={navItem.name} className="text-base md:text-md">
                             <Link href={navItem.href} prefetch={false}>
                                 {navItem.name}

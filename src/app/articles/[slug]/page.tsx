@@ -1,18 +1,18 @@
-import { getPostBySlug, getSlugs } from '@/lib/markdown';
+import { getArticleBySlug, getSlugs } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
-    const post = await getPostBySlug(slug);
+    const article = await getArticleBySlug(slug);
 
-    if (!post) {
+    if (!article) {
         return {
             title: 'Not Found',
         };
     }
 
-    const { content, frontmatter } = post;
+    const { content, frontmatter } = article;
 
     const title = frontmatter.title;
     const description = frontmatter.description || content.substring(0, 100);
@@ -25,14 +25,14 @@ export async function generateStaticParams() {
     return slugs.map((slug) => ({ slug }));
 }
 
-export default async function PostPage({ params: { slug } }: { params: { slug: string } }) {
-    const post = await getPostBySlug(slug);
+export default async function ArticlePage({ params: { slug } }: { params: { slug: string } }) {
+    const article = await getArticleBySlug(slug);
 
-    if (!post) {
+    if (!article) {
         return notFound();
     }
 
-    const { title, published, categories, description } = post.frontmatter;
+    const { title, published, categories, description } = article.frontmatter;
 
     return (
         <section className="flex flex-col gap-4">
@@ -41,7 +41,7 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
                     <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
                     <div className="flex flex-col md:flex-row gap-2">
                         <span>
-                            Posted at{' '}
+                            Published at{' '}
                             <time>
                                 {new Date(published).toLocaleDateString('en-US', {
                                     year: 'numeric',
@@ -66,7 +66,7 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
                     {description && <p>{description}</p>}
                 </header>
                 <div
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                    dangerouslySetInnerHTML={{ __html: article.content }}
                     className="prose dark:prose-invert max-w-[46rem] mt-4"
                 />
             </article>

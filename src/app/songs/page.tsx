@@ -12,7 +12,7 @@ export async function generateMetadata() {
 export default function MusicPage() {
     return (
         <section className="flex flex-col gap-4">
-            <h3 className="text-xl md:text-2xl font-semibold">My Music</h3>
+            <h3 className="text-xl md:text-2xl font-semibold">My Compositions</h3>
             <MusicalComponent />
         </section>
     );
