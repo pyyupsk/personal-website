@@ -1,4 +1,4 @@
-import { author } from '@/data';
+import { author } from '@/data/author';
 import { getCategoryList, getSortedPosts } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
@@ -29,13 +29,13 @@ export default async function CategoryPage({ params: { slug } }: { params: { slu
 
     return (
         <section className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold">Category: {slug.replace('%20', ' ')}</h2>
+            <h2 className="text-xl md:text-2xl font-semibold">Category: {slug.replace('%20', ' ')}</h2>
             <ul className="flex flex-col gap-2 pl-6">
                 {postsByCategory.map((post) => (
                     <li key={post.slug} className="flex flex-col gap-1">
-                        <Link href={`/posts/${post.slug}`} className="text-xl font-semibold">
-                            {post.frontmatter.title}
-                        </Link>
+                        <h3 className="text-lg md:text-xl font-semibold">
+                            <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+                        </h3>
                         <time>
                             {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',

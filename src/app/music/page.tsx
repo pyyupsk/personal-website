@@ -1,5 +1,5 @@
 import { MusicalComponent } from '@/components/Musical';
-import { author } from '@/data';
+import { author } from '@/data/author';
 import { commonMetaData } from '@/lib/meta';
 
 export async function generateMetadata() {
@@ -12,7 +12,7 @@ export async function generateMetadata() {
 export default function MusicPage() {
     return (
         <section className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold">My Music</h2>
+            <h3 className="text-xl md:text-2xl font-semibold">My Music</h3>
             <MusicalComponent />
         </section>
     );

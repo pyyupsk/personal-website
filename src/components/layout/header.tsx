@@ -27,22 +27,22 @@ export function HeaderComponent() {
             <Link href="/" className="normal">
                 <hgroup
                     className={cn(
-                        'w-full md:w-fit text-center md:text-start font-bold',
+                        'w-full md:w-fit text-center md:text-start font-extrabold',
                         'cursor-pointer md:px-[10px] md:pb-[45px] md:writing-vertical-right items-start',
                         'md:border-l-2 border-l-foreground',
                         'transition-all duration-800 ease-in-out',
                         'md:hover:bg-foreground md:hover:text-background md:hover:pt-[15px] md:hover:pb-[calc(45px-15px)]',
                     )}
                 >
-                    <h3 className="text-xl font-serif mt-2">{author.name.en}</h3>
-                    <h1 className="text-4xl font-serifjp">{author.name.jp}</h1>
+                    <h3 className="text-lg md:text-xl font-serif mt-2">{author.name.en}</h3>
+                    <h1 className="text-2xl md:text-3xl font-serifjp">{author.name.jp}</h1>
                 </hgroup>
             </Link>
 
             <nav className="font-semibold flex flex-col gap-4 items-center md:items-start">
                 <ul className="flex md:flex-col gap-2 md:gap-0">
                     {navs.map((navItem) => (
-                        <li key={navItem.name} className="text-md md:text-lg">
+                        <li key={navItem.name} className="text-base md:text-md">
                             <Link href={navItem.href}>{navItem.name}</Link>
                         </li>
                     ))}
@@ -58,7 +58,7 @@ export function HeaderComponent() {
                                 aria-label={social.name}
                             >
                                 <social.icon
-                                    className="w-5 h-5 hover:text-foreground/90 transition"
+                                    className="w-5 h-5 hover:text-foreground/85 transition"
                                     aria-hidden="true"
                                 />
                             </Link>

@@ -1,5 +1,5 @@
 import { readdir, readFile } from 'fs/promises';
-import path from 'path';
+import { basename, join } from 'path';
 import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype';
 import { transformerMetaHighlight, transformerNotationDiff, transformerNotationFocus } from '@shikijs/transformers';
 import matter from 'gray-matter';
@@ -15,7 +15,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
-const POST_DIR = path.join(process.cwd(), 'src', 'content', 'posts');
+const POST_DIR = join(process.cwd(), 'src', 'content', 'posts');
 
 export type Category = {
     name: string;
@@ -41,7 +41,7 @@ export async function getSlugs(): Promise<string[]> {
         const files = entries.filter((file) => file.endsWith('.md'));
         const posts = await Promise.all(
             files.map(async (file) => {
-                const slug = parameterize(path.basename(file, '.md'));
+                const slug = parameterize(basename(file, '.md'));
                 return slug;
             }),
         );
@@ -143,10 +143,10 @@ async function getCollection(dir: string): Promise<Post[]> {
         const files = entries.filter((file) => file.endsWith('.md'));
         const posts = await Promise.all(
             files.map(async (filename) => {
-                const filePath = path.join(dir, filename);
+                const filePath = join(dir, filename);
                 const fileContents = await readFile(filePath, 'utf8');
                 const { content, data: frontmatter } = matter(fileContents);
-                const slug = parameterize(path.basename(filename, '.md'));
+                const slug = parameterize(basename(filename, '.md'));
                 return {
                     slug,
                     content,

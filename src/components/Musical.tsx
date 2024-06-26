@@ -9,7 +9,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { musicals as data } from '@/data';
+import { musicals as data } from '@/data/musicals';
 import { env } from '@/env';
 import { getRelativeTime } from '@/utils/date';
 import Image from 'next/image';
@@ -104,7 +104,7 @@ export function MusicalComponent() {
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <h3 className="text-xl font-semibold">{musical.title}</h3>
+                                <h4 className="text-lg md:text-xl font-semibold">{musical.title}</h4>
                                 <time>{getRelativeTime(new Date(musical.publishedAt))}</time>
                                 <div style={{ WebkitMaskImage: 'linear-gradient(0deg, transparent 0%, black 100%)' }}>
                                     <p className="line-clamp-4 text-start">{musical.description}</p>
@@ -114,7 +114,9 @@ export function MusicalComponent() {
                     </DialogTrigger>
                     <DialogContent className="pr-0 rounded-lg">
                         <DialogHeader>
-                            <DialogTitle className="text-start">{musical.title}</DialogTitle>
+                            <DialogTitle className="text-start text-lg md:text-xl font-semibold">
+                                {musical.title}
+                            </DialogTitle>
                         </DialogHeader>
                         <DialogDescription className="max-h-[50vh] overflow-auto pr-4 gap-4 flex flex-col">
                             <iframe
@@ -125,7 +127,7 @@ export function MusicalComponent() {
                                 allowFullScreen
                             />
                             <div className="border-b border-foreground border-dashed"></div>
-                            <pre>{musical.description}</pre>
+                            <p className="whitespace-pre-wrap text-base">{musical.description}</p>
                         </DialogDescription>
                     </DialogContent>
                 </Dialog>

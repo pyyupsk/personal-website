@@ -38,7 +38,7 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
         <section className="flex flex-col gap-4">
             <article>
                 <header className="flex flex-col gap-4 pb-4 border-b border-foreground border-dashed">
-                    <h1 className="text-3xl font-extrabold">{title}</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
                     <div className="flex flex-col md:flex-row gap-2">
                         <span>
                             Posted at{' '}

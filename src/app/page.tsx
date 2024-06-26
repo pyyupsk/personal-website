@@ -55,9 +55,9 @@ export default async function Home() {
     return (
         <article className="prose dark:prose-invert max-w-none">
             <section>
-                <h1>
-                    👋 Hello, I&apos;m {author.name.en} ({author.name.jp}).
-                </h1>
+                <h2 className="mt-0">
+                    👋 Hello, I&apos;m {author.name.en} (<span className="font-serifjp">{author.name.jp}</span>).
+                </h2>
                 <p>
                     A dedicated full-stack developer who was passionate about creating impactful solutions through
                     technology.
@@ -118,11 +118,11 @@ export default async function Home() {
                 <ul>
                     {posts.slice(0, POST_LIMIT).map((post) => (
                         <li key={post.slug}>
-                            <Link href={`/posts/${post.slug}`} className="text-xl leading-6">
-                                {post.frontmatter.title}
-                            </Link>
+                            <h4>
+                                <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+                            </h4>
                             <div className="flex gap-2 flex-wrap mt-4">
-                                <time dateTime={post.frontmatter.published}>
+                                <time>
                                     {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
                                         year: 'numeric',
                                         month: 'long',
@@ -130,7 +130,7 @@ export default async function Home() {
                                     })}
                                 </time>
                                 {post.frontmatter.categories.map((category) => (
-                                    <Link key={category} href={`/categories/${category}`} className="font-medium">
+                                    <Link key={category} href={`/categories/${category}`}>
                                         #{category}
                                     </Link>
                                 ))}

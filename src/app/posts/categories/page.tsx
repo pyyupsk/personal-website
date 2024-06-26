@@ -1,4 +1,4 @@
-import { author } from '@/data';
+import { author } from '@/data/author';
 import { getCategoryList } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
@@ -15,11 +15,11 @@ export default async function CategoriesList() {
 
     return (
         <section className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold">Categories</h2>
+            <h2 className="text-xl md:text-2xl font-semibold">Categories</h2>
             <ul className="flex flex-col gap-2 pl-6">
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-lg md:text-xl font-semibold">
                             <Link href={`/posts/categories/${name}`}>{name}</Link>
                         </h3>
                         <p>{count} posts</p>

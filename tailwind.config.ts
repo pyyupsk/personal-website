@@ -45,6 +45,10 @@ const config = {
                         '--tw-prose-quote-borders': 'hsl(var(--foreground))',
                         '--tw-prose-code': 'hsl(var(--foreground))',
                         '--tw-prose-pre-bg': '#22272e',
+                        'h1, h2, h3, h4, h5, h6': {
+                            'margin-top': '1rem',
+                            'margin-bottom': '1rem',
+                        },
                     },
                 },
             },

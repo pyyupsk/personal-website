@@ -1,4 +1,4 @@
-import { author } from '@/data';
+import { author } from '@/data/author';
 import { getSortedPosts } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
@@ -17,11 +17,11 @@ export default async function PostsList() {
         <section className="flex flex-col gap-[1.875rem]">
             {posts.map((post) => (
                 <article key={post.slug} className="space-y-4">
-                    <h2 className="text-xl font-semibold">
+                    <h2 className="text-xl md:text-2xl font-semibold">
                         <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
                     </h2>
                     <div className="flex gap-2 flex-wrap">
-                        <time dateTime={post.frontmatter.published}>
+                        <time>
                             {new Date(post.frontmatter.published).toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'long',

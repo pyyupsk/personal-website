@@ -1,6 +1,6 @@
 import { BASE_URL } from '@/constants';
 import { author } from '@/data/author';
-import type { Metadata } from 'next';
+import { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 
 type CommonMetaData = {

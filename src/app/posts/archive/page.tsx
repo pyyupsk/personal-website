@@ -1,4 +1,4 @@
-import { author } from '@/data';
+import { author } from '@/data/author';
 import { getSortedPosts, Post } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
@@ -23,11 +23,11 @@ export default async function ArchiveList() {
 
     return Object.entries(postsByYear).map(([year, posts]) => (
         <section key={year} className="flex flex-col gap-4 mb-4">
-            <h2 className="text-2xl font-bold">{year}</h2>
+            <h2 className="text-xl md:text-2xl font-semibold">{year}</h2>
             <ul className="flex flex-col gap-2 pl-6">
                 {posts.map((post) => (
                     <li key={post.slug} className="flex flex-col gap-1">
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-lg md:text-xl font-semibold">
                             <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
                         </h3>
                         <time>
