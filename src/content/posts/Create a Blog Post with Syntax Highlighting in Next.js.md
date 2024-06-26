@@ -333,7 +333,7 @@ export default async function BlogPage() {
             <ul className="flex flex-col gap-2">
                 {slugs.map((slug) => (
                     <li key={slug}>
-                        <Link href={`/blog/${slug}`}>{slug}</Link>
+                        <Link href={`/blog/${slug}`} prefetch={false}>{slug}</Link>
                     </li>
                 ))}
             </ul>

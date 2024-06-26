@@ -20,7 +20,9 @@ export default async function CategoriesList() {
                 {categoryData.map(({ name, count }) => (
                     <li key={name} className="flex flex-col gap-1">
                         <h3 className="text-lg md:text-xl font-semibold">
-                            <Link href={`/posts/categories/${name}`}>{name}</Link>
+                            <Link href={`/posts/categories/${name}`} prefetch={false}>
+                                {name}
+                            </Link>
                         </h3>
                         <p>{count} posts</p>
                     </li>

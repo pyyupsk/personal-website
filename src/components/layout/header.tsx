@@ -24,7 +24,7 @@ const socials = [
 export function HeaderComponent() {
     return (
         <header className="flex justify-between items-center md:items-start flex-col flex-grow w-full">
-            <Link href="/" className="normal">
+            <Link href="/" prefetch={false} className="normal">
                 <hgroup
                     className={cn(
                         'w-full md:w-fit text-center md:text-start font-extrabold',
@@ -43,7 +43,9 @@ export function HeaderComponent() {
                 <ul className="flex md:flex-col gap-2 md:gap-0">
                     {navs.map((navItem) => (
                         <li key={navItem.name} className="text-base md:text-md">
-                            <Link href={navItem.href}>{navItem.name}</Link>
+                            <Link href={navItem.href} prefetch={false}>
+                                {navItem.name}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -54,8 +56,9 @@ export function HeaderComponent() {
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="normal"
                                 aria-label={social.name}
+                                prefetch={false}
+                                className="normal"
                             >
                                 <social.icon
                                     className="w-5 h-5 hover:text-foreground/85 transition"

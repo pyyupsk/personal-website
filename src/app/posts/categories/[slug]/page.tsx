@@ -34,7 +34,9 @@ export default async function CategoryPage({ params: { slug } }: { params: { slu
                 {postsByCategory.map((post) => (
                     <li key={post.slug} className="flex flex-col gap-1">
                         <h3 className="text-lg md:text-xl font-semibold">
-                            <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+                            <Link href={`/posts/${post.slug}`} prefetch={false}>
+                                {post.frontmatter.title}
+                            </Link>
                         </h3>
                         <time>
                             {new Date(post.frontmatter.published).toLocaleDateString('en-US', {

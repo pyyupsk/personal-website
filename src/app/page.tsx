@@ -119,7 +119,9 @@ export default async function Home() {
                     {posts.slice(0, POST_LIMIT).map((post) => (
                         <li key={post.slug}>
                             <h4>
-                                <Link href={`/posts/${post.slug}`}>{post.frontmatter.title}</Link>
+                                <Link href={`/posts/${post.slug}`} prefetch={false}>
+                                    {post.frontmatter.title}
+                                </Link>
                             </h4>
                             <div className="flex gap-2 flex-wrap mt-4">
                                 <time>
@@ -130,7 +132,7 @@ export default async function Home() {
                                     })}
                                 </time>
                                 {post.frontmatter.categories.map((category) => (
-                                    <Link key={category} href={`/categories/${category}`}>
+                                    <Link key={category} href={`/categories/${category}`} prefetch={false}>
                                         #{category}
                                     </Link>
                                 ))}
@@ -139,7 +141,7 @@ export default async function Home() {
                         </li>
                     ))}
                 </ul>
-                <Link href="/posts" className="after:arrow-right">
+                <Link href="/posts" className="after:arrow-right" prefetch={false}>
                     View All Posts
                 </Link>
             </section>

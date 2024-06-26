@@ -52,7 +52,12 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
                         </span>
                         <div className="flex flex-wrap gap-2">
                             {categories.map((category) => (
-                                <Link key={category} href={`/categories/${category}`} className="font-medium">
+                                <Link
+                                    key={category}
+                                    href={`/categories/${category}`}
+                                    prefetch={false}
+                                    className="font-medium"
+                                >
                                     #{category}
                                 </Link>
                             ))}
