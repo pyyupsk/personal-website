@@ -171,4 +171,4 @@ This method is ideal for quick prototypes or when you need to integrate a small 
 
 Combining Python and Rust allows you to leverage the strengths of both languages. With tools like PyO3 and Maturin, integrating Rust into your Python projects is easier than ever. Whether you need to optimize performance-critical sections of your code or simply enjoy the benefits of Rust’s safety features, this hybrid approach can significantly enhance your development process.
 
-Have you used Rust in your Python projects? What has your experience been like? Let us know in the comments below or join our community on Discord. Happy coding!
+Happy coding!

@@ -344,3 +344,5 @@ export default async function BlogPage() {
 
 Now you should be able to navigate to your blog page and click on a blog post link to see the content with syntax
 highlighting and Markdown styling.
+
+Happy coding!

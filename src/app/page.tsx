@@ -42,11 +42,10 @@ export default async function Home() {
         },
         {
             title: 'Projects',
-            data: projects.map(({ title, description, tags, url }) => ({
+            data: projects.map(({ title, description, url }) => ({
                 title,
                 description,
                 url,
-                items: tags,
             })),
             type: 'grid',
         },

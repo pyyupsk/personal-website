@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Badge } from './ui/badge';
 
 type ListSection = {
     title: string | number;
@@ -19,7 +18,6 @@ type GridSection = {
         title: string | number;
         description: string;
         url?: string;
-        items?: string[];
     }[];
 };
 
@@ -42,7 +40,7 @@ export function SectionComponent({ title, data, type }: SectionProps) {
             ) : type === 'grid' ? (
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {data.map((entry) => (
-                        <div key={`${entry.title}-${entry.description}`} className="prose dark:prose-invert">
+                        <div key={`${entry.title}-${entry.description}`}>
                             <h3 className="flex gap-2 items-center">
                                 {entry.url ? (
                                     <Link href={entry.url} target="_blank" rel="noreferrer" className="no-hover">
@@ -53,15 +51,6 @@ export function SectionComponent({ title, data, type }: SectionProps) {
                                 )}
                             </h3>
                             <p className="line-clamp-2">{entry.description}</p>
-                            {entry.items && (
-                                <div className="flex flex-wrap gap-1">
-                                    {entry.items.map((item) => (
-                                        <Badge key={item} size="sm">
-                                            {item}
-                                        </Badge>
-                                    ))}
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>

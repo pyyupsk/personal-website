@@ -13,8 +13,8 @@
         --popover-foreground: 216.52 33.33% 27.06%;
         --card: 0 0% 95%;
         --card-foreground: 216.52 33.33% 27.06%;
-        --border: 0 0% 96%;
-        --input: 0 0% 89.41%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
         --primary: 220 100% 70%;
         --primary-foreground: 220 5% 95%;
         --secondary: 0 0% 90.2%;
@@ -26,29 +26,6 @@
         --ring: 220 100% 70%;
         --radius: 0.625rem;
     }
-
-    /* Dark mode */
-    .dark {
-        --background: 0 0% 14.62%;
-        --foreground: 216.52 33.33% 95.29%;
-        --muted: 0 0% 20%;
-        --muted-foreground: 216.52 17.22% 75.69%;
-        --popover: 0 0% 14.51%;
-        --popover-foreground: 216.52 33.33% 95.29%;
-        --card: 0 0% 17%;
-        --card-foreground: 216.52 33.33% 95.29%;
-        --border: 0 0% 24.77%;
-        --input: 0 0% 24.59%;
-        --primary: 220 100% 70%;
-        --primary-foreground: 220 5% 5%;
-        --secondary: 0 0% 29.8%;
-        --secondary-foreground: 216.52 33.33% 95.29%;
-        --accent: 0 0% 29.8%;
-        --accent-foreground: 216.52 33.33% 95.29%;
-        --destructive: 0 61.39% 60.39%;
-        --destructive-foreground: 220 5% 5%;
-        --ring: 220 100% 70%;
-    }
 }
 
 /* Global styles */
@@ -58,7 +35,7 @@
     }
 
     body {
-        @apply min-h-screen bg-background text-left leading-normal text-foreground antialiased;
+        @apply min-h-screen bg-background text-left font-sans leading-normal text-foreground antialiased;
         background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
             linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
         background-size: 7px 7px;

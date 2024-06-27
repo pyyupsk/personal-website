@@ -24,14 +24,7 @@ export async function generateMetadata() {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
-            <body
-                className={cn(
-                    'bg-background font-sans antialiased min-h-screen',
-                    fontSans.variable,
-                    fontSerif.variable,
-                    fontSerifJP.variable,
-                )}
-            >
+            <body className={cn(fontSans.variable, fontSerif.variable, fontSerifJP.variable)}>
                 <NextTopLoader
                     color="#2e405c"
                     height={5}
