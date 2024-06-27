@@ -23,7 +23,7 @@ const socials = [
 
 export function HeaderComponent() {
     return (
-        <header className="flex justify-between items-center md:items-start flex-col flex-grow w-full">
+        <header className="flex justify-between items-center md:items-start flex-col flex-grow">
             <Link href="/" prefetch={false} className="normal">
                 <hgroup
                     className={cn(
@@ -40,7 +40,7 @@ export function HeaderComponent() {
             </Link>
 
             <nav className="font-semibold flex flex-col gap-4 items-center md:items-start">
-                <ul className="flex md:flex-col gap-2 md:gap-0">
+                <ul className="flex md:flex-col gap-2 md:gap-0 flex-wrap justify-center -mx-12 md:mx-0">
                     {navLinks.map((navItem) => (
                         <li key={navItem.name} className="text-base md:text-md">
                             <Link href={navItem.href} prefetch={false}>
