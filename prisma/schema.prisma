@@ -10,6 +10,7 @@ datasource db {
 
 model Projects {
   id          Int      @id @default(autoincrement())
+  thumbnail   String
   title       String   @db.VarChar(255)
   description String
   url         String
