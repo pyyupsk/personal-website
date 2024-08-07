@@ -5,11 +5,11 @@ import Link from "next/link";
 
 dayjs.extend(relativeTime);
 
-export function PostCard({ post }: { post: Posts }) {
+export function Card({ post }: { post: Posts }) {
     return (
         <Link
             key={post.id}
-            href={`/blog/${post.id}`}
+            href={`/post/${post.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex justify-between items-center group"

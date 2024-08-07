@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LIMIT: number = 6;
 
-const prod = env.NODE_ENV === "production";
+const prod: boolean = env.NODE_ENV === "production";
 
 export async function ProjectsList() {
     const projects = prod

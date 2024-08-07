@@ -2,18 +2,22 @@ import { env } from "@/env";
 import { prisma } from "@/utils/prisma";
 import { Posts } from "@prisma/client";
 import Link from "next/link";
-import { PostCard } from "./post-card";
-import { buttonVariants } from "./ui/button";
-import { Separator } from "./ui/separator";
+import { buttonVariants } from "../ui/button";
+import { Separator } from "../ui/separator";
+import { Card } from "./card";
 
 const LIMIT: number = 5;
 
-const prod = env.NODE_ENV === "production";
+const prod: boolean = env.NODE_ENV === "production";
 
-export async function PostsList() {
+export async function List() {
     const [posts, total] = await Promise.all([
         prod
-            ? prisma.posts.findMany({ orderBy: { createdAt: "desc" }, take: LIMIT })
+            ? prisma.posts.findMany({
+                  orderBy: { createdAt: "desc" },
+                  take: LIMIT,
+                  where: { published: true },
+              })
             : Array<Posts>(),
         prod ? prisma.posts.count() : Promise.resolve(0),
     ]);
@@ -26,13 +30,13 @@ export async function PostsList() {
             <Separator />
             <div className="flex flex-col gap-2">
                 {posts.map((post) => (
-                    <PostCard key={post.id} post={post} />
+                    <Card key={post.id} post={post} />
                 ))}
             </div>
             {posts.length < LIMIT && (
                 <div className="flex justify-end">
                     <Link
-                        href="/blog"
+                        href="/post/1"
                         className={buttonVariants({ variant: "outline", size: "sm" })}
                     >
                         View all posts
