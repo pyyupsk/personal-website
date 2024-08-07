@@ -26,6 +26,14 @@ export default async function Page({ params }: { params: { page: string } }) {
                   orderBy: { createdAt: "desc" },
                   take: LIMIT,
                   where: { published: true },
+                  select: {
+                      id: true,
+                      title: true,
+                      description: true,
+                      content: true,
+                      createdAt: true,
+                      viewCount: true,
+                  },
               })
             : Array<Posts>(),
         prod ? prisma.posts.count() : Promise.resolve(0),

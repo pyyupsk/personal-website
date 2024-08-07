@@ -70,3 +70,54 @@
         @apply text-primary underline underline-offset-4;
     }
 }
+
+@layer base {
+    .prose {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @apply scroll-m-20 font-medium;
+        }
+        h1 {
+            @apply pt-4 text-xl tracking-tight;
+        }
+        h2 {
+            @apply mt-10 border-b pb-2 text-lg tracking-tight first:mt-0;
+        }
+        h3 {
+            @apply mt-8 text-base;
+        }
+        h4 {
+            @apply mt-6 text-sm;
+        }
+        p,
+        ul,
+        ol,
+        blockquote,
+        img,
+        pre {
+            @apply text-sm leading-7;
+        }
+        img {
+            @apply mx-auto my-8 rounded;
+        }
+        strong {
+            @apply font-semibold text-foreground;
+        }
+        blockquote {
+            @apply border-l-4 pl-4;
+        }
+        .rehype-code-title {
+            @apply w-full rounded-t-md bg-[#181b20] px-4 py-2 text-white before:content-["File:_"];
+        }
+        .rehype-code-title + pre {
+            @apply mt-0 rounded-t-none;
+        }
+        pre {
+            @apply overflow-x-auto rounded-md border p-6;
+        }
+    }
+}

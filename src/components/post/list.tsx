@@ -17,6 +17,14 @@ export async function List() {
                   orderBy: { createdAt: "desc" },
                   take: LIMIT,
                   where: { published: true },
+                  select: {
+                      id: true,
+                      title: true,
+                      description: true,
+                      content: true,
+                      createdAt: true,
+                      viewCount: true,
+                  },
               })
             : Array<Posts>(),
         prod ? prisma.posts.count() : Promise.resolve(0),
@@ -39,7 +47,7 @@ export async function List() {
                         href="/posts/1"
                         className={buttonVariants({ variant: "outline", size: "sm" })}
                     >
-                        View all posts
+                        See all posts
                     </Link>
                 </div>
             )}

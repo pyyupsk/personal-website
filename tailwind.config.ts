@@ -1,3 +1,4 @@
+import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";
@@ -16,13 +17,32 @@ const config = {
             center: true,
             padding: "1rem",
             screens: {
-                "2xl": "650px",
+                "2xl": "768px",
             },
         },
         extend: {
             fontFamily: {
                 sans: ["var(--font-sans)", ...fontFamily.sans],
                 mono: ["var(--font-mono)", ...fontFamily.mono],
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        color: "hsl(var(--foreground)) !important",
+                        "--tw-prose-body": "hsl(var(--foreground)) !important",
+                        "--tw-prose-headings": "hsl(var(--foreground)) !important",
+                        "--tw-prose-links": "hsl(var(--foreground)) !important",
+                        "--tw-prose-bullets": "hsl(var(--foreground)) !important",
+                        "--tw-prose-quotes": "hsl(var(--foreground)) !important",
+                        "--tw-prose-quote-borders": "hsl(var(--foreground)) !important",
+                        "--tw-prose-code": "#fff !important",
+                        "--tw-prose-pre-bg": "#101010 !important",
+                        "h1, h2, h3, h4, h5, h6": {
+                            "margin-top": "1rem !important",
+                            "margin-bottom": "1rem !important",
+                        },
+                    },
+                },
             },
             colors: {
                 border: "hsl(var(--border))",
@@ -92,7 +112,7 @@ const config = {
             },
         },
     },
-    plugins: [tailwindcssAnimate],
+    plugins: [tailwindTypography, tailwindcssAnimate],
 } satisfies Config;
 
 export default config;

@@ -5,11 +5,11 @@ import Link from "next/link";
 
 dayjs.extend(relativeTime);
 
-export function Card({ post }: { post: Posts }) {
+export function Card({ post }: { post: Omit<Posts, "published" | "updatedAt"> }) {
     return (
         <Link
             key={post.id}
-            href={`/posts/${post.id}`}
+            href={`/post/${post.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex justify-between items-center group"

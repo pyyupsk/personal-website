@@ -16,6 +16,7 @@ type Sitemap = {
 export default async function sitemap(): Promise<Sitemap[]> {
     const posts = await prisma.posts.findMany({
         where: { published: true },
+        select: { id: true, updatedAt: true },
     });
 
     const homePage = generatePageMetadata(BASE_URL, "weekly");
@@ -35,7 +36,9 @@ function generatePageMetadata(url: string, changeFrequency: Sitemap["changeFrequ
     };
 }
 
-function generatePostsMetadata(posts: Posts[]): Sitemap[] {
+function generatePostsMetadata(
+    posts: { id: Posts["id"]; updatedAt: Posts["updatedAt"] }[],
+): Sitemap[] {
     return posts.map(({ id, updatedAt }) => ({
         url: `${BASE_URL}/post/${id}`,
         lastModified: new Date(updatedAt),

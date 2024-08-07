@@ -10,7 +10,12 @@ const prod: boolean = env.NODE_ENV === "production";
 
 export async function ProjectsList() {
     const projects = prod
-        ? await prisma.projects.findMany({ orderBy: { createdAt: "desc" }, take: LIMIT })
+        ? await prisma.projects.findMany({
+              orderBy: { createdAt: "desc" },
+              take: LIMIT,
+              where: { published: true },
+              select: { id: true, title: true, description: true, url: true, thumbnail: true },
+          })
         : Array<Projects>();
 
     return (
