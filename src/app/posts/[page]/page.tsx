@@ -11,7 +11,7 @@ const LIMIT: number = 10;
 
 const prod: boolean = env.NODE_ENV === "production";
 
-export async function generateMetadata() {
+export function generateMetadata() {
     const title = "Pongsakorn Thipayanate's Blog | Insights from a Full Stack Developer";
     const description =
         "Dive into the latest posts by Pongsakorn Thipayanate, a full-stack developer from Samut Sakhon, Thailand. Discover insights, tutorials, and updates on the latest projects. Stay informed and inspired by following the blog.";

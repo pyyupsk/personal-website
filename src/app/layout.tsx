@@ -3,7 +3,7 @@ import { commonMetaData } from "@/lib/meta";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
-export async function generateMetadata() {
+export function generateMetadata() {
     const metaData = commonMetaData({
         title: "Pongsakorn Thipayanate | Full Stack Developer in Samut Sakhon, Thailand",
         description:
