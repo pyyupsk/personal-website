@@ -5,10 +5,7 @@ import "@/styles/globals.css";
 
 export async function generateMetadata() {
     const metaData = commonMetaData({
-        title: {
-            template: `%s | Pongsakorn Thipayanate`,
-            default: "Pongsakorn Thipayanate | Full Stack Developer in Samut Sakhon, Thailand",
-        },
+        title: "Pongsakorn Thipayanate | Full Stack Developer in Samut Sakhon, Thailand",
         description:
             "Explore the portfolio of Pongsakorn Thipayanate, a dedicated full-stack developer from Samut Sakhon, Thailand. Passionate about creating impactful solutions through technology. Connect with Pongsakorn for collaboration or hiring opportunities at pyyupsk@proton.me.",
     });

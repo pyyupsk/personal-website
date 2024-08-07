@@ -9,7 +9,7 @@ export function Card({ post }: { post: Posts }) {
     return (
         <Link
             key={post.id}
-            href={`/post/${post.id}`}
+            href={`/posts/${post.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex justify-between items-center group"

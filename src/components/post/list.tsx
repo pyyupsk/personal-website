@@ -36,7 +36,7 @@ export async function List() {
             {posts.length < LIMIT && (
                 <div className="flex justify-end">
                     <Link
-                        href="/post/1"
+                        href="/posts/1"
                         className={buttonVariants({ variant: "outline", size: "sm" })}
                     >
                         View all posts

@@ -1,4 +1,4 @@
-import { PostsList } from "@/components/posts-list";
+import { List as PostsList } from "@/components/post/list";
 import { ProfileCard } from "@/components/profile-card";
 import { ProjectsList } from "@/components/projects-list";
 

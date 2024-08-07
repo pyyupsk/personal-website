@@ -15,7 +15,7 @@ export function Pagination({ current, pages }: { current: number; pages: number 
             <PaginationContent>
                 {current > 1 && (
                     <PaginationItem>
-                        <PaginationPrevious href={`/post/${current - 1}`} />
+                        <PaginationPrevious href={`/posts/${current - 1}`} />
                     </PaginationItem>
                 )}
                 {current > 2 && (
@@ -26,7 +26,7 @@ export function Pagination({ current, pages }: { current: number; pages: number 
                 {Array.from({ length: pages }).map((_, index) => (
                     <PaginationItem key={index}>
                         <PaginationLink
-                            href={`/post/${index + 1}`}
+                            href={`/posts/${index + 1}`}
                             isActive={index + 1 === current}
                         >
                             {index + 1}
@@ -40,7 +40,7 @@ export function Pagination({ current, pages }: { current: number; pages: number 
                 )}
                 {current < pages && (
                     <PaginationItem>
-                        <PaginationNext href={`/post/${current + 1}`} />
+                        <PaginationNext href={`/posts/${current + 1}`} />
                     </PaginationItem>
                 )}
             </PaginationContent>
