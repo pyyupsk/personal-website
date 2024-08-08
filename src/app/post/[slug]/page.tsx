@@ -1,4 +1,5 @@
 import { Backward } from "@/components/backward";
+import { Comment } from "@/components/post/comment";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { env } from "@/env";
@@ -63,10 +64,12 @@ export default async function Page({ params }: Props) {
 
     const html = await processMarkdown(post.content);
 
-    await prisma.posts.update({
-        where: { id: post.id },
-        data: { viewCount: { increment: 1 } },
-    });
+    if (prod) {
+        await prisma.posts.update({
+            where: { id: post.id },
+            data: { viewCount: { increment: 1 } },
+        });
+    }
 
     return (
         <Fragment>
@@ -92,6 +95,7 @@ export default async function Page({ params }: Props) {
                         See all posts
                     </Link>
                 </div>
+                <Comment />
             </div>
         </Fragment>
     );

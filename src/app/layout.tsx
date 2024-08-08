@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/header";
 import { fontMono, fontSans } from "@/fonts";
 import { commonMetaData } from "@/lib/meta";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 import "@/styles/globals.css";
 
 export function generateMetadata() {
@@ -17,19 +18,21 @@ export function generateMetadata() {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en" className="dark" suppressHydrationWarning>
-            <body
-                className={cn(
-                    "min-h-screen bg-background font-sans antialiased",
-                    fontSans.variable,
-                    fontMono.variable,
-                )}
-            >
-                <Header />
-                <main className="flex flex-col my-8 container">{children}</main>
-                <BackToTop />
-            </body>
-        </html>
+        <ClerkProvider>
+            <html lang="en" className="dark" suppressHydrationWarning>
+                <body
+                    className={cn(
+                        "min-h-screen bg-background font-sans antialiased",
+                        fontSans.variable,
+                        fontMono.variable,
+                    )}
+                >
+                    <Header />
+                    <main className="flex flex-col my-8 container">{children}</main>
+                    <BackToTop />
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }
 
