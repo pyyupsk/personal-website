@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -26,6 +27,7 @@ const formSchema = z.object({
 
 export function Form({ postId }: { postId: string }) {
     const { user } = useUser();
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -41,6 +43,8 @@ export function Form({ postId }: { postId: string }) {
                 title: "Success",
                 description: "Thanks for your comment!",
             });
+            form.reset();
+            router.refresh();
         } catch (error) {
             if (error instanceof Error) {
                 console.error(error.message);
