@@ -1,9 +1,8 @@
-import { BackToTop } from "@/components/layout/back-to-top";
-import { Header } from "@/components/layout/header";
+import { ClerkProvider } from "@/components/clerk-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { fontMono, fontSans } from "@/fonts";
 import { commonMetaData } from "@/lib/meta";
 import { cn } from "@/lib/utils";
-import { ClerkProvider } from "@clerk/nextjs";
 import "@/styles/globals.css";
 
 export function generateMetadata() {
@@ -27,13 +26,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         fontMono.variable,
                     )}
                 >
-                    <Header />
-                    <main className="flex flex-col my-8 container">{children}</main>
-                    <BackToTop />
+                    {children}
+                    <Toaster />
                 </body>
             </html>
         </ClerkProvider>
     );
 }
-
-export const revalidate = 3600; // Revalidate at most every 1 hour

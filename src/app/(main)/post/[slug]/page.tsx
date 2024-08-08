@@ -95,7 +95,7 @@ export default async function Page({ params }: Props) {
                         See all posts
                     </Link>
                 </div>
-                <Comment />
+                <Comment postId={post.id} />
             </div>
         </Fragment>
     );
