@@ -43,9 +43,6 @@ importers:
             dayjs:
                 specifier: ^1.11.12
                 version: 1.11.12
-            lucide-react:
-                specifier: ^0.424.0
-                version: 0.424.0(react@18.3.1)
             next:
                 specifier: 14.2.5
                 version: 14.2.5(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -140,6 +137,9 @@ importers:
             postcss:
                 specifier: ^8.4.41
                 version: 8.4.41
+            postcss-load-config:
+                specifier: ^6.0.1
+                version: 6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.5.0)
             prettier:
                 specifier: ^3.3.3
                 version: 3.3.3
@@ -3592,14 +3592,6 @@ packages:
                 integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==,
             }
 
-    lucide-react@0.424.0:
-        resolution:
-            {
-                integrity: sha512-x2Nj2aytk1iOyHqt4hKenfVlySq0rYxNeEf8hE0o+Yh0iE36Rqz0rkngVdv2uQtjZ70LAE73eeplhhptYt9x4Q==,
-            }
-        peerDependencies:
-            react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
-
     mdast-util-from-markdown@2.0.1:
         resolution:
             {
@@ -4191,6 +4183,27 @@ packages:
             postcss:
                 optional: true
             ts-node:
+                optional: true
+
+    postcss-load-config@6.0.1:
+        resolution:
+            {
+                integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==,
+            }
+        engines: { node: ">= 18" }
+        peerDependencies:
+            jiti: ">=1.21.0"
+            postcss: ">=8.0.9"
+            tsx: ^4.8.1
+            yaml: ^2.4.2
+        peerDependenciesMeta:
+            jiti:
+                optional: true
+            postcss:
+                optional: true
+            tsx:
+                optional: true
+            yaml:
                 optional: true
 
     postcss-nested@6.2.0:
@@ -7558,10 +7571,6 @@ snapshots:
         dependencies:
             yallist: 3.1.1
 
-    lucide-react@0.424.0(react@18.3.1):
-        dependencies:
-            react: 18.3.1
-
     mdast-util-from-markdown@2.0.1:
         dependencies:
             "@types/mdast": 4.0.4
@@ -7962,6 +7971,14 @@ snapshots:
             yaml: 2.5.0
         optionalDependencies:
             postcss: 8.4.41
+
+    postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.41)(yaml@2.5.0):
+        dependencies:
+            lilconfig: 3.1.2
+        optionalDependencies:
+            jiti: 1.21.6
+            postcss: 8.4.41
+            yaml: 2.5.0
 
     postcss-nested@6.2.0(postcss@8.4.41):
         dependencies:

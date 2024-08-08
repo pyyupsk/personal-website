@@ -1,6 +1,6 @@
 import { List as PostsList } from "@/components/post/list";
 import { ProfileCard } from "@/components/profile-card";
-import { ProjectsList } from "@/components/projects-list";
+import { List as ProjectsList } from "@/components/project/list";
 
 export default function Page() {
     return (

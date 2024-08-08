@@ -66,6 +66,15 @@
     body {
         @apply bg-background text-foreground;
     }
+    ::-webkit-scrollbar {
+        @apply h-2.5 w-2.5;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply rounded bg-border;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-background;
+    }
     a.link {
         @apply text-primary underline underline-offset-4;
     }

@@ -10,8 +10,6 @@ export function Card({ post }: { post: Omit<Posts, "published" | "updatedAt"> })
         <Link
             key={post.id}
             href={`/post/${post.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
             className="flex justify-between items-center group"
         >
             <div className="flex flex-col gap-1">
