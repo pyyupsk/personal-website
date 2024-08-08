@@ -13,6 +13,7 @@ export function SocialsIcons({ className }: { className?: string }) {
                         href={contact.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={contact.name}
                     >
                         {contact.icon && <contact.icon className="size-5" />}
                     </Link>
