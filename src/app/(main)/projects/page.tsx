@@ -2,7 +2,7 @@ import { Backward } from "@/components/backward";
 import { Card } from "@/components/project/card";
 import { env } from "@/env";
 import { commonMetaData } from "@/lib/meta";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Projects } from "@prisma/client";
 import { Fragment } from "react";
 

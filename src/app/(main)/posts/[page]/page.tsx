@@ -4,7 +4,7 @@ import { Pagination } from "@/components/post/pagination";
 import { Separator } from "@/components/ui/separator";
 import { env } from "@/env";
 import { commonMetaData } from "@/lib/meta";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Posts } from "@prisma/client";
 import { Fragment } from "react";
 

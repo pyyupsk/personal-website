@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { env } from "@/env";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Posts } from "@prisma/client";

@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Projects } from "@prisma/client";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";

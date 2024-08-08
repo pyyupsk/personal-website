@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { env } from "@/env";
 import { processMarkdown } from "@/lib/markdown";
 import { commonMetaData } from "@/lib/meta";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Posts } from "@prisma/client";
 import dayjs from "dayjs";
 import Link from "next/link";

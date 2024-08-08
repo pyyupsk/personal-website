@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/constants";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Posts } from "@prisma/client";
 import { Languages } from "next/dist/lib/metadata/types/alternative-urls-types";
 

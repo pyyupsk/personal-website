@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/lib/prisma";
 import { Comments, Posts } from "@prisma/client";
 
 export async function comment({
