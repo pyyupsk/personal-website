@@ -32,3 +32,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </html>
     );
 }
+
+export const revalidate = 3600; // Revalidate at most every 1 hour

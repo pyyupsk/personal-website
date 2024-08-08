@@ -41,26 +41,43 @@ export default async function Page({ params }: Props) {
     const post = prod
         ? await prisma.posts.findUnique({
               where: { id: params.slug },
-              select: { content: true, title: true, description: true, createdAt: true },
+              select: {
+                  id: true,
+                  title: true,
+                  description: true,
+                  content: true,
+                  createdAt: true,
+                  viewCount: true,
+              },
           })
         : ({
+              id: params.slug,
               title: params.slug,
               description: "Content coming soon",
               content: "# Hello World\n\nCurrently under development.",
               createdAt: new Date(),
+              viewCount: 0,
           } as Posts);
 
     if (!post) return redirect("/posts/1");
 
     const html = await processMarkdown(post.content);
 
+    await prisma.posts.update({
+        where: { id: post.id },
+        data: { viewCount: { increment: 1 } },
+    });
+
     return (
         <Fragment>
             <div className="space-y-4 flex flex-col">
                 <Backward href="/posts/1">Back to Posts</Backward>
-                <time className="text-sm text-muted-foreground">
-                    Published on {dayjs(post.createdAt).format("MMMM DD, YYYY")}
-                </time>
+                <div className="flex justify-between items-center">
+                    <time className="text-sm text-muted-foreground">
+                        Published on {dayjs(post.createdAt).format("MMMM DD, YYYY")}
+                    </time>
+                    <p className="text-sm text-muted-foreground">{post.viewCount} views</p>
+                </div>
                 <article className="prose dark:prose-invert max-w-none">
                     <h1>{post.title}</h1>
                     {post.description && <p>{post.description}</p>}
