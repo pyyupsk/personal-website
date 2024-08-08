@@ -1,3 +1,5 @@
+import { BackToTop } from "@/components/layout/back-to-top";
+import { Header } from "@/components/layout/header";
 import { fontMono, fontSans } from "@/fonts";
 import { commonMetaData } from "@/lib/meta";
 import { cn } from "@/lib/utils";
@@ -23,7 +25,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     fontMono.variable,
                 )}
             >
-                <main>{children}</main>
+                <Header />
+                <main className="flex flex-col my-8 container">{children}</main>
+                <BackToTop />
             </body>
         </html>
     );

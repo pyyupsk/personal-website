@@ -6,6 +6,7 @@ import { env } from "@/env";
 import { commonMetaData } from "@/lib/meta";
 import { prisma } from "@/utils/prisma";
 import { Posts } from "@prisma/client";
+import { Fragment } from "react";
 
 const LIMIT: number = 10;
 
@@ -43,8 +44,8 @@ export default async function Page({ params }: { params: { page: string } }) {
     const pages: number = Math.ceil(total / LIMIT);
 
     return (
-        <div className="flex flex-col my-12 container">
-            <div className="my-8 space-y-4">
+        <Fragment>
+            <div className="space-y-4">
                 <Backward href="/">Back to Home</Backward>
                 <h1>Posts</h1>
                 <Separator />
@@ -55,6 +56,6 @@ export default async function Page({ params }: { params: { page: string } }) {
                 </div>
                 <Pagination current={current} pages={pages} />
             </div>
-        </div>
+        </Fragment>
     );
 }

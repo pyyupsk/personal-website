@@ -4,6 +4,7 @@ import { env } from "@/env";
 import { commonMetaData } from "@/lib/meta";
 import { prisma } from "@/utils/prisma";
 import { Projects } from "@prisma/client";
+import { Fragment } from "react";
 
 const prod: boolean = env.NODE_ENV === "production";
 
@@ -25,8 +26,8 @@ export default async function Page() {
         : Array<Projects>();
 
     return (
-        <div className="flex flex-col my-12 container">
-            <div className="my-8 space-y-4">
+        <Fragment>
+            <div className="space-y-4">
                 <Backward href="/">Back to Home</Backward>
                 <h1>Projects</h1>
                 <div className="grid grid-cols-2 gap-2">
@@ -35,6 +36,6 @@ export default async function Page() {
                     ))}
                 </div>
             </div>
-        </div>
+        </Fragment>
     );
 }
