@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 export function Pagination({ current, pages }: { current: number; pages: number }) {
     return (
-        <BasePagination className={cn({ hidden: pages < 2 })}>
+        <BasePagination className={cn({ hidden: pages === 1 })}>
             <PaginationContent>
                 {current > 1 && (
                     <PaginationItem>
