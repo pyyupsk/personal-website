@@ -6,6 +6,6 @@ export const env = createEnv({
         DATABASE_URL: z.string(),
     },
     runtimeEnv: {
-        DATABASE_URL: process.env.DATABASE_URL,
+        DATABASE_URL: process.env.POSTGRES_URL_NON_POOLING,
     },
 });

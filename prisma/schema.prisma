@@ -4,22 +4,72 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model User {
-  id       String    @id @default(uuid())
-  email    String    @unique
-  name     String?
-  comments Comment[]
+model Project {
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(255)
+  description String?   @db.Text
+  startDate   DateTime?
+  endDate     DateTime?
+  status      Status    @default(NOT_STARTED)
+
+  @@index([status]) // Index on status for faster queries
+  @@map("projects")
+}
+
+model BlogPost {
+  id          Int        @id @default(autoincrement())
+  title       String     @db.VarChar(255)
+  description String?    @db.Text
+  content     String     @db.Text
+  publishDate DateTime   @default(now())
+  status      PostStatus @default(DRAFT)
+  comments    Comment[]
+
+  @@index([status]) // Index on status for faster queries
+  @@index([publishDate]) // Index on publishDate for faster queries
+  @@map("blog_posts")
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  id          Int      @id @default(autoincrement())
+  postId      Int
+  authorId    String
+  content     String   @db.Text
+  commentDate DateTime @default(now())
+
+  post   BlogPost @relation(fields: [postId], references: [id])
+  author User     @relation(fields: [authorId], references: [id])
+
+  @@index([postId]) // Index on postId for faster lookups
+  @@index([authorId]) // Index on authorId for faster lookups
+  @@map("comments")
+}
+
+model User {
+  id       String   @id @default(cuid()) @db.VarChar(255)
+  username String   @unique @db.VarChar(255)
+  email    String   @unique @db.VarChar(255)
+  joinDate DateTime @default(now())
+
+  comments Comment[]
+
+  @@map("users")
+}
+
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  ON_HOLD
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
 }
