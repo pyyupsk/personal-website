@@ -1,6 +1,4 @@
 import "@/styles/globals.css";
-import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -18,9 +16,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <Header />
-                        <main className="container flex-1 py-12">{children}</main>
-                        <Footer />
+                        {children}
                     </ThemeProvider>
                 </body>
             </html>

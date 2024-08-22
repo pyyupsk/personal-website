@@ -4,7 +4,7 @@ import { navigation } from "@/constants/navigation";
 import { socials } from "@/constants/socials";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeSwitcher } from "../theme-switcher";
+import { ThemeSwitcher } from "../../../components/theme-switcher";
 
 export function Footer() {
     const pathname = usePathname();
