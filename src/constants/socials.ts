@@ -20,7 +20,7 @@ export const socials: Social[] = [
     },
     {
         name: "Discord",
-        href: "/discord",
+        href: "https://discord.com/users/1226475144554483734",
         icon: DiscordIcon,
     },
     {
