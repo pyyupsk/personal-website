@@ -10,22 +10,22 @@ type Social = {
 export const socials: Social[] = [
     {
         name: "Email",
-        href: "mailto:support@vercel.com",
+        href: "mailto:pyyupsk@proton.me",
         icon: AtSignIcon,
     },
     {
         name: "GitHub",
-        href: "https://github.com/vercel",
+        href: "https://github.com/pyyupsk",
         icon: GithubIcon,
     },
     {
         name: "Discord",
-        href: "https://discord.gg/vercel",
+        href: "/discord",
         icon: DiscordIcon,
     },
     {
         name: "Instagram",
-        href: "https://instagram.com/vercel",
+        href: "https://instagram.com/pyyupsk",
         icon: InstagramIcon,
     },
 ];

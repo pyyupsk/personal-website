@@ -5,12 +5,8 @@ type Navigation = {
 
 export const navigation: Navigation[] = [
     {
-        name: "Home",
-        href: "/",
-    },
-    {
         name: "About",
-        href: "/about",
+        href: "/",
     },
     {
         name: "Projects",
