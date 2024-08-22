@@ -17,11 +17,24 @@ export function commonMetaData({ title, description }: CommonMetaData): Metadata
             description,
             images: [
                 {
-                    url: "/og.jpg",
+                    url: "/og.png",
                     width: 1200,
                     height: 630,
                 },
             ],
+        },
+        robots: {
+            index: false,
+            follow: true,
+            nocache: true,
+            googleBot: {
+                index: true,
+                follow: false,
+                noimageindex: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
         },
     };
 }
