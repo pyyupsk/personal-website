@@ -25,7 +25,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                         disableTransitionOnChange
                     >
                         <Header />
-                        {children}
+                        <main className="container flex-1 py-12">{children}</main>
                         <Footer />
                     </ThemeProvider>
                 </body>

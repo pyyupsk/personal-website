@@ -61,7 +61,7 @@
 
 /* Typography */
 h1 {
-    @apply scroll-m-20 text-3xl font-extrabold tracking-tight;
+    @apply scroll-m-20 text-3xl font-semibold tracking-tight;
 }
 
 h2 {
@@ -86,7 +86,7 @@ h6 {
 
 p,
 a {
-    @apply text-sm leading-7 text-muted-foreground;
+    @apply text-sm text-muted-foreground;
 }
 
 blockquote {

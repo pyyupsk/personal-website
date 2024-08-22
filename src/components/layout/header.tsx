@@ -15,7 +15,7 @@ export function Header() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-between gap-3 md:flex-row py-6">
+        <div className="container flex flex-col items-center justify-between gap-3 md:flex-row">
             <h1>{page.name}</h1>
             <ul className="flex items-center gap-3">
                 {navigation.map((item) => (

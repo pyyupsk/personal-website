@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -11,7 +12,7 @@ export function ThemeSwitcher() {
 
     useEffect(() => setMounted(true), []);
 
-    if (!mounted) return null;
+    if (!mounted) return <Skeleton className="h-8 w-24 rounded-full" />;
 
     return (
         <div className="inline-flex items-center rounded-full h-8 text-muted-foreground shadow-[0_0_0_1px] shadow-border">
