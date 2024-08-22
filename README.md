@@ -1,63 +1,82 @@
-# Next.js TypeScript Tailwind CSS Template
+# My Personal Website
 
-![Next.js TypeScript Tailwind CSS Template](https://raw.githubusercontent.com/pyyupsk/nextjs-template/main/.github/assets/preview.png)
+Welcome to the **Personal Website** repository! 🌟👨‍💻 This site is my digital playground where I showcase my projects, share insights through blog posts, and connect with the community. Built using cutting-edge technologies, this site represents my passion for coding and personal growth.
 
-This is a template project using Next.js with TypeScript, Tailwind CSS, ESLint, Prettier, Husky, Lint-staged, Knip, Next-themes for dark mode, and Framer-motion for animations.
+Experience the website in action! [Visit the homepage](https://pyyupsk.vercel.app/)
 
-## Features
+## 🚀 Overview
 
--   Next.js - A React framework
--   TypeScript - A typed superset of JavaScript
--   Tailwind CSS - A utility-first CSS framework
--   ESLint - A pluggable linting utility for JavaScript
--   Prettier - An opinionated code formatter
--   Husky - A Git hooks manager
--   Lint-staged - Run linters on staged files
--   Knip - Check for unused dependencies
--   Next-themes - A library for adding dark mode to your Next.js projects
--   Framer-motion - A production-ready motion library for React
+This website is built with a modern stack to ensure a seamless and dynamic user experience:
 
-## Available Scripts
+-   **Next.js**: A powerful React framework for server-side rendering and static site generation.
+-   **Clerk**: Provides secure and customizable authentication solutions.
+-   **Prisma ORM**: Manages database interactions with type-safe queries.
+-   **NeonDB**: A scalable and flexible database solution.
+-   **Tailwind CSS**: Offers utility-first CSS styling for a responsive and elegant design.
+-   **TypeScript**: Adds type safety and enhances code quality.
 
--   `build`: Build the project
--   `dev`: Start the development server
--   `format`: Check the formatting of the project
--   `format:fix`: Fix the formatting of the project
--   `knip`: Check unused dependencies
--   `knip:fix`: Fix unused dependencies
--   `lint`: Lint the project
--   `prepare`: Install husky hooks
--   `serve`: Start the production (static) server
--   `start`: Start the production server
+## 🛠️ Usage
 
-## Getting Started
+To get started with this repository, follow these steps:
 
-### Installation
+1. **Clone the repository**:
 
-1. Clone the repository
+    ```bash
+    https://github.com/pyyupsk/personal-website.git
+    cd personal-website
+    ```
 
-```bash
-git clone https://github.com/pyyupsk/nextjs-template.git
-```
+2. **Install the required dependencies**:
 
-2. Navigate to the project directory
+    ```bash
+    npm install
+    ```
 
-```bash
-cd nextjs-template
-```
+3. **Set up environment variables**:
+   Create a `.env` file and add the necessary environment variables for your services:
 
-3. Install the dependencies
+    ```bash
+    cp .env.example .env
+    ```
 
-```bash
-npm install
-```
+4. **Run the development server**:
 
-## License
+    ```bash
+    npm run dev
+    ```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+    Visit `http://localhost:3000` to see your site in action.
 
-Feel free to use this template for your Next.js projects!
+5. **Build for production**:
+    ```bash
+    npm run build
+    npm run start
+    ```
+
+## 🔧 Technologies
+
+-   `Next.js` A powerful framework for React that provides server-side rendering and static site generation capabilities.
+-   `Clerk` Handles user authentication and management with ease, ensuring a secure login experience.
+-   `Prisma ORM` Simplifies database operations and provides type-safe queries for a smooth development experience.
+-   `NeonDB` A scalable and flexible database solution that integrates seamlessly with Prisma ORM.
+-   `Tailwind CSS` A utility-first CSS framework that allows you to design directly in your markup with responsive, mobile-first styling.
+-   `TypeScript` Enhances JavaScript with static types, helping catch errors early and improving code quality.
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
+
+## 🙋‍♂️ Contact
+
+For questions, suggestions, or feedback, feel free to reach out via:
+
+-   **Email**: [pyyupsk@proton.me](mailto:pyyupsk@proton.me)
+-   **GitHub**: [pyyupsk](https://github.com/pyyupsk)
+-   **Instagram**: [pyyupsk](https://instagram.com/pyyupsk)
+-   **Discord**: [ファース](https://discord.com/users/1226475144554483734)
+
+Thank you for visiting my personal website! 🚀🌟
 
 ---
 
-This project was created with ❤️ by [ファース](https://github.com/pyyupsk)
+_Crafted with love using the latest tech stack and a passion for coding._
