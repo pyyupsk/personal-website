@@ -1,6 +1,6 @@
+import { inngest } from "@/lib/inngest";
 import { prisma } from "@/lib/prisma";
 import { UserWebhookEvent } from "@clerk/nextjs/server";
-import { inngest } from "../client";
 
 export const UserCreated = inngest.createFunction(
     { id: "clerk-user-created" },

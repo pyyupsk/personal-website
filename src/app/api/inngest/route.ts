@@ -1,5 +1,5 @@
-import { inngest } from "@/inngest/client";
-import { UserCreated } from "@/inngest/functions/user-created";
+import { inngest } from "@/lib/inngest";
+import { UserCreated } from "@/lib/inngest/functions";
 import { serve } from "inngest/next";
 
 export const { POST } = serve({
