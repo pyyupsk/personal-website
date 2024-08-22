@@ -70,51 +70,71 @@
 }
 
 /* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply !my-1.5 !scroll-m-20 !font-semibold !tracking-tight;
+}
+
 h1 {
-    @apply scroll-m-20 text-3xl font-semibold tracking-tight;
+    @apply !text-2xl;
 }
 
 h2 {
-    @apply scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0;
+    @apply !pb-2 !text-xl !transition-colors;
 }
 
 h3 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    @apply !text-lg;
 }
 
 h4 {
-    @apply scroll-m-20 text-lg font-semibold tracking-tight;
-}
-
-h5 {
-    @apply scroll-m-20 text-base font-semibold tracking-tight;
-}
-
-h6 {
-    @apply scroll-m-20 text-sm font-semibold tracking-tight;
+    @apply !text-base;
 }
 
 p,
+a,
+ul,
+ol,
+blockquote,
+pre {
+    @apply !text-sm !text-muted-foreground;
+}
+
 a {
-    @apply text-sm text-muted-foreground;
+    @apply !transition-all !duration-100 hover:!text-foreground;
 }
 
 blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
+    @apply !mt-6 !border-l-2 !pl-6 !italic;
 }
 
 code {
     @apply relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
 }
 
-a {
-    @apply transition-all duration-100 hover:text-foreground;
+.rehype-code-title {
+    @apply !rounded-t-md !border-x !border-t !bg-card !px-3 py-1.5 !text-card-foreground;
 }
 
-a[target="_blank"] {
-    @apply underline;
+.rehype-code-title + pre {
+    @apply !mt-0 !rounded-t-none;
 }
 
-a[aria-selected="true"] {
-    @apply cursor-help text-foreground;
+pre {
+    @apply !overflow-x-auto !rounded-md !border !p-3;
+}
+
+:not(pre) > code {
+    @apply !whitespace-break-spaces !rounded !bg-muted !px-[0.2em] !py-[0.15em] !text-[85%] before:!content-[""] after:!content-[""];
+}
+
+/* Dark Mode */
+html.dark .shiki,
+html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--background) !important;
 }
