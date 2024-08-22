@@ -68,6 +68,9 @@ importers:
             "@ianvs/prettier-plugin-sort-imports":
                 specifier: ^4.3.1
                 version: 4.3.1(prettier@3.3.3)
+            "@tailwindcss/typography":
+                specifier: ^0.5.14
+                version: 0.5.14(tailwindcss@3.4.10)
             "@types/node":
                 specifier: ^20.16.0
                 version: 20.16.0
@@ -1083,6 +1086,14 @@ packages:
         peerDependenciesMeta:
             typescript:
                 optional: true
+
+    "@tailwindcss/typography@0.5.14":
+        resolution:
+            {
+                integrity: sha512-ZvOCjUbsJBjL9CxQBn+VEnFpouzuKhxh2dH8xMIWHILL+HfOYtlAkWcyoon8LlzE53d2Yo6YO6pahKKNW3q1YQ==,
+            }
+        peerDependencies:
+            tailwindcss: ">=3.0.0 || insiders"
 
     "@types/babel__core@7.20.5":
         resolution:
@@ -4022,6 +4033,12 @@ packages:
                 integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==,
             }
 
+    lodash.castarray@4.4.0:
+        resolution:
+            {
+                integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==,
+            }
+
     lodash.isplainobject@4.0.6:
         resolution:
             {
@@ -4796,6 +4813,13 @@ packages:
         engines: { node: ">=12.0" }
         peerDependencies:
             postcss: ^8.2.14
+
+    postcss-selector-parser@6.0.10:
+        resolution:
+            {
+                integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==,
+            }
+        engines: { node: ">=4" }
 
     postcss-selector-parser@6.1.2:
         resolution:
@@ -6811,6 +6835,14 @@ snapshots:
             zod: 3.23.8
         optionalDependencies:
             typescript: 5.4.5
+
+    "@tailwindcss/typography@0.5.14(tailwindcss@3.4.10)":
+        dependencies:
+            lodash.castarray: 4.4.0
+            lodash.isplainobject: 4.0.6
+            lodash.merge: 4.6.2
+            postcss-selector-parser: 6.0.10
+            tailwindcss: 3.4.10
 
     "@types/babel__core@7.20.5":
         dependencies:
@@ -8973,6 +9005,8 @@ snapshots:
 
     lodash.camelcase@4.3.0: {}
 
+    lodash.castarray@4.4.0: {}
+
     lodash.isplainobject@4.0.6: {}
 
     lodash.kebabcase@4.1.1: {}
@@ -9354,6 +9388,11 @@ snapshots:
         dependencies:
             postcss: 8.4.41
             postcss-selector-parser: 6.1.2
+
+    postcss-selector-parser@6.0.10:
+        dependencies:
+            cssesc: 3.0.0
+            util-deprecate: 1.0.2
 
     postcss-selector-parser@6.1.2:
         dependencies:

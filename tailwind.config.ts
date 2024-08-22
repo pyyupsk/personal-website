@@ -1,3 +1,4 @@
+import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import tailwindAnimate from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";
@@ -14,12 +15,29 @@ const config = {
     theme: {
         container: {
             center: true,
-            padding: "2rem",
+            padding: "1rem",
             screens: {
                 "2xl": "640px",
             },
         },
         extend: {
+            typography: {
+                pink: {
+                    DEFAULT: {
+                        css: {
+                            color: "hsl(var(--foreground)) !important",
+                            "--tw-prose-body": "hsl(var(--foreground)) !important",
+                            "--tw-prose-headings": "hsl(var(--foreground)) !important",
+                            "--tw-prose-links": "hsl(var(--foreground)) !important",
+                            "--tw-prose-bullets": "hsl(var(--foreground)) !important",
+                            "--tw-prose-quotes": "hsl(var(--foreground)) !important",
+                            "--tw-prose-quote-borders": "hsl(var(--foreground)) !important",
+                            // "--tw-prose-code": "#fff !important",
+                            // "--tw-prose-pre-bg": "#101010 !important",
+                        },
+                    },
+                },
+            },
             fontFamily: {
                 sans: ["var(--font-geist-sans)", ...fontFamily.sans],
                 mono: ["var(--font-geist-mono)", ...fontFamily.mono],
@@ -80,7 +98,7 @@ const config = {
             },
         },
     },
-    plugins: [tailwindAnimate],
+    plugins: [tailwindTypography, tailwindAnimate],
 } satisfies Config;
 
 export default config;

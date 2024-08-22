@@ -1,92 +1,42 @@
-import { AtSignIcon, GithubIcon, InstagramIcon } from "lucide-react";
+"use client";
+
+import { navigation } from "@/constants/navigation";
+import { socials } from "@/constants/socials";
 import Link from "next/link";
-import { DiscordIcon } from "../icons/discord";
+import { usePathname } from "next/navigation";
 import { ThemeSwitcher } from "../theme-switcher";
 
-type Social = {
-    name: string;
-    href: string;
-    icon: React.FC<React.SVGProps<SVGSVGElement>>;
-};
-
-const socials: Social[] = [
-    {
-        name: "Email",
-        href: "mailto:support@vercel.com",
-        icon: AtSignIcon,
-    },
-    {
-        name: "GitHub",
-        href: "https://github.com/vercel",
-        icon: GithubIcon,
-    },
-    {
-        name: "Discord",
-        href: "https://discord.gg/vercel",
-        icon: DiscordIcon,
-    },
-    {
-        name: "Instagram",
-        href: "https://instagram.com/vercel",
-        icon: InstagramIcon,
-    },
-];
-
-type Navigation = {
-    name: string;
-    href: string;
-};
-
-const navigation: Navigation[] = [
-    {
-        name: "Home",
-        href: "/",
-    },
-    {
-        name: "About",
-        href: "/about",
-    },
-    {
-        name: "Projects",
-        href: "/projects",
-    },
-    {
-        name: "Blog",
-        href: "/blog",
-    },
-];
-
 export function Footer() {
+    const pathname = usePathname();
+
     return (
-        <footer className="border-t bg-background py-6">
-            <div className="container flex flex-col items-center justify-between gap-3 md:flex-row">
-                <p className="text-sm text-muted-foreground">
-                    © 2024 &mdash; All rights reserved.
-                </p>
+        <footer className="border-t bg-background py-6 container">
+            <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+                <p>© 2024 &mdash; All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
-            <div className="container mt-3">
-                <ul className="flex items-center justify-between">
-                    <li className="flex gap-3">
+            <div className="mt-3">
+                <div className="flex items-center justify-between">
+                    <ul className="flex gap-3">
                         {socials.map((item) => (
-                            <Link key={item.name} href={item.href}>
-                                <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
-                                <span className="sr-only">{item.name}</span>
-                            </Link>
+                            <li key={item.name}>
+                                <Link href={item.href} target="_blank">
+                                    <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
+                                    <span className="sr-only">{item.name}</span>
+                                </Link>
+                            </li>
                         ))}
-                    </li>
-                    <li className="flex gap-3">
+                    </ul>
+                    <ul className="flex gap-3">
                         {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className="text-sm text-muted-foreground hover:text-foreground transition-all duration-100"
-                            >
-                                {item.name}
-                            </Link>
+                            <li key={item.name}>
+                                <Link href={item.href} aria-selected={item.href === pathname}>
+                                    {item.name}
+                                </Link>
+                            </li>
                         ))}
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </footer>
     );

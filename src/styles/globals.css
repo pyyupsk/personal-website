@@ -58,3 +58,53 @@
         @apply min-h-screen bg-background font-sans text-foreground antialiased;
     }
 }
+
+/* Typography */
+h1 {
+    @apply scroll-m-20 text-3xl font-extrabold tracking-tight;
+}
+
+h2 {
+    @apply scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0;
+}
+
+h3 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+}
+
+h4 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight;
+}
+
+h5 {
+    @apply scroll-m-20 text-base font-semibold tracking-tight;
+}
+
+h6 {
+    @apply scroll-m-20 text-sm font-semibold tracking-tight;
+}
+
+p,
+a {
+    @apply text-sm leading-7 text-muted-foreground;
+}
+
+blockquote {
+    @apply mt-6 border-l-2 pl-6 italic;
+}
+
+code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+}
+
+a {
+    @apply transition-all duration-100 hover:text-foreground;
+}
+
+a[target="_blank"] {
+    @apply underline;
+}
+
+a[aria-selected="true"] {
+    @apply cursor-help text-foreground;
+}
