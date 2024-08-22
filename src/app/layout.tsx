@@ -17,7 +17,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
         <ClerkProvider>
             <html lang="en" suppressHydrationWarning>
-                <body className={cn("py-20", GeistSans.variable, GeistMono.variable)}>
+                <body className={cn(GeistSans.variable, GeistMono.variable)}>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"

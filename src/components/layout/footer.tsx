@@ -10,7 +10,7 @@ export function Footer() {
     const pathname = usePathname();
 
     return (
-        <footer className="border-t bg-background py-6 container">
+        <footer className="border-t bg-background py-6 container mb-20">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
                 <p>© 2024 &mdash; All rights reserved.</p>
                 <ThemeSwitcher />
