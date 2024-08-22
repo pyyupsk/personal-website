@@ -6,9 +6,9 @@ import { Skeleton } from "./_components/skeleton";
 
 export function generateMetadata() {
     const metaData = commonMetaData({
-        title: "Explore Innovative Development Projects by Pongsakorn Thipayanate",
+        title: "Projects by First – Innovative Web Solutions & Coding Excellence",
         description:
-            "Discover a portfolio of projects by Pongsakorn First Thipayanate, showcasing expertise in system architecture, security, and scalable solutions. From concept to reality, see how innovative ideas come to life.",
+            "Explore First's portfolio of web development projects, showcasing skills in Node.js, system architecture, and security. See how each project reflects a commitment to performance and scalability.",
     });
 
     return metaData;

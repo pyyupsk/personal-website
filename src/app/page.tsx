@@ -1,18 +1,17 @@
 import { commonMetaData } from "@/lib/meta";
 
+const age = new Date().getFullYear() - new Date("2003-01-23").getFullYear();
+
 export function generateMetadata() {
     const metaData = commonMetaData({
-        title: "Passionate Developer Pongsakorn Thipayanate | Code Enthusiast & Innovator",
-        description:
-            "Meet First Thipayanate, a dedicated self-taught developer with a passion for code. Discover his journey from Phichit Province to mastering systematic thinking and building secure, scalable solutions.",
+        title: "About First – The Journey of a Self-Taught Developer",
+        description: `Learn about Phongsakorn 'First' Tippayanet, a ${age}-year-old self-taught programmer who turned a passion for coding into a career. Explore his unconventional educational path, core skills, and personal inspiration.`,
     });
 
     return metaData;
 }
 
 export default function Page() {
-    const age = new Date().getFullYear() - new Date("2003-01-23").getFullYear();
-
     return (
         <div className="space-y-3">
             <p className="text-base text-foreground">
