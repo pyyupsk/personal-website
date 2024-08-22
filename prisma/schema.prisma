@@ -14,15 +14,13 @@ model Project {
   title       String    @db.VarChar(255)
   description String?   @db.Text
   thumbnails  String    @db.Text
-  startDate   DateTime?
-  endDate     DateTime?
   status      Status    @default(NOT_STARTED)
 
   @@index([status]) // Index on status for faster queries
   @@map("projects")
 }
 
-model BlogPost {
+model Post {
   id          Int        @id @default(autoincrement())
   title       String     @db.VarChar(255)
   description String?    @db.Text
@@ -43,7 +41,7 @@ model Comment {
   content     String   @db.Text
   commentDate DateTime @default(now())
 
-  post   BlogPost @relation(fields: [postId], references: [id])
+  post   Post @relation(fields: [postId], references: [id])
   author User     @relation(fields: [authorId], references: [id])
 
   @@index([postId]) // Index on postId for faster lookups
