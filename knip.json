@@ -1,5 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "entry": ["src/index.{ts,tsx}"],
-    "project": ["src/**"]
+    "project": ["src/**"],
+    "ignoreDependencies": ["sharp"]
 }
