@@ -14,12 +14,12 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="inline-flex items-center rounded-full text-muted-foreground shadow-[0_0_0_1px] shadow-border">
+        <div className="inline-flex items-center rounded-full h-8 text-muted-foreground shadow-[0_0_0_1px] shadow-border">
             {["system", "light", "dark"].map((t) => (
                 <button
                     key={t}
                     className={cn(
-                        "inline-flex items-center justify-center rounded-full p-2 text-sm font-medium transition-colors",
+                        "inline-flex items-center justify-center rounded-full h-8 w-8 text-sm font-medium transition-colors",
                         "hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
                         theme === t && "shadow-[0_0_0_1px] shadow-border text-foreground",
                     )}

@@ -61,7 +61,7 @@ export function Footer() {
         <footer className="border-t bg-background py-6">
             <div className="container flex flex-col items-center justify-between gap-3 md:flex-row">
                 <p className="text-sm text-muted-foreground">
-                    © 2024 Pongsakorn Thipayanate. All rights reserved.
+                    © 2024 &mdash; All rights reserved.
                 </p>
                 <ThemeSwitcher />
             </div>
