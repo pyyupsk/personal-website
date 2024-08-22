@@ -24,7 +24,7 @@ export function Footer() {
                     <ul className="flex gap-3">
                         {socials.map((item) => (
                             <li key={item.name}>
-                                <Link href={item.href} target="_blank">
+                                <Link href={item.href} target="_blank" className="button">
                                     <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
                                     <span className="sr-only">{item.name}</span>
                                 </Link>
