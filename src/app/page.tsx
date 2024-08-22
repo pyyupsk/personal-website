@@ -1,3 +1,15 @@
+import { commonMetaData } from "@/lib/meta";
+
+export function generateMetadata() {
+    const metaData = commonMetaData({
+        title: "Passionate Developer Pongsakorn Thipayanate | Code Enthusiast & Innovator",
+        description:
+            "Meet First Thipayanate, a dedicated self-taught developer with a passion for code. Discover his journey from Phichit Province to mastering systematic thinking and building secure, scalable solutions.",
+    });
+
+    return metaData;
+}
+
 export default function Page() {
     const age = new Date().getFullYear() - new Date("2003-01-23").getFullYear();
 

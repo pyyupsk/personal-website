@@ -8,11 +8,15 @@ import { ThemeSwitcher } from "../theme-switcher";
 
 export function Footer() {
     const pathname = usePathname();
+    const currentYear = new Date().getFullYear();
+    const startYear = 2024;
+    const copyrightYearRange =
+        currentYear === startYear ? String(startYear) : `${startYear}-${currentYear}`;
 
     return (
-        <footer className="border-t bg-background py-6 container mb-20">
+        <footer className="border-t bg-background pt-6 container pb-20">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
-                <p>© 2024 &mdash; All rights reserved.</p>
+                <p>© {copyrightYearRange} Pongsakorn Thipayanate, All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
             <div className="mt-3">
