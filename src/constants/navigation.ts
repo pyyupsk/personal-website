@@ -13,7 +13,7 @@ export const navigation: Navigation[] = [
         href: "/projects",
     },
     {
-        name: "Blog",
-        href: "/blog",
+        name: "Posts",
+        href: "/posts/1",
     },
 ];
