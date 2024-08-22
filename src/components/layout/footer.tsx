@@ -16,7 +16,7 @@ export function Footer() {
     return (
         <footer className="border-t bg-background pt-6 container pb-20">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
-                <p>© {copyrightYearRange} Pongsakorn Thipayanate, All rights reserved.</p>
+                <p>© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
             <div className="mt-3">
