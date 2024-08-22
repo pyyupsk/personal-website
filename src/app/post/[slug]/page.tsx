@@ -48,6 +48,7 @@ export default async function Page({ params }: Props) {
                 <Separator />
                 <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
+            {/* TODO: Add comments */}
             {/* <Comment postId={post.id} /> */}
         </div>
     );
