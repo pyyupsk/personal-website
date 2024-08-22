@@ -16,7 +16,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 />
             </CardHeader>
             <CardContent className="p-3">
-                <CardTitle className="text-base">{project.title}</CardTitle>
+                <CardTitle>{project.title}</CardTitle>
                 <div className="relative overflow-hidden max-h-[40px] group-hover:max-h-[100px] transition-all duration-300">
                     <p>{project.description}</p>
                 </div>
