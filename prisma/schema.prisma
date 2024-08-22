@@ -10,18 +10,18 @@ datasource db {
 }
 
 model Project {
-  id          Int       @id @default(autoincrement())
-  title       String    @db.VarChar(255)
-  description String?   @db.Text
-  thumbnails  String    @db.Text
-  status      Status    @default(NOT_STARTED)
+  id          Int     @id @default(autoincrement())
+  title       String  @db.VarChar(255)
+  description String? @db.Text
+  thumbnails  String  @db.Text
+  status      Status  @default(NOT_STARTED)
 
   @@index([status]) // Index on status for faster queries
   @@map("projects")
 }
 
 model Post {
-  id          Int        @id @default(autoincrement())
+  id          String     @id @default(uuid())
   title       String     @db.VarChar(255)
   description String?    @db.Text
   content     String     @db.Text
@@ -36,13 +36,13 @@ model Post {
 
 model Comment {
   id          Int      @id @default(autoincrement())
-  postId      Int
+  postId      String
   authorId    String
   content     String   @db.Text
   commentDate DateTime @default(now())
 
   post   Post @relation(fields: [postId], references: [id])
-  author User     @relation(fields: [authorId], references: [id])
+  author User @relation(fields: [authorId], references: [id])
 
   @@index([postId]) // Index on postId for faster lookups
   @@index([authorId]) // Index on authorId for faster lookups
