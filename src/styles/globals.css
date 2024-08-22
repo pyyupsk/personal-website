@@ -59,6 +59,16 @@
     }
 }
 
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded-md bg-border;
+}
+
 /* Typography */
 h1 {
     @apply scroll-m-20 text-3xl font-semibold tracking-tight;
