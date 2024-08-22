@@ -14,7 +14,7 @@ export function Footer() {
         currentYear === startYear ? String(startYear) : `${startYear}-${currentYear}`;
 
     return (
-        <footer className="border-t bg-background pt-6 container pb-20">
+        <footer aria-hidden className="border-t bg-background pt-6 container pb-20">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
                 <p>© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />
@@ -34,7 +34,7 @@ export function Footer() {
                     <ul className="flex gap-3">
                         {navigation.map((item) => (
                             <li key={item.name}>
-                                <Link href={item.href} aria-selected={item.href === pathname}>
+                                <Link href={item.href} aria-current={item.href === pathname}>
                                     {item.name}
                                 </Link>
                             </li>

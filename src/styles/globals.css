@@ -84,7 +84,7 @@ h1 {
 }
 
 h2 {
-    @apply !pb-2 !text-xl !transition-colors;
+    @apply !pb-2 !text-xl;
 }
 
 h3 {
@@ -106,6 +106,10 @@ pre {
 
 a {
     @apply !transition-all !duration-100 hover:!text-foreground;
+}
+
+a[aria-current="true"] {
+    @apply !text-foreground;
 }
 
 blockquote {

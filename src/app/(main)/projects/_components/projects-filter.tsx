@@ -41,7 +41,7 @@ export function ProjectsFilter() {
                 />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full sm:w-40">
+                <SelectTrigger aria-label="Filter by status" className="w-full sm:w-40">
                     <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>
