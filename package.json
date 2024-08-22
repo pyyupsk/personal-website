@@ -10,6 +10,7 @@
         "knip": "knip",
         "knip:fix": "knip --fix",
         "lint": "next lint",
+        "postinstall": "prisma generate",
         "prepare": "husky",
         "serve": "serve out",
         "start": "next start",
