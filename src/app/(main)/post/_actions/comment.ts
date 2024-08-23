@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 
-export function createComment({
+export async function createComment({
     postId,
     content,
     authorId,
