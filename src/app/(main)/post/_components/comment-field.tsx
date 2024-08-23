@@ -65,20 +65,20 @@ export function CommentField({ postId, user }: { postId: string; user: User | un
     }
 
     return (
-        <form onSubmit={handleSubmit} className="mt-4 p-4 bg-background rounded-lg shadow-sm">
-            <div className="flex items-start space-x-4">
+        <form onSubmit={handleSubmit} className="mt-6">
+            <div className="flex items-start gap-3">
                 <Avatar className="w-8 h-8">
                     <AvatarImage src={user?.image || undefined} alt={user.name ?? "User Avatar"} />
                     <AvatarFallback>{user.name?.charAt(0).toUpperCase()}</AvatarFallback>
                 </Avatar>
-                <div className="flex-grow">
+                <div className="flex-grow flex flex-col gap-3 items-end">
                     <Textarea
                         placeholder="Write a comment..."
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         className="w-full p-3 border rounded-md"
                     />
-                    <Button type="submit" className="mt-3" disabled={!comment.trim() || loading}>
+                    <Button type="submit" size="sm" disabled={!comment.trim() || loading}>
                         {loading ? (
                             <LoaderCircleIcon className="mr-2 h-4 w-4 animate-spin" />
                         ) : (

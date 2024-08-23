@@ -16,11 +16,8 @@ export async function CommentList({ postId }: { postId: string }) {
     return (
         <div className="space-y-1.5">
             {comments.map((comment) => (
-                <div
-                    key={comment.id}
-                    className="flex space-x-4 p-4 bg-background rounded-lg shadow-sm"
-                >
-                    <Avatar className="w-10 h-10">
+                <div key={comment.id} className="flex gap-3 bg-background border-b py-3 shadow-sm">
+                    <Avatar className="w-8 h-8">
                         <AvatarImage
                             src={comment.author.image || undefined}
                             alt={comment.author.name || "User Avatar"}
@@ -29,18 +26,14 @@ export async function CommentList({ postId }: { postId: string }) {
                             {comment.author.name?.charAt(0).toUpperCase()}
                         </AvatarFallback>
                     </Avatar>
-                    <div className="flex-grow">
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <span className="font-semibold text-foreground">
-                                    {comment.author.name}
-                                </span>
-                                <span className="ml-2 text-sm text-muted-foreground">
-                                    {formatDistanceToNow(comment.commentDate, { addSuffix: true })}
-                                </span>
-                            </div>
-                            <p className="mt-1 text-foreground">{comment.content}</p>
+                    <div>
+                        <div>
+                            <span>{comment.author.name}</span>
+                            <time className="ml-2 text-sm text-muted-foreground">
+                                {formatDistanceToNow(comment.commentDate, { addSuffix: true })}
+                            </time>
                         </div>
+                        <p className="mt-1 text-foreground">{comment.content}</p>
                     </div>
                 </div>
             ))}
