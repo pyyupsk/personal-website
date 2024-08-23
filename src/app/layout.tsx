@@ -25,3 +25,5 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 };
 
 export default RootLayout;
+
+export const revalidate = 3600; // Revalidate every hour
