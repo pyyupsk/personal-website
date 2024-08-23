@@ -1,13 +1,14 @@
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import { ClerkProvider } from "@clerk/nextjs";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { SessionProvider } from "next-auth/react";
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
-        <ClerkProvider>
+        <SessionProvider>
             <html lang="en" suppressHydrationWarning>
                 <body className={cn(GeistSans.variable, GeistMono.variable)}>
                     <ThemeProvider
@@ -18,9 +19,10 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                     >
                         {children}
                     </ThemeProvider>
+                    <Toaster />
                 </body>
             </html>
-        </ClerkProvider>
+        </SessionProvider>
     );
 };
 
