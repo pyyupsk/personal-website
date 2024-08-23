@@ -23,7 +23,7 @@ export async function CommentList({ postId }: { postId: string }) {
                     <Avatar className="w-10 h-10">
                         <AvatarImage
                             src={comment.author.image || undefined}
-                            alt={comment.author.name}
+                            alt={comment.author.name || "User Avatar"}
                         />
                         <AvatarFallback>
                             {comment.author.name?.charAt(0).toUpperCase()}

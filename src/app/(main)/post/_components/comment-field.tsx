@@ -70,7 +70,7 @@ export function CommentField({ postId }: { postId: string }) {
         <form onSubmit={handleSubmit} className="mt-4 p-4 bg-background rounded-lg shadow-sm">
             <div className="flex items-start space-x-4">
                 <Avatar className="w-8 h-8">
-                    <AvatarImage src={user?.image || undefined} alt={user.name} />
+                    <AvatarImage src={user?.image || undefined} alt={user.name ?? "User Avatar"} />
                     <AvatarFallback>{user.name?.charAt(0).toUpperCase()}</AvatarFallback>
                 </Avatar>
                 <div className="flex-grow">
