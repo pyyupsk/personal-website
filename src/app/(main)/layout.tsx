@@ -6,9 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <Fragment>
             <Header />
-            <main aria-hidden className="container py-12">
-                {children}
-            </main>
+            <main className="container py-12">{children}</main>
             <Footer />
         </Fragment>
     );

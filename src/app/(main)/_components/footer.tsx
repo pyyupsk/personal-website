@@ -14,7 +14,7 @@ export function Footer() {
         currentYear === startYear ? String(startYear) : `${startYear}-${currentYear}`;
 
     return (
-        <footer aria-hidden className="border-t bg-background pt-6 container pb-20">
+        <footer className="border-t bg-background pt-6 container pb-20">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
                 <p>© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />

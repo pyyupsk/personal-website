@@ -10,10 +10,7 @@ export function Header() {
     const page = navigation.find((page) => page.href === pathname);
 
     return (
-        <header
-            aria-hidden
-            className="container flex flex-col items-center justify-between gap-3 md:flex-row pt-20"
-        >
+        <header className="container flex flex-col items-center justify-between gap-3 md:flex-row pt-20">
             <span className="text-xl font-semibold tracking-tight">{page?.name}</span>
             <ul className="flex items-center gap-3">
                 {navigation.map((item) => (
