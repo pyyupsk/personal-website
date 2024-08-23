@@ -6,14 +6,12 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { LoaderCircleIcon, SendIcon } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import { User } from "next-auth";
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { createComment } from "../_actions/comment";
 
-export function CommentField({ postId }: { postId: string }) {
-    const { data } = useSession();
-    const { user } = data || {};
-
+export function CommentField({ postId, user }: { postId: string; user: User | undefined }) {
     const [comment, setComment] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -53,7 +51,7 @@ export function CommentField({ postId }: { postId: string }) {
         }
     };
 
-    if (!user) {
+    if (!user || !user.id) {
         return (
             <EmptyState
                 title="Sign In to Comment"
