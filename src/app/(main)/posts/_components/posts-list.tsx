@@ -14,11 +14,11 @@ export function PostsList({
     total: number;
 }) {
     return (
-        <div className="flex flex-col gap-3">
+        <article className="flex flex-col gap-3">
             {posts.map((post) => (
                 <PostCard key={post.id} post={post} />
             ))}
             <Pagination current={page} pages={Math.ceil(total / 5)} />
-        </div>
+        </article>
     );
 }

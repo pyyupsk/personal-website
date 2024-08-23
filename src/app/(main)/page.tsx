@@ -13,7 +13,7 @@ export function generateMetadata() {
 
 export default function Page() {
     return (
-        <div className="space-y-3">
+        <article className="space-y-3">
             <p className="text-base text-foreground">
                 Hi, I&apos;m First &mdash; A Passionate Developer Obsessed with Code.
             </p>
@@ -55,6 +55,6 @@ export default function Page() {
                 Software as a Service (SaaS) products that make a difference while constantly
                 refining my skills.
             </p>
-        </div>
+        </article>
     );
 }

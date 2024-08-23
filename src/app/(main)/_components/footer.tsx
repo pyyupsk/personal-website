@@ -19,29 +19,27 @@ export function Footer() {
                 <p>© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
-            <div className="mt-3">
-                <div className="flex items-center justify-between">
-                    <ul className="flex gap-3">
-                        {socials.map((item) => (
-                            <li key={item.name}>
-                                <Link href={item.href} target="_blank" className="button">
-                                    <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
-                                    <span className="sr-only">{item.name}</span>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <ul className="flex gap-3">
-                        {navigation.map((item) => (
-                            <li key={item.name}>
-                                <Link href={item.href} aria-current={item.href === pathname}>
-                                    {item.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+            <nav className="flex items-center justify-between mt-3">
+                <ul className="flex gap-3">
+                    {socials.map((item) => (
+                        <li key={item.name}>
+                            <Link href={item.href} target="_blank" className="button">
+                                <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
+                                <span className="sr-only">{item.name}</span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                <ul className="flex gap-3">
+                    {navigation.map((item) => (
+                        <li key={item.name}>
+                            <Link href={item.href} aria-current={item.href === pathname}>
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         </footer>
     );
 }

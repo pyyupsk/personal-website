@@ -55,12 +55,12 @@ export default async function Page({ params }: Props) {
                 </time>
                 <span className="text-sm text-muted-foreground">{readingTime} min read</span>
             </div>
-            <div className="prose dark:prose-invert max-w-none">
+            <article className="prose dark:prose-invert max-w-none">
                 <h1>{post.title}</h1>
                 {post.description && <p>{post.description}</p>}
                 <Separator />
                 <div dangerouslySetInnerHTML={{ __html: html }} />
-            </div>
+            </article>
             {/* TODO: Add comments */}
             {/* <Comment postId={post.id} /> */}
         </div>
