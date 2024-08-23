@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Project } from "@prisma/client";
-import { Layers3Icon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { useFilter } from "../_stores/filter";
 import { ProjectCard } from "./project-card";
 
@@ -24,12 +24,12 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
     if (filteredProjects.length === 0) {
         return (
             <EmptyState
-                title="Not found"
-                description="No projects match your search criteria, try changing your filters."
-                icon={Layers3Icon}
+                title="No Projects Found"
+                description="We couldn't find any projects that match your search criteria. Try adjusting your filters or search term."
+                icon={SearchIcon}
             >
                 <Button variant="outline" onClick={resetFilters}>
-                    Reset filters
+                    Clear Filters
                 </Button>
             </EmptyState>
         );

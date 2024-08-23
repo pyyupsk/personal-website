@@ -42,7 +42,7 @@ export default async function Page({ params }: Props) {
         },
     });
 
-    if (!post) return redirect("/posts/1");
+    if (!post) return redirect("/not-found");
 
     const html = await processMarkdown(post.content);
     const readingTime = Math.ceil(html.split(" ").length / 150);
