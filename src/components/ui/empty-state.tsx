@@ -17,8 +17,8 @@ export function EmptyState({ title, description, icon, children }: Props) {
                     </div>
                 )}
                 <div className="flex flex-col gap-3 text-center justify-center items-center">
-                    <p className="text-base font-semibold text-foreground">{title}</p>
-                    <p className="max-w-64">{description}</p>
+                    <h4 className="text-base font-semibold text-foreground">{title}</h4>
+                    <p>{description}</p>
                 </div>
                 {children}
             </div>
