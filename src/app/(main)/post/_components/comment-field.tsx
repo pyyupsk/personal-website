@@ -27,7 +27,7 @@ export function CommentField({ postId }: { postId: string }) {
                     title: "Login Required",
                     description:
                         "You need to be logged in to post a comment. Please log in or sign up.",
-                    variant: "info",
+                    variant: "destructive",
                 });
             }
 
