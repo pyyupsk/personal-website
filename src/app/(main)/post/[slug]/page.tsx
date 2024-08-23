@@ -4,6 +4,7 @@ import { commonMetaData } from "@/lib/meta";
 import { prisma } from "@/lib/prisma";
 import { format } from "date-fns";
 import { redirect } from "next/navigation";
+import { CommentContainer } from "../_components/comment-container";
 
 type Props = {
     params: {
@@ -61,8 +62,8 @@ export default async function Page({ params }: Props) {
                 <Separator />
                 <div dangerouslySetInnerHTML={{ __html: html }} />
             </article>
-            {/* TODO: Add comments */}
-            {/* <Comment postId={post.id} /> */}
+            <Separator />
+            <CommentContainer postId={post.id} />
         </div>
     );
 }
