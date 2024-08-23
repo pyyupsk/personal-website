@@ -51,8 +51,10 @@ model Comment {
 
 model User {
   id       String   @id @default(cuid()) @db.VarChar(255)
+  imageUrl String?
   username String   @unique @db.VarChar(255)
   email    String   @unique @db.VarChar(255)
+  password String
   joinDate DateTime @default(now())
 
   comments Comment[]
