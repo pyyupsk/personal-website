@@ -29,6 +29,7 @@ model Post {
   status      PostStatus @default(DRAFT)
   comments    Comment[]
 
+  @@index([id]) // Index on id for faster queries
   @@index([status]) // Index on status for faster queries
   @@index([publishDate]) // Index on publishDate for faster queries
   @@map("blog_posts")
