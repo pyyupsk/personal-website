@@ -6,6 +6,7 @@ export async function ProjectsFeed() {
         orderBy: {
             id: "desc",
         },
+        cacheStrategy: { ttl: 3600 },
     });
 
     return <ProjectsList projects={projects} />;

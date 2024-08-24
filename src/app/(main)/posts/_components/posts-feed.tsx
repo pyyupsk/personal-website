@@ -23,6 +23,7 @@ export async function PostsFeed({ page }: { page: number }) {
             description: true,
             publishDate: true,
         },
+        cacheStrategy: { ttl: 3600 },
     });
 
     if (posts.length === 0) {

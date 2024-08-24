@@ -15,7 +15,11 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { slug } }: Props) {
-    const post = await prisma.post.findUnique({ where: { id: slug }, select: { title: true } });
+    const post = await prisma.post.findUnique({
+        where: { id: slug },
+        select: { title: true },
+        cacheStrategy: { ttl: 3600 },
+    });
 
     if (!post) {
         return commonMetaData({

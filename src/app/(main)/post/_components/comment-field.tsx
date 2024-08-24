@@ -8,10 +8,13 @@ import { toast } from "@/components/ui/use-toast";
 import { LoaderCircleIcon, SendIcon } from "lucide-react";
 import { User } from "next-auth";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createComment } from "../_actions/comment";
 
 export function CommentField({ postId, user }: { postId: string; user: User | undefined }) {
+    const router = useRouter();
+
     const [comment, setComment] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -39,6 +42,7 @@ export function CommentField({ postId, user }: { postId: string; user: User | un
 
             await createComment({ postId, content: comment, authorId: user.id });
             setComment("");
+            router.refresh();
         } catch (error) {
             console.error(error);
             return toast({

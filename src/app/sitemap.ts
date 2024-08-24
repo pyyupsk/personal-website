@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<Sitemap[]> {
     const posts = await prisma.post.findMany({
         where: { status: $Enums.PostStatus.PUBLISHED },
         select: { id: true },
+        cacheStrategy: { ttl: 3600 },
     });
 
     const homePage = generatePageMetadata(BASE_URL, "weekly");
