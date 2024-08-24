@@ -14,9 +14,9 @@ export async function CommentList({ postId }: { postId: string }) {
     });
 
     return (
-        <div className="space-y-1.5">
+        <div className="space-y-1.5 divide-y">
             {comments.map((comment) => (
-                <div key={comment.id} className="flex gap-3 bg-background border-b py-3 shadow-sm">
+                <div key={comment.id} className="flex gap-3 bg-background py-3 shadow-sm">
                     <Avatar className="w-8 h-8">
                         <AvatarImage
                             src={comment.author.image || undefined}
@@ -26,8 +26,8 @@ export async function CommentList({ postId }: { postId: string }) {
                             {comment.author.name?.charAt(0).toUpperCase()}
                         </AvatarFallback>
                     </Avatar>
-                    <div>
-                        <div>
+                    <div className="flex flex-col gap-1">
+                        <div className="flex items-center">
                             <span>{comment.author.name}</span>
                             <time className="ml-2 text-sm text-muted-foreground">
                                 {formatDistanceToNow(comment.commentDate, { addSuffix: true })}
