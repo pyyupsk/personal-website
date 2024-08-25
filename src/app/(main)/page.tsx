@@ -14,7 +14,7 @@ export function generateMetadata() {
 export default function Page() {
     return (
         <article className="space-y-3">
-            <p className="text-base text-foreground">
+            <p className="!text-base !text-foreground">
                 Hi, I&apos;m First &mdash; A Passionate Developer Obsessed with Code.
             </p>
             <p>
