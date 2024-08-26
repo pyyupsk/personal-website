@@ -16,7 +16,6 @@ export async function PostContent({ postId }: { postId: Post["id"] }) {
             content: true,
             publishDate: true,
         },
-        cacheStrategy: { ttl: 3600 },
     });
 
     if (!post) return redirect("/not-found");

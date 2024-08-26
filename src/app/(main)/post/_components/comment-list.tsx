@@ -11,7 +11,6 @@ export async function CommentList({ postId }: { postId: string }) {
             author: { select: { name: true, image: true } },
             commentDate: true,
         },
-        cacheStrategy: { ttl: 3600 },
     });
 
     return (
