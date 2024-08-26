@@ -10,7 +10,7 @@ import Link from "next/link";
 import { navigation } from "../../_constants/navigation";
 
 export function Header() {
-    const { data: session, status } = useSession({ required: true });
+    const { data: session, status } = useSession();
     const loading = status === "loading";
 
     return (

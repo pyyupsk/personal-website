@@ -1,7 +1,7 @@
 import { $Enums } from "@prisma/client";
 import { create, StateCreator } from "zustand";
 
-type StatusFilter = $Enums.Status | "ALL";
+type StatusFilter = $Enums.PostStatus | "ALL";
 
 type FilterSlice = {
     searchTerm: string;
