@@ -1,5 +1,6 @@
-import { DiscordIcon } from "@/components/icons/discord";
-import { AtSignIcon, GithubIcon, InstagramIcon } from "lucide-react";
+import { Fa6BrandsXTwitter } from "@/components/icons/Fa6BrandsXTwitter";
+import { MdiAt } from "@/components/icons/MdiAt";
+import { MdiGithub } from "@/components/icons/MdiGithub";
 
 type Social = {
     name: string;
@@ -11,21 +12,16 @@ export const socials: Social[] = [
     {
         name: "Email",
         href: "mailto:pyyupsk@proton.me",
-        icon: AtSignIcon,
+        icon: MdiAt,
     },
     {
         name: "GitHub",
         href: "https://github.com/pyyupsk",
-        icon: GithubIcon,
+        icon: MdiGithub,
     },
     {
-        name: "Discord",
-        href: "https://discord.com/users/1226475144554483734",
-        icon: DiscordIcon,
-    },
-    {
-        name: "Instagram",
-        href: "https://instagram.com/pyyupsk",
-        icon: InstagramIcon,
+        name: "X",
+        href: "https://x.com/pyyupsk_",
+        icon: Fa6BrandsXTwitter,
     },
 ];
