@@ -1,12 +1,12 @@
-import { Separator } from "@/components/ui/separator";
-import { commonMetaData } from "@/lib/meta";
-import { prisma } from "@/lib/prisma";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-import { PostContent } from "../_components/post-content";
-import { PostContentSkeleton } from "../_components/post-skeleton";
+import { Separator } from '@/components/ui/separator';
+import { commonMetaData } from '@/lib/meta';
+import { prisma } from '@/lib/prisma';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import { PostContent } from '../_components/post-content';
+import { PostContentSkeleton } from '../_components/post-skeleton';
 
-const Comment = dynamic(() => import("../_components/comment").then((mod) => mod.Comment));
+const Comment = dynamic(() => import('../_components/comment').then((mod) => mod.Comment));
 
 type Props = {
     params: {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
 
     if (!post) {
         return commonMetaData({
-            title: "Page Not Found – Explore More from First",
+            title: 'Page Not Found – Explore More from First',
             description:
                 "Oops! It looks like the page you're looking for doesn't exist. Head back to explore other projects, blog posts, and insights from First.",
         });

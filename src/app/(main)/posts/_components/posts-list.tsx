@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Post } from "@prisma/client";
-import { Pagination } from "./pagination";
-import { PostCard } from "./post-card";
+import { type Post } from '@prisma/client';
+import { Pagination } from './pagination';
+import { PostCard } from './post-card';
 
 export function PostsList({
     posts,
     page,
     total,
 }: {
-    posts: Omit<Post, "content" | "status">[];
+    posts: Omit<Post, 'content' | 'status'>[];
     page: number;
     total: number;
 }) {

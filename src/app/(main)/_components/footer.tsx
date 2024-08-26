@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { navigation } from "@/constants/navigation";
-import { socials } from "@/constants/socials";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ThemeSwitcher } from "../../../components/theme-switcher";
+import { navigation } from '@/constants/navigation';
+import { socials } from '@/constants/socials';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ThemeSwitcher } from '../../../components/theme-switcher';
 
 export function Footer() {
     const pathname = usePathname();
@@ -14,17 +14,17 @@ export function Footer() {
         currentYear === startYear ? String(startYear) : `${startYear}-${currentYear}`;
 
     return (
-        <footer className="border-t bg-background pt-6 container pb-20">
+        <footer className="container border-t bg-background pb-20 pt-6">
             <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
                 <p>© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
-            <nav className="flex items-center justify-between mt-3">
+            <nav className="mt-3 flex items-center justify-between">
                 <ul className="flex gap-3">
                     {socials.map((item) => (
                         <li key={item.name}>
-                            <Link href={item.href} target="_blank" className="button">
-                                <item.icon className="h-4 w-4 text-muted-foreground hover:text-foreground transition-all duration-200" />
+                            <Link href={item.href} target="_blank">
+                                <item.icon className="size-4 text-muted-foreground transition-all duration-200 hover:text-foreground" />
                                 <span className="sr-only">{item.name}</span>
                             </Link>
                         </li>

@@ -1,15 +1,15 @@
-import { env } from "@/env";
-import { prisma } from "@/lib/prisma";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { $Enums } from "@prisma/client";
-import NextAuth, { DefaultSession } from "next-auth";
-import GitHub from "next-auth/providers/github";
+import { env } from '@/env';
+import { prisma } from '@/lib/prisma';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { type $Enums } from '@prisma/client';
+import NextAuth, { type DefaultSession } from 'next-auth';
+import GitHub from 'next-auth/providers/github';
 
-declare module "next-auth" {
+declare module 'next-auth' {
     interface Session {
         user: {
             role: $Enums.Role;
-        } & DefaultSession["user"];
+        } & DefaultSession['user'];
     }
 }
 

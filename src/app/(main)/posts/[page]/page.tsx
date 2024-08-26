@@ -1,7 +1,7 @@
-import { commonMetaData } from "@/lib/meta";
-import { Suspense } from "react";
-import { PostsFeed } from "../_components/posts-feed";
-import { Skeleton } from "../_components/skeleton";
+import { commonMetaData } from '@/lib/meta';
+import { Suspense } from 'react';
+import { PostsFeed } from '../_components/posts-feed';
+import { Skeleton } from '../_components/skeleton';
 
 export function generateMetadata() {
     const metaData = commonMetaData({

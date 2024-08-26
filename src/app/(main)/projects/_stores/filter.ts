@@ -1,7 +1,7 @@
-import { $Enums } from "@prisma/client";
-import { create, StateCreator } from "zustand";
+import { type $Enums } from '@prisma/client';
+import { create, type StateCreator } from 'zustand';
 
-type StatusFilter = $Enums.Status | "ALL";
+type StatusFilter = $Enums.Status | 'ALL';
 
 type FilterSlice = {
     searchTerm: string;
@@ -13,8 +13,8 @@ type FilterSlice = {
 };
 
 const filterSlice: StateCreator<FilterSlice> = (set) => ({
-    searchTerm: "",
-    statusFilter: "ALL",
+    searchTerm: '',
+    statusFilter: 'ALL',
     setSearchTerm: (searchTerm: string) => set({ searchTerm }),
     setStatusFilter: (statusFilter: StatusFilter) => set({ statusFilter }),
 });

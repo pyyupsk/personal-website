@@ -1,7 +1,7 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { prisma } from "@/lib/prisma";
-import { getStatusColor } from "@/utils/colors";
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { prisma } from '@/lib/prisma';
+import { getStatusColor } from '@/utils/colors';
 
 export async function RecentPosts() {
     const recentPosts = await prisma.post.findMany({
@@ -13,7 +13,7 @@ export async function RecentPosts() {
             status: true,
         },
         orderBy: {
-            publishDate: "desc",
+            publishDate: 'desc',
         },
     });
 
@@ -28,12 +28,12 @@ export async function RecentPosts() {
                     {recentPosts.map((post) => (
                         <div key={post.id} className="flex items-center">
                             <div className="ml-4 space-y-1">
-                                <p className="!text-foreground !text-base line-clamp-1">
-                                    {post.title}{" "}
+                                <p className="line-clamp-1 !text-base !text-foreground">
+                                    {post.title}{' '}
                                 </p>
                                 <p className="line-clamp-2">{post.description}</p>
                                 <Badge className={getStatusColor(post.status)}>
-                                    {post.status.replace("_", " ")}
+                                    {post.status.replace('_', ' ')}
                                 </Badge>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import { create, StateCreator } from "zustand";
+import { create, type StateCreator } from 'zustand';
 
 type SelectedSlice = {
     selected: string | null;
@@ -7,7 +7,7 @@ type SelectedSlice = {
 };
 
 const selectedSlice: StateCreator<SelectedSlice> = (set) => ({
-    selected: "",
+    selected: '',
     setSelected: (selected: string | null) => set({ selected }),
 });
 

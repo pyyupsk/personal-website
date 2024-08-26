@@ -1,10 +1,10 @@
-import { commonMetaData } from "@/lib/meta";
+import { commonMetaData } from '@/lib/meta';
 
-const age = new Date().getFullYear() - new Date("2003-01-23").getFullYear();
+const age = new Date().getFullYear() - new Date('2003-01-23').getFullYear();
 
 export function generateMetadata() {
     const metaData = commonMetaData({
-        title: "About First – The Journey of a Self-Taught Developer",
+        title: 'About First – The Journey of a Self-Taught Developer',
         description: `Learn about Phongsakorn 'First' Tippayanet, a ${age}-year-old self-taught programmer who turned a passion for coding into a career. Explore his unconventional educational path, core skills, and personal inspiration.`,
     });
 

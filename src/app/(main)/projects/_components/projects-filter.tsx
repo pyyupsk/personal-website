@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Input } from "@/components/ui/input";
+import { Input } from '@/components/ui/input';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useFilter } from "../_stores/filter";
+} from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
+import { SearchIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useFilter } from '../_stores/filter';
 
 export function ProjectsFilter() {
     const [mounted, setMounted] = useState(false);
@@ -21,17 +21,17 @@ export function ProjectsFilter() {
 
     if (!mounted) {
         return (
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                <Skeleton className="w-full sm:w-64 h-8" />
-                <Skeleton className="w-full sm:w-40 h-8" />
+            <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
+                <Skeleton className="h-8 w-full sm:w-64" />
+                <Skeleton className="h-8 w-full sm:w-40" />
             </div>
         );
     }
 
     return (
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+        <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="relative w-full sm:w-64">
-                <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                     type="text"
                     placeholder="Search projects..."

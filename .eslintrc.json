@@ -5,27 +5,29 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier"
+        "plugin:prettier/recommended",
+        "plugin:tailwindcss/recommended"
     ],
-    "plugins": ["react", "@typescript-eslint", "prettier"],
-    "parserOptions": {
-        "ecmaVersion": 2021,
-        "sourceType": "module"
-    },
+    "plugins": ["react", "@typescript-eslint", "prettier", "tailwindcss"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": { "project": true },
     "rules": {
-        "no-unused-vars": "warn",
+        "no-unused-vars": [
+            "warn",
+            {
+                "argsIgnorePattern": "^_"
+            }
+        ],
         "prettier/prettier": "error",
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off"
-    },
-    "overrides": [
-        {
-            "files": ["tests/**/*"],
-            "plugins": ["jest"],
-            "env": {
-                "jest": true
+        "react/prop-types": "off",
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports",
+                "fixStyle": "inline-type-imports"
             }
-        }
-    ],
-    "ignorePatterns": ["node_modules", "public", "src/components/ui"]
+        ]
+    },
+    "ignorePatterns": ["node_modules", "public"]
 }

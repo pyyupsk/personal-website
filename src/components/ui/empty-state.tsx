@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 type Props = {
     title: string;
@@ -14,16 +14,16 @@ export function EmptyState({ title, description, icon, className, children }: Pr
     return (
         <div
             className={cn(
-                "border rounded-md p-12 flex flex-col gap-6 items-center justify-center",
+                'flex flex-col items-center justify-center gap-6 rounded-md border p-12',
                 className,
             )}
         >
             {icon && (
-                <div className="flex justify-center items-center border rounded-md p-3">
-                    <Icon className="h-8 w-8 text-muted-foreground" />
+                <div className="flex items-center justify-center rounded-md border p-3">
+                    <Icon className="size-8 text-muted-foreground" />
                 </div>
             )}
-            <div className="flex flex-col gap-3 text-center justify-center items-center">
+            <div className="flex flex-col items-center justify-center gap-3 text-center">
                 <h4 className="text-base font-semibold text-foreground">{title}</h4>
                 <p>{description}</p>
             </div>

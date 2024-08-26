@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { navigation } from "@/constants/navigation";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { navigation } from '@/constants/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
     const pathname = usePathname();
@@ -10,7 +10,7 @@ export function Header() {
     const page = navigation.find((page) => page.href === pathname);
 
     return (
-        <header className="container flex flex-col items-center justify-between gap-3 md:flex-row pt-20">
+        <header className="container flex flex-col items-center justify-between gap-3 pt-20 md:flex-row">
             <span className="text-xl font-semibold tracking-tight">{page?.name}</span>
             <nav>
                 <ul className="flex items-center gap-3">

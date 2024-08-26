@@ -1,6 +1,7 @@
 {
     "name": "personal-website",
     "version": "0.1.0",
+    "type": "module",
     "private": true,
     "scripts": {
         "build": "next build",
@@ -72,12 +73,14 @@
         "eslint-plugin-jest": "^28.8.0",
         "eslint-plugin-prettier": "^5.2.1",
         "eslint-plugin-react": "^7.35.0",
+        "eslint-plugin-tailwindcss": "^3.17.4",
         "husky": "^9.1.5",
         "knip": "^5.27.3",
         "lint-staged": "^15.2.9",
         "postcss": "^8.4.41",
         "postcss-load-config": "^6.0.1",
         "prettier": "^3.3.3",
+        "prettier-plugin-organize-imports": "^4.0.0",
         "prettier-plugin-pkg": "^0.18.1",
         "prettier-plugin-tailwindcss": "^0.6.6",
         "prisma": "^5.18.0",

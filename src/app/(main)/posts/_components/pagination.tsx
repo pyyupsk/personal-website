@@ -6,8 +6,8 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from "@/components/ui/pagination";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/pagination';
+import { cn } from '@/lib/utils';
 
 export function Pagination({ current, pages }: { current: number; pages: number }) {
     // Early return if there's only one page

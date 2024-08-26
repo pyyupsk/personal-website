@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
     Dialog,
     DialogContent,
@@ -6,10 +6,10 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 
 type Props = {
     selected: string;
@@ -18,14 +18,14 @@ type Props = {
 };
 
 export function DeleteDialog({ selected, onClose, onDelete }: Props) {
-    const [deleteInputValue, setDeleteInputValue] = useState("");
+    const [deleteInputValue, setDeleteInputValue] = useState('');
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (deleteInputValue !== selected) {
             toast({
-                title: "Incorrect",
-                description: "The post title does not match.",
+                title: 'Incorrect',
+                description: 'The post title does not match.',
             });
             return;
         }

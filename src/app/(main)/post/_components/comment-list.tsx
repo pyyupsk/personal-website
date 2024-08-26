@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { prisma } from "@/lib/prisma";
-import { formatDistanceToNow } from "date-fns";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { prisma } from '@/lib/prisma';
+import { formatDistanceToNow } from 'date-fns';
 
 export async function CommentList({ postId }: { postId: string }) {
     const comments = await prisma.comment.findMany({
@@ -17,10 +17,10 @@ export async function CommentList({ postId }: { postId: string }) {
         <div className="space-y-1.5 divide-y">
             {comments.map((comment) => (
                 <div key={comment.id} className="flex gap-3 bg-background py-3 shadow-sm">
-                    <Avatar className="w-8 h-8">
+                    <Avatar className="size-8">
                         <AvatarImage
                             src={comment.author.image || undefined}
-                            alt={comment.author.name || "User Avatar"}
+                            alt={comment.author.name || 'User Avatar'}
                         />
                         <AvatarFallback>
                             {comment.author.name?.charAt(0).toUpperCase()}

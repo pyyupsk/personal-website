@@ -1,5 +1,4 @@
-import React from "react";
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 export function MdiGithub(props: SVGProps<SVGSVGElement>) {
     return (

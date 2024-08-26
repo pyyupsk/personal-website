@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Input } from "@/components/ui/input";
+import { Input } from '@/components/ui/input';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
-import { Skeleton } from "@/components/ui/skeleton";
-import { SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useFilter } from "../_stores/filter";
+} from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
+import { SearchIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useFilter } from '../_stores/filter';
 
 export function PostsFilter() {
     const [mounted, setMounted] = useState(false);
@@ -21,27 +21,27 @@ export function PostsFilter() {
 
     if (!mounted) {
         return (
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <Skeleton className="w-full sm:w-64 h-8" />
-                <Skeleton className="w-full sm:w-40 h-8" />
+            <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+                <Skeleton className="h-8 w-full sm:w-64" />
+                <Skeleton className="h-8 w-full sm:w-40" />
             </div>
         );
     }
 
     return (
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="relative w-full sm:w-64">
-                <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                     type="text"
                     placeholder="Search posts..."
-                    className="pl-8 h-10"
+                    className="h-10 pl-8"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger aria-label="Filter by status" className="w-full sm:w-40 h-10">
+                <SelectTrigger aria-label="Filter by status" className="h-10 w-full sm:w-40">
                     <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>

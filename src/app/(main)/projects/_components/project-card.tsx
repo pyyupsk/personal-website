@@ -1,9 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import { Card as CardComponent, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { getStatusColor } from "@/utils/colors";
-import { Project } from "@prisma/client";
-import Image from "next/image";
+import { Badge } from '@/components/ui/badge';
+import { Card as CardComponent, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { getStatusColor } from '@/utils/colors';
+import { type Project } from '@prisma/client';
+import Image from 'next/image';
 
 export function ProjectCard({ project }: { project: Project }) {
     return (
@@ -14,16 +14,16 @@ export function ProjectCard({ project }: { project: Project }) {
                     alt={project.title}
                     height={500}
                     width={500}
-                    className="aspect-video object-cover rounded-t"
+                    className="aspect-video rounded-t object-cover"
                 />
             </CardHeader>
             <CardContent className="p-3">
                 <CardTitle>{project.title}</CardTitle>
-                <div className="relative overflow-hidden max-h-[40px] group-hover:max-h-[100px] transition-all duration-300">
+                <div className="relative max-h-[40px] overflow-hidden transition-all duration-300 group-hover:max-h-[100px]">
                     <p>{project.description}</p>
                 </div>
-                <Badge className={cn("mt-3", getStatusColor(project.status))}>
-                    {project.status.replace("_", " ")}
+                <Badge className={cn('mt-3', getStatusColor(project.status))}>
+                    {project.status.replace('_', ' ')}
                 </Badge>
             </CardContent>
         </CardComponent>

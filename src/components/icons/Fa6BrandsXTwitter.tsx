@@ -1,5 +1,4 @@
-import React from "react";
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 export function Fa6BrandsXTwitter(props: SVGProps<SVGSVGElement>) {
     return (
