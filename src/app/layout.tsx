@@ -1,10 +1,14 @@
 import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { SessionProvider } from 'next-auth/react';
+import dynamic from 'next/dynamic';
+
+const DynamicToaster = dynamic(() => import('@/components/ui/toaster').then((mod) => mod.Toaster), {
+    ssr: false,
+});
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
@@ -19,7 +23,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                     >
                         {children}
                     </ThemeProvider>
-                    <Toaster />
+                    <DynamicToaster />
                 </body>
             </html>
         </SessionProvider>
