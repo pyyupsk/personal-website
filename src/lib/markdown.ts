@@ -4,6 +4,7 @@ import {
     transformerNotationDiff,
     transformerNotationFocus,
 } from '@shikijs/transformers';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSanitize from 'rehype-sanitize';
@@ -29,6 +30,7 @@ const processor = unified()
     .use(remarkRehype)
     .use(rehypeSanitize)
     .use(rehypeExternalLinks, { rel: ['noopener', 'noreferrer'], target: '_blank' })
+    .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
     .use(rehypeCodeTitles)
     .use(rehypeShiki, options)
     .use(rehypeStringify);

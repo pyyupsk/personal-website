@@ -4,16 +4,14 @@ Welcome to the **Personal Website** repository! 🌟👨‍💻 This site is my 
 
 Experience the website in action! [Visit the homepage](https://pyyupsk.vercel.app/)
 
-## 🚀 Overview
+## 🔧 Technologies
 
-This website is built with a modern stack to ensure a seamless and dynamic user experience:
-
--   **Next.js**: A powerful React framework for server-side rendering and static site generation.
--   **Clerk**: Provides secure and customizable authentication solutions.
--   **Prisma ORM**: Manages database interactions with type-safe queries.
--   **NeonDB**: A scalable and flexible database solution.
--   **Tailwind CSS**: Offers utility-first CSS styling for a responsive and elegant design.
--   **TypeScript**: Adds type safety and enhances code quality.
+-   [**Next.js**](https://nextjs.org): A powerful React framework for server-side rendering and static site generation.
+-   [**Auth.js**](https://authjs.dev): Handles user authentication and management with ease, ensuring a secure login experience.
+-   [**Prisma ORM**](https://prisma.io): Simplifies database operations and provides type-safe queries for a smooth development experience.
+-   [**Vercel Postgres**](https://vercel.com/docs/storage/vercel-postgres): A scalable and flexible database solution that integrates seamlessly with Prisma ORM.
+-   [**Tailwind CSS**](https://tailwindcss.com): Offers utility-first CSS styling for a responsive and elegant design.
+-   [**TypeScript**](https://www.typescriptlang.org): Adds type safety and enhances code quality.
 
 ## 🛠️ Usage
 
@@ -53,15 +51,6 @@ To get started with this repository, follow these steps:
     npm run start
     ```
 
-## 🔧 Technologies
-
--   `Next.js` A powerful framework for React that provides server-side rendering and static site generation capabilities.
--   `Clerk` Handles user authentication and management with ease, ensuring a secure login experience.
--   `Prisma ORM` Simplifies database operations and provides type-safe queries for a smooth development experience.
--   `NeonDB` A scalable and flexible database solution that integrates seamlessly with Prisma ORM.
--   `Tailwind CSS` A utility-first CSS framework that allows you to design directly in your markup with responsive, mobile-first styling.
--   `TypeScript` Enhances JavaScript with static types, helping catch errors early and improving code quality.
-
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
@@ -72,8 +61,7 @@ For questions, suggestions, or feedback, feel free to reach out via:
 
 -   **Email**: [pyyupsk@proton.me](mailto:pyyupsk@proton.me)
 -   **GitHub**: [pyyupsk](https://github.com/pyyupsk)
--   **Instagram**: [pyyupsk](https://instagram.com/pyyupsk)
--   **Discord**: [ファース](https://discord.com/users/1226475144554483734)
+-   **X (Twitter)**: [pyyupsk\_](https://x.com/pyyupsk_)
 
 Thank you for visiting my personal website! 🚀🌟
 
