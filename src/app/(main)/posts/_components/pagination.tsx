@@ -43,7 +43,7 @@ export function Pagination({ current, pages }: { current: number; pages: number 
         for (let i = start; i <= end; i++) {
             links.push(
                 <PaginationItem key={i}>
-                    <PaginationLink href={`/posts/${i}`} active={i === current} size="iconx">
+                    <PaginationLink active={i === current} href={`/posts/${i}`} size="iconx">
                         {i}
                     </PaginationLink>
                 </PaginationItem>,

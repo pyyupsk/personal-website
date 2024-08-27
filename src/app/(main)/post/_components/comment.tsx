@@ -1,5 +1,6 @@
-import { auth } from '@/lib/auth';
+import { auth } from '@/server/auth';
 import { Suspense } from 'react';
+
 import { CommentField } from './comment-field';
 import { CommentList } from './comment-list';
 import { CommentSkeleton } from './comment-skeleton';

@@ -4,7 +4,7 @@ export function CommentSkeleton({ count }: { count: number }) {
     return (
         <div className="space-y-1.5 divide-y">
             {Array.from({ length: count }).map((_, index) => (
-                <div key={index} className="flex gap-3 bg-background py-3 shadow-sm">
+                <div className="flex gap-3 bg-background py-3 shadow-sm" key={index}>
                     <Skeleton className="size-8 rounded-full" />
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center">

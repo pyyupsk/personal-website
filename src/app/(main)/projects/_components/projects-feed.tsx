@@ -1,4 +1,5 @@
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
+
 import { ProjectsList } from './projects-list';
 
 export async function ProjectsFeed() {

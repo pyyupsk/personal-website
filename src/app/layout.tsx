@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import { SessionProvider } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+import { SessionProvider } from 'next-auth/react';
 
 const DynamicToaster = dynamic(() => import('@/components/ui/toaster').then((mod) => mod.Toaster), {
     ssr: false,
@@ -18,8 +18,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
-                        enableSystem
                         disableTransitionOnChange
+                        enableSystem
                     >
                         {children}
                     </ThemeProvider>

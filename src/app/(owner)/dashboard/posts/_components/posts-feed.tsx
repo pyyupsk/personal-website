@@ -1,14 +1,15 @@
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
+
 import { PostsList } from './posts-list';
 
 export async function PostsFeed() {
     const posts = await prisma.post.findMany({
         select: {
-            id: true,
-            title: true,
             description: true,
-            status: true,
+            id: true,
             publishDate: true,
+            status: true,
+            title: true,
         },
     });
 

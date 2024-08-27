@@ -1,8 +1,9 @@
 'use client';
 
 import { Skeleton } from '@/components/ui/skeleton';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+
 import { navigation } from '../../_constants/navigation';
 
 export function Aside() {
@@ -14,8 +15,8 @@ export function Aside() {
             <div className="flex h-full max-h-screen flex-col gap-2">
                 <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                     <Link
-                        href="/dashboard"
                         className="flex items-center gap-2 !text-base font-semibold"
+                        href="/dashboard"
                     >
                         {loading ? (
                             <Skeleton className="h-6 w-24" />
@@ -28,9 +29,9 @@ export function Aside() {
                     <nav className="grid items-start gap-4 px-2 text-sm font-medium lg:px-4">
                         {navigation.map((item) => (
                             <Link
-                                key={item.name}
-                                href={item.href}
                                 className="flex items-center gap-3 rounded-lg px-3 py-2 !text-base text-muted-foreground transition-all hover:text-primary"
+                                href={item.href}
+                                key={item.name}
                             >
                                 <item.icon className="size-4" />
                                 {item.name}

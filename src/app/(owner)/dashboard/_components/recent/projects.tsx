@@ -1,20 +1,20 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 import { getStatusColor } from '@/utils/colors';
 
 export async function RecentProjects() {
     const recentProjects = await prisma.project.findMany({
-        take: 3,
-        select: {
-            id: true,
-            title: true,
-            description: true,
-            status: true,
-        },
         orderBy: {
             id: 'desc',
         },
+        select: {
+            description: true,
+            id: true,
+            status: true,
+            title: true,
+        },
+        take: 3,
     });
 
     return (
@@ -26,7 +26,7 @@ export async function RecentProjects() {
             <CardContent>
                 <div className="space-y-4">
                     {recentProjects.map((project) => (
-                        <div key={project.id} className="flex items-center">
+                        <div className="flex items-center" key={project.id}>
                             <div className="ml-4 space-y-1">
                                 <p className="line-clamp-1 !text-base !text-foreground">
                                     {project.title}{' '}

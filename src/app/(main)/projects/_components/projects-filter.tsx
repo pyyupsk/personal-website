@@ -11,11 +11,12 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { SearchIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
 import { useFilter } from '../_stores/filter';
 
 export function ProjectsFilter() {
     const [mounted, setMounted] = useState(false);
-    const { searchTerm, setSearchTerm, statusFilter, setStatusFilter } = useFilter();
+    const { searchTerm, setSearchTerm, setStatusFilter, statusFilter } = useFilter();
 
     useEffect(() => setMounted(true), []);
 
@@ -33,14 +34,14 @@ export function ProjectsFilter() {
             <div className="relative w-full sm:w-64">
                 <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
-                    type="text"
-                    placeholder="Search projects..."
                     className="pl-8"
-                    value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search projects..."
+                    type="text"
+                    value={searchTerm}
                 />
             </div>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <Select onValueChange={setStatusFilter} value={statusFilter}>
                 <SelectTrigger aria-label="Filter by status" className="w-full sm:w-40">
                     <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>

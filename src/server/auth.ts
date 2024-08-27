@@ -1,5 +1,5 @@
 import { env } from '@/env';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { type $Enums } from '@prisma/client';
 import NextAuth, { type DefaultSession } from 'next-auth';
@@ -13,14 +13,8 @@ declare module 'next-auth' {
     }
 }
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { auth, handlers, signIn, signOut } = NextAuth({
     adapter: PrismaAdapter(prisma),
-    providers: [
-        GitHub({
-            clientId: env.AUTH_GITHUB_ID,
-            clientSecret: env.AUTH_GITHUB_SECRET,
-        }),
-    ],
     callbacks: {
         session: ({ session }) => ({
             ...session,
@@ -30,4 +24,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
         }),
     },
+    providers: [
+        GitHub({
+            clientId: env.AUTH_GITHUB_ID,
+            clientSecret: env.AUTH_GITHUB_SECRET,
+        }),
+    ],
 });

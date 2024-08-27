@@ -15,8 +15,8 @@ import { unified } from 'unified';
 
 const options: RehypeShikiOptions = {
     themes: {
-        light: 'min-light',
         dark: 'min-dark',
+        light: 'min-light',
     },
     transformers: [
         transformerNotationDiff(),

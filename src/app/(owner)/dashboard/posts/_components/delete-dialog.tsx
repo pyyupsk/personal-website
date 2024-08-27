@@ -12,20 +12,20 @@ import { toast } from '@/components/ui/use-toast';
 import { useState } from 'react';
 
 type Props = {
-    selected: string;
     onClose: () => void;
     onDelete: () => Promise<void>;
+    selected: string;
 };
 
-export function DeleteDialog({ selected, onClose, onDelete }: Props) {
+export function DeleteDialog({ onClose, onDelete, selected }: Props) {
     const [deleteInputValue, setDeleteInputValue] = useState('');
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (deleteInputValue !== selected) {
             toast({
-                title: 'Incorrect',
                 description: 'The post title does not match.',
+                title: 'Incorrect',
             });
             return;
         }
@@ -35,7 +35,7 @@ export function DeleteDialog({ selected, onClose, onDelete }: Props) {
     };
 
     return (
-        <Dialog open onOpenChange={onClose}>
+        <Dialog onOpenChange={onClose} open>
             <form onSubmit={handleSubmit}>
                 <DialogContent>
                     <DialogHeader>
@@ -49,9 +49,9 @@ export function DeleteDialog({ selected, onClose, onDelete }: Props) {
                             Please type the <code>{selected}</code> to confirm your deletion.
                         </p>
                         <Input
-                            value={deleteInputValue}
-                            onChange={(e) => setDeleteInputValue(e.target.value)}
                             className="col-span-3"
+                            onChange={(e) => setDeleteInputValue(e.target.value)}
+                            value={deleteInputValue}
                         />
                     </div>
                     <DialogFooter>

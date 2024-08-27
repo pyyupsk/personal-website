@@ -6,11 +6,14 @@
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
-        "plugin:tailwindcss/recommended"
+        "plugin:tailwindcss/recommended",
+        "plugin:perfectionist/recommended-natural-legacy"
     ],
-    "plugins": ["react", "@typescript-eslint", "prettier", "tailwindcss"],
+    "plugins": ["react", "@typescript-eslint", "prettier", "tailwindcss", "perfectionist"],
     "parser": "@typescript-eslint/parser",
-    "parserOptions": { "project": true },
+    "parserOptions": {
+        "project": true
+    },
     "rules": {
         "no-unused-vars": [
             "warn",
@@ -29,5 +32,5 @@
             }
         ]
     },
-    "ignorePatterns": ["node_modules", "public"]
+    "ignorePatterns": ["node_modules"]
 }

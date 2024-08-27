@@ -1,22 +1,22 @@
 import { type $Enums } from '@prisma/client';
 import { create, type StateCreator } from 'zustand';
 
-type StatusFilter = $Enums.Status | 'ALL';
+type StatusFilter = $Enums.ProjectStatus | 'ALL';
 
 type FilterSlice = {
     searchTerm: string;
-    statusFilter: StatusFilter;
     // eslint-disable-next-line no-unused-vars
     setSearchTerm: (searchTerm: string) => void;
     // eslint-disable-next-line no-unused-vars
     setStatusFilter: (statusFilter: StatusFilter) => void;
+    statusFilter: StatusFilter;
 };
 
 const filterSlice: StateCreator<FilterSlice> = (set) => ({
     searchTerm: '',
-    statusFilter: 'ALL',
     setSearchTerm: (searchTerm: string) => set({ searchTerm }),
     setStatusFilter: (statusFilter: StatusFilter) => set({ statusFilter }),
+    statusFilter: 'ALL',
 });
 
 export const useFilter = create<FilterSlice>(filterSlice);

@@ -2,39 +2,39 @@ import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { type TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 
 type CommonMetaData = {
-    title: string | TemplateString;
     description: string;
+    title: string | TemplateString;
 };
 
-export function commonMetaData({ title, description }: CommonMetaData): Metadata {
+export function commonMetaData({ description, title }: CommonMetaData): Metadata {
     return {
-        title,
-        description,
         authors: [{ name: '@pyyupsk' }],
+        description,
         metadataBase: new URL('https://pyyupsk.vercel.app'),
         openGraph: {
-            title,
             description,
             images: [
                 {
+                    height: 630,
                     url: '/og.png',
                     width: 1200,
-                    height: 630,
                 },
             ],
+            title,
         },
         robots: {
-            index: false,
             follow: true,
-            nocache: true,
             googleBot: {
-                index: true,
                 follow: false,
-                noimageindex: true,
-                'max-video-preview': -1,
+                index: true,
                 'max-image-preview': 'large',
                 'max-snippet': -1,
+                'max-video-preview': -1,
+                noimageindex: true,
             },
+            index: false,
+            nocache: true,
         },
+        title,
     };
 }

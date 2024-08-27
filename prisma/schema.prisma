@@ -14,7 +14,7 @@ model Project {
   title       String  @db.VarChar(255)
   description String? @db.Text
   thumbnails  String  @db.Text
-  status      Status  @default(NOT_STARTED)
+  status      ProjectStatus  @default(NOT_STARTED)
 
   @@index([status]) // Index on status for faster queries
   @@map("projects")
@@ -104,7 +104,7 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-enum Status {
+enum ProjectStatus {
   NOT_STARTED
   IN_PROGRESS
   COMPLETED

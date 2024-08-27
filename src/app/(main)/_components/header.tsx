@@ -16,7 +16,7 @@ export function Header() {
                 <ul className="flex items-center gap-3">
                     {navigation.map((item) => (
                         <li key={item.name}>
-                            <Link href={item.href} aria-current={item.href === pathname}>
+                            <Link aria-current={item.href === pathname} href={item.href}>
                                 {item.name}
                             </Link>
                         </li>

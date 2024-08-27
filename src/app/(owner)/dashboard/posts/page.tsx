@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { PlusCircle } from 'lucide-react';
+
 import { PostsFeed } from './_components/posts-feed';
 import { PostsFilter } from './_components/posts-filter';
 

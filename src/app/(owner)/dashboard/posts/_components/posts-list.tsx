@@ -18,6 +18,7 @@ import { format } from 'date-fns';
 import { SearchIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
+
 import { deletePost } from '../_actions/posts';
 import { useFilter } from '../_stores/filter';
 import { useSelected } from '../_stores/selected';
@@ -25,7 +26,7 @@ import { DeleteDialog } from './delete-dialog';
 import { Dropdown } from './dropdown';
 
 export function PostsList({ posts }: { posts: Omit<Post, 'content'>[] }) {
-    const { searchTerm, statusFilter, setSearchTerm, setStatusFilter } = useFilter();
+    const { searchTerm, setSearchTerm, setStatusFilter, statusFilter } = useFilter();
     const { selected, setSelected } = useSelected();
     const router = useRouter();
 
@@ -38,16 +39,16 @@ export function PostsList({ posts }: { posts: Omit<Post, 'content'>[] }) {
         try {
             await deletePost(selected!);
             toast({
-                title: 'Post Deleted',
                 description: 'Your post has been deleted.',
+                title: 'Post Deleted',
             });
             setSelected(null);
             router.refresh();
         } catch (error) {
             console.error('Error deleting post:', error);
             toast({
-                title: 'Error',
                 description: 'There was an issue deleting the post. Please try again.',
+                title: 'Error',
                 variant: 'destructive',
             });
         }
@@ -64,12 +65,12 @@ export function PostsList({ posts }: { posts: Omit<Post, 'content'>[] }) {
     if (filteredPosts.length === 0) {
         return (
             <EmptyState
-                title="No Posts Found"
+                className="min-h-[70vh] border-dashed"
                 description="We couldn't find any posts that match your search criteria. Try adjusting your filters or search term."
                 icon={SearchIcon}
-                className="min-h-[70vh] border-dashed"
+                title="No Posts Found"
             >
-                <Button variant="outline" onClick={resetFilters}>
+                <Button onClick={resetFilters} variant="outline">
                     Clear Filters
                 </Button>
             </EmptyState>
@@ -108,9 +109,9 @@ export function PostsList({ posts }: { posts: Omit<Post, 'content'>[] }) {
             </Table>
             {selected && (
                 <DeleteDialog
-                    selected={selected}
                     onClose={() => setSelected(null)}
                     onDelete={handleDeletePost}
+                    selected={selected}
                 />
             )}
         </>

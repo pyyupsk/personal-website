@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 import { BarChart, FileText, Layers } from 'lucide-react';
 
 export async function Status() {
@@ -8,9 +8,9 @@ export async function Status() {
     const comments = await prisma.comment.count();
 
     const stats = [
-        { title: 'Total Posts', value: projects, icon: FileText },
-        { title: 'Total Projects', value: posts, icon: Layers },
-        { title: 'Total Comments', value: comments, icon: BarChart },
+        { icon: FileText, title: 'Total Posts', value: projects },
+        { icon: Layers, title: 'Total Projects', value: posts },
+        { icon: BarChart, title: 'Total Comments', value: comments },
     ];
 
     return (

@@ -1,7 +1,8 @@
-import { $Enums } from '@prisma/client';
 import type { NextRequest } from 'next/server';
+
+import { auth } from '@/server/auth';
+import { $Enums } from '@prisma/client';
 import { NextResponse } from 'next/server';
-import { auth } from './lib/auth';
 
 export async function middleware(request: NextRequest) {
     const session = await auth();

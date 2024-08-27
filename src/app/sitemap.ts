@@ -1,23 +1,23 @@
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 import { $Enums, type Post } from '@prisma/client';
 import { type Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
 const BASE_URL = 'https://pyyupsk.vercel.app';
 
 type Sitemap = {
-    url: string;
-    lastModified?: string | Date;
-    changeFrequency?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-    priority?: number;
     alternates?: {
         languages?: Languages<string>;
     };
+    changeFrequency?: 'always' | 'daily' | 'hourly' | 'monthly' | 'never' | 'weekly' | 'yearly';
+    lastModified?: Date | string;
+    priority?: number;
+    url: string;
 };
 
 export default async function sitemap(): Promise<Sitemap[]> {
     const posts = await prisma.post.findMany({
-        where: { status: $Enums.PostStatus.PUBLISHED },
         select: { id: true },
+        where: { status: $Enums.PostStatus.PUBLISHED },
     });
 
     const homePage = generatePageMetadata(BASE_URL, 'weekly');
@@ -31,10 +31,10 @@ export default async function sitemap(): Promise<Sitemap[]> {
 
 function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequency']): Sitemap {
     return {
-        url,
+        changeFrequency,
         lastModified: new Date(),
         priority: 1.0,
-        changeFrequency,
+        url,
     };
 }
 
@@ -49,9 +49,9 @@ function generatePostsMetadata(posts: { id: Post['id'] }[]): Sitemap[] {
 
 function generatePostMetadata(posts: { id: Post['id'] }[]): Sitemap[] {
     return posts.map(({ id }) => ({
-        url: `${BASE_URL}/post/${id}`,
+        changeFrequency: 'daily',
         lastModified: new Date(),
         priority: 0.64,
-        changeFrequency: 'daily',
+        url: `${BASE_URL}/post/${id}`,
     }));
 }

@@ -1,14 +1,14 @@
 import { cn } from '@/lib/utils';
 
 type Props = {
-    title: string;
+    children?: React.ReactNode;
+    className?: string;
     description: string;
     icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-    className?: string;
-    children?: React.ReactNode;
+    title: string;
 };
 
-export function EmptyState({ title, description, icon, className, children }: Props) {
+export function EmptyState({ children, className, description, icon, title }: Props) {
     const Icon = icon || (() => null);
 
     return (

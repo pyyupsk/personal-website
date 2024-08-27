@@ -4,6 +4,7 @@ import { navigation } from '@/constants/navigation';
 import { socials } from '@/constants/socials';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import { ThemeSwitcher } from '../../../components/theme-switcher';
 
 export function Footer() {
@@ -33,7 +34,7 @@ export function Footer() {
                 <ul className="flex gap-3">
                     {navigation.map((item) => (
                         <li key={item.name}>
-                            <Link href={item.href} aria-current={item.href === pathname}>
+                            <Link aria-current={item.href === pathname} href={item.href}>
                                 {item.name}
                             </Link>
                         </li>

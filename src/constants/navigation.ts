@@ -1,19 +1,19 @@
 type Navigation = {
-    name: string;
     href: string;
+    name: string;
 };
 
 export const navigation: Navigation[] = [
     {
-        name: 'About',
         href: '/',
+        name: 'About',
     },
     {
-        name: 'Projects',
         href: '/projects',
+        name: 'Projects',
     },
     {
-        name: 'Posts',
         href: '/posts/1',
+        name: 'Posts',
     },
 ];

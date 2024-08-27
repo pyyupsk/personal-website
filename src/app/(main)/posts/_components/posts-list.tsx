@@ -1,16 +1,17 @@
 'use client';
 
 import { type Post } from '@prisma/client';
+
 import { Pagination } from './pagination';
 import { PostCard } from './post-card';
 
 export function PostsList({
-    posts,
     page,
+    posts,
     total,
 }: {
-    posts: Omit<Post, 'content' | 'status'>[];
     page: number;
+    posts: Omit<Post, 'content' | 'status'>[];
     total: number;
 }) {
     return (

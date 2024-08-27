@@ -1,14 +1,14 @@
 import { EditIcon, Home, MessageCircleIcon, ProjectorIcon } from 'lucide-react';
 
 type Navigation = {
-    name: string;
     href: string;
     icon: React.ElementType;
+    name: string;
 };
 
 export const navigation: Navigation[] = [
-    { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'Posts', href: '/dashboard/posts', icon: EditIcon },
-    { name: 'Projects', href: '/dashboard/projects', icon: ProjectorIcon },
-    { name: 'Comments', href: '/dashboard/comments', icon: MessageCircleIcon },
+    { href: '/dashboard', icon: Home, name: 'Dashboard' },
+    { href: '/dashboard/posts', icon: EditIcon, name: 'Posts' },
+    { href: '/dashboard/projects', icon: ProjectorIcon, name: 'Projects' },
+    { href: '/dashboard/comments', icon: MessageCircleIcon, name: 'Comments' },
 ];

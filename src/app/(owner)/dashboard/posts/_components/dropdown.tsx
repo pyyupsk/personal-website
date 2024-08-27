@@ -8,6 +8,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Eye, Link, MoreVertical, Pencil, Trash2 } from 'lucide-react';
+
 import { useSelected } from '../_stores/selected';
 
 export function Dropdown({ postId }: { postId: string }) {
@@ -16,7 +17,7 @@ export function Dropdown({ postId }: { postId: string }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="size-8 p-0">
+                <Button className="size-8 p-0" variant="ghost">
                     <span className="sr-only">Open menu</span>
                     <MoreVertical className="size-4" />
                 </Button>

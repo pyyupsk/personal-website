@@ -1,26 +1,26 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 import { formatDistanceToNow } from 'date-fns';
 
 export async function CommentList({ postId }: { postId: string }) {
     const comments = await prisma.comment.findMany({
-        where: { postId },
         select: {
-            id: true,
-            content: true,
-            author: { select: { name: true, image: true } },
+            author: { select: { image: true, name: true } },
             commentDate: true,
+            content: true,
+            id: true,
         },
+        where: { postId },
     });
 
     return (
         <div className="space-y-1.5 divide-y">
             {comments.map((comment) => (
-                <div key={comment.id} className="flex gap-3 bg-background py-3 shadow-sm">
+                <div className="flex gap-3 bg-background py-3 shadow-sm" key={comment.id}>
                     <Avatar className="size-8">
                         <AvatarImage
-                            src={comment.author.image || undefined}
                             alt={comment.author.name || 'User Avatar'}
+                            src={comment.author.image || undefined}
                         />
                         <AvatarFallback>
                             {comment.author.name?.charAt(0).toUpperCase()}

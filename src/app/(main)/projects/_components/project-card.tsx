@@ -10,11 +10,11 @@ export function ProjectCard({ project }: { project: Project }) {
         <CardComponent className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg">
             <CardHeader className="p-0">
                 <Image
-                    src={project.thumbnails}
                     alt={project.title}
-                    height={500}
-                    width={500}
                     className="aspect-video rounded-t object-cover"
+                    height={500}
+                    src={project.thumbnails}
+                    width={500}
                 />
             </CardHeader>
             <CardContent className="p-3">

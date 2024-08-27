@@ -1,15 +1,15 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/server/prisma';
 
 export async function createComment({
-    postId,
-    content,
     authorId,
+    content,
+    postId,
 }: {
-    postId: string;
-    content: string;
     authorId: string;
+    content: string;
+    postId: string;
 }) {
-    return prisma.comment.create({ data: { postId, content, authorId } });
+    return prisma.comment.create({ data: { authorId, content, postId } });
 }

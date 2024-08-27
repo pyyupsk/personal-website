@@ -3,25 +3,25 @@ import { MdiAt } from '@/components/icons/MdiAt';
 import { MdiGithub } from '@/components/icons/MdiGithub';
 
 type Social = {
-    name: string;
     href: string;
     icon: React.FC<React.SVGProps<SVGSVGElement>>;
+    name: string;
 };
 
 export const socials: Social[] = [
     {
-        name: 'Email',
         href: 'mailto:pyyupsk@proton.me',
         icon: MdiAt,
+        name: 'Email',
     },
     {
-        name: 'GitHub',
         href: 'https://github.com/pyyupsk',
         icon: MdiGithub,
+        name: 'GitHub',
     },
     {
-        name: 'X',
         href: 'https://x.com/pyyupsk_',
         icon: Fa6BrandsXTwitter,
+        name: 'X',
     },
 ];
