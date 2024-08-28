@@ -1,4 +1,5 @@
 import { commonMetaData } from '@/lib/meta';
+import { cn } from '@/lib/utils';
 import { Suspense } from 'react';
 
 import { PostsFeed } from '../_components/posts-feed';
@@ -16,8 +17,16 @@ export function generateMetadata() {
 
 export default async function Page({ params }: { params: { page: string } }) {
     return (
-        <Suspense fallback={<Skeleton count={5} />}>
-            <PostsFeed page={parseInt(params.page)} />
-        </Suspense>
+        <>
+            <p className={cn('mb-6', params.page !== '1' && 'hidden')}>
+                In my blog, I share insights from my journey as a self-taught programmer. Whether
+                it’s a deep dive into a specific technology or a reflection on my experiences, each
+                post is written to help others learn and grow alongside me. Feel free to leave your
+                thoughts in the comments—I’d love to hear from you.
+            </p>
+            <Suspense fallback={<Skeleton count={5} />}>
+                <PostsFeed page={parseInt(params.page)} />
+            </Suspense>
+        </>
     );
 }

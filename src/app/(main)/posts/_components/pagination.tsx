@@ -9,7 +9,13 @@ import {
 } from '@/components/ui/pagination';
 import { cn } from '@/lib/utils';
 
-export function Pagination({ current, pages }: { current: number; pages: number }) {
+interface Props {
+    className?: string;
+    current: number;
+    pages: number;
+}
+
+export function Pagination({ className, current, pages }: Props) {
     // Early return if there's only one page
     if (pages <= 1) {
         return null;
@@ -72,7 +78,7 @@ export function Pagination({ current, pages }: { current: number; pages: number 
     };
 
     return (
-        <BasePagination className={cn({ hidden: pages <= 1 })}>
+        <BasePagination className={cn(className, { hidden: pages <= 1 })}>
             <PaginationContent>{createPageLinks()}</PaginationContent>
         </BasePagination>
     );

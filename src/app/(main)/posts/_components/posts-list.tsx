@@ -19,7 +19,7 @@ export function PostsList({
             {posts.map((post) => (
                 <PostCard key={post.id} post={post} />
             ))}
-            <Pagination current={page} pages={Math.ceil(total / 5)} />
+            <Pagination className="justify-end" current={page} pages={Math.ceil(total / 5)} />
         </article>
     );
 }

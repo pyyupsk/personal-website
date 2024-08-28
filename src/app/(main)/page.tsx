@@ -14,46 +14,45 @@ export function generateMetadata() {
 export default function Page() {
     return (
         <article className="space-y-3">
-            <p className="!text-base !text-foreground">
-                Hi, I&apos;m First &mdash; A Passionate Developer Obsessed with Code.
+            <p>
+                Hello! My name is Pongsakorn Thipayanate, but most people know me as{' '}
+                <code>First</code>. At 21 years old, I’ve carved a path as a self-taught programmer.
+                Though I don’t have a traditional education, my passion for coding drives me to work
+                on projects from the moment I wake up until I fall asleep. My journey hasn&apos;t
+                been linear, but every twist and turn has shaped me into the developer I am today.
             </p>
             <p>
-                From dawn till dusk, I immerse myself in code, turning ideas into reality with a
-                focus on systematic thinking, security, and efficiency.
+                Growing up, I was a mischievous child with a knack for technology. Despite my
+                unconventional educational path, where I switched schools and faced setbacks, I
+                discovered my true passion when I got my first computer. I dove headfirst into
+                programming, teaching myself everything I could. This hands-on approach made me
+                realize that formal education wasn&apos;t my only route to success. Today, I&apos;m
+                working toward completing my Mathayom 6 degree through non-formal education, with
+                plans to pursue a bachelor&apos;s degree in the future.
             </p>
             <p>
-                My name is Pongsakorn <code>First</code> Thipayanate, and I&apos;m a {age}-year-old
-                self-taught developer who codes from sunrise to sunset. Despite a non-traditional
-                educational path, my passion for programming and relentless curiosity have driven me
-                to master the art of coding.
+                My strengths lie in my ability to think systematically and manage complex system
+                architectures. I’m focused on ensuring security at every level—whether it&apos;s
+                database management, API development, or type safety. I thrive on challenges, using
+                a methodical approach to reverse engineering, always asking &quot;why&quot; to get
+                to the heart of any problem.
             </p>
             <p>
-                I grew up in Phichit Province, where my love for technology began early. My journey
-                has been unconventional—full of challenges and self-discovery. I&apos;ve transferred
-                schools, dropped out, and eventually found my way through self-study. Today,
-                I&apos;m back in non-formal education to complete my high school diploma, with the
-                goal of earning a bachelor&apos;s degree and advancing my career in tech.
+                My philosophy is simple: &quot;Start with why.&quot; I’m driven by curiosity and a
+                desire to understand how things work, which fuels my passion for reverse engineering
+                and constant improvement. If something doesn’t work, I call it version 1 and keep
+                refining it until it does.
             </p>
             <p>
-                I have a knack for systematic thinking, and I enjoy designing and managing system
-                architectures with a focus on security. Whether it&apos;s ensuring database
-                integrity, API security, or type safety, I&apos;m committed to building reliable and
-                scalable solutions.
+                You might think coding all day leaves little room for hobbies, but honestly, coding
+                is both my work and my play. It’s what I love to do, and I wouldn’t have it any
+                other way.
             </p>
             <p>
-                I&apos;m driven by a constant need to understand &apos;why.&apos; This curiosity
-                fuels my approach to reverse engineering and continuous learning. When something
-                doesn&apos;t work, I call it &apos;version 1&apos; and keep iterating until it does.
-            </p>
-            <p>
-                When I&apos;m not coding… Well, I&apos;m always coding! It&apos;s both my work and
-                my hobby.
-            </p>
-            <p>
-                In the next five years, I see myself not only with a bachelor&apos;s degree but also
-                as a developer who is continually learning and creating. My goal is to develop
-                Software as a Service (SaaS) products that make a difference while constantly
-                refining my skills.
+                In the next five years, I see myself earning a bachelor’s degree and diving deeper
+                into the world of SaaS development. My aim is to create innovative software
+                solutions that generate income while continuing to learn and grow in my career. This
+                website will evolve with me, showcasing my journey every step of the way.
             </p>
         </article>
     );

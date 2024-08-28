@@ -1,31 +1,28 @@
 import { Badge } from '@/components/ui/badge';
-import { Card as CardComponent, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { getStatusColor } from '@/utils/colors';
 import { type Project } from '@prisma/client';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function ProjectCard({ project }: { project: Project }) {
     return (
-        <CardComponent className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg">
-            <CardHeader className="p-0">
+        <Link className="grid grid-cols-6 gap-3 rounded-md" href={project.link}>
+            <div className="relative col-span-2">
                 <Image
                     alt={project.title}
-                    className="aspect-video rounded-t object-cover"
-                    height={500}
+                    className="aspect-video rounded-md"
+                    height={200}
                     src={project.thumbnails}
-                    width={500}
+                    width={200}
                 />
-            </CardHeader>
-            <CardContent className="p-3">
-                <CardTitle>{project.title}</CardTitle>
-                <div className="relative max-h-[40px] overflow-hidden transition-all duration-300 group-hover:max-h-[100px]">
-                    <p>{project.description}</p>
+            </div>
+            <div className="col-span-4">
+                <div className="flex items-center gap-3">
+                    <h3>{project.title}</h3>
+                    <Badge color={getStatusColor(project.status)}>{project.status}</Badge>
                 </div>
-                <Badge className={cn('mt-3', getStatusColor(project.status))}>
-                    {project.status.replace('_', ' ')}
-                </Badge>
-            </CardContent>
-        </CardComponent>
+                <p>{project.description}</p>
+            </div>
+        </Link>
     );
 }

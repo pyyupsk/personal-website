@@ -80,19 +80,19 @@ h6 {
 }
 
 h1 {
-    @apply !text-2xl;
+    @apply !text-xl;
 }
 
 h2 {
-    @apply !pb-2 !text-xl;
+    @apply !pb-2 !text-lg !text-foreground/80;
 }
 
 h3 {
-    @apply !text-lg;
+    @apply !text-base !text-foreground/80;
 }
 
 h4 {
-    @apply !text-base;
+    @apply !text-sm !text-foreground/80;
 }
 
 p,
@@ -104,12 +104,16 @@ pre {
     @apply !text-sm !text-muted-foreground;
 }
 
+strong {
+    @apply !text-foreground/80;
+}
+
 a {
-    @apply !transition-all !duration-100 hover:!text-foreground;
+    @apply !transition-all !duration-100 hover:!text-foreground/80;
 }
 
 a[aria-current='true'] {
-    @apply !text-foreground;
+    @apply !text-foreground/80;
 }
 
 blockquote {
@@ -117,7 +121,7 @@ blockquote {
 }
 
 code {
-    @apply relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    @apply relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold !text-foreground/80;
 }
 
 .rehype-code-title {
