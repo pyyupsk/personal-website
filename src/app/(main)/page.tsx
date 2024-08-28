@@ -16,10 +16,11 @@ export default function Page() {
         <article className="space-y-3">
             <p>
                 Hello! My name is Pongsakorn Thipayanate, but most people know me as{' '}
-                <code>First</code>. At 21 years old, I’ve carved a path as a self-taught programmer.
-                Though I don’t have a traditional education, my passion for coding drives me to work
-                on projects from the moment I wake up until I fall asleep. My journey hasn&apos;t
-                been linear, but every twist and turn has shaped me into the developer I am today.
+                <code>First</code>, currently {age} years old. I’ve carved a path as a self-taught
+                programmer. Though I don’t have a traditional education, my passion for coding
+                drives me to work on projects from the moment I wake up until I fall asleep. My
+                journey hasn&apos;t been linear, but every twist and turn has shaped me into the
+                developer I am today.
             </p>
             <p>
                 Growing up, I was a mischievous child with a knack for technology. Despite my
