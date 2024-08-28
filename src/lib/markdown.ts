@@ -35,7 +35,13 @@ const processor = unified()
     .use(rehypeShiki, options)
     .use(rehypeStringify);
 
+let cachedProcessor: null | ReturnType<typeof processor> = null;
+
 export async function processMarkdown(markdown: string): Promise<string> {
-    const result = await processor.process(markdown);
+    if (!cachedProcessor) {
+        cachedProcessor = processor;
+        await cachedProcessor.process('');
+    }
+    const result = await cachedProcessor.process(markdown);
     return result.toString();
 }
