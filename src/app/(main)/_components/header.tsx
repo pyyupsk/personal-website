@@ -10,7 +10,7 @@ export function Header() {
     const page = navigation.find((page) => page.href === pathname);
 
     return (
-        <header className="container flex flex-col items-center justify-between gap-3 pt-20 md:flex-row">
+        <header className="container flex items-center justify-between gap-3 pt-20">
             <span className="text-xl font-semibold tracking-tight">{page?.name}</span>
             <nav>
                 <ul className="flex items-center gap-3">

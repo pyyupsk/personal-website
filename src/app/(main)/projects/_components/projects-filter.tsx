@@ -22,7 +22,7 @@ export function ProjectsFilter() {
 
     if (!mounted) {
         return (
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="mb-6 flex items-center justify-between gap-4">
                 <Skeleton className="h-8 w-full sm:w-64" />
                 <Skeleton className="h-8 w-full sm:w-40" />
             </div>
@@ -30,7 +30,7 @@ export function ProjectsFilter() {
     }
 
     return (
-        <div className="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <div className="mb-6 flex items-center justify-between gap-4">
             <div className="relative w-full sm:w-64">
                 <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -42,7 +42,7 @@ export function ProjectsFilter() {
                 />
             </div>
             <Select onValueChange={setStatusFilter} value={statusFilter}>
-                <SelectTrigger aria-label="Filter by status" className="w-full sm:w-40">
+                <SelectTrigger aria-label="Filter by status" className="w-56">
                     <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>
