@@ -4,28 +4,28 @@ const withBundleAnalyzer = BundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
                 hostname: 'geon6kvypdtg3nc1.public.blob.vercel-storage.com',
+                protocol: 'https',
             },
             {
-                protocol: 'https',
                 hostname: 'avatars.githubusercontent.com',
-                port: '',
                 pathname: '/u/**',
+                port: '',
+                protocol: 'https',
             },
             {
-                protocol: 'https',
                 hostname: 'ui-avatars.com',
-                port: '',
                 pathname: '/api/**',
+                port: '',
+                protocol: 'https',
             },
         ],
     },
+    reactStrictMode: true,
+    swcMinify: true,
 };
 
 export default withBundleAnalyzer(nextConfig);

@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <div className="col-span-4">
                 <div className="flex items-center gap-3">
                     <h3>{project.title}</h3>
-                    <Badge color={getStatusColor(project.status)}>{project.status}</Badge>
+                    <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
                 </div>
                 <p>{project.description}</p>
             </div>
