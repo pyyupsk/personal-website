@@ -1,5 +1,6 @@
 import { commonMetaData } from '@/lib/meta';
 import { cn } from '@/lib/utils';
+import { prisma } from '@/server/prisma';
 import { Suspense } from 'react';
 
 import { PostsFeed } from '../_components/posts-feed';
@@ -16,6 +17,8 @@ export function generateMetadata() {
 }
 
 export default async function Page({ params }: { params: { page: string } }) {
+    const total = await prisma.post.count();
+
     return (
         <>
             <p className={cn('mb-6', params.page !== '1' && 'hidden')}>
@@ -24,8 +27,8 @@ export default async function Page({ params }: { params: { page: string } }) {
                 post is written to help others learn and grow alongside me. Feel free to leave your
                 thoughts in the comments—I’d love to hear from you.
             </p>
-            <Suspense fallback={<Skeleton count={5} />}>
-                <PostsFeed page={parseInt(params.page)} />
+            <Suspense fallback={<Skeleton count={total < 5 ? total : 5} />}>
+                <PostsFeed page={parseInt(params.page)} total={total} />
             </Suspense>
         </>
     );

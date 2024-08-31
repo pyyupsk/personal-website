@@ -7,8 +7,7 @@ import Link from 'next/link';
 
 import { PostsList } from './posts-list';
 
-export async function PostsFeed({ page }: { page: number }) {
-    const total = await prisma.post.count();
+export async function PostsFeed({ page, total }: { page: number; total: number }) {
     const posts = await prisma.post.findMany({
         orderBy: {
             publishDate: 'desc',
