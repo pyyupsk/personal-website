@@ -1,6 +1,17 @@
 import { buttonVariants } from '@/components/ui/button';
+import { commonMetaData } from '@/lib/meta';
 import { ArrowLeftIcon } from 'lucide-react';
 import Link from 'next/link';
+
+export function generateMetadata() {
+    const metaData = commonMetaData({
+        description:
+            'Sorry, the page you’re looking for doesn’t exist. Return to the homepage or explore my latest posts and projects for more insights and updates.',
+        title: 'Page Not Found - Pongsakorn Thipayanate',
+    });
+
+    return metaData;
+}
 
 export default function Custom404() {
     return (

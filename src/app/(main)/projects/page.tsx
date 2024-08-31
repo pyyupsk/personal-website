@@ -8,8 +8,8 @@ import { Skeleton } from './_components/skeleton';
 export function generateMetadata() {
     const metaData = commonMetaData({
         description:
-            "Explore First's portfolio of web development projects, showcasing skills in Node.js, system architecture, and security. See how each project reflects a commitment to performance and scalability.",
-        title: 'Projects by First – Innovative Web Solutions & Coding Excellence',
+            'Check out Pongsakorn Thipayanate’s web projects, including powerful Node.js applications, innovative tools, and engaging community sites. Explore completed projects like GeoThai, Safecy, and more.',
+        title: 'Explore My Web Projects: From Node.js Mastery to Innovative Tools',
     });
 
     return metaData;

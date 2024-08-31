@@ -8,8 +8,8 @@ import { Skeleton } from '../_components/skeleton';
 export function generateMetadata() {
     const metaData = commonMetaData({
         description:
-            "Read First's latest blog posts on programming, reverse engineering, and personal growth. Dive into a journey of coding challenges, solutions, and knowledge-sharing.",
-        title: "First's Blog – Insights & Experiences from a Dedicated Programmer",
+            'Explore the blog of Pongsakorn Thipayanate, where he shares valuable insights and reflections from his journey as a self-taught programmer. Read posts on NoSQL vs SQL, Next.js with Prisma ORM, and more.',
+        title: 'Programming Insights: Blog by Pongsakorn Thipayanate',
     });
 
     return metaData;

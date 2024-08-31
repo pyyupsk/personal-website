@@ -24,14 +24,14 @@ export async function generateMetadata({ params: { slug } }: Props) {
     if (!post) {
         return commonMetaData({
             description:
-                "Oops! It looks like the page you're looking for doesn't exist. Head back to explore other projects, blog posts, and insights from First.",
-            title: 'Page Not Found – Explore More from First',
+                "Oops! The page you're looking for doesn't exist. Explore the latest posts and projects by Pongsakorn Thipayanate or return to the homepage for more insights and updates.",
+            title: 'Page Not Found - Pongsakorn Thipayanate',
         });
     }
 
     const metaData = commonMetaData({
-        description: `Read "${post.title}" by First. Discover insights, challenges, and experiences in programming. Explore this detailed blog post on https://pyyupsk.vercel.app.`,
-        title: `${post.title}  – Insights from First's Programming Journey`,
+        description: `Explore '${post.title}' by Pongsakorn Thipayanate, where he shares his personal insights and detailed analysis on programming and technology. Dive into the latest in tech and development.`,
+        title: `${post.title}  – Insights from Pongsakorn Thipayanate`,
     });
 
     return metaData;
