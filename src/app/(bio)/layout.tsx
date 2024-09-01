@@ -3,8 +3,8 @@ import { commonMetaData } from '@/lib/meta';
 export function generateMetadata() {
     const metaData = commonMetaData({
         description:
-            'Meet Pongsakorn Thipayanate, a self-taught coder with a passion for Node.js and web development. Explore my portfolio, read my blog, and connect with me on GitHub and Twitter.',
-        title: 'Pongsakorn Thipayanate - Self-Taught Programmer & Web Developer',
+            'Meet Pongsakorn Thipayanate, a self-taught coder passionate about Node.js and web development. Explore my projects, blog, and connect via GitHub, Twitter, or email.',
+        title: 'Pongsakorn Thipayanate | Programmer & Web Developer',
     });
 
     return metaData;

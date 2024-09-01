@@ -38,7 +38,7 @@ export default function Component() {
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
                     <CardTitle>First (Pongsakorn Thipayanate)</CardTitle>
-                    <CardDescription>Programmer & Web Developer</CardDescription>
+                    <CardDescription>Independent Programmer</CardDescription>
                 </motion.div>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -48,8 +48,8 @@ export default function Component() {
                     initial={{ opacity: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
                 >
-                    Self-taught coder with a passion for Node.js and web development. Check out my
-                    projects and connect below.
+                    Self-taught developer focused on Node.js and web solutions. Explore my projects
+                    and insights on my website.
                 </motion.p>
                 <div className="grid gap-3">
                     {socials.map((link, index) => {
