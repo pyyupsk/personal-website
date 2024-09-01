@@ -10,29 +10,32 @@ type Social = {
     name: string;
 };
 
-export const socials: Social[] = [
-    {
-        description: 'Discover my work and read my latest posts.',
-        href: 'https://pyyupsk.vercel.app',
-        icon: Globe,
-        name: 'Portfolio & Blog',
-    },
-    {
-        description: 'Check out my repositories and code.',
-        href: 'mailto:pyyupsk@proton.me',
-        icon: MdiAt,
-        name: 'Email',
-    },
-    {
-        description: 'Check out my repositories and code.',
-        href: 'https://github.com/pyyupsk',
-        icon: MdiGithub,
-        name: 'GitHub',
-    },
-    {
-        description: 'Follow me for tech insights and updates.',
-        href: 'https://x.com/pyyupsk_',
-        icon: Fa6BrandsXTwitter,
-        name: 'X (Twitter)',
-    },
-];
+export const email: Social = {
+    description: 'Check out my repositories and code.',
+    href: 'mailto:pyyupsk@proton.me',
+    icon: MdiAt,
+    name: 'Email',
+};
+
+export const portfolio: Social = {
+    description: 'Discover my work and read my latest posts.',
+    href: 'https://pyyupsk.vercel.app',
+    icon: Globe,
+    name: 'Portfolio & Blog',
+};
+
+export const gitHub: Social = {
+    description: 'Check out my repositories and code.',
+    href: 'https://github.com/pyyupsk',
+    icon: MdiGithub,
+    name: 'GitHub',
+};
+
+export const x: Social = {
+    description: 'Follow me for tech insights and updates.',
+    href: 'https://x.com/pyyupsk_',
+    icon: Fa6BrandsXTwitter,
+    name: 'X (Twitter)',
+};
+
+export const socials: Social[] = [portfolio, gitHub, x, email];
