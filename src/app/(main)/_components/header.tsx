@@ -7,11 +7,9 @@ import { usePathname } from 'next/navigation';
 export function Header() {
     const pathname = usePathname();
 
-    const page = navigation.find((page) => page.href === pathname);
-
     return (
         <header className="container flex items-center justify-between gap-3 pt-20">
-            <span className="text-xl font-semibold tracking-tight">{page?.name}</span>
+            <span className="text-xl font-semibold tracking-tight">Pongsakorn Thipayanate</span>
             <nav>
                 <ul className="flex items-center gap-3">
                     {navigation.map((item) => (

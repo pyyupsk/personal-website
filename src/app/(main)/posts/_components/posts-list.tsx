@@ -15,11 +15,15 @@ export function PostsList({
     total: number;
 }) {
     return (
-        <article className="flex flex-col gap-3">
-            {posts.map((post) => (
-                <PostCard key={post.id} post={post} />
-            ))}
+        <section className="space-y-3">
+            <ul className="space-y-3">
+                {posts.map((post) => (
+                    <li key={post.id}>
+                        <PostCard post={post} />
+                    </li>
+                ))}
+            </ul>
             <Pagination className="justify-end" current={page} pages={Math.ceil(total / 5)} />
-        </article>
+        </section>
     );
 }

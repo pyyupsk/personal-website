@@ -37,10 +37,10 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
     }
 
     return (
-        <div className="flex flex-col divide-y">
+        <section className="flex flex-col divide-y">
             {filteredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
             ))}
-        </div>
+        </section>
     );
 }

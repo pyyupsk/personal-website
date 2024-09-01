@@ -17,21 +17,21 @@ type Props = {
 
 export async function generateMetadata({ params: { slug } }: Props) {
     const post = await prisma.post.findUnique({
-        select: { title: true },
+        select: { publishDate: true, title: true },
         where: { id: slug },
     });
 
     if (!post) {
         return commonMetaData({
             description:
-                "Oops! The page you're looking for doesn't exist. Explore the latest posts and projects by Pongsakorn Thipayanate or return to the homepage for more insights and updates.",
-            title: 'Page Not Found - Pongsakorn Thipayanate',
+                "The post you're looking for doesn't exist or has been moved. Explore other articles and insights on Pongsakorn Thipayanate's blog to find valuable content on programming, technology, and more.",
+            title: 'Post Not Found | Pongsakorn Thipayanate',
         });
     }
 
     const metaData = commonMetaData({
-        description: `Explore '${post.title}' by Pongsakorn Thipayanate, where he shares his personal insights and detailed analysis on programming and technology. Dive into the latest in tech and development.`,
-        title: `${post.title}  – Insights from Pongsakorn Thipayanate`,
+        description: `Read '${post.title}' on Pongsakorn Thipayanate's blog. Discover insights, tutorials, and reflections on programming and technology. Published on ${post.publishDate}.`,
+        title: `${post.title} | Pongsakorn Thipayanate's Blog`,
     });
 
     return metaData;
@@ -39,12 +39,12 @@ export async function generateMetadata({ params: { slug } }: Props) {
 
 export default async function Page({ params }: Props) {
     return (
-        <div className="space-y-3">
+        <section className="space-y-6">
             <Suspense fallback={<PostContentSkeleton />}>
                 <PostContent postId={params.slug} />
             </Suspense>
             <Separator />
             <Comment postId={params.slug} />
-        </div>
+        </section>
     );
 }

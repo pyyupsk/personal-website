@@ -24,18 +24,23 @@ export async function PostContent({ postId }: { postId: Post['id'] }) {
 
     return (
         <>
-            <div className="flex justify-between">
-                <time className="text-sm text-muted-foreground">
-                    Published on {format(post.publishDate, 'LLLL d, yyyy')}
-                </time>
-                <span className="text-sm text-muted-foreground">{readingTime} min read</span>
-            </div>
-            <article className="prose max-w-none dark:prose-invert">
-                <h1>{post.title}</h1>
-                {post.description && <p>{post.description}</p>}
-                <Separator />
-                <div dangerouslySetInnerHTML={{ __html: html }} />
-            </article>
+            <section className="space-y-1.5">
+                <div className="flex justify-between">
+                    <time className="text-sm text-muted-foreground">
+                        Published on {format(post.publishDate, 'LLLL d, yyyy')}
+                    </time>
+                    <span className="text-sm text-muted-foreground">{readingTime} min read</span>
+                </div>
+                <div className="prose max-w-none dark:prose-invert">
+                    <h1>{post.title}</h1>
+                    {post.description && <p>{post.description}</p>}
+                </div>
+            </section>
+            <Separator />
+            <article
+                className="prose max-w-none dark:prose-invert"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
         </>
     );
 }

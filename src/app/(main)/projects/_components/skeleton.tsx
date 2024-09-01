@@ -3,7 +3,7 @@ import { Skeleton as SkeletonComponent } from '@/components/ui/skeleton';
 
 export function Skeleton({ count }: { count: number }) {
     return (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <section className="grid grid-cols-1 gap-3 md:grid-cols-2">
             {Array.from({ length: count }).map((_, index) => (
                 <Card key={index}>
                     <CardHeader className="p-0">
@@ -19,6 +19,6 @@ export function Skeleton({ count }: { count: number }) {
                     </CardFooter>
                 </Card>
             ))}
-        </div>
+        </section>
     );
 }

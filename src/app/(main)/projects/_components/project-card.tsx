@@ -6,7 +6,10 @@ import Link from 'next/link';
 
 export function ProjectCard({ project }: { project: Project }) {
     return (
-        <Link className="grid grid-cols-1 gap-3 rounded-md py-3 sm:grid-cols-6" href={project.link}>
+        <Link
+            className="grid grid-cols-1 gap-3 rounded-md py-3 first:pt-0 sm:grid-cols-6"
+            href={project.link}
+        >
             <div className="relative sm:col-span-2">
                 <Image
                     alt={project.title}
@@ -21,7 +24,7 @@ export function ProjectCard({ project }: { project: Project }) {
                     <h3>{project.title}</h3>
                     <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
                 </div>
-                <p>{project.description}</p>
+                <p className="line-clamp-3 text-sm">{project.description}</p>
             </div>
         </Link>
     );

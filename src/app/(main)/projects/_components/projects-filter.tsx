@@ -22,15 +22,15 @@ export function ProjectsFilter() {
 
     if (!mounted) {
         return (
-            <div className="mb-6 flex items-center justify-between gap-4">
+            <section className="flex items-center justify-between gap-4">
                 <Skeleton className="h-8 w-full sm:w-64" />
                 <Skeleton className="h-8 w-full sm:w-40" />
-            </div>
+            </section>
         );
     }
 
     return (
-        <div className="mb-6 flex items-center justify-between gap-4">
+        <section className="flex items-center justify-between gap-4">
             <div className="relative w-full sm:w-64">
                 <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -53,6 +53,6 @@ export function ProjectsFilter() {
                     <SelectItem value="ON_HOLD">On Hold</SelectItem>
                 </SelectContent>
             </Select>
-        </div>
+        </section>
     );
 }

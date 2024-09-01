@@ -17,7 +17,7 @@ export function Footer() {
     return (
         <footer className="container border-t bg-background pb-20 pt-6">
             <div className="flex items-center justify-between gap-3">
-                <p>© {copyrightYearRange} First, All rights reserved.</p>
+                <p className="text-sm">© {copyrightYearRange} First, All rights reserved.</p>
                 <ThemeSwitcher />
             </div>
             <nav className="mt-3 flex items-center justify-between">
@@ -33,7 +33,7 @@ export function Footer() {
                 </ul>
                 <ul className="flex gap-3">
                     {navigation.map((item) => (
-                        <li key={item.name}>
+                        <li className="text-sm" key={item.name}>
                             <Link aria-current={item.href === pathname} href={item.href}>
                                 {item.name}
                             </Link>

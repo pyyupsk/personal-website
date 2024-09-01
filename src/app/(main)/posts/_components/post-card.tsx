@@ -9,7 +9,7 @@ export function PostCard({ post }: { post: Omit<Post, 'content' | 'status'> }) {
             <time className="text-sm text-muted-foreground">
                 {format(post.publishDate, 'LLLL d, yyyy')}
             </time>
-            {post.description && <p className="mt-1.5 line-clamp-2">{post.description}</p>}
+            {post.description && <p className="mt-1.5 text-sm">{post.description}</p>}
         </Link>
     );
 }

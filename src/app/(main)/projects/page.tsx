@@ -8,8 +8,8 @@ import { Skeleton } from './_components/skeleton';
 export function generateMetadata() {
     const metaData = commonMetaData({
         description:
-            'Check out Pongsakorn Thipayanate’s web projects, including powerful Node.js applications, innovative tools, and engaging community sites. Explore completed projects like GeoThai, Safecy, and more.',
-        title: 'Explore My Web Projects: From Node.js Mastery to Innovative Tools',
+            'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
+        title: 'Showcasing My Projects | Innovative Solutions & Web Development',
     });
 
     return metaData;
@@ -17,17 +17,21 @@ export function generateMetadata() {
 
 export default async function Page() {
     return (
-        <>
-            <p className="mb-6">
-                I work primarily on web projects, especially those involving Node.js. I love the
-                flexibility and power it gives me to build everything from the backend to the
-                frontend. Below are some of the projects I’ve poured my heart into, with my personal
-                website being the crown jewel—a showcase of all my skills and experiences.
-            </p>
+        <div className="space-y-6">
+            <section className="space-y-3">
+                <p className="text-xl text-foreground">Showcasing My Projects</p>
+                <p className="leading-relaxed">
+                    Explore a selection of my work that demonstrates my expertise in programming and
+                    web development. Each project reflects my dedication to building innovative
+                    solutions, solving complex problems, and applying cutting-edge technologies.
+                    From personal endeavors to freelance projects, these examples highlight my
+                    skills and the value I bring to every challenge.
+                </p>
+            </section>
             <ProjectsFilter />
             <Suspense fallback={<Skeleton count={4} />}>
                 <ProjectsFeed />
             </Suspense>
-        </>
+        </div>
     );
 }

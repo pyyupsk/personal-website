@@ -2,7 +2,7 @@ import { Skeleton as SkeletonComponent } from '@/components/ui/skeleton';
 
 export function Skeleton({ count }: { count: number }) {
     return (
-        <div className="flex flex-col gap-3">
+        <section className="space-y-3">
             {Array.from({ length: count }).map((_, index) => (
                 <div key={index}>
                     <SkeletonComponent className="mb-2 h-6 w-3/4 rounded-md" />
@@ -11,6 +11,6 @@ export function Skeleton({ count }: { count: number }) {
                     <SkeletonComponent className="mb-2 h-4 w-3/5 rounded-md" />
                 </div>
             ))}
-        </div>
+        </section>
     );
 }
