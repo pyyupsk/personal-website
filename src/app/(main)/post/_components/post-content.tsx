@@ -1,27 +1,14 @@
 import { Separator } from '@/components/ui/separator';
-import { processMarkdown } from '@/lib/markdown';
-import { prisma } from '@/server/prisma';
 import { type Post } from '@prisma/client';
 import { format } from 'date-fns';
-import { redirect } from 'next/navigation';
 
-export async function PostContent({ postId }: { postId: Post['id'] }) {
-    const post = await prisma.post.findUnique({
-        select: {
-            content: true,
-            description: true,
-            id: true,
-            publishDate: true,
-            title: true,
-        },
-        where: { id: postId },
-    });
+interface Props {
+    html: string;
+    post: Omit<Post, 'status'>;
+    readingTime: number;
+}
 
-    if (!post) return redirect('/not-found');
-
-    const html = await processMarkdown(post.content);
-    const readingTime = Math.ceil(html.split(' ').length / 150);
-
+export function PostContent({ html, post, readingTime }: Props) {
     return (
         <>
             <section className="space-y-1.5">
