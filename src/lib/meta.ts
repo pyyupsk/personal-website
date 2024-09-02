@@ -3,10 +3,11 @@ import { type TemplateString } from 'next/dist/lib/metadata/types/metadata-types
 
 type CommonMetaData = {
     description: string;
+    image?: string;
     title: string | TemplateString;
 };
 
-export function commonMetaData({ description, title }: CommonMetaData): Metadata {
+export function commonMetaData({ description, image, title }: CommonMetaData): Metadata {
     return {
         authors: [{ name: '@pyyupsk' }],
         description,
@@ -16,7 +17,7 @@ export function commonMetaData({ description, title }: CommonMetaData): Metadata
             images: [
                 {
                     height: 630,
-                    url: '/og.png',
+                    url: image || '/og.png',
                     width: 1200,
                 },
             ],

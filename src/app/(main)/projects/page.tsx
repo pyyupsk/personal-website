@@ -9,6 +9,7 @@ export function generateMetadata() {
     const metaData = commonMetaData({
         description:
             'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
+        image: `/api/og?title=${encodeURIComponent('My Projects | Innovative Web Solutions')}&description=${encodeURIComponent('Explore my web development projects, showcasing my expertise in creating innovative solutions and solving complex problems.')}`,
         title: 'Showcasing My Projects | Innovative Solutions & Web Development',
     });
 
