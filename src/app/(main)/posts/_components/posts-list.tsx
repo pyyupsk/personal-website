@@ -16,7 +16,7 @@ export function PostsList({
 }) {
     return (
         <section className="space-y-3">
-            <ul className="space-y-3">
+            <ul className="space-y-3 divide-y">
                 {posts.map((post) => (
                     <li key={post.id}>
                         <PostCard post={post} />
