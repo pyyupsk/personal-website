@@ -102,57 +102,39 @@ const config = {
                             '@apply text-foreground': {},
                         },
                         blockquote: {
-                            '@apply mt-6 border-l-2 pl-6 italic text-muted-foreground': {},
+                            '@apply mt-6 border-l-2 pl-6 italic': {},
                         },
                         code: {
                             '@apply relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground':
                                 {},
                         },
-                        'code::after': {
-                            content: '""',
-                        },
-                        'code::before': {
+                        'code::before, code::after': {
                             content: '""',
                         },
                         h1: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground text-xl':
+                            '@apply text-xl': {},
+                        },
+                        'h1, h2, h3, h4, h5, h6': {
+                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground':
                                 {},
                         },
                         h2: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground pb-2 text-lg':
-                                {},
+                            '@apply pb-2 text-lg': {},
                         },
                         h3: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground text-base':
-                                {},
+                            '@apply text-base': {},
                         },
                         h4: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground text-sm':
-                                {},
+                            '@apply text-sm': {},
                         },
-                        h5: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground':
-                                {},
-                        },
-                        h6: {
-                            '@apply my-1.5 scroll-m-20 font-semibold tracking-tight text-foreground':
-                                {},
-                        },
-                        ol: {
-                            '@apply text-muted-foreground': {},
-                        },
-                        p: {
-                            '@apply text-muted-foreground': {},
+                        'p, ul, ol, li, blockquote': {
+                            '@apply text-muted-foreground marker:text-muted-foreground': {},
                         },
                         pre: {
-                            '@apply overflow-x-auto rounded-md border p-3 text-muted-foreground':
-                                {},
+                            '@apply overflow-x-auto rounded-md border p-3': {},
                         },
                         strong: {
                             '@apply text-foreground': {},
-                        },
-                        ul: {
-                            '@apply text-muted-foreground': {},
                         },
                     },
                 },
