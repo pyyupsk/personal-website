@@ -5,7 +5,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <Header />
-            <main className="container grow py-12">{children}</main>
+            <main className="container grow py-6">{children}</main>
             <Footer />
         </>
     );

@@ -5,6 +5,9 @@ import { email } from '@/constants/socials';
 import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 
+import { Clock } from './_components/clock';
+import { DiscordProfile } from './_components/discord-profile';
+
 const experience = new Date().getFullYear() - 2019;
 
 export function generateMetadata() {
@@ -20,6 +23,10 @@ export function generateMetadata() {
 export default function Page() {
     return (
         <div className="space-y-6">
+            <section className="flex items-center justify-between gap-1.5 rounded-md border bg-card p-3">
+                <DiscordProfile />
+                <Clock />
+            </section>
             <section className="space-y-3">
                 <p className="text-xl text-foreground">Independent Programmer</p>
                 <p className="leading-relaxed">

@@ -13,13 +13,20 @@ const nextConfig = {
             {
                 hostname: 'avatars.githubusercontent.com',
                 pathname: '/u/**',
-                port: '',
                 protocol: 'https',
             },
             {
                 hostname: 'ui-avatars.com',
                 pathname: '/api/**',
-                port: '',
+                protocol: 'https',
+            },
+            {
+                hostname: 'api.lanyard.rest',
+                protocol: 'https',
+            },
+            {
+                hostname: 'i.scdn.co',
+                pathname: '/image/**',
                 protocol: 'https',
             },
         ],

@@ -8,8 +8,8 @@ export function Header() {
     const pathname = usePathname();
 
     return (
-        <header className="container flex items-center justify-between gap-3 pt-20">
-            <span className="text-xl font-semibold tracking-tight">Pongsakorn Thipayanate</span>
+        <header className="container flex items-center justify-between gap-3 pt-12 sm:pt-20">
+            <span className="text-xl font-semibold tracking-tight">P. Thipayanate</span>
             <nav>
                 <ul className="flex items-center gap-3">
                     {navigation.map((item) => (

@@ -1,8 +1,9 @@
 import { Badge } from '@/components/ui/badge';
-import { getStatusColor } from '@/utils/colors';
 import { type Project } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { getStatusColor } from './utils';
 
 export function ProjectCard({ project }: { project: Project }) {
     return (
@@ -22,7 +23,9 @@ export function ProjectCard({ project }: { project: Project }) {
             <div className="sm:col-span-4">
                 <div className="flex flex-wrap items-center gap-3">
                     <h3>{project.title}</h3>
-                    <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
+                    <Badge className={getStatusColor(project.status)}>
+                        {project.status.replace('_', ' ')}
+                    </Badge>
                 </div>
                 <p className="line-clamp-3 text-sm">{project.description}</p>
             </div>

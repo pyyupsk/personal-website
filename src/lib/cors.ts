@@ -130,7 +130,3 @@ export async function cors(req: Request, res: Response, options?: CorsOptions) {
 
     return res;
 }
-
-export function initCors(options?: CorsOptions) {
-    return (req: Request, res: Response) => cors(req, res, options);
-}
