@@ -37,7 +37,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
     }
 
     return (
-        <section className="flex flex-col divide-y">
+        <section className="flex flex-col gap-3">
             {filteredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
             ))}

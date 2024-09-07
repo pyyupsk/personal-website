@@ -13,7 +13,6 @@ model Project {
   id          Int     @id @default(autoincrement())
   title       String  @db.VarChar(255)
   description String? @db.Text
-  thumbnails  String  @db.Text
   link        String
   status      ProjectStatus  @default(NOT_STARTED)
 
