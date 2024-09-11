@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 
-import { CommentSkeleton } from '../_components/comment-skeleton';
+import { CommentsSkeleton } from '../_components/comments-skeleton';
 import { PostContentSkeleton } from '../_components/post-skeleton';
 
 export default function Loading() {
@@ -9,7 +9,7 @@ export default function Loading() {
             <PostContentSkeleton />
             <Separator />
             <div className="mx-auto mt-8 max-w-2xl space-y-4">
-                <CommentSkeleton count={2} />
+                <CommentsSkeleton count={2} />
             </div>
         </section>
     );

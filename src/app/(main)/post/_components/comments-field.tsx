@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 import { createComment } from '../_actions/comment';
 
-export function CommentField({ postId, user }: { postId: string; user: undefined | User }) {
+export function CommentsField({ postId, user }: { postId: string; user: undefined | User }) {
     const router = useRouter();
 
     const [comment, setComment] = useState('');

@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-export function CommentSkeleton({ count }: { count: number }) {
+export function CommentsSkeleton({ count }: { count: number }) {
     return (
         <div className="space-y-1.5 divide-y">
             {Array.from({ length: count }).map((_, index) => (

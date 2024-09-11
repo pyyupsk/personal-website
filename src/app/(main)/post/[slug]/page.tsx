@@ -1,13 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-import { auth } from '@/server/auth';
 import { prisma } from '@/server/prisma';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format } from 'date-fns';
 import { redirect } from 'next/navigation';
 
-import { CommentField } from '../_components/comment-field';
+import { Comments } from '../_components/comments';
 
 type Props = {
     params: {
@@ -39,18 +37,8 @@ export async function generateMetadata({ params: { slug } }: Props) {
 }
 
 export default async function Page({ params }: Props) {
-    const session = await auth();
-
     const post = await prisma.post.findUnique({
         select: {
-            comments: {
-                select: {
-                    author: { select: { id: true, image: true, name: true } },
-                    commentDate: true,
-                    content: true,
-                    id: true,
-                },
-            },
             content: true,
             description: true,
             id: true,
@@ -85,35 +73,7 @@ export default async function Page({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: html }}
             />
             <Separator />
-            <div className="mx-auto mt-8 max-w-2xl space-y-4">
-                <CommentField postId={post.id} user={session?.user} />
-                <div className="space-y-1.5 divide-y">
-                    {post.comments.map((comment) => (
-                        <div className="flex gap-3 bg-background py-3 shadow-sm" key={comment.id}>
-                            <Avatar className="size-8">
-                                <AvatarImage
-                                    alt={comment.author.name || 'User Avatar'}
-                                    src={comment.author.image || undefined}
-                                />
-                                <AvatarFallback>
-                                    {comment.author.name?.charAt(0).toUpperCase()}
-                                </AvatarFallback>
-                            </Avatar>
-                            <div className="flex flex-col gap-1">
-                                <div className="flex items-center">
-                                    <span>{comment.author.name}</span>
-                                    <time className="ml-2 text-sm text-muted-foreground">
-                                        {formatDistanceToNow(comment.commentDate, {
-                                            addSuffix: true,
-                                        })}
-                                    </time>
-                                </div>
-                                <p className="mt-1 text-foreground">{comment.content}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <Comments postId={post.id} />
         </section>
     );
 }
