@@ -9,51 +9,51 @@ import { LoaderCircleIcon, SendIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type User } from 'next-auth';
 import { signIn } from 'next-auth/react';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 import { createComment } from '../_actions/comment';
 
 export function CommentsField({ postId, user }: { postId: string; user: undefined | User }) {
     const router = useRouter();
-
     const [comment, setComment] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
 
-        try {
-            if (!user || !user.id) {
-                return toast({
-                    description:
-                        'You need to be logged in to post a comment. Please log in or sign up.',
-                    title: 'Login Required',
-                    variant: 'destructive',
-                });
-            }
-
-            if (!comment.trim()) {
-                return toast({
-                    description: 'Please enter a comment before submitting.',
-                    title: 'Comment cannot be empty',
-                    variant: 'destructive',
-                });
-            }
-
-            await createComment({ authorId: user.id, content: comment, postId });
-            setComment('');
-            router.refresh();
-        } catch (error) {
-            console.error(error);
-            return toast({
-                description: 'There was an issue submitting your comment. Please try again later.',
-                title: 'Submission Error',
+        if (!comment.trim()) {
+            toast({
+                description: 'Please enter a comment before submitting.',
+                title: 'Comment cannot be empty',
                 variant: 'destructive',
             });
-        } finally {
-            setLoading(false);
+            return;
         }
+
+        startTransition(async () => {
+            try {
+                if (!user || !user.id) {
+                    toast({
+                        description:
+                            'You need to be logged in to post a comment. Please log in or sign up.',
+                        title: 'Login Required',
+                        variant: 'destructive',
+                    });
+                    return;
+                }
+                await createComment({ authorId: user.id, content: comment, postId });
+                setComment('');
+                router.refresh();
+            } catch (error) {
+                console.error(error);
+                toast({
+                    description:
+                        'There was an issue submitting your comment. Please try again later.',
+                    title: 'Submission Error',
+                    variant: 'destructive',
+                });
+            }
+        });
     };
 
     if (!user || !user.id) {
@@ -83,8 +83,8 @@ export function CommentsField({ postId, user }: { postId: string; user: undefine
                         placeholder="Write a comment..."
                         value={comment}
                     />
-                    <Button disabled={!comment.trim() || loading} size="sm" type="submit">
-                        {loading ? (
+                    <Button disabled={!comment.trim() || isPending} size="sm" type="submit">
+                        {isPending ? (
                             <LoaderCircleIcon className="mr-2 size-4 animate-spin" />
                         ) : (
                             <SendIcon className="mr-2 size-4" />

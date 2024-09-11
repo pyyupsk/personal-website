@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { type Project } from '@prisma/client';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 import { getStatusColor } from './utils';
 

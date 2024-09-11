@@ -1,8 +1,8 @@
 'use client';
 
 import { navigation } from '@/constants/navigation';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Link } from 'next-view-transitions';
 
 export function Header() {
     const pathname = usePathname();

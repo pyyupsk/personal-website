@@ -1,7 +1,7 @@
 import { buttonVariants } from '@/components/ui/button';
 import { commonMetaData } from '@/lib/meta';
 import { ArrowLeftIcon } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 export function generateMetadata() {
     const metaData = commonMetaData({

@@ -3,7 +3,7 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { prisma } from '@/server/prisma';
 import { $Enums } from '@prisma/client';
 import { RssIcon } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 import { PostsList } from './posts-list';
 

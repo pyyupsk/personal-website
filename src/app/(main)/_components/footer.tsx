@@ -2,8 +2,8 @@
 
 import { navigation } from '@/constants/navigation';
 import { socials } from '@/constants/socials';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Link } from 'next-view-transitions';
 
 import { ThemeSwitcher } from '../../../components/theme-switcher';
 

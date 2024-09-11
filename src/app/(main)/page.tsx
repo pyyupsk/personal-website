@@ -3,7 +3,7 @@ import { highlights } from '@/constants/highlights';
 import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
 import { commonMetaData } from '@/lib/meta';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 import { Clock } from './_components/clock';
 import { DiscordProfile } from './_components/discord-profile';
