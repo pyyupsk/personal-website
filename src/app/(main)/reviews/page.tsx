@@ -1,8 +1,20 @@
+import { commonMetaData } from '@/lib/meta';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
 import { ReviewsList } from './_components/reviews-list';
 import { Skeleton } from './_components/skeleton';
+
+export function generateMetadata() {
+    const metaData = commonMetaData({
+        description:
+            'Read real client feedback and testimonials showcasing my reliability, dedication, and excellent communication. Discover how I’ve met client needs and delivered outstanding results across various projects.',
+        image: `/api/og?title=${encodeURIComponent('What Clients Are Saying About My Work')}&description=${encodeURIComponent('Read real client feedback and testimonials showcasing my reliability, dedication, and excellent communication.')}`,
+        title: 'Customer Reviews | See What Clients Are Saying About My Work',
+    });
+
+    return metaData;
+}
 
 export default function Page() {
     return (
