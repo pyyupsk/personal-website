@@ -1,4 +1,5 @@
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
 import { prisma } from '@/server/prisma';
 import { Suspense } from 'react';
@@ -10,7 +11,12 @@ export function generateMetadata() {
     const metaData = commonMetaData({
         description:
             'Explore a collection of posts with insights, tutorials, and reflections on programming and technology. Dive into articles on database choices, Next.js, and more, and follow my journey as a self-taught developer.',
-        image: `/api/og?title=${encodeURIComponent('Programming Tips & Tech Insights')}&description=${encodeURIComponent('Explore posts with programming tips, tutorials, and tech insights. Follow my journey and learn about topics like Next.js and databases.')}`,
+        image: openGraph({
+            button: 'Read More',
+            description:
+                'Explore tutorials, insights, and reflections on coding, technology, and my journey as a developer.',
+            title: 'Insights & Reflections',
+        }),
         title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
     });
 

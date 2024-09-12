@@ -1,4 +1,5 @@
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -9,7 +10,12 @@ export function generateMetadata() {
     const metaData = commonMetaData({
         description:
             'Read real client feedback and testimonials showcasing my reliability, dedication, and excellent communication. Discover how I’ve met client needs and delivered outstanding results across various projects.',
-        image: `/api/og?title=${encodeURIComponent('What Clients Are Saying About My Work')}&description=${encodeURIComponent('Read real client feedback and testimonials showcasing my reliability, dedication, and excellent communication.')}`,
+        image: openGraph({
+            button: 'See More Reviews',
+            description:
+                'Read authentic feedback from clients showcasing my dedication and reliability in every project.',
+            title: 'Customer Reviews',
+        }),
         title: 'Customer Reviews | See What Clients Are Saying About My Work',
     });
 

@@ -1,4 +1,5 @@
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import { Suspense } from 'react';
 
 import { ProjectsFeed } from './_components/projects-feed';
@@ -9,7 +10,12 @@ export function generateMetadata() {
     const metaData = commonMetaData({
         description:
             'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
-        image: `/api/og?title=${encodeURIComponent('My Projects | Innovative Web Solutions')}&description=${encodeURIComponent('Explore my web development projects, showcasing my expertise in creating innovative solutions and solving complex problems.')}`,
+        image: openGraph({
+            button: 'Explore My Work',
+            description:
+                'Discover my projects showcasing innovative solutions, from web development to automation tools.',
+            title: 'Showcasing My Projects',
+        }),
         title: 'Showcasing My Projects | Innovative Solutions & Web Development',
     });
 

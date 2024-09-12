@@ -3,6 +3,7 @@ import { highlights } from '@/constants/highlights';
 import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import { Link } from 'next-view-transitions';
 
 import { Clock } from './_components/clock';
@@ -13,7 +14,12 @@ const experience = new Date().getFullYear() - 2019;
 export function generateMetadata() {
     const metaData = commonMetaData({
         description: `Passionate software engineer with ${experience} years of experience in web development. Specializing in React, Node.js, and cloud tech, I create scalable, user-friendly solutions. Explore my diverse projects and skills in JavaScript, Python, and DevOps.`,
-        image: `/api/og?title=${encodeURIComponent('Innovating the Future of Technology')}&description=${encodeURIComponent('Dive into cutting-edge projects and insights from a dedicated developer')}`,
+        image: openGraph({
+            button: 'Let’s Collaborate',
+            description:
+                'Experienced software engineer specializing in React, Node.js, and scalable solutions.',
+            title: 'Independent Programmer',
+        }),
         title: 'Independent Programmer | Pongsakorn Thipayanate',
     });
 

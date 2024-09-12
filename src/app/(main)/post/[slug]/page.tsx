@@ -1,9 +1,13 @@
+import { buttonVariants } from '@/components/ui/button';
+import { EmptyState } from '@/components/ui/empty-state';
 import { Separator } from '@/components/ui/separator';
 import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import { prisma } from '@/server/prisma';
 import { format } from 'date-fns';
-import { redirect } from 'next/navigation';
+import { RssIcon } from 'lucide-react';
+import Link from 'next/link';
 
 import { Comments } from '../_components/comments';
 
@@ -23,13 +27,23 @@ export async function generateMetadata({ params: { slug } }: Props) {
         return commonMetaData({
             description:
                 "The post you're looking for doesn't exist or has been moved. Explore other articles and insights on Pongsakorn Thipayanate's blog to find valuable content on programming, technology, and more.",
+            image: openGraph({
+                button: 'Back to Home',
+                description:
+                    'Oops! The page you’re looking for isn’t available. Return to the homepage for more content.',
+                title: 'Page Not Found',
+            }),
             title: 'Post Not Found | Pongsakorn Thipayanate',
         });
     }
 
     const metaData = commonMetaData({
         description: `Read '${post.title}' on Pongsakorn Thipayanate's blog. Discover insights, tutorials, and reflections on programming and technology. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
-        image: `/api/og?title=${encodeURIComponent("Ponsakorn Thipayanate's blog")}&description=${encodeURIComponent(`Read ${post.title}. Discover insights, tutorials, and reflections on programming and technology.`)}`,
+        image: openGraph({
+            button: format(post.publishDate, 'LLLL d, yyyy'),
+            description: `Read about "${post.title}" in this insightful post on programming and technology.`,
+            title: 'Insights & Tutorials',
+        }),
         title: `${post.title} | Pongsakorn Thipayanate's Blog`,
     });
 
@@ -48,7 +62,19 @@ export default async function Page({ params }: Props) {
         where: { id: params.slug },
     });
 
-    if (!post) return redirect('/not-found');
+    if (!post) {
+        return (
+            <EmptyState
+                description="It looks like there are no post to display right now. Check back later for updates!"
+                icon={RssIcon}
+                title="No Post Yet"
+            >
+                <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
+                    Explore Posts
+                </Link>
+            </EmptyState>
+        );
+    }
 
     const html = await processMarkdown(post.content);
     const readingTime = Math.ceil(html.split(' ').length / 150);

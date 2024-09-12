@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const title = searchParams.get('title') || 'Default Title';
     const description = searchParams.get('description') || 'Default Description';
-    const footer = searchParams.get('footer') || 'Default Footer';
+    const button = searchParams.get('button') || 'Default Button';
 
     return cors(
         request,
@@ -97,7 +97,7 @@ export async function GET(request: Request) {
                             {description}
                         </p>
 
-                        {/* Date container */}
+                        {/* Button container */}
                         <div
                             style={{
                                 alignItems: 'center',
@@ -117,7 +117,7 @@ export async function GET(request: Request) {
                                     margin: 0,
                                 }}
                             >
-                                {footer}
+                                {button}
                             </p>
                         </div>
 

@@ -3,7 +3,7 @@ import { type TemplateString } from 'next/dist/lib/metadata/types/metadata-types
 
 type CommonMetaData = {
     description: string;
-    image?: string;
+    image: string;
     title: string | TemplateString;
 };
 
@@ -17,7 +17,7 @@ export function commonMetaData({ description, image, title }: CommonMetaData): M
             images: [
                 {
                     height: 630,
-                    url: image || '/og.png',
+                    url: image,
                     width: 1200,
                 },
             ],
