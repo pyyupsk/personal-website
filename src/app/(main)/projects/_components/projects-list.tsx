@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { type Project } from '@prisma/client';
 import { SearchIcon } from 'lucide-react';
+import { useMemo } from 'react';
 
 import { useFilter } from '../_stores/filter';
 import { ProjectCard } from './project-card';
@@ -16,11 +17,13 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
         setStatusFilter('ALL');
     };
 
-    const filteredProjects = projects.filter(
-        (project) =>
-            project.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (statusFilter === 'ALL' || project.status === statusFilter),
-    );
+    const filteredProjects = useMemo(() => {
+        return projects.filter(
+            (project) =>
+                project.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                (statusFilter === 'ALL' || project.status === statusFilter),
+        );
+    }, [projects, searchTerm, statusFilter]);
 
     if (filteredProjects.length === 0) {
         return (

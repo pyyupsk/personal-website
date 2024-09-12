@@ -16,9 +16,9 @@ export function SpotifyInfo({ spotify }: { spotify: Spotify }) {
                 <Image
                     alt={spotify.album}
                     className="size-16 rounded-md"
-                    height={500}
+                    height={64}
                     src={spotify.album_art_url}
-                    width={500}
+                    width={64}
                 />
                 <div>
                     <p className="font-semibold">{spotify.song}</p>

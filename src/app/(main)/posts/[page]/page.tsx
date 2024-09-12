@@ -1,7 +1,6 @@
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
-import { prisma } from '@/server/prisma';
 import { Suspense } from 'react';
 
 import { PostsFeed } from '../_components/posts-feed';
@@ -23,9 +22,7 @@ export function generateMetadata() {
     return metaData;
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
-    const total = await prisma.post.count();
-
+export default function Page({ params }: { params: { page: string } }) {
     return (
         <div className="space-y-6">
             <section className={cn('space-y-3', params.page !== '1' && 'hidden')}>
@@ -39,8 +36,8 @@ export default async function Page({ params }: { params: { page: string } }) {
                     here.
                 </p>
             </section>
-            <Suspense fallback={<Skeleton count={total < 5 ? total : 5} />}>
-                <PostsFeed page={parseInt(params.page)} total={total} />
+            <Suspense fallback={<Skeleton count={5} />}>
+                <PostsFeed page={parseInt(params.page)} />
             </Suspense>
         </div>
     );
