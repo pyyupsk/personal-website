@@ -10,10 +10,10 @@ export function CommentsSkeleton({ count }: { count: number }) {
                         <div className="flex items-center">
                             <Skeleton className="h-4 w-24" />
                             <time className="ml-2 text-sm text-muted-foreground">
-                                <Skeleton className="h-4 w-14" />
+                                <Skeleton className="h-3 w-14" />
                             </time>
                         </div>
-                        <Skeleton className="h-4 w-3/4" />
+                        <Skeleton className="h-3 w-3/4" />
                     </div>
                 </div>
             ))}

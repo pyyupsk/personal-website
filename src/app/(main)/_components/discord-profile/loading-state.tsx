@@ -6,7 +6,7 @@ export function LoadingState() {
             <Skeleton className="size-10 rounded-full border-2 border-muted" />
             <div>
                 <Skeleton className="h-5 w-24" />
-                <Skeleton className="mt-2 h-4 w-36" />
+                <Skeleton className="mt-2 h-3 w-36" />
             </div>
         </div>
     );

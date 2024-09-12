@@ -16,4 +16,8 @@ export const navigation: Navigation[] = [
         href: '/posts/1',
         name: 'Posts',
     },
+    {
+        href: '/reviews',
+        name: 'Reviews',
+    },
 ];
