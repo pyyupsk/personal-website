@@ -1,5 +1,6 @@
 import { buttonVariants } from '@/components/ui/button';
 import { commonMetaData } from '@/lib/meta';
+import { openGraph } from '@/lib/open-graph';
 import { ArrowLeftIcon } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 
@@ -7,6 +8,12 @@ export function generateMetadata() {
     const metaData = commonMetaData({
         description:
             'Sorry, the page you’re looking for doesn’t exist. Return to the homepage or explore my latest posts and projects for more insights and updates.',
+        image: openGraph({
+            button: 'Go Home',
+            description:
+                'Oops! The page you’re looking for doesn’t exist. Return to the homepage to find what you need.',
+            title: '404 - Page Not Found',
+        }),
         title: 'Page Not Found - Pongsakorn Thipayanate',
     });
 
