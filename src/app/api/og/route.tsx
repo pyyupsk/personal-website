@@ -154,5 +154,9 @@ export async function GET(request: Request) {
                 width: 1200,
             },
         ),
+        {
+            methods: 'GET',
+            origin: 'https://pyyupsk.vercel.app',
+        },
     );
 }
