@@ -104,6 +104,7 @@ const config = {
                             '@apply whitespace-break-spaces rounded bg-muted px-[0.2em] py-[0.15em] text-[85%]':
                                 {},
                         },
+                        '--tw-prose-quote-borders': 'hsl(var(--muted-foreground)) !important',
                         a: {
                             '@apply transition-all duration-100 hover:text-foreground': {},
                         },
