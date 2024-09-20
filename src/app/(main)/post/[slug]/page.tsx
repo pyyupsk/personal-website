@@ -8,6 +8,7 @@ import { prisma } from '@/server/prisma';
 import { format } from 'date-fns';
 import { RssIcon } from 'lucide-react';
 import Link from 'next/link';
+import { cache } from 'react';
 
 import { Comments } from '../_components/comments';
 
@@ -17,11 +18,21 @@ type Props = {
     };
 };
 
-export async function generateMetadata({ params: { slug } }: Props) {
-    const post = await prisma.post.findUnique({
-        select: { publishDate: true, title: true },
+const getPostData = cache(async (slug: string) => {
+    return prisma.post.findUnique({
+        select: {
+            content: true,
+            description: true,
+            id: true,
+            publishDate: true,
+            title: true,
+        },
         where: { id: slug },
     });
+});
+
+export async function generateMetadata({ params: { slug } }: Props) {
+    const post = await getPostData(slug);
 
     if (!post) {
         return commonMetaData({
@@ -51,16 +62,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
 }
 
 export default async function Page({ params }: Props) {
-    const post = await prisma.post.findUnique({
-        select: {
-            content: true,
-            description: true,
-            id: true,
-            publishDate: true,
-            title: true,
-        },
-        where: { id: params.slug },
-    });
+    const post = await getPostData(params.slug);
 
     if (!post) {
         return (
