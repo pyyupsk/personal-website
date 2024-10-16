@@ -9,7 +9,7 @@ importers:
         dependencies:
             '@auth/prisma-adapter':
                 specifier: ^2.7.0
-                version: 2.7.0(@prisma/client@5.19.0(prisma@5.21.0))
+                version: 2.7.0(@prisma/client@5.21.0(prisma@5.21.0))
             '@neondatabase/serverless':
                 specifier: ^0.9.5
                 version: 0.9.5
@@ -17,8 +17,8 @@ importers:
                 specifier: ^5.21.0
                 version: 5.21.0(@neondatabase/serverless@0.9.5)
             '@prisma/client':
-                specifier: 5.19.0
-                version: 5.19.0(prisma@5.21.0)
+                specifier: 5.21.0
+                version: 5.21.0(prisma@5.21.0)
             '@radix-ui/react-avatar':
                 specifier: ^1.1.1
                 version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.11)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -985,10 +985,10 @@ packages:
         peerDependencies:
             '@neondatabase/serverless': ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0
 
-    '@prisma/client@5.19.0':
+    '@prisma/client@5.21.0':
         resolution:
             {
-                integrity: sha512-CzOpau+q1kEWQyoQMvlnXIHqPvwmWbh48xZ4n8KWbAql0p8PC0BIgSTYW5ncxXa4JSEff0tcoxSZB874wDstdg==,
+                integrity: sha512-Qf2YleB3dsCRXiKSQZ+j0aF5E+ojpfqF8ExXaNAWBbAhKapMduwNvgo13K2pEuTiQq8voG2aQPQnxjsO9fOpTQ==,
             }
         engines: { node: '>=16.13' }
         peerDependencies:
@@ -6131,10 +6131,10 @@ snapshots:
             preact: 10.11.3
             preact-render-to-string: 5.2.3(preact@10.11.3)
 
-    '@auth/prisma-adapter@2.7.0(@prisma/client@5.19.0(prisma@5.21.0))':
+    '@auth/prisma-adapter@2.7.0(@prisma/client@5.21.0(prisma@5.21.0))':
         dependencies:
             '@auth/core': 0.37.0
-            '@prisma/client': 5.19.0(prisma@5.21.0)
+            '@prisma/client': 5.21.0(prisma@5.21.0)
         transitivePeerDependencies:
             - '@simplewebauthn/browser'
             - '@simplewebauthn/server'
@@ -6607,7 +6607,7 @@ snapshots:
             '@prisma/driver-adapter-utils': 5.21.0
             postgres-array: 3.0.2
 
-    '@prisma/client@5.19.0(prisma@5.21.0)':
+    '@prisma/client@5.21.0(prisma@5.21.0)':
         optionalDependencies:
             prisma: 5.21.0
 
