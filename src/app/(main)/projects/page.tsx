@@ -1,26 +1,23 @@
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
+import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { Suspense } from 'react';
 
 import { ProjectsFeed } from './_components/projects-feed';
 import { ProjectsFilter } from './_components/projects-filter';
 import { Skeleton } from './_components/skeleton';
 
-export function generateMetadata() {
-    const metaData = commonMetaData({
+export const metadata: Metadata = commonMetaData({
+    description:
+        'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
+    image: openGraph({
+        button: 'Explore My Work',
         description:
-            'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
-        image: openGraph({
-            button: 'Explore My Work',
-            description:
-                'Discover my projects showcasing innovative solutions, from web development to automation tools.',
-            title: 'Showcasing My Projects',
-        }),
-        title: 'Showcasing My Projects | Innovative Solutions & Web Development',
-    });
-
-    return metaData;
-}
+            'Discover my projects showcasing innovative solutions, from web development to automation tools.',
+        title: 'Showcasing My Projects',
+    }),
+    title: 'Showcasing My Projects | Innovative Solutions & Web Development',
+});
 
 export default function Page() {
     return (

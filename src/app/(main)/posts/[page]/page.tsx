@@ -1,26 +1,23 @@
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
+import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { Suspense } from 'react';
 
 import { PostsFeed } from '../_components/posts-feed';
 import { Skeleton } from '../_components/skeleton';
 
-export function generateMetadata() {
-    const metaData = commonMetaData({
+export const metadata: Metadata = commonMetaData({
+    description:
+        'Explore a collection of posts with insights, tutorials, and reflections on programming and technology. Dive into articles on database choices, Next.js, and more, and follow my journey as a self-taught developer.',
+    image: openGraph({
+        button: 'Read More',
         description:
-            'Explore a collection of posts with insights, tutorials, and reflections on programming and technology. Dive into articles on database choices, Next.js, and more, and follow my journey as a self-taught developer.',
-        image: openGraph({
-            button: 'Read More',
-            description:
-                'Explore tutorials, insights, and reflections on coding, technology, and my journey as a developer.',
-            title: 'Insights & Reflections',
-        }),
-        title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
-    });
-
-    return metaData;
-}
+            'Explore tutorials, insights, and reflections on coding, technology, and my journey as a developer.',
+        title: 'Insights & Reflections',
+    }),
+    title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
+});
 
 export default function Page({ params }: { params: { page: string } }) {
     return (
