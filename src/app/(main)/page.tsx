@@ -12,7 +12,7 @@ import { DiscordProfile } from './_components/discord-profile';
 const experience = new Date().getFullYear() - 2019;
 
 export function generateMetadata() {
-    const metaData = commonMetaData({
+    const metadata = commonMetaData({
         description: `Passionate software engineer with ${experience} years of experience in web development. Specializing in React, Node.js, and cloud tech, I create scalable, user-friendly solutions. Explore my diverse projects and skills in JavaScript, Python, and DevOps.`,
         image: openGraph({
             button: 'Let’s Collaborate',
@@ -23,7 +23,7 @@ export function generateMetadata() {
         title: 'Independent Programmer | Pongsakorn Thipayanate',
     });
 
-    return metaData;
+    return metadata;
 }
 
 export default function Page() {

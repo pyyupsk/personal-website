@@ -48,7 +48,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
         });
     }
 
-    const metaData = commonMetaData({
+    const metadata = commonMetaData({
         description: `Read '${post.title}' on Pongsakorn Thipayanate's blog. Discover insights, tutorials, and reflections on programming and technology. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
         image: openGraph({
             button: format(post.publishDate, 'LLLL d, yyyy'),
@@ -58,7 +58,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
         title: `${post.title} | Pongsakorn Thipayanate's Blog`,
     });
 
-    return metaData;
+    return metadata;
 }
 
 export default async function Page({ params }: Props) {
