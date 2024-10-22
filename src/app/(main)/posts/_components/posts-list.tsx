@@ -14,9 +14,9 @@ interface Props {
 export function PostsList({ page, posts, total }: Props) {
     return (
         <section className="space-y-3">
-            <ul className="space-y-3 divide-y">
+            <ul className="divide-y">
                 {posts.map((post) => (
-                    <li key={post.id}>
+                    <li className="py-3 first:pt-0" key={post.id}>
                         <PostCard post={post} />
                     </li>
                 ))}
