@@ -2,21 +2,29 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { auth } from '@/server/auth';
 import { prisma } from '@/server/prisma';
 import { formatDistanceToNow } from 'date-fns';
+import { unstable_cache } from 'next/cache';
 
-import { CommentsField } from '../_components/comments-field';
+import { CommentsField } from './comments-field';
+
+const getComments = unstable_cache(
+    async (postId: string) => {
+        return prisma.comment.findMany({
+            orderBy: { commentDate: 'desc' },
+            select: {
+                author: { select: { id: true, image: true, name: true } },
+                commentDate: true,
+                content: true,
+                id: true,
+            },
+            where: { postId },
+        });
+    },
+    ['comments'],
+    { revalidate: 60 }, // Cache for 1 minute since comments are more dynamic
+);
 
 export async function Comments({ postId }: { postId: string }) {
-    const session = await auth();
-    const comments = await prisma.comment.findMany({
-        orderBy: { commentDate: 'desc' },
-        select: {
-            author: { select: { id: true, image: true, name: true } },
-            commentDate: true,
-            content: true,
-            id: true,
-        },
-        where: { postId },
-    });
+    const [session, comments] = await Promise.all([auth(), getComments(postId)]);
 
     return (
         <div className="mx-auto mt-8 max-w-2xl space-y-4">
