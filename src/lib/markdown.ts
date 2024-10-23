@@ -6,6 +6,11 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
+interface Markdown {
+    html: string;
+    readingTime: number;
+}
+
 const processor = unified()
     .use(remarkParse)
     .use(remarkRehype)
@@ -19,7 +24,15 @@ const processor = unified()
     })
     .use(rehypeStringify);
 
-export async function processMarkdown(markdown: string): Promise<string> {
-    const result = await processor.process(markdown);
-    return result.toString();
+export async function processMarkdown(markdown: string): Promise<Markdown> {
+    try {
+        const result = await processor.process(markdown);
+
+        return {
+            html: result.toString(),
+            readingTime: Math.ceil(result.toString().split(' ').length / 150),
+        };
+    } catch (error) {
+        throw new Error(`Failed to process markdown: ${error}`);
+    }
 }

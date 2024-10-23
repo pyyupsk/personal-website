@@ -34,26 +34,10 @@ const getPostData = unstable_cache(
             if (!post) throw new Error('Post not found');
             return post;
         } catch (error) {
-            console.error('Error fetching post data: ', error);
-            throw error;
+            throw new Error(`Failed to get post data: ${error}`);
         }
     },
     ['post-data'],
-    { revalidate: 3600 },
-);
-
-const getProcessedMarkdown = unstable_cache(
-    async (content: string) => {
-        try {
-            const html = await processMarkdown(content);
-            const readingTime = Math.ceil(html.split(' ').length / 150);
-            return { html, readingTime };
-        } catch (error) {
-            console.error('Markdown processing error: ', error);
-            throw error;
-        }
-    },
-    ['processed-markdown'],
     { revalidate: 3600 },
 );
 
@@ -96,7 +80,7 @@ export default async function Page({ params }: Props) {
         );
     }
 
-    const { html, readingTime } = await getProcessedMarkdown(post.content);
+    const { html, readingTime } = await processMarkdown(post.content);
 
     return (
         <section className="space-y-6">
