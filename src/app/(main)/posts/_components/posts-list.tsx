@@ -1,13 +1,13 @@
 'use client';
 
-import { type Post } from '@prisma/client';
+import { type Posts } from '@prisma/client';
 
 import { Pagination } from './pagination';
 import { PostCard } from './post-card';
 
 interface Props {
     page: number;
-    posts: Omit<Post, 'content' | 'status'>[];
+    posts: Omit<Posts, 'content' | 'status'>[];
     total: number;
 }
 

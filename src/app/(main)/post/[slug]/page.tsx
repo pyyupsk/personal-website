@@ -21,9 +21,8 @@ type Props = {
 const getPostData = unstable_cache(
     async (slug: string) => {
         try {
-            const post = await prisma.post.findUnique({
+            const post = await prisma.posts.findUnique({
                 select: {
-                    content: true,
                     description: true,
                     id: true,
                     publishDate: true,
@@ -74,8 +73,12 @@ export async function generateMetadata(props: Props) {
 export default async function Page(props: Props) {
     const params = await props.params;
     const post = await getPostData(params.slug);
+    const postContent = await prisma.postsContent.findFirst({
+        select: { content: true },
+        where: { postId: params.slug },
+    });
 
-    if (!post) {
+    if (!post || !postContent) {
         return (
             <EmptyState description="No post found" icon={RssIcon} title="No Post Yet">
                 <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
@@ -85,7 +88,7 @@ export default async function Page(props: Props) {
         );
     }
 
-    const { html, readingTime } = await processMarkdown(post.content);
+    const { html, readingTime } = await processMarkdown(postContent.content);
 
     return (
         <section className="space-y-6">

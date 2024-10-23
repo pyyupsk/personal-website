@@ -20,18 +20,26 @@ model Project {
   @@map("projects")
 }
 
-model Post {
+model Posts {
   id          String     @id @default(uuid())
   title       String     @db.VarChar(255)
   description String?
-  content     String
   publishDate DateTime   @default(now())
   status      PostStatus @default(DRAFT)
 
   @@index([id])
   @@index([status])
   @@index([publishDate])
-  @@map("blog_posts")
+  @@map("posts")
+}
+
+model PostsContent {
+  id      String @id @default(uuid())
+  postId  String
+  content String
+
+  @@index([postId])
+  @@map("posts_content")
 }
 
 enum ProjectStatus {
