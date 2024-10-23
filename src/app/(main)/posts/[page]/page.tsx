@@ -19,7 +19,8 @@ export const metadata: Metadata = commonMetaData({
     title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
 });
 
-export default function Page({ params }: { params: { page: string } }) {
+export default async function Page(props: { params: Promise<{ page: string }> }) {
+    const params = await props.params;
     return (
         <div className="space-y-6">
             <section className={cn('space-y-3', params.page !== '1' && 'hidden')}>

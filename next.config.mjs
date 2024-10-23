@@ -32,7 +32,6 @@ const nextConfig = {
         ],
     },
     reactStrictMode: true,
-    swcMinify: true,
 };
 
 export default withBundleAnalyzer(nextConfig);

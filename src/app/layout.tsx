@@ -1,14 +1,10 @@
 import { ThemeProvider } from '@/components/theme-provider';
-import { cn } from '@/lib/utils';
+import { Toaster } from '@/components/ui/toaster';
 import '@/styles/globals.css';
+import { cn } from '@/lib/utils';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import dynamic from 'next/dynamic';
 import { ViewTransitions } from 'next-view-transitions';
-
-const DynamicToaster = dynamic(() => import('@/components/ui/toaster').then((mod) => mod.Toaster), {
-    ssr: false,
-});
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
@@ -23,7 +19,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                     >
                         {children}
                     </ThemeProvider>
-                    <DynamicToaster />
+                    <Toaster />
                 </body>
             </html>
         </ViewTransitions>

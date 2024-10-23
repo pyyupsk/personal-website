@@ -13,9 +13,9 @@ import Link from 'next/link';
 import { PostContent } from '../_components/post-content';
 
 type Props = {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 };
 
 const getPostData = unstable_cache(
@@ -41,7 +41,11 @@ const getPostData = unstable_cache(
     { revalidate: 3600 },
 );
 
-export async function generateMetadata({ params: { slug } }: Props) {
+export async function generateMetadata(props: Props) {
+    const params = await props.params;
+
+    const { slug } = params;
+
     const post = await getPostData(slug);
 
     if (!post) {
@@ -67,7 +71,8 @@ export async function generateMetadata({ params: { slug } }: Props) {
     });
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+    const params = await props.params;
     const post = await getPostData(params.slug);
 
     if (!post) {
