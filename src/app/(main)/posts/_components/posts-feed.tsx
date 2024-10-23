@@ -8,8 +8,8 @@ import { Link } from 'next-view-transitions';
 import { PostsList } from './posts-list';
 
 export async function PostsFeed({ page }: { page: number }) {
-    const total = await prisma.post.count();
-    const posts = await prisma.post.findMany({
+    const total = await prisma.posts.count();
+    const posts = await prisma.posts.findMany({
         orderBy: {
             publishDate: 'desc',
         },

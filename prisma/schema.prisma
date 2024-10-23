@@ -20,18 +20,29 @@ model Project {
   @@map("projects")
 }
 
-model Post {
-  id          String     @id @default(uuid())
-  title       String     @db.VarChar(255)
+model Posts {
+  id          String        @id @default(uuid())
+  title       String        @db.VarChar(255)
   description String?
-  content     String
-  publishDate DateTime   @default(now())
-  status      PostStatus @default(DRAFT)
+  publishDate DateTime      @default(now())
+  status      PostStatus    @default(DRAFT)
+  content     PostsContent?
 
   @@index([id])
   @@index([status])
   @@index([publishDate])
-  @@map("blog_posts")
+  @@map("posts")
+}
+
+model PostsContent {
+  id      String @id @default(uuid())
+  postId  String @unique
+  content String
+
+  post Posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@map("posts_content")
 }
 
 enum ProjectStatus {

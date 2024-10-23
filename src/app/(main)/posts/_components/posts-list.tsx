@@ -1,13 +1,15 @@
 'use client';
 
-import { type Post } from '@prisma/client';
+import { type Posts } from '@prisma/client';
 
 import { Pagination } from './pagination';
 import { PostCard } from './post-card';
 
+const POSTS_PER_PAGE = 5;
+
 interface Props {
     page: number;
-    posts: Omit<Post, 'content' | 'status'>[];
+    posts: Omit<Posts, 'content' | 'status'>[];
     total: number;
 }
 
@@ -21,7 +23,11 @@ export function PostsList({ page, posts, total }: Props) {
                     </li>
                 ))}
             </ul>
-            <Pagination className="justify-end" current={page} pages={Math.ceil(total / 5)} />
+            <Pagination
+                className="justify-end"
+                current={page}
+                pages={Math.ceil(total / POSTS_PER_PAGE)}
+            />
         </section>
     );
 }
