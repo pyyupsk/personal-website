@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-export function PostContentSkeleton() {
+export function PostSkeleton() {
     return (
         <section className="space-y-3">
             <div className="flex justify-between">

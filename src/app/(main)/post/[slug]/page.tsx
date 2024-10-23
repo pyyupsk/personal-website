@@ -11,8 +11,6 @@ import { RssIcon } from 'lucide-react';
 import { unstable_cache } from 'next/cache';
 import Link from 'next/link';
 
-import { Comments } from '../_components/comments';
-
 type Props = {
     params: {
         slug: string;
@@ -128,7 +126,6 @@ export default async function Page({ params }: Props) {
         <section className="space-y-6">
             <PostContent html={html} post={post} readingTime={readingTime} />
             <Separator />
-            <Comments postId={post.id} />
         </section>
     );
 }
