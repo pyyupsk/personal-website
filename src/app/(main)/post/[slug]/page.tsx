@@ -13,51 +13,33 @@ import Link from 'next/link';
 import { PostContent } from '../_components/post-content';
 
 type Props = {
-    params: Promise<{
-        slug: string;
-    }>;
+    params: Promise<{ slug: string }>;
 };
 
 const getPostData = unstable_cache(
     async (slug: string) => {
-        try {
-            const post = await prisma.posts.findUnique({
-                select: {
-                    description: true,
-                    id: true,
-                    publishDate: true,
-                    title: true,
+        const post = await prisma.posts.findUnique({
+            select: {
+                content: {
+                    select: { content: true },
                 },
-                where: { id: slug },
-            });
-            if (!post) throw new Error('Post not found');
-            return post;
-        } catch (error) {
-            throw new Error(`Failed to get post data: ${error}`);
-        }
+                description: true,
+                id: true,
+                publishDate: true,
+                title: true,
+            },
+            where: { id: slug },
+        });
+        if (!post || !post.content) throw new Error('Post not found');
+        return post;
     },
     ['post-data'],
     { revalidate: 3600 },
 );
 
 export async function generateMetadata(props: Props) {
-    const params = await props.params;
-
-    const { slug } = params;
-
+    const { slug } = await props.params;
     const post = await getPostData(slug);
-
-    if (!post) {
-        return commonMetaData({
-            description: "The post you're looking for doesn't exist or has been moved.",
-            image: openGraph({
-                button: 'Back to Home',
-                description: "Oops! The page you're looking for isn't available.",
-                title: 'Page Not Found',
-            }),
-            title: 'Post Not Found | Blog',
-        });
-    }
 
     return commonMetaData({
         description: `Read '${post.title}' on the blog. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
@@ -71,14 +53,10 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function Page(props: Props) {
-    const params = await props.params;
-    const post = await getPostData(params.slug);
-    const postContent = await prisma.postsContent.findFirst({
-        select: { content: true },
-        where: { postId: params.slug },
-    });
+    const { slug } = await props.params;
+    const post = await getPostData(slug);
 
-    if (!post || !postContent) {
+    if (!post || !post.content) {
         return (
             <EmptyState description="No post found" icon={RssIcon} title="No Post Yet">
                 <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
@@ -88,7 +66,7 @@ export default async function Page(props: Props) {
         );
     }
 
-    const { html, readingTime } = await processMarkdown(postContent.content);
+    const { html, readingTime } = await processMarkdown(post.content.content);
 
     return (
         <section className="space-y-6">

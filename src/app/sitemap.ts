@@ -3,6 +3,7 @@ import { $Enums, type Posts } from '@prisma/client';
 import { type Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
 const BASE_URL = 'https://pyyupsk.vercel.app';
+const POSTS_PER_PAGE = 5;
 
 type Sitemap = {
     alternates?: {
@@ -39,7 +40,7 @@ function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequ
 }
 
 function generatePostsMetadata(posts: { id: Posts['id'] }[]): Sitemap[] {
-    const pages: number = Math.ceil(posts.length / 5);
+    const pages: number = Math.ceil(posts.length / POSTS_PER_PAGE);
 
     return Array.from({ length: pages }, (_, i) => {
         const page = i + 1;

@@ -21,11 +21,12 @@ model Project {
 }
 
 model Posts {
-  id          String     @id @default(uuid())
-  title       String     @db.VarChar(255)
+  id          String        @id @default(uuid())
+  title       String        @db.VarChar(255)
   description String?
-  publishDate DateTime   @default(now())
-  status      PostStatus @default(DRAFT)
+  publishDate DateTime      @default(now())
+  status      PostStatus    @default(DRAFT)
+  content     PostsContent?
 
   @@index([id])
   @@index([status])
@@ -35,8 +36,10 @@ model Posts {
 
 model PostsContent {
   id      String @id @default(uuid())
-  postId  String
+  postId  String @unique
   content String
+
+  post Posts @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@index([postId])
   @@map("posts_content")
