@@ -3,7 +3,7 @@ import { type TemplateString } from 'next/dist/lib/metadata/types/metadata-types
 
 type CommonMetaData = {
     description: string;
-    image: string;
+    image?: string;
     title: string | TemplateString;
 };
 
@@ -14,13 +14,15 @@ export function commonMetaData({ description, image, title }: CommonMetaData): M
         metadataBase: new URL('https://pyyupsk.vercel.app'),
         openGraph: {
             description,
-            images: [
-                {
-                    height: 630,
-                    url: image,
-                    width: 1200,
-                },
-            ],
+            images: image
+                ? [
+                      {
+                          height: 630,
+                          url: image,
+                          width: 1200,
+                      },
+                  ]
+                : undefined,
             title,
         },
         robots: {

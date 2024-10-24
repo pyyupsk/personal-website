@@ -2,14 +2,14 @@
 
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
-import { type Project } from '@prisma/client';
 import { SearchIcon } from 'lucide-react';
 import { useMemo } from 'react';
 
 import { useFilter } from '../_stores/filter';
+import { type ProjectData } from '../_types/ProjectData';
 import { ProjectCard } from './project-card';
 
-export function ProjectsList({ projects }: { projects: Project[] }) {
+export function ProjectsList({ projects }: { projects: ProjectData[] }) {
     const { searchTerm, setSearchTerm, setStatusFilter, statusFilter } = useFilter();
 
     const resetFilters = () => {

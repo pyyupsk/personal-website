@@ -13,7 +13,7 @@ export default function Error({
     reset: () => void;
 }) {
     useEffect(() => {
-        console.error(error); // Log the error to the console
+        console.error(`Failed to fetch post: ${error.message}\n${error.stack}`); // Log the error to the console
     }, [error]);
 
     return (

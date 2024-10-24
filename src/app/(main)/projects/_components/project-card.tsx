@@ -1,10 +1,10 @@
 import { Badge } from '@/components/ui/badge';
-import { type Project } from '@prisma/client';
 import { Link } from 'next-view-transitions';
 
+import { type ProjectData } from '../_types/ProjectData';
 import { getStatusColor } from './utils';
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project }: { project: ProjectData }) {
     return (
         <Link
             className="rounded-md border p-3 shadow-md transition-all hover:scale-[1.01]"

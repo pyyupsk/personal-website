@@ -1,19 +1,17 @@
 import { Separator } from '@/components/ui/separator';
-import { type Posts } from '@prisma/client';
 import { format } from 'date-fns';
+
+import { type PostData } from '../_types/PostData';
 
 interface Props {
     html: string;
-    post: {
-        description: Posts['description'];
-        id: Posts['id'];
-        publishDate: Posts['publishDate'];
-        title: Posts['title'];
-    };
+    post: PostData;
     readingTime: number;
 }
 
 export function PostContent({ html, post, readingTime }: Props) {
+    if (!post) return null;
+
     return (
         <>
             <section className="space-y-1.5">

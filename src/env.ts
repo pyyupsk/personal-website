@@ -12,7 +12,7 @@ export const env = createEnv({
         NODE_ENV: process.env.NODE_ENV,
     },
     server: {
-        DATABASE_URL: z.string().url(),
+        DATABASE_URL: z.string(),
         FASTWORK_USER_ID: z.string(),
         NODE_ENV: z.enum(['development', 'test', 'production']),
     },
