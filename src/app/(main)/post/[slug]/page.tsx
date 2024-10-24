@@ -1,14 +1,11 @@
-import { buttonVariants } from '@/components/ui/button';
-import { EmptyState } from '@/components/ui/empty-state';
 import { Separator } from '@/components/ui/separator';
 import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { prisma } from '@/server/prisma';
 import { format } from 'date-fns';
-import { RssIcon } from 'lucide-react';
 import { unstable_cache } from 'next/cache';
-import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import { PostContent } from '../_components/post-content';
 
@@ -16,30 +13,49 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
+type PostData = {
+    description: null | string;
+    id: string;
+    post_content: {
+        content: string;
+    } | null;
+    publishDate: Date;
+    title: string;
+} | null;
+
 const getPostData = unstable_cache(
-    async (slug: string) => {
-        const post = await prisma.post.findUnique({
-            select: {
-                description: true,
-                id: true,
-                post_content: {
-                    select: { content: true },
+    async (slug: string): Promise<PostData> => {
+        try {
+            return await prisma.post.findUnique({
+                select: {
+                    description: true,
+                    id: true,
+                    post_content: {
+                        select: { content: true },
+                    },
+                    publishDate: true,
+                    title: true,
                 },
-                publishDate: true,
-                title: true,
-            },
-            where: { id: slug },
-        });
-        if (!post || !post.post_content) throw new Error('Post not found');
-        return post;
+                where: { id: slug },
+            });
+        } catch (error) {
+            console.error('Error fetching post:', error);
+            return null;
+        }
     },
     ['post-data'],
-    { revalidate: 3600 },
+    {
+        revalidate: 3600,
+        tags: ['post-data'],
+    },
 );
 
 export async function generateMetadata(props: Props) {
     const { slug } = await props.params;
     const post = await getPostData(slug);
+
+    if (!post)
+        return commonMetaData({ description: 'Post Not Found', title: 'Post Not Found | Blog' });
 
     return commonMetaData({
         description: `Read '${post.title}' on the blog. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
@@ -57,13 +73,7 @@ export default async function Page(props: Props) {
     const post = await getPostData(slug);
 
     if (!post || !post.post_content) {
-        return (
-            <EmptyState description="No post found" icon={RssIcon} title="No Post Yet">
-                <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
-                    Explore Posts
-                </Link>
-            </EmptyState>
-        );
+        notFound();
     }
 
     const { html, readingTime } = await processMarkdown(post.post_content.content);

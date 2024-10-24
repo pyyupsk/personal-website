@@ -1,14 +1,14 @@
 import { Separator } from '@/components/ui/separator';
-import { type Posts } from '@prisma/client';
+import { type post } from '@prisma/client';
 import { format } from 'date-fns';
 
 interface Props {
     html: string;
     post: {
-        description: Posts['description'];
-        id: Posts['id'];
-        publishDate: Posts['publishDate'];
-        title: Posts['title'];
+        description: post['description'];
+        id: post['id'];
+        publishDate: post['publishDate'];
+        title: post['title'];
     };
     readingTime: number;
 }
