@@ -18,19 +18,19 @@ type Props = {
 
 const getPostData = unstable_cache(
     async (slug: string) => {
-        const post = await prisma.posts.findUnique({
+        const post = await prisma.post.findUnique({
             select: {
-                content: {
-                    select: { content: true },
-                },
                 description: true,
                 id: true,
+                post_content: {
+                    select: { content: true },
+                },
                 publishDate: true,
                 title: true,
             },
             where: { id: slug },
         });
-        if (!post || !post.content) throw new Error('Post not found');
+        if (!post || !post.post_content) throw new Error('Post not found');
         return post;
     },
     ['post-data'],
@@ -56,7 +56,7 @@ export default async function Page(props: Props) {
     const { slug } = await props.params;
     const post = await getPostData(slug);
 
-    if (!post || !post.content) {
+    if (!post || !post.post_content) {
         return (
             <EmptyState description="No post found" icon={RssIcon} title="No Post Yet">
                 <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
@@ -66,7 +66,7 @@ export default async function Page(props: Props) {
         );
     }
 
-    const { html, readingTime } = await processMarkdown(post.content.content);
+    const { html, readingTime } = await processMarkdown(post.post_content.content);
 
     return (
         <section className="space-y-6">
