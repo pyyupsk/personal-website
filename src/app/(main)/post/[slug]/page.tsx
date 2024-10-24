@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/separator';
 import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-// import { openGraph } from '@/lib/open-graph';
+import { openGraph } from '@/lib/open-graph';
 import { db, postContent, post as PostTable } from '@/server/db';
 import { format } from 'date-fns';
 import { eq } from 'drizzle-orm';
@@ -53,11 +53,11 @@ export async function generateMetadata(props: Props) {
 
     return commonMetaData({
         description: `Read '${post.title}' on the blog. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
-        // image: openGraph({
-        //     button: format(post.publishDate, 'LLLL d, yyyy'),
-        //     description: `Read about "${post.title}"`,
-        //     title: 'Insights & Tutorials',
-        // }),
+        image: openGraph({
+            button: format(post.publishDate, 'LLLL d, yyyy'),
+            description: `Read about "${post.title}"`,
+            title: 'Insights & Tutorials',
+        }),
         title: `${post.title} | Blog`,
     });
 }
