@@ -1,0 +1,318 @@
+{
+    "id": "00000000-0000-0000-0000-000000000000",
+    "prevId": "",
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+        "public._prisma_migrations": {
+            "name": "_prisma_migrations",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "varchar(36)",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "checksum": {
+                    "name": "checksum",
+                    "type": "varchar(64)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "finished_at": {
+                    "name": "finished_at",
+                    "type": "timestamp with time zone",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "migration_name": {
+                    "name": "migration_name",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "logs": {
+                    "name": "logs",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "rolled_back_at": {
+                    "name": "rolled_back_at",
+                    "type": "timestamp with time zone",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "started_at": {
+                    "name": "started_at",
+                    "type": "timestamp with time zone",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "now()"
+                },
+                "applied_steps_count": {
+                    "name": "applied_steps_count",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": 0
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        },
+        "public.project": {
+            "name": "project",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "title": {
+                    "name": "title",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "description": {
+                    "name": "description",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "status": {
+                    "name": "status",
+                    "type": "ProjectStatus",
+                    "typeSchema": "public",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "'NOT_STARTED'"
+                },
+                "link": {
+                    "name": "link",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {
+                "project_status_idx": {
+                    "name": "project_status_idx",
+                    "columns": [
+                        {
+                            "expression": "status",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "enum_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": false,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                }
+            },
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        },
+        "public.post": {
+            "name": "post",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "text",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "title": {
+                    "name": "title",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "description": {
+                    "name": "description",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "publishDate": {
+                    "name": "publishDate",
+                    "type": "timestamp(3)",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "CURRENT_TIMESTAMP"
+                },
+                "status": {
+                    "name": "status",
+                    "type": "PostStatus",
+                    "typeSchema": "public",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "'DRAFT'"
+                }
+            },
+            "indexes": {
+                "post_id_idx": {
+                    "name": "post_id_idx",
+                    "columns": [
+                        {
+                            "expression": "id",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "text_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": false,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                },
+                "post_publishDate_idx": {
+                    "name": "post_publishDate_idx",
+                    "columns": [
+                        {
+                            "expression": "publishDate",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "timestamp_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": false,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                },
+                "post_status_idx": {
+                    "name": "post_status_idx",
+                    "columns": [
+                        {
+                            "expression": "status",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "enum_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": false,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                }
+            },
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        },
+        "public.post_content": {
+            "name": "post_content",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "text",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "postId": {
+                    "name": "postId",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "content": {
+                    "name": "content",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {
+                "post_content_postId_idx": {
+                    "name": "post_content_postId_idx",
+                    "columns": [
+                        {
+                            "expression": "postId",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "text_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": false,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                },
+                "post_content_postId_key": {
+                    "name": "post_content_postId_key",
+                    "columns": [
+                        {
+                            "expression": "postId",
+                            "asc": true,
+                            "nulls": "last",
+                            "opclass": "text_ops",
+                            "isExpression": false
+                        }
+                    ],
+                    "isUnique": true,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                }
+            },
+            "foreignKeys": {
+                "post_content_postId_fkey": {
+                    "name": "post_content_postId_fkey",
+                    "tableFrom": "post_content",
+                    "tableTo": "post",
+                    "schemaTo": "public",
+                    "columnsFrom": ["postId"],
+                    "columnsTo": ["id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        }
+    },
+    "enums": {
+        "public.PostStatus": {
+            "name": "PostStatus",
+            "values": ["DRAFT", "PUBLISHED", "ARCHIVED"],
+            "schema": "public"
+        },
+        "public.ProjectStatus": {
+            "name": "ProjectStatus",
+            "values": ["NOT_STARTED", "IN_PROGRESS", "COMPLETED", "ON_HOLD"],
+            "schema": "public"
+        }
+    },
+    "schemas": {},
+    "sequences": {},
+    "views": {},
+    "_meta": {
+        "schemas": {},
+        "tables": {},
+        "columns": {}
+    },
+    "internal": {
+        "tables": {}
+    }
+}

@@ -1,30 +1,26 @@
 import { buttonVariants } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
-import { prisma } from '@/server/prisma';
-import { $Enums } from '@prisma/client';
+import { db, post } from '@/server/db';
+import { desc, eq } from 'drizzle-orm';
 import { RssIcon } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 
 import { PostsList } from './posts-list';
 
 export async function PostsFeed({ page }: { page: number }) {
-    const total = await prisma.post.count();
-    const posts = await prisma.post.findMany({
-        orderBy: {
-            publishDate: 'desc',
-        },
-        select: {
-            description: true,
-            id: true,
-            publishDate: true,
-            title: true,
-        },
-        skip: (page - 1) * 5,
-        take: 5,
-        where: {
-            status: $Enums.PostStatus.PUBLISHED,
-        },
-    });
+    const total = await db.$count(post);
+    const posts = await db
+        .select({
+            description: post.description,
+            id: post.id,
+            publishDate: post.publishDate,
+            title: post.title,
+        })
+        .from(post)
+        .where(eq(post.status, 'PUBLISHED'))
+        .orderBy(desc(post.publishDate))
+        .limit(5)
+        .offset((page - 1) * 5);
 
     if (posts.length === 0) {
         return (

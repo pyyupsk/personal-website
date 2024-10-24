@@ -1,7 +1,8 @@
-import { type $Enums } from '@prisma/client';
 import { create, type StateCreator } from 'zustand';
 
-type StatusFilter = $Enums.ProjectStatus | 'ALL';
+import { type ProjectData } from '../_types/ProjectData';
+
+type StatusFilter = 'ALL' | ProjectData['status'];
 
 type FilterSlice = {
     searchTerm: string;

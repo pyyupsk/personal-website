@@ -1,46 +1,40 @@
 import { Separator } from '@/components/ui/separator';
 import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
-import { openGraph } from '@/lib/open-graph';
-import { prisma } from '@/server/prisma';
+// import { openGraph } from '@/lib/open-graph';
+import { db, postContent, post as PostTable } from '@/server/db';
 import { format } from 'date-fns';
+import { eq } from 'drizzle-orm';
 import { unstable_cache } from 'next/cache';
 import { notFound } from 'next/navigation';
 
 import { PostContent } from '../_components/post-content';
+import { type PostData } from '../_types/PostData';
 
 type Props = {
     params: Promise<{ slug: string }>;
 };
 
-type PostData = {
-    description: null | string;
-    id: string;
-    post_content: {
-        content: string;
-    } | null;
-    publishDate: Date;
-    title: string;
-} | null;
-
 const getPostData = unstable_cache(
     async (slug: string): Promise<PostData> => {
         try {
-            return await prisma.post.findUnique({
-                select: {
-                    description: true,
-                    id: true,
-                    post_content: {
-                        select: { content: true },
-                    },
-                    publishDate: true,
-                    title: true,
-                },
-                where: { id: slug },
-            });
+            const [post] = await db
+                .select({
+                    description: PostTable.description,
+                    id: PostTable.id,
+                    post_content: postContent,
+                    publishDate: PostTable.publishDate,
+                    title: PostTable.title,
+                })
+                .from(PostTable)
+                .where(eq(PostTable.id, slug))
+                .leftJoin(postContent, eq(postContent.postId, PostTable.id))
+                .limit(1);
+
+            return post;
         } catch (error) {
             console.error('Error fetching post:', error);
-            return null;
+            return undefined;
         }
     },
     ['post-data'],
@@ -59,11 +53,11 @@ export async function generateMetadata(props: Props) {
 
     return commonMetaData({
         description: `Read '${post.title}' on the blog. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
-        image: openGraph({
-            button: format(post.publishDate, 'LLLL d, yyyy'),
-            description: `Read about "${post.title}"`,
-            title: 'Insights & Tutorials',
-        }),
+        // image: openGraph({
+        //     button: format(post.publishDate, 'LLLL d, yyyy'),
+        //     description: `Read about "${post.title}"`,
+        //     title: 'Insights & Tutorials',
+        // }),
         title: `${post.title} | Blog`,
     });
 }
