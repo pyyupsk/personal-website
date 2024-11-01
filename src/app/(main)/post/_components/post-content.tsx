@@ -1,16 +1,32 @@
+'use client';
+
 import { Separator } from '@/components/ui/separator';
+import { processMarkdown } from '@/lib/markdown';
+import { api } from '@/trpc/react';
 import { format } from 'date-fns';
+import { notFound } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { type PostData } from '../_types/PostData';
+export function PostContent({ slug }: { slug: string }) {
+    const [html, setHtml] = useState('');
+    const [readingTime, setReadingTime] = useState(0);
+    const [results] = api.posts.blog.useSuspenseQuery({ id: slug });
+    const { post, post_content } = results || {};
 
-interface Props {
-    html: string;
-    post: PostData;
-    readingTime: number;
-}
+    if (!post) {
+        notFound();
+    }
 
-export function PostContent({ html, post, readingTime }: Props) {
-    if (!post) return null;
+    useEffect(() => {
+        const process = async () => {
+            const { html, readingTime } = await processMarkdown(post_content!.content);
+
+            setHtml(html);
+            setReadingTime(readingTime);
+        };
+
+        process();
+    }, [post_content]);
 
     return (
         <>

@@ -1,3 +1,5 @@
+'use server';
+
 import rehypeShiki from '@shikijs/rehype';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSanitize from 'rehype-sanitize';

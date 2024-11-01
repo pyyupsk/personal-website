@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
+import { TRPCReactProvider } from '@/trpc/react';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { ViewTransitions } from 'next-view-transitions';
@@ -17,7 +18,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                         disableTransitionOnChange
                         enableSystem
                     >
-                        {children}
+                        <TRPCReactProvider>{children}</TRPCReactProvider>
                     </ThemeProvider>
                     <Toaster />
                 </body>
