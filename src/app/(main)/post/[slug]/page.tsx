@@ -1,4 +1,5 @@
 import { Separator } from '@/components/ui/separator';
+import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { api } from '@/trpc/server';
@@ -30,10 +31,13 @@ export async function generateMetadata(props: Props) {
 
 export default async function Page(props: Props) {
     const { slug } = await props.params;
+    const { post, post_content } = (await api.posts.blog({ id: slug })) || {};
+
+    const { html, readingTime } = await processMarkdown(post_content!.content);
 
     return (
         <section className="space-y-6">
-            <PostContent slug={slug} />
+            <PostContent html={html} post={post} readingTime={readingTime} />
             <Separator />
         </section>
     );

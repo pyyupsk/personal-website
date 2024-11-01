@@ -93,13 +93,6 @@ const config = {
             typography: {
                 DEFAULT: {
                     css: {
-                        '.rehype-code-title': {
-                            '@apply rounded-t-md border-x border-t bg-card px-3 py-1.5 text-card-foreground':
-                                {},
-                        },
-                        '.rehype-code-title + pre': {
-                            '@apply mt-0 rounded-t-none': {},
-                        },
                         ':not(pre) > code': {
                             '@apply whitespace-break-spaces rounded bg-muted px-[0.2em] py-[0.15em] text-[85%]':
                                 {},
