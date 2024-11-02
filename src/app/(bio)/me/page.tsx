@@ -24,7 +24,12 @@ export default function Component() {
                         animate={{ scale: 1 }}
                         className="size-32 border-4 shadow-lg"
                         initial={{ scale: 0 }}
-                        transition={{ damping: 20, delay: 0.2, stiffness: 260, type: 'spring' }}
+                        transition={{
+                            damping: 20,
+                            delay: 0.2,
+                            stiffness: 260,
+                            type: 'spring',
+                        }}
                     >
                         <AvatarImage
                             alt="First (Pongsakorn Thipayanate)"

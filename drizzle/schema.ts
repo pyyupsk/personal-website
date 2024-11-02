@@ -27,7 +27,10 @@ export const prismaMigrations = pgTable('_prisma_migrations', {
     id: varchar({ length: 36 }).primaryKey().notNull(),
     logs: text(),
     migrationName: varchar('migration_name', { length: 255 }).notNull(),
-    rolledBackAt: timestamp('rolled_back_at', { mode: 'string', withTimezone: true }),
+    rolledBackAt: timestamp('rolled_back_at', {
+        mode: 'string',
+        withTimezone: true,
+    }),
     startedAt: timestamp('started_at', { mode: 'string', withTimezone: true })
         .defaultNow()
         .notNull(),

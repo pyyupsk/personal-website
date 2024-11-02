@@ -11,9 +11,10 @@ import { useEffect, useMemo, useState } from 'react';
 export function PostContent({ slug }: { slug: string }) {
     const [res] = api.posts.blog.useSuspenseQuery({ id: slug });
     const [isLoading, setIsLoading] = useState(true);
-    const [processedContent, setProcessedContent] = useState<{ html: string; readingTime: number }>(
-        { html: '', readingTime: 0 },
-    );
+    const [processedContent, setProcessedContent] = useState<{
+        html: string;
+        readingTime: number;
+    }>({ html: '', readingTime: 0 });
 
     useEffect(() => {
         setIsLoading(true);
