@@ -1,4 +1,3 @@
-import { Separator } from '@/components/ui/separator';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
@@ -23,10 +22,5 @@ export const metadata: Metadata = commonMetaData({
 export default async function Page({ params }: Props) {
     const { slug } = await params;
 
-    return (
-        <section className="space-y-6">
-            <PostContent slug={slug} />
-            <Separator />
-        </section>
-    );
+    return <PostContent slug={slug} />;
 }
