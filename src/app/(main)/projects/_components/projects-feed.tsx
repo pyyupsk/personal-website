@@ -1,11 +1,9 @@
-'use client';
-
-import { api } from '@/trpc/react';
+import { api } from '@/trpc/server';
 
 import { ProjectsList } from './projects-list';
 
-export function ProjectsFeed() {
-    const [projects] = api.projects.list.useSuspenseQuery({});
+export async function ProjectsFeed() {
+    const projects = await api.projects.list({});
 
     return <ProjectsList projects={projects} />;
 }

@@ -1,16 +1,14 @@
-'use client';
-
 import { buttonVariants } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
-import { api } from '@/trpc/react';
+import { api } from '@/trpc/server';
 import { RssIcon } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 
 import { PostsList } from './posts-list';
 
-export function PostsFeed({ page }: { page: number }) {
-    const [total] = api.posts.total.useSuspenseQuery();
-    const [posts] = api.posts.list.useSuspenseQuery({ page });
+export async function PostsFeed({ page }: { page: number }) {
+    const total = await api.posts.total();
+    const posts = await api.posts.list({ page });
 
     if (posts.length === 0) {
         return (

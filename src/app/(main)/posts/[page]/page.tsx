@@ -19,11 +19,12 @@ export const metadata: Metadata = commonMetaData({
     title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
 });
 
-export default async function Page(props: { params: Promise<{ page: string }> }) {
-    const params = await props.params;
+export default async function Page({ params }: { params: Promise<{ page: string }> }) {
+    const { page } = await params;
+
     return (
         <div className="space-y-6">
-            <section className={cn('space-y-3', params.page !== '1' && 'hidden')}>
+            <section className={cn('space-y-3', page !== '1' && 'hidden')}>
                 <p className="text-xl text-foreground">Insights and Reflections</p>
                 <p className="leading-relaxed">
                     Welcome to my collection of posts where I share insights, tutorials, and
@@ -35,7 +36,7 @@ export default async function Page(props: { params: Promise<{ page: string }> })
                 </p>
             </section>
             <Suspense fallback={<Skeleton count={5} />}>
-                <PostsFeed page={parseInt(params.page)} />
+                <PostsFeed page={parseInt(page)} />
             </Suspense>
         </div>
     );

@@ -4,6 +4,7 @@ import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
+import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { Link } from 'next-view-transitions';
 
 import { Clock } from './_components/clock';
@@ -11,20 +12,16 @@ import { DiscordProfile } from './_components/discord-profile';
 
 const experience = new Date().getFullYear() - 2019;
 
-export function generateMetadata() {
-    const metadata = commonMetaData({
-        description: `Passionate software engineer with ${experience} years of experience in web development. Specializing in React, Node.js, and cloud tech, I create scalable, user-friendly solutions. Explore my diverse projects and skills in JavaScript, Python, and DevOps.`,
-        image: openGraph({
-            button: 'Let’s Collaborate',
-            description:
-                'Experienced software engineer specializing in React, Node.js, and scalable solutions.',
-            title: 'Independent Programmer',
-        }),
-        title: 'Independent Programmer | Pongsakorn Thipayanate',
-    });
-
-    return metadata;
-}
+export const metadata: Metadata = commonMetaData({
+    description: `Passionate software engineer with ${experience} years of experience in web development. Specializing in React, Node.js, and cloud tech, I create scalable, user-friendly solutions. Explore my diverse projects and skills in JavaScript, Python, and DevOps.`,
+    image: openGraph({
+        button: 'Let’s Collaborate',
+        description:
+            'Experienced software engineer specializing in React, Node.js, and scalable solutions.',
+        title: 'Independent Programmer',
+    }),
+    title: 'Independent Programmer | Pongsakorn Thipayanate',
+});
 
 export default function Page() {
     return (
