@@ -1,5 +1,6 @@
+import type { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
+
 import { api } from '@/trpc/server';
-import { type Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
 const BASE_URL = 'https://pyyupsk.vercel.app';
 const POSTS_PER_PAGE = 5;

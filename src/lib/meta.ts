@@ -1,5 +1,5 @@
-import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-import { type TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
+import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
+import type { TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 
 type CommonMetaData = {
     description: string;

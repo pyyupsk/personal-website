@@ -1,6 +1,7 @@
 'use client';
 
-import { type PostData } from '../_types/PostData';
+import type { PostData } from '../_types/PostData';
+
 import { Pagination } from './pagination';
 import { PostCard } from './post-card';
 

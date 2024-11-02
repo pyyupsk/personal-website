@@ -1,6 +1,6 @@
 import { create, type StateCreator } from 'zustand';
 
-import { type ProjectData } from '../_types/ProjectData';
+import type { ProjectData } from '../_types/ProjectData';
 
 type StatusFilter = 'ALL' | ProjectData['status'];
 

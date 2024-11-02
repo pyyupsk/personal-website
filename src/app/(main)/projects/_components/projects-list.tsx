@@ -5,8 +5,9 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { SearchIcon } from 'lucide-react';
 import { useMemo } from 'react';
 
+import type { ProjectData } from '../_types/ProjectData';
+
 import { useFilter } from '../_stores/filter';
-import { type ProjectData } from '../_types/ProjectData';
 import { ProjectCard } from './project-card';
 
 export function ProjectsList({ projects }: { projects: ProjectData[] }) {

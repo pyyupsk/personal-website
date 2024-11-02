@@ -2,7 +2,8 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { Link } from 'next-view-transitions';
 
-import { type ProjectData } from '../_types/ProjectData';
+import type { ProjectData } from '../_types/ProjectData';
+
 import { getStatusColor } from './utils';
 
 export function ProjectCard({ project }: { project: ProjectData }) {

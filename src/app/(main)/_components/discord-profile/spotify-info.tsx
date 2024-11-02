@@ -3,7 +3,7 @@ import { MessageMarquee } from '@/components/ui/message-marquee';
 import { Headphones } from 'lucide-react';
 import Image from 'next/image';
 
-import { type Spotify } from './types';
+import type { Spotify } from './types';
 
 export function SpotifyInfo({ spotify }: { spotify: Spotify }) {
     return (

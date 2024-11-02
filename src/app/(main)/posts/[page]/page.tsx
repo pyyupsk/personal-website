@@ -1,7 +1,8 @@
+import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
+
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
-import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { Suspense } from 'react';
 
 import { PostsFeed } from '../_components/posts-feed';

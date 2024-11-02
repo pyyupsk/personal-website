@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Link } from 'next-view-transitions';
 
-import { type PostData } from '../_types/PostData';
+import type { PostData } from '../_types/PostData';
 
 export function PostCard({ post }: { post: PostData }) {
     return (

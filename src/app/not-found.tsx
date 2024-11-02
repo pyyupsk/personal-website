@@ -1,8 +1,9 @@
+import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
+
 import { buttonVariants } from '@/components/ui/button';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { ArrowLeftIcon } from 'lucide-react';
-import { type Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { Link } from 'next-view-transitions';
 
 export const metadata: Metadata = commonMetaData({
