@@ -13,15 +13,15 @@ export default function Error({
     reset: () => void;
 }) {
     useEffect(() => {
-        console.error(`Failed to fetch post: ${error.message}\n${error.stack}`); // Log the error to the console
+        console.error(error);
     }, [error]);
 
     return (
         <section className="space-y-1.5">
             <EmptyState
-                description={`We got an error: "${error.message}". Please try again.`}
+                description="We're sorry, but we couldn't load this post. Please try again."
                 icon={Bug}
-                title="Something went wrong"
+                title="Failed to Load Post"
             >
                 <Button onClick={reset} variant="outline">
                     Try Again

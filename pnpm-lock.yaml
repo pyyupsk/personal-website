@@ -71,9 +71,12 @@ importers:
             lucide-react:
                 specifier: ^0.429.0
                 version: 0.429.0(react@19.0.0-rc-69d4b800-20241021)
-            markdown-it:
-                specifier: ^14.1.0
-                version: 14.1.0
+            marked:
+                specifier: ^14.1.3
+                version: 14.1.3
+            marked-shiki:
+                specifier: ^1.1.1
+                version: 1.1.1(marked@14.1.3)(shiki@1.22.2)
             moment-timezone:
                 specifier: ^0.5.46
                 version: 0.5.46
@@ -101,9 +104,6 @@ importers:
             sharp:
                 specifier: ^0.33.5
                 version: 0.33.5
-            shiki:
-                specifier: ^1.22.2
-                version: 1.22.2
             superjson:
                 specifier: ^2.2.1
                 version: 2.2.1
@@ -135,15 +135,9 @@ importers:
             '@next/bundle-analyzer':
                 specifier: 15.0.1-canary.3
                 version: 15.0.1-canary.3
-            '@shikijs/markdown-it':
-                specifier: ^1.22.2
-                version: 1.22.2
             '@tailwindcss/typography':
                 specifier: ^0.5.15
                 version: 0.5.15(tailwindcss@3.4.14)
-            '@types/markdown-it':
-                specifier: ^14.1.2
-                version: 14.1.2
             '@types/node':
                 specifier: ^20.16.11
                 version: 20.16.11
@@ -198,9 +192,6 @@ importers:
             postcss:
                 specifier: ^8.4.47
                 version: 8.4.47
-            postcss-load-config:
-                specifier: ^6.0.1
-                version: 6.0.1(jiti@2.3.3)(postcss@8.4.47)(yaml@2.6.0)
             prettier:
                 specifier: ^3.3.3
                 version: 3.3.3
@@ -213,6 +204,9 @@ importers:
             prettier-plugin-tailwindcss:
                 specifier: ^0.6.8
                 version: 0.6.8(@ianvs/prettier-plugin-sort-imports@4.3.1(prettier@3.3.3))(prettier-plugin-organize-imports@4.1.0(prettier@3.3.3)(typescript@5.4.5))(prettier@3.3.3)
+            shiki:
+                specifier: ^1.22.2
+                version: 1.22.2
             tailwindcss:
                 specifier: ^3.4.14
                 version: 3.4.14
@@ -1848,12 +1842,6 @@ packages:
                 integrity: sha512-GIZPAGzQOy56mGvWMoZRPggn0dTlBf1gutV5TdceLCZlFNqWmuc7u+CzD0Gd9vQUTgLbrt0KLzz6FNprqYAxlA==,
             }
 
-    '@shikijs/markdown-it@1.22.2':
-        resolution:
-            {
-                integrity: sha512-PgNY3s350UijOWLaoeAXHcYUeDqJKM2De9t8DMkBnQHi6tibo4eoV6sfnsULiJu47TwD1d4VG2YsH0Lxp/VM7A==,
-            }
-
     '@shikijs/types@1.22.2':
         resolution:
             {
@@ -1994,28 +1982,10 @@ packages:
                 integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==,
             }
 
-    '@types/linkify-it@5.0.0':
-        resolution:
-            {
-                integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==,
-            }
-
-    '@types/markdown-it@14.1.2':
-        resolution:
-            {
-                integrity: sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==,
-            }
-
     '@types/mdast@4.0.4':
         resolution:
             {
                 integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==,
-            }
-
-    '@types/mdurl@2.0.0':
-        resolution:
-            {
-                integrity: sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==,
             }
 
     '@types/node@20.16.11':
@@ -3061,13 +3031,6 @@ packages:
                 integrity: sha512-LMHl3dXhTcfv8gM4kEzIUeTQ+7fpdA0l2tUf34BddXPkz2A5xJ5L/Pchd5BL6rdccM9QGvu0sWZzK1Z1t4wwyg==,
             }
         engines: { node: '>=10.13.0' }
-
-    entities@4.5.0:
-        resolution:
-            {
-                integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==,
-            }
-        engines: { node: '>=0.12' }
 
     env-paths@2.2.1:
         resolution:
@@ -4349,12 +4312,6 @@ packages:
                 integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==,
             }
 
-    linkify-it@5.0.0:
-        resolution:
-            {
-                integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==,
-            }
-
     lint-staged@15.2.10:
         resolution:
             {
@@ -4478,23 +4435,27 @@ packages:
         peerDependencies:
             react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
-    markdown-it@14.1.0:
+    marked-shiki@1.1.1:
         resolution:
             {
-                integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==,
+                integrity: sha512-KTSMBhZM19a1m92GDvQ7NKGc8u1l80BRS2owceTYCXa+35ZPloa0p/V/eK9Ruw0T6mwX9f3IUw/zteRfNqJIaA==,
             }
+        peerDependencies:
+            marked: '>=7.0.0'
+            shiki: '>=1.0.0'
+
+    marked@14.1.3:
+        resolution:
+            {
+                integrity: sha512-ZibJqTULGlt9g5k4VMARAktMAjXoVnnr+Y3aCqW1oDftcV4BA3UmrBifzXoZyenHRk75csiPu9iwsTj4VNBT0g==,
+            }
+        engines: { node: '>= 18' }
         hasBin: true
 
     mdast-util-to-hast@13.2.0:
         resolution:
             {
                 integrity: sha512-QGYKEuUsYT9ykKBCMOEDLsU5JRObWQusAolFMeko/tYPufNkRffBAQjIE+99jbA87xv6FgmjLtwjh9wBWajwAA==,
-            }
-
-    mdurl@2.0.0:
-        resolution:
-            {
-                integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==,
             }
 
     meow@12.1.1:
@@ -5095,27 +5056,6 @@ packages:
             ts-node:
                 optional: true
 
-    postcss-load-config@6.0.1:
-        resolution:
-            {
-                integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==,
-            }
-        engines: { node: '>= 18' }
-        peerDependencies:
-            jiti: '>=1.21.0'
-            postcss: '>=8.0.9'
-            tsx: ^4.8.1
-            yaml: ^2.4.2
-        peerDependenciesMeta:
-            jiti:
-                optional: true
-            postcss:
-                optional: true
-            tsx:
-                optional: true
-            yaml:
-                optional: true
-
     postcss-nested@6.2.0:
         resolution:
             {
@@ -5349,13 +5289,6 @@ packages:
             {
                 integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==,
             }
-
-    punycode.js@2.3.1:
-        resolution:
-            {
-                integrity: sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==,
-            }
-        engines: { node: '>=6' }
 
     punycode@2.3.1:
         resolution:
@@ -6100,12 +6033,6 @@ packages:
             }
         engines: { node: '>=14.17' }
         hasBin: true
-
-    uc.micro@2.1.0:
-        resolution:
-            {
-                integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==,
-            }
 
     unbox-primitive@1.0.2:
         resolution:
@@ -7383,11 +7310,6 @@ snapshots:
             '@shikijs/types': 1.22.2
             '@shikijs/vscode-textmate': 9.3.0
 
-    '@shikijs/markdown-it@1.22.2':
-        dependencies:
-            markdown-it: 14.1.0
-            shiki: 1.22.2
-
     '@shikijs/types@1.22.2':
         dependencies:
             '@shikijs/vscode-textmate': 9.3.0
@@ -7471,18 +7393,9 @@ snapshots:
 
     '@types/json5@0.0.29': {}
 
-    '@types/linkify-it@5.0.0': {}
-
-    '@types/markdown-it@14.1.2':
-        dependencies:
-            '@types/linkify-it': 5.0.0
-            '@types/mdurl': 2.0.0
-
     '@types/mdast@4.0.4':
         dependencies:
             '@types/unist': 3.0.3
-
-    '@types/mdurl@2.0.0': {}
 
     '@types/node@20.16.11':
         dependencies:
@@ -8100,8 +8013,6 @@ snapshots:
         dependencies:
             graceful-fs: 4.2.11
             tapable: 2.2.1
-
-    entities@4.5.0: {}
 
     env-paths@2.2.1: {}
 
@@ -9025,10 +8936,6 @@ snapshots:
 
     lines-and-columns@1.2.4: {}
 
-    linkify-it@5.0.0:
-        dependencies:
-            uc.micro: 2.1.0
-
     lint-staged@15.2.10:
         dependencies:
             chalk: 5.3.0
@@ -9103,14 +9010,12 @@ snapshots:
         dependencies:
             react: 19.0.0-rc-69d4b800-20241021
 
-    markdown-it@14.1.0:
+    marked-shiki@1.1.1(marked@14.1.3)(shiki@1.22.2):
         dependencies:
-            argparse: 2.0.1
-            entities: 4.5.0
-            linkify-it: 5.0.0
-            mdurl: 2.0.0
-            punycode.js: 2.3.1
-            uc.micro: 2.1.0
+            marked: 14.1.3
+            shiki: 1.22.2
+
+    marked@14.1.3: {}
 
     mdast-util-to-hast@13.2.0:
         dependencies:
@@ -9123,8 +9028,6 @@ snapshots:
             unist-util-position: 5.0.0
             unist-util-visit: 5.0.0
             vfile: 6.0.3
-
-    mdurl@2.0.0: {}
 
     meow@12.1.1: {}
 
@@ -9444,14 +9347,6 @@ snapshots:
         optionalDependencies:
             postcss: 8.4.47
 
-    postcss-load-config@6.0.1(jiti@2.3.3)(postcss@8.4.47)(yaml@2.6.0):
-        dependencies:
-            lilconfig: 3.1.2
-        optionalDependencies:
-            jiti: 2.3.3
-            postcss: 8.4.47
-            yaml: 2.6.0
-
     postcss-nested@6.2.0(postcss@8.4.47):
         dependencies:
             postcss: 8.4.47
@@ -9545,8 +9440,6 @@ snapshots:
             react-is: 16.13.1
 
     property-information@6.5.0: {}
-
-    punycode.js@2.3.1: {}
 
     punycode@2.3.1: {}
 
@@ -10038,8 +9931,6 @@ snapshots:
             csstype: 3.1.3
 
     typescript@5.4.5: {}
-
-    uc.micro@2.1.0: {}
 
     unbox-primitive@1.0.2:
         dependencies:

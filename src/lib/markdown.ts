@@ -1,24 +1,40 @@
-import MarkdownIt from 'markdown-it';
+import { marked } from 'marked';
+import markedShiki from 'marked-shiki';
+import { cache } from 'react';
+import { codeToHtml } from 'shiki';
 
-const md = MarkdownIt();
+const parser = cache(async (markdown: string) => {
+    const html = marked
+        .use(
+            markedShiki({
+                async highlight(code, lang) {
+                    return await codeToHtml(code, {
+                        lang,
+                        themes: {
+                            dark: 'min-dark',
+                            light: 'min-light',
+                        },
+                    });
+                },
+            }),
+        )
+        .parse(markdown);
 
-export async function processMarkdown(markdown: string): Promise<{
-    html: string;
-    readingTime: number;
-}> {
-    const { default: Shiki } = await import('@shikijs/markdown-it');
+    return html;
+});
 
-    md.use(
-        await Shiki({
-            themes: {
-                dark: 'min-dark',
-                light: 'min-light',
-            },
-        }),
-    );
+const processMarkdownWithCache = cache(async (markdown: string) => {
+    const html = await parser(markdown);
+
+    const wordCount = markdown.trim().split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 150);
 
     return {
-        html: md.render(markdown),
-        readingTime: Math.ceil(markdown.split(' ').length / 150),
+        html,
+        readingTime,
     };
+});
+
+export async function processMarkdown(markdown: string) {
+    return processMarkdownWithCache(markdown);
 }
