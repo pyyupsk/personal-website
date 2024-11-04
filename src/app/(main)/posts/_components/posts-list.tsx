@@ -23,11 +23,13 @@ export function PostsList({ page, posts, total }: Props) {
                     </li>
                 ))}
             </ul>
-            <Pagination
-                className="justify-end"
-                current={page}
-                pages={Math.ceil(total / POSTS_PER_PAGE)}
-            />
+            {total > POSTS_PER_PAGE && (
+                <Pagination
+                    className="justify-end"
+                    current={page}
+                    pages={Math.ceil(total / POSTS_PER_PAGE)}
+                />
+            )}
         </section>
     );
 }

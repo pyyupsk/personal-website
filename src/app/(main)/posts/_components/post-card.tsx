@@ -7,10 +7,10 @@ export function PostCard({ post }: { post: PostData }) {
     return (
         <Link className="group" href={`/post/${post.id}`} rel="preload">
             <h3 className="group-hover:underline">{post.title}</h3>
-            <time className="text-sm text-muted-foreground">
-                {format(post.publishDate, 'LLLL d, yyyy')}
+            <time className="text-sm text-muted-foreground" dateTime={post.publishDate}>
+                {format(new Date(post.publishDate), 'LLLL d, yyyy')}
             </time>
-            {post.description && <p className="mt-1.5 text-sm">{post.description}</p>}
+            {post.description && <p className="mt-1.5 line-clamp-3 text-sm">{post.description}</p>}
         </Link>
     );
 }

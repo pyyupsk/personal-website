@@ -20,7 +20,7 @@ export function ProjectCard({ project }: { project: ProjectData }) {
                     {project.status.replace('_', ' ')}
                 </Badge>
             </div>
-            <p className="line-clamp-3 text-sm">{project.description}</p>
+            <p className="mt-2 line-clamp-3 text-sm">{project.description}</p>
         </Link>
     );
 }

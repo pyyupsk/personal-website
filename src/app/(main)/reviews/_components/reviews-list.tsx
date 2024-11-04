@@ -49,7 +49,10 @@ export async function ReviewsList() {
                             <p className="text-foreground group-hover:underline">
                                 {comment.is_anonymous ? 'anonymous' : comment.reviewer.display_name}
                             </p>
-                            <time className="text-sm text-muted-foreground">
+                            <time
+                                className="text-sm text-muted-foreground"
+                                dateTime={comment.created_at}
+                            >
                                 {format(comment.created_at, 'LLLL d, yyyy')}
                             </time>
                         </div>
