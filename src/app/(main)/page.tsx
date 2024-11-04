@@ -32,7 +32,7 @@ export default function Page() {
                 <Clock />
             </section>
             <section className="space-y-3">
-                <p className="text-xl text-foreground">Independent Programmer</p>
+                <p className="text-xl">Independent Programmer</p>
                 <p className="leading-relaxed">
                     I&apos;m a passionate software engineer with {experience} years of experience in
                     building web applications. I specialize in React, Node.js, and cloud

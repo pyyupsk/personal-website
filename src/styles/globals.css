@@ -1,13 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
-    :root {
+     :root {
         --background: 0 0% 96%;
         --foreground: 0 0% 9%;
         --muted: 0 0% 85.66%;
-        --muted-foreground: 346.19 0% 40.35%;
+        --muted-foreground: 0 0% 40%;
         --popover: 0 0% 93%;
         --popover-foreground: 0 0% 0%;
         --card: 0 0% 94%;
@@ -22,10 +21,9 @@
         --accent-foreground: 0 0% 21%;
         --destructive: 6 92% 43%;
         --destructive-foreground: 0 0% 100%;
-        --ring: 346.19 0% 40.35%;
+        --ring: 0 0% 40%;
         --radius: 0.5rem;
     }
-
     .dark {
         --background: 240 7% 8%;
         --foreground: 0 0% 78%;
@@ -53,24 +51,31 @@
     * {
         @apply border-border;
     }
-
     body {
         @apply min-h-screen bg-background font-sans text-foreground antialiased;
     }
 }
 
+
 /* Scrollbars */
+
 ::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply rounded-md bg-muted-foreground;
+    border-radius: calc(var(--radius) - 2px);
+    background-color: hsl(var(--muted-foreground));
 }
 
-/* Dark Mode */
-.shiki,
-.shiki span {
-    @apply dark:!bg-[var(--background)] dark:!text-[var(--shiki-dark)];
+
+/* Shiki */
+
+html.dark {
+    .shiki,
+    .shiki span {
+        background-color: hsl(var(--background)) !important;
+        color: var(--shiki-dark) !important;
+    }
 }
