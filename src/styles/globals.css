@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-     :root {
+    :root {
         --background: 0 0% 96%;
         --foreground: 0 0% 9%;
         --muted: 0 0% 85.66%;
@@ -56,7 +56,6 @@
     }
 }
 
-
 /* Scrollbars */
 
 ::-webkit-scrollbar {
@@ -68,7 +67,6 @@
     border-radius: calc(var(--radius) - 2px);
     background-color: hsl(var(--muted-foreground));
 }
-
 
 /* Shiki */
 

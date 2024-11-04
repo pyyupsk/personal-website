@@ -7,5 +7,16 @@
     "singleQuote": true,
     "tabWidth": 4,
     "tailwindFunctions": ["clsx", "cn", "cva"],
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "overrides": [
+        {
+            "files": ["**/*.md", "**/*.mdx"],
+            "options": {
+                "parser": "markdown",
+                "proseWrap": "always",
+                "printWidth": 80,
+                "tabWidth": 2
+            }
+        }
+    ]
 }
