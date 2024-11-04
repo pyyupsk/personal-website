@@ -3,6 +3,7 @@
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { navigation } from '@/constants/navigation';
 import { socials } from '@/constants/socials';
+import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
 
@@ -33,7 +34,15 @@ export function Footer() {
                 <ul className="flex gap-3">
                     {navigation.map((item) => (
                         <li className="text-sm" key={item.name}>
-                            <Link aria-current={item.href === pathname} href={item.href}>
+                            <Link
+                                className={cn(
+                                    'transition-all duration-200 hover:text-foreground',
+                                    item.match?.(pathname)
+                                        ? 'text-foreground'
+                                        : 'text-muted-foreground',
+                                )}
+                                href={item.href}
+                            >
                                 {item.name}
                             </Link>
                         </li>

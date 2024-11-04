@@ -1,6 +1,7 @@
 'use client';
 
 import { navigation } from '@/constants/navigation';
+import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
 
@@ -14,7 +15,15 @@ export function Header() {
                 <ul className="flex items-center gap-3">
                     {navigation.map((item) => (
                         <li key={item.name}>
-                            <Link aria-current={item.href === pathname} href={item.href}>
+                            <Link
+                                className={cn(
+                                    'transition-all duration-200 hover:text-foreground',
+                                    item.match?.(pathname)
+                                        ? 'text-foreground'
+                                        : 'text-muted-foreground',
+                                )}
+                                href={item.href}
+                            >
                                 {item.name}
                             </Link>
                         </li>
