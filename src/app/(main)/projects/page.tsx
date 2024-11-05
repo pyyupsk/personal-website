@@ -2,11 +2,9 @@ import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
-import { Suspense } from 'react';
+import { api } from '@/trpc/server';
 
 import { ProjectsFeed } from './_components/projects-feed';
-import { ProjectsFilter } from './_components/projects-filter';
-import { Skeleton } from './_components/skeleton';
 
 export const metadata: Metadata = commonMetaData({
     description:
@@ -20,23 +18,8 @@ export const metadata: Metadata = commonMetaData({
     title: 'Showcasing My Projects | Innovative Solutions & Web Development',
 });
 
-export default function Page() {
-    return (
-        <div className="space-y-6">
-            <section className="space-y-3">
-                <p className="text-xl text-foreground">Showcasing My Projects</p>
-                <p className="leading-relaxed">
-                    Explore a selection of my work that demonstrates my expertise in programming and
-                    web development. Each project reflects my dedication to building innovative
-                    solutions, solving complex problems, and applying cutting-edge technologies.
-                    From personal endeavors to freelance projects, these examples highlight my
-                    skills and the value I bring to every challenge.
-                </p>
-            </section>
-            <ProjectsFilter />
-            <Suspense fallback={<Skeleton count={4} />}>
-                <ProjectsFeed />
-            </Suspense>
-        </div>
-    );
+export default async function Page() {
+    const projects = await api.projects.list();
+
+    return <ProjectsFeed projects={projects} />;
 }

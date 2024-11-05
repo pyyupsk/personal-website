@@ -89,6 +89,9 @@ importers:
             next-view-transitions:
                 specifier: ^0.3.2
                 version: 0.3.2(next@15.0.1-canary.3(@babel/core@7.25.8)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+            nuqs:
+                specifier: ^2.1.1
+                version: 2.1.1(next@15.0.1-canary.3(@babel/core@7.25.8)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
             pg:
                 specifier: ^8.13.0
                 version: 8.13.0
@@ -119,9 +122,6 @@ importers:
             zod:
                 specifier: ^3.23.8
                 version: 3.23.8
-            zustand:
-                specifier: ^4.5.5
-                version: 4.5.5(immer@10.1.1)(react@19.0.0-rc-69d4b800-20241021)(types-react@19.0.0-rc.1)
         devDependencies:
             '@commitlint/cli':
                 specifier: ^19.5.0
@@ -3797,12 +3797,6 @@ packages:
             }
         engines: { node: '>= 4' }
 
-    immer@10.1.1:
-        resolution:
-            {
-                integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==,
-            }
-
     import-fresh@3.3.0:
         resolution:
             {
@@ -4555,6 +4549,12 @@ packages:
             }
         engines: { node: '>=16 || 14 >=14.17' }
 
+    mitt@3.0.1:
+        resolution:
+            {
+                integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==,
+            }
+
     moment-timezone@0.5.46:
         resolution:
             {
@@ -4668,6 +4668,24 @@ packages:
                 integrity: sha512-ppwTtiJZq0O/ai0z7yfudtBpWIoxM8yE6nHi1X47eFR2EWORqfbu6CnPlNsjeN683eT0qG6H/Pyf9fCcvjnnnQ==,
             }
         engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
+
+    nuqs@2.1.1:
+        resolution:
+            {
+                integrity: sha512-iM2H8lMmhvk9bxupUs2oRle9usRNEAqppOkTMXOxD/uK85gOKAubU7T2zmPo8fnYQS4n5e/XswTiq+gLYGpy3w==,
+            }
+        peerDependencies:
+            '@remix-run/react': '>= 2'
+            next: '>= 14.2.0'
+            react: '>= 18.2.0'
+            react-router-dom: '>= 6'
+        peerDependenciesMeta:
+            '@remix-run/react':
+                optional: true
+            next:
+                optional: true
+            react-router-dom:
+                optional: true
 
     object-assign@4.1.1:
         resolution:
@@ -6326,24 +6344,6 @@ packages:
             {
                 integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==,
             }
-
-    zustand@4.5.5:
-        resolution:
-            {
-                integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==,
-            }
-        engines: { node: '>=12.7.0' }
-        peerDependencies:
-            '@types/react': npm:types-react@19.0.0-rc.1
-            immer: '>=9.0.6'
-            react: '>=16.8'
-        peerDependenciesMeta:
-            '@types/react':
-                optional: true
-            immer:
-                optional: true
-            react:
-                optional: true
 
     zwitch@2.0.4:
         resolution:
@@ -8675,9 +8675,6 @@ snapshots:
 
     ignore@5.3.2: {}
 
-    immer@10.1.1:
-        optional: true
-
     import-fresh@3.3.0:
         dependencies:
             parent-module: 1.0.1
@@ -9073,6 +9070,8 @@ snapshots:
 
     minipass@7.1.2: {}
 
+    mitt@3.0.1: {}
+
     moment-timezone@0.5.46:
         dependencies:
             moment: 2.30.1
@@ -9138,6 +9137,13 @@ snapshots:
     npm-run-path@5.3.0:
         dependencies:
             path-key: 4.0.0
+
+    nuqs@2.1.1(next@15.0.1-canary.3(@babel/core@7.25.8)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
+        dependencies:
+            mitt: 3.0.1
+            react: 19.0.0-rc-69d4b800-20241021
+        optionalDependencies:
+            next: 15.0.1-canary.3(@babel/core@7.25.8)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
 
     object-assign@4.1.1: {}
 
@@ -10128,13 +10134,5 @@ snapshots:
             zod: 3.23.8
 
     zod@3.23.8: {}
-
-    zustand@4.5.5(immer@10.1.1)(react@19.0.0-rc-69d4b800-20241021)(types-react@19.0.0-rc.1):
-        dependencies:
-            use-sync-external-store: 1.2.2(react@19.0.0-rc-69d4b800-20241021)
-        optionalDependencies:
-            '@types/react': types-react@19.0.0-rc.1
-            immer: 10.1.1
-            react: 19.0.0-rc-69d4b800-20241021
 
     zwitch@2.0.4: {}

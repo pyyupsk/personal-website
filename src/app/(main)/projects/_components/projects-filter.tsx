@@ -10,13 +10,28 @@ import {
 } from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SearchIcon } from 'lucide-react';
+import { type Options } from 'nuqs';
 import { useEffect, useState } from 'react';
 
-import { useFilter } from '../_stores/filter';
+type Props = {
+    setStatus: (
+        // eslint-disable-next-line no-unused-vars
+        value: ((old: string) => null | string) | null | string,
+        // eslint-disable-next-line no-unused-vars
+        options?: Options,
+    ) => Promise<URLSearchParams>;
+    setTitle: (
+        // eslint-disable-next-line no-unused-vars
+        value: ((old: string) => null | string) | null | string,
+        // eslint-disable-next-line no-unused-vars
+        options?: Options,
+    ) => Promise<URLSearchParams>;
+    status: string;
+    title: string;
+};
 
-export function ProjectsFilter() {
+export function ProjectsFilter({ setStatus, setTitle, status, title }: Props) {
     const [mounted, setMounted] = useState(false);
-    const { searchTerm, setSearchTerm, setStatusFilter, statusFilter } = useFilter();
 
     useEffect(() => setMounted(true), []);
 
@@ -35,13 +50,13 @@ export function ProjectsFilter() {
                 <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                     className="pl-8"
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => setTitle(e.target.value)}
                     placeholder="Search projects..."
                     type="text"
-                    value={searchTerm}
+                    value={title}
                 />
             </div>
-            <Select onValueChange={setStatusFilter} value={statusFilter}>
+            <Select onValueChange={setStatus} value={status}>
                 <SelectTrigger aria-label="Filter by status" className="w-56">
                     <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>

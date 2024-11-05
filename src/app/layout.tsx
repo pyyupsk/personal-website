@@ -6,6 +6,7 @@ import { TRPCReactProvider } from '@/trpc/react';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { ViewTransitions } from 'next-view-transitions';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
@@ -18,7 +19,9 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                         disableTransitionOnChange
                         enableSystem
                     >
-                        <TRPCReactProvider>{children}</TRPCReactProvider>
+                        <TRPCReactProvider>
+                            <NuqsAdapter>{children}</NuqsAdapter>
+                        </TRPCReactProvider>
                     </ThemeProvider>
                     <Toaster />
                 </body>
