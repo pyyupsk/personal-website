@@ -3,7 +3,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { env } from '@/env';
 import { cn } from '@/lib/utils';
-import { Link } from 'next-view-transitions';
 import useSWR from 'swr';
 
 import type { Response } from './types';
@@ -32,9 +31,10 @@ export function DiscordProfile() {
                 <AvatarFallback>{user.username.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
             <div className="flex w-full flex-col overflow-hidden">
-                <Link
+                <a
                     className="flex flex-col whitespace-nowrap font-semibold hover:underline sm:flex-row sm:items-center sm:gap-1.5"
                     href={`https://discord.com/users/${user.id}`}
+                    rel="noreferrer"
                     target="_blank"
                 >
                     <span className="text-foreground">{user.global_name || user.username}</span>
@@ -44,7 +44,7 @@ export function DiscordProfile() {
                             {user.username})
                         </span>
                     )}
-                </Link>
+                </a>
                 {spotify && <SpotifyInfo spotify={spotify} />}
             </div>
         </div>

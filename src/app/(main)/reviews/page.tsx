@@ -2,7 +2,6 @@ import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
-import Link from 'next/link';
 import { Suspense } from 'react';
 
 import { ReviewsList } from './_components/reviews-list';
@@ -31,13 +30,14 @@ export default function Page() {
                     and meeting the client&apos;s needs. These comments highlight my work experience
                     and the value I bring to every client.
                 </p>
-                <Link
+                <a
                     className="relative underline after:content-['_↗'] hover:text-foreground"
                     href="https://fastwork.co/user/firstpsk"
+                    rel="noreferrer"
                     target="_blank"
                 >
                     See on Fastwork
-                </Link>
+                </a>
             </section>
             <Suspense fallback={<Skeleton count={5} />}>
                 <ReviewsList />

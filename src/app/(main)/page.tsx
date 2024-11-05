@@ -6,7 +6,6 @@ import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
-import { Link } from 'next-view-transitions';
 
 import { Clock } from './_components/clock';
 import { DiscordProfile } from './_components/discord-profile';
@@ -64,9 +63,9 @@ export default function Page() {
                     I&apos;m always open to new opportunities and collaborations. If you&apos;d like
                     to discuss a project or just want to connect, feel free to reach out.
                 </p>
-                <Link className={buttonVariants()} href={email.href} target="_blank">
+                <a className={buttonVariants()} href={email.href} rel="noreferrer" target="_blank">
                     Get in touch
-                </Link>
+                </a>
             </section>
         </div>
     );

@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { socials } from '@/constants/socials';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 const MotionAvatar = motion(Avatar);
 const MotionButton = motion(Button);
@@ -75,15 +74,15 @@ export default function Component() {
                                     }}
                                     variant="outline"
                                 >
-                                    <Link
+                                    <a
                                         className="flex items-center"
                                         href={link.href}
-                                        rel="noopener noreferrer"
+                                        rel="noreferrer"
                                         target="_blank"
                                     >
                                         <Icon className="mr-3 size-5" />
                                         {link.name}
-                                    </Link>
+                                    </a>
                                 </MotionButton>
                             );
                         })}

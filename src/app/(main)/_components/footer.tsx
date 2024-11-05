@@ -24,10 +24,10 @@ export function Footer() {
                 <ul className="flex gap-3">
                     {socials.map((item) => (
                         <li key={item.name}>
-                            <Link href={item.href} target="_blank">
+                            <a href={item.href} rel="noreferrer" target="_blank">
                                 <item.icon className="size-4 text-muted-foreground transition-all duration-200 hover:text-foreground" />
                                 <span className="sr-only">{item.name}</span>
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>

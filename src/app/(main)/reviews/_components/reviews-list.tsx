@@ -4,7 +4,6 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Star } from 'lucide-react';
-import Link from 'next/link';
 
 import { getReviews } from '../_actions/reviews';
 
@@ -18,12 +17,14 @@ export async function ReviewsList() {
                 icon={Star}
                 title="No Reviews Found"
             >
-                <Link
+                <a
                     className={buttonVariants({ variant: 'outline' })}
                     href="https://fastwork.co/user/firstpsk"
+                    rel="noreferrer"
+                    target="_blank"
                 >
                     See on Fastwork
-                </Link>
+                </a>
             </EmptyState>
         );
     }
