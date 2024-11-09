@@ -42,6 +42,7 @@ export function Footer() {
                                         : 'text-muted-foreground',
                                 )}
                                 href={item.href}
+                                prefetch
                             >
                                 {item.name}
                             </Link>

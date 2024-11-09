@@ -1,12 +1,9 @@
-import { api, HydrateClient } from '@/trpc/server';
+import { HydrateClient } from '@/trpc/server';
 
 import { Footer } from './_components/footer';
 import { Header } from './_components/header';
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-    await api.projects.list();
-    await api.posts.list({});
-
     return (
         <HydrateClient>
             <Header />

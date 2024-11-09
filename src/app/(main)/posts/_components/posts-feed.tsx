@@ -16,7 +16,7 @@ export async function PostsFeed({ page }: { page: number }) {
                 icon={RssIcon}
                 title="No Posts Yet"
             >
-                <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1">
+                <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1" prefetch>
                     Explore Posts
                 </Link>
             </EmptyState>

@@ -23,6 +23,7 @@ export function Header() {
                                         : 'text-muted-foreground',
                                 )}
                                 href={item.href}
+                                prefetch
                             >
                                 {item.name}
                             </Link>
