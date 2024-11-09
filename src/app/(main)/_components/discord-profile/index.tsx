@@ -29,7 +29,12 @@ export function DiscordProfile() {
     return (
         <div className="flex w-1/2 items-center gap-1.5">
             <Avatar className={cn('border-2', getStatusColor(status || 'offline'))}>
-                <AvatarImage alt={user.username} src={`https://api.lanyard.rest/${user.id}.webp`} />
+                <AvatarImage
+                    alt={user.username}
+                    height={40}
+                    src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=40`}
+                    width={40}
+                />
                 <AvatarFallback>{user.username.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
             <div className="flex w-full flex-col overflow-hidden">

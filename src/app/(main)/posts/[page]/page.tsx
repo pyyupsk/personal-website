@@ -3,10 +3,12 @@ import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-import { PostsFeed } from '../_components/posts-feed';
 import { Skeleton } from '../_components/skeleton';
+
+const PostsFeed = dynamic(() => import('../_components/posts-feed').then((mod) => mod.PostsFeed));
 
 export const metadata: Metadata = commonMetaData({
     description:

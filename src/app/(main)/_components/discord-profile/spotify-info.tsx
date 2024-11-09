@@ -13,7 +13,12 @@ const HoverCardContent = dynamic(() =>
 export function SpotifyInfo({ spotify }: { spotify: Spotify }) {
     return (
         <HoverCard closeDelay={0} openDelay={0}>
-            <HoverCardTrigger className="flex items-center text-sm hover:underline">
+            <HoverCardTrigger
+                className="flex items-center text-sm hover:underline"
+                href={`https://open.spotify.com/track/${spotify.track_id}`}
+                rel="noreferrer"
+                target="_blank"
+            >
                 <Headphones className="mr-1.5 size-3" />
                 <MessageMarquee message={`${spotify.song} by ${spotify.artist}`} />
             </HoverCardTrigger>

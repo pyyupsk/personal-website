@@ -1,6 +1,5 @@
 'use client';
 
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import moment from 'moment-timezone';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -29,23 +28,7 @@ export function Clock() {
     return (
         <div className="flex items-center gap-1.5 whitespace-nowrap">
             <TimeDisplay time={time} />
-            <HoverCard closeDelay={0} openDelay={0}>
-                <HoverCardTrigger>
-                    <AnalogClock
-                        hours={time.hours()}
-                        minutes={time.minutes()}
-                        seconds={time.seconds()}
-                    />
-                </HoverCardTrigger>
-                <HoverCardContent>
-                    <AnalogClock
-                        className="size-48"
-                        hours={time.hours()}
-                        minutes={time.minutes()}
-                        seconds={time.seconds()}
-                    />
-                </HoverCardContent>
-            </HoverCard>
+            <AnalogClock hours={time.hours()} minutes={time.minutes()} seconds={time.seconds()} />
         </div>
     );
 }

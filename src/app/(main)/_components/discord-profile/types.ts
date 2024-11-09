@@ -15,9 +15,11 @@ export interface Spotify {
     album_art_url: string;
     artist: string;
     song: string;
+    track_id: string;
 }
 
 interface DiscordUser {
+    avatar: string;
     global_name: string;
     id: string;
     username: string;
