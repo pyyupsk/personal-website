@@ -1,9 +1,14 @@
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { HoverCard, HoverCardTrigger } from '@/components/ui/hover-card';
 import { MessageMarquee } from '@/components/ui/message-marquee';
 import { Headphones } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import type { Spotify } from './types';
+
+const HoverCardContent = dynamic(() =>
+    import('@/components/ui/hover-card').then((mod) => mod.HoverCardContent),
+);
 
 export function SpotifyInfo({ spotify }: { spotify: Spotify }) {
     return (

@@ -72,7 +72,7 @@ export async function ReviewsList() {
                         </div>
                     </div>
                     {comment.description && (
-                        <p className="text-sm transition-all group-hover:text-foreground">
+                        <p className="text-sm text-muted-foreground transition-all group-hover:text-foreground">
                             {comment.description}
                         </p>
                     )}

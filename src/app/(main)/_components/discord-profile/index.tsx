@@ -3,14 +3,16 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { env } from '@/env';
 import { cn } from '@/lib/utils';
+import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 
 import type { Response } from './types';
 
 import { ErrorState } from './error-state';
 import { LoadingState } from './loading-state';
-import { SpotifyInfo } from './spotify-info';
 import { getStatusColor } from './utils';
+
+const SpotifyInfo = dynamic(() => import('./spotify-info').then((mod) => mod.SpotifyInfo));
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
