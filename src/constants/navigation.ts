@@ -8,22 +8,22 @@ type Navigation = {
 export const navigation: Navigation[] = [
     {
         href: '/',
-        match: (pathname) => pathname === '/',
+        match: (pathname: string) => pathname === '/',
         name: 'About',
     },
     {
         href: '/projects',
-        match: (pathname) => pathname.startsWith('/projects'),
+        match: (pathname: string) => pathname.startsWith('/projects'),
         name: 'Projects',
     },
     {
         href: '/posts/1',
-        match: (pathname) => pathname.startsWith('/posts/'),
+        match: (pathname: string) => pathname.startsWith('/posts/'),
         name: 'Posts',
     },
     {
         href: '/reviews',
-        match: (pathname) => pathname.startsWith('/reviews'),
+        match: (pathname: string) => pathname.startsWith('/reviews'),
         name: 'Reviews',
     },
 ];

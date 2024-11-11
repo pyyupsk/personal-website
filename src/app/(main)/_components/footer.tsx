@@ -1,5 +1,7 @@
 'use client';
 
+import type { Route } from 'next';
+
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { navigation } from '@/constants/navigation';
 import { socials } from '@/constants/socials';
@@ -41,7 +43,7 @@ export function Footer() {
                                         ? 'text-foreground'
                                         : 'text-muted-foreground',
                                 )}
-                                href={item.href}
+                                href={item.href as Route}
                                 prefetch
                             >
                                 {item.name}

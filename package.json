@@ -9,7 +9,7 @@
         "build": "next build",
         "dev": "next",
         "format": "prettier --write --cache .",
-        "lint": "prettier --check . && next lint",
+        "lint": "prettier --check . && next lint --fix",
         "prepare": "husky",
         "start": "next start"
     },

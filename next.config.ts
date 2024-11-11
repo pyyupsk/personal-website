@@ -7,6 +7,9 @@ const withBundleAnalyzer = BundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+    experimental: {
+        typedRoutes: true,
+    },
     images: {
         remotePatterns: [
             {

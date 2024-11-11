@@ -1,5 +1,7 @@
 'use client';
 
+import type { Route } from 'next';
+
 import { navigation } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -22,7 +24,7 @@ export function Header() {
                                         ? 'text-foreground'
                                         : 'text-muted-foreground',
                                 )}
-                                href={item.href}
+                                href={item.href as Route}
                                 prefetch
                             >
                                 {item.name}

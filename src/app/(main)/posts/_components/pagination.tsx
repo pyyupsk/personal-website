@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import {
     Pagination as BasePagination,
     PaginationContent,
@@ -28,7 +30,7 @@ export function Pagination({ className, current, pages }: Props) {
         if (current > 1) {
             links.push(
                 <PaginationItem key="prev">
-                    <PaginationPrevious href={`/posts/${current - 1}`} />
+                    <PaginationPrevious href={`/posts/${current - 1}` as Route} />
                 </PaginationItem>,
             );
         }
@@ -49,7 +51,11 @@ export function Pagination({ className, current, pages }: Props) {
         for (let i = start; i <= end; i++) {
             links.push(
                 <PaginationItem key={i}>
-                    <PaginationLink active={i === current} href={`/posts/${i}`} size="iconx">
+                    <PaginationLink
+                        active={i === current}
+                        href={`/posts/${i}` as Route}
+                        size="iconx"
+                    >
                         {i}
                     </PaginationLink>
                 </PaginationItem>,
@@ -69,7 +75,7 @@ export function Pagination({ className, current, pages }: Props) {
         if (current < pages) {
             links.push(
                 <PaginationItem key="next">
-                    <PaginationNext href={`/posts/${current + 1}`} />
+                    <PaginationNext href={`/posts/${current + 1}` as Route} />
                 </PaginationItem>,
             );
         }

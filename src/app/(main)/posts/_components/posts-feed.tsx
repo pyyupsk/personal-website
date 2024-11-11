@@ -1,3 +1,5 @@
+import type { Route } from 'next';
+
 import { buttonVariants } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { api } from '@/trpc/server';
@@ -16,7 +18,11 @@ export async function PostsFeed({ page }: { page: number }) {
                 icon={RssIcon}
                 title="No Posts Yet"
             >
-                <Link className={buttonVariants({ variant: 'outline' })} href="/posts/1" prefetch>
+                <Link
+                    className={buttonVariants({ variant: 'outline' })}
+                    href={'/posts/1' as Route}
+                    prefetch
+                >
                     Explore Posts
                 </Link>
             </EmptyState>
