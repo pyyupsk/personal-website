@@ -1,0 +1,16 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "globalEnv": ["DATABASE_URL", "FASTWORK_USER_ID", "NODE_ENV", "VERCEL_URL", "PORT"],
+    "tasks": {
+        "build": {
+            "dependsOn": ["^build"],
+            "outputs": [".next/**", "!.next/cache/**"]
+        },
+        "format": {},
+        "lint": {},
+        "dev": {
+            "persistent": true,
+            "cache": false
+        }
+    }
+}
