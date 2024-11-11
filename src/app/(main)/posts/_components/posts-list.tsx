@@ -1,5 +1,3 @@
-'use client';
-
 import type { PostData } from '../_types/PostData';
 
 import { Pagination } from './pagination';

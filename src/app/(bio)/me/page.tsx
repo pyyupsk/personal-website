@@ -7,10 +7,10 @@ import { CardContent, CardDescription, CardHeader, CardTitle } from '@/component
 import { socials } from '@/constants/socials';
 import { motion } from 'framer-motion';
 
-const MotionAvatar = motion(Avatar);
-const MotionButton = motion(Button);
+const MotionAvatar = motion.create(Avatar);
+const MotionButton = motion.create(Button);
 
-export default function Component() {
+export default function Page() {
     return (
         <motion.div
             animate={{ opacity: 1, y: 0 }}
@@ -51,10 +51,10 @@ export default function Component() {
                         initial={{ opacity: 0 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
                     >
-                        <p className="text-center">
+                        <span className="text-center">
                             Self-taught developer focused on Node.js and web solutions. Explore my
                             projects and insights on my website.
-                        </p>
+                        </span>
                     </motion.p>
                     <div className="grid gap-3">
                         {socials.map((link, index) => {
