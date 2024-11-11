@@ -1,4 +1,4 @@
-export interface Response {
+export interface LanyardResponse {
     data: Data;
     success: boolean;
 }

@@ -2,11 +2,9 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { env } from '@/env';
+import { useDiscordUser } from '@/hooks/useDiscordUser';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
-import useSWR from 'swr';
-
-import type { Response } from './types';
 
 import { ErrorState } from './error-state';
 import { LoadingState } from './loading-state';
@@ -14,12 +12,8 @@ import { getStatusColor } from './utils';
 
 const SpotifyInfo = dynamic(() => import('./spotify-info').then((mod) => mod.SpotifyInfo));
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-const DISCORD_API_URL = `https://api.lanyard.rest/v1/users/${env.NEXT_PUBLIC_DISCORD_USER_ID}`;
-
 export function DiscordProfile() {
-    const { data, error, isLoading } = useSWR<Response>(DISCORD_API_URL, fetcher);
+    const { data, error, isLoading } = useDiscordUser(env.NEXT_PUBLIC_DISCORD_USER_ID);
 
     if (error) return <ErrorState />;
     if (isLoading || !data) return <LoadingState />;

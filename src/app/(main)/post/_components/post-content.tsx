@@ -1,7 +1,7 @@
 'use client';
 
 import { Separator } from '@/components/ui/separator';
-import { format } from 'date-fns';
+import { formatDateVerbose } from '@/utils/date-time';
 import { memo } from 'react';
 
 type Props = {
@@ -17,14 +17,12 @@ type Props = {
 };
 
 export const PostContent = memo(function PostContent({ html, post, readingTime }: Props) {
-    const formattedDate = format(new Date(post.publishDate), 'LLLL d, yyyy');
-
     return (
         <>
             <section className="space-y-1.5">
                 <div className="flex justify-between">
                     <time className="text-sm text-muted-foreground" dateTime={post.publishDate}>
-                        Published on {formattedDate}
+                        Published on {formatDateVerbose(post.publishDate)}
                     </time>
                     <span className="text-sm text-muted-foreground">{readingTime} min read</span>
                 </div>

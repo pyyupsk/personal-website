@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { buttonVariants } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
+import { formatDateVerbose } from '@/utils/date-time';
 import { Star } from 'lucide-react';
 
 import { getReviews } from '../_actions/reviews';
@@ -54,7 +54,7 @@ export async function ReviewsList() {
                                 className="text-sm text-muted-foreground"
                                 dateTime={comment.created_at}
                             >
-                                {format(comment.created_at, 'LLLL d, yyyy')}
+                                {formatDateVerbose(comment.created_at)}
                             </time>
                         </div>
                         <div className="ml-auto flex gap-0 transition-all group-hover:gap-px">

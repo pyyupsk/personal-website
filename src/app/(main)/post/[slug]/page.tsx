@@ -2,7 +2,7 @@ import { processMarkdown } from '@/lib/markdown';
 import { commonMetaData } from '@/lib/meta';
 import { openGraph } from '@/lib/open-graph';
 import { api } from '@/trpc/server';
-import { format } from 'date-fns';
+import { formatDateVerbose } from '@/utils/date-time';
 import { notFound } from 'next/navigation';
 
 import { PostContent } from '../_components/post-content';
@@ -18,10 +18,12 @@ export async function generateMetadata(props: Props) {
     if (!post)
         return commonMetaData({ description: 'Post Not Found', title: 'Post Not Found | Blog' });
 
+    const formatDate = formatDateVerbose(post.publishDate);
+
     return commonMetaData({
-        description: `Read '${post.title}' on the blog. Published on ${format(post.publishDate, 'LLLL d, yyyy')}.`,
+        description: `Read '${post.title}' on the blog. Published on ${formatDate}.`,
         image: openGraph({
-            button: format(post.publishDate, 'LLLL d, yyyy'),
+            button: formatDate,
             description: `Read about "${post.title}"`,
             title: 'Insights & Tutorials',
         }),
