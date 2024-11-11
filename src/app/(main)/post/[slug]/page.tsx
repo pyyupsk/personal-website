@@ -13,7 +13,7 @@ type Props = {
 
 export async function generateMetadata(props: Props) {
     const { slug } = await props.params;
-    const { post } = (await api.posts.blog({ id: slug })) || {};
+    const post = await api.posts.blog({ id: slug });
 
     if (!post)
         return commonMetaData({ description: 'Post Not Found', title: 'Post Not Found | Blog' });
@@ -33,12 +33,11 @@ export async function generateMetadata(props: Props) {
 
 export default async function Page({ params }: Props) {
     const { slug } = await params;
-    const res = await api.posts.blog({ id: slug });
-    const { post, post_content } = res || {};
+    const post = await api.posts.blog({ id: slug });
 
-    if (!post || !post_content) return notFound();
+    if (!post || !post.postContent) return notFound();
 
-    const { html, readingTime } = await processMarkdown(post_content.content);
+    const { html, readingTime } = await processMarkdown(post.postContent.content);
 
     return <PostContent html={html} post={post} readingTime={readingTime} />;
 }

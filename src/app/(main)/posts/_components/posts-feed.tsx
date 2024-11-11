@@ -9,7 +9,7 @@ import { Link } from 'next-view-transitions';
 import { PostsList } from './posts-list';
 
 export async function PostsFeed({ page }: { page: number }) {
-    const [total, posts] = await Promise.all([api.posts.total(), api.posts.list({ page })]);
+    const { pagination, posts } = await api.posts.list({ page });
 
     if (posts.length === 0) {
         return (
@@ -29,5 +29,5 @@ export async function PostsFeed({ page }: { page: number }) {
         );
     }
 
-    return <PostsList page={page} posts={posts} total={total} />;
+    return <PostsList pagination={pagination} posts={posts} />;
 }

@@ -16,16 +16,24 @@ type Sitemap = {
 };
 
 export default async function sitemap(): Promise<Sitemap[]> {
-    const total = await api.posts.total();
-    const pages: number = Math.ceil(total / POSTS_PER_PAGE);
+    const { pagination, posts } = await api.posts.list({ page: 1, pageSize: 50 });
 
-    const homePage = generatePageMetadata(BASE_URL, 'weekly');
-    const projectsPage = generatePageMetadata(`${BASE_URL}/projects`, 'weekly');
-
-    const allPosts = await generatePostsMetadata(pages);
-    const allPost = await generatePostMetadata(pages);
-
-    return [homePage, projectsPage, ...allPosts, ...allPost];
+    return [
+        generatePageMetadata(BASE_URL, 'weekly'),
+        generatePageMetadata(`${BASE_URL}/projects`, 'weekly'),
+        ...Array.from({ length: Math.ceil(pagination.total / POSTS_PER_PAGE) }, (_, i) => {
+            const page = i + 1;
+            return generatePageMetadata(`${BASE_URL}/posts/${page}`, 'weekly');
+        }),
+        ...(posts.map((post) => {
+            return {
+                changeFrequency: 'daily',
+                lastModified: new Date(),
+                priority: 0.64,
+                url: `${BASE_URL}/post/${post.id}`,
+            };
+        }) as Sitemap[]),
+    ];
 }
 
 function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequency']): Sitemap {
@@ -35,36 +43,4 @@ function generatePageMetadata(url: string, changeFrequency: Sitemap['changeFrequ
         priority: 1.0,
         url,
     };
-}
-
-async function generatePostsMetadata(pages: number): Promise<Sitemap[]> {
-    return Array.from({ length: pages }, (_, i) => {
-        const page = i + 1;
-        return generatePageMetadata(`${BASE_URL}/posts/${page}`, 'weekly');
-    });
-}
-
-async function generatePostMetadata(pages: number): Promise<Sitemap[]> {
-    const posts:
-        | {
-              description: null | string;
-              id: string;
-              publishDate: string;
-              status: 'ARCHIVED' | 'DRAFT' | 'PUBLISHED';
-              title: string;
-          }[]
-        | undefined = [];
-
-    for (let page = 1; page <= pages; page++) {
-        const data = await api.posts.list({ page, pageSize: POSTS_PER_PAGE });
-
-        posts.push(...data);
-    }
-
-    return posts.map((post) => ({
-        changeFrequency: 'daily',
-        lastModified: new Date(),
-        priority: 0.64,
-        url: `${BASE_URL}/post/${post.id}`,
-    }));
 }

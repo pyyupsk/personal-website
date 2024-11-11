@@ -1,5 +1,7 @@
 'use client';
 
+import type { ListOutput } from '@/server/api/routers/projects';
+
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -11,17 +13,7 @@ import { useMemo } from 'react';
 import { ProjectsFilter } from './projects-filter';
 import { getStatusColor } from './utils';
 
-type Props = {
-    projects: {
-        description: null | string;
-        id: number;
-        link: string;
-        status: 'COMPLETED' | 'IN_PROGRESS' | 'NOT_STARTED' | 'ON_HOLD';
-        title: string;
-    }[];
-};
-
-export function ProjectsFeed({ projects: projects }: Props) {
+export function ProjectsFeed({ projects }: { projects: ListOutput }) {
     const [title, setTitle] = useQueryState('title', {
         defaultValue: '',
     });

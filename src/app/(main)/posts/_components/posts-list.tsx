@@ -1,17 +1,9 @@
-import type { PostData } from '../_types/PostData';
+import type { ListOutput } from '@/server/api/routers/posts';
 
 import { Pagination } from './pagination';
 import { PostCard } from './post-card';
 
-const POSTS_PER_PAGE = 5;
-
-interface Props {
-    page: number;
-    posts: PostData[];
-    total: number;
-}
-
-export function PostsList({ page, posts, total }: Props) {
+export function PostsList({ pagination, posts }: ListOutput) {
     return (
         <section className="space-y-3">
             <ul className="divide-y">
@@ -21,11 +13,11 @@ export function PostsList({ page, posts, total }: Props) {
                     </li>
                 ))}
             </ul>
-            {total > POSTS_PER_PAGE && (
+            {pagination.total > pagination.pageSize && (
                 <Pagination
                     className="justify-end"
-                    current={page}
-                    pages={Math.ceil(total / POSTS_PER_PAGE)}
+                    current={pagination.page}
+                    pages={pagination.pageCount}
                 />
             )}
         </section>

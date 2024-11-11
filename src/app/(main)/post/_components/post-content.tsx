@@ -1,18 +1,14 @@
 'use client';
 
+import type { PostOutput } from '@/server/api/routers/posts';
+
 import { Separator } from '@/components/ui/separator';
 import { formatDateVerbose } from '@/utils/date-time';
 import { memo } from 'react';
 
 type Props = {
     html: string;
-    post: {
-        description: null | string;
-        id: string;
-        publishDate: string;
-        status: 'ARCHIVED' | 'DRAFT' | 'PUBLISHED';
-        title: string;
-    };
+    post: PostOutput;
     readingTime: number;
 };
 

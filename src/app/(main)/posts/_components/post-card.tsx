@@ -1,11 +1,10 @@
+import type { PostOutput } from '@/server/api/routers/posts';
 import type { Route } from 'next';
 
 import { formatDateVerbose } from '@/utils/date-time';
 import { Link } from 'next-view-transitions';
 
-import type { PostData } from '../_types/PostData';
-
-export function PostCard({ post }: { post: PostData }) {
+export function PostCard({ post }: { post: PostOutput }) {
     return (
         <Link className="group" href={`/post/${post.id}` as Route} prefetch>
             <h3 className="group-hover:underline">{post.title}</h3>
