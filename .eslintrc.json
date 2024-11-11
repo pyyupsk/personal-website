@@ -2,6 +2,7 @@
     "extends": [
         "next",
         "next/core-web-vitals",
+        "next/typescript",
         "turbo",
         "eslint:recommended",
         "plugin:react/recommended",

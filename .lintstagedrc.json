@@ -1,4 +1,4 @@
 {
-    "**/*.(ts|tsx|js|jsx)": ["pnpm eslint --fix", "pnpm prettier --write"],
-    "**/*.(md|json)": "pnpm prettier --write"
+    "*": "pnpm prettier --write --ignore-unknown",
+    "**/*.(ts|tsx|js|jsx)": ["pnpm next lint --fix"]
 }
