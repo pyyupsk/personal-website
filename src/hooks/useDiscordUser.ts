@@ -28,7 +28,7 @@ export const useDiscordUser = (userId: string) => {
     };
 };
 
-interface LanyardResponse {
+export interface LanyardResponse {
     data: {
         discord_status: string;
         discord_user: {

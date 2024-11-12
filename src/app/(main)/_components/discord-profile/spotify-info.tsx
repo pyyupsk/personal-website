@@ -1,16 +1,16 @@
+import type { LanyardResponse } from '@/hooks/useDiscordUser';
+
 import { HoverCard, HoverCardTrigger } from '@/components/ui/hover-card';
 import { MessageMarquee } from '@/components/ui/message-marquee';
 import { Headphones } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import type { Spotify } from './types';
-
 const HoverCardContent = dynamic(() =>
     import('@/components/ui/hover-card').then((mod) => mod.HoverCardContent),
 );
 
-export function SpotifyInfo({ spotify }: { spotify: Spotify }) {
+export function SpotifyInfo({ spotify }: { spotify: LanyardResponse['data']['spotify'] }) {
     return (
         <HoverCard closeDelay={0} openDelay={0}>
             <HoverCardTrigger
