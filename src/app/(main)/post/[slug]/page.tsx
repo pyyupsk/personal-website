@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/constants/base-url';
+import { type BlogPosting, JsonLd, type WithContext } from '@/lib/json-ld';
 import { convertMarkdownToPlainText, processMarkdown } from '@/lib/markdown';
 import { generateMetadata as commonMetaData } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
@@ -47,5 +49,41 @@ export default async function Page({ params }: Props) {
 
     const { html, readingTime } = await processMarkdown(post.postContent.content);
 
-    return <PostContent html={html} post={post} readingTime={readingTime} />;
+    const description =
+        post.description ||
+        (post.postContent?.content
+            ? (await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160) + '...'
+            : '');
+
+    const jsonLd: WithContext<BlogPosting> = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        author: {
+            '@type': 'Person',
+            name: 'P. Thipayanate',
+            url: BASE_URL,
+        },
+        datePublished: new Date(post.publishDate).toISOString(),
+        description,
+        headline: post.title,
+        image:
+            BASE_URL +
+            openGraph({
+                button: formatDateVerbose(post.publishDate),
+                description: description || 'No description available.',
+                title: 'Insights & Tutorials',
+            }),
+        isAccessibleForFree: true,
+        mainEntityOfPage: {
+            '@id': new URL(`/post/${slug}`, BASE_URL).toString(),
+            '@type': 'WebPage',
+        },
+    };
+
+    return (
+        <>
+            <JsonLd code={jsonLd} />
+            <PostContent html={html} post={post} readingTime={readingTime} />
+        </>
+    );
 }
