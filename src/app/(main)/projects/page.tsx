@@ -1,21 +1,19 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 import { api } from '@/trpc/server';
 
 import { ProjectsFeed } from './_components/projects-feed';
 
-export const metadata: Metadata = commonMetaData({
+export const metadata = generateMetadata({
     description:
-        'Explore a selection of my programming and web development projects, from completed tools and websites to ongoing endeavors. Each project highlights my expertise in creating cutting-edge solutions and solving complex problems.',
+        'Explore the projects of P. Thipayanate, a passionate software engineer. From VR tools to web development, each project showcases innovative solutions and advanced technologies like TypeScript, Node.js, and VRChat.',
     image: openGraph({
-        button: 'Explore My Work',
+        button: 'View Projects',
         description:
-            'Discover my projects showcasing innovative solutions, from web development to automation tools.',
-        title: 'Showcasing My Projects',
+            "A collection of P. Thipayanate's projects showcasing his skills in programming, web development, and VR tools.",
+        title: 'P. Thipayanate | Projects',
     }),
-    title: 'Showcasing My Projects | Innovative Solutions & Web Development',
+    title: 'P. Thipayanate | My Projects',
 });
 
 export default async function Page() {

@@ -1,5 +1,5 @@
-import { processMarkdown } from '@/lib/markdown';
-import { commonMetaData } from '@/lib/meta';
+import { convertMarkdownToPlainText, processMarkdown } from '@/lib/markdown';
+import { generateMetadata as commonMetaData } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 import { api } from '@/trpc/server';
 import { formatDateVerbose } from '@/utils/date-time';
@@ -15,19 +15,27 @@ export async function generateMetadata(props: Props) {
     const { slug } = await props.params;
     const post = await api.posts.blog({ id: slug });
 
-    if (!post)
-        return commonMetaData({ description: 'Post Not Found', title: 'Post Not Found | Blog' });
+    if (!post || post.status !== 'PUBLISHED') {
+        return null;
+    }
+
+    const description =
+        post.description ||
+        (post.postContent?.content
+            ? (await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160) + '...'
+            : '');
+    const title = `${post.title} | P. Thipayanate's Blog`;
 
     const formatDate = formatDateVerbose(post.publishDate);
 
     return commonMetaData({
-        description: `Read '${post.title}' on the blog. Published on ${formatDate}.`,
+        description,
         image: openGraph({
             button: formatDate,
-            description: `Read about "${post.title}"`,
+            description: description || 'No description available.',
             title: 'Insights & Tutorials',
         }),
-        title: `${post.title} | Blog`,
+        title,
     });
 }
 

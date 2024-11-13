@@ -1,6 +1,4 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
@@ -10,16 +8,16 @@ import { Skeleton } from '../_components/skeleton';
 
 const PostsFeed = dynamic(() => import('../_components/posts-feed').then((mod) => mod.PostsFeed));
 
-export const metadata: Metadata = commonMetaData({
+export const metadata = generateMetadata({
     description:
-        'Explore a collection of posts with insights, tutorials, and reflections on programming and technology. Dive into articles on database choices, Next.js, and more, and follow my journey as a self-taught developer.',
+        'Dive into the first post by P. Thipayanate where he shares insights, tutorials, and reflections on programming, technology, and personal growth as a self-taught developer. Explore the journey of coding and the lessons learned along the way.',
     image: openGraph({
-        button: 'Read More',
+        button: 'Read Post',
         description:
-            'Explore tutorials, insights, and reflections on coding, technology, and my journey as a developer.',
-        title: 'Insights & Reflections',
+            "P. Thipayanate's post on programming, technology, and personal growth offers valuable insights into the journey of a self-taught developer.",
+        title: 'P. Thipayanate | Posts',
     }),
-    title: 'Insights and Reflections | Programming Tips, Tutorials, and Tech Musings',
+    title: 'P. Thipayanate | Insights and Reflections',
 });
 
 export default async function Page({ params }: { params: Promise<{ page: string }> }) {

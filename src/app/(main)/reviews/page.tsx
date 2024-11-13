@@ -1,22 +1,20 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 import { Suspense } from 'react';
 
 import { ReviewsList } from './_components/reviews-list';
 import { Skeleton } from './_components/skeleton';
 
-export const metadata: Metadata = commonMetaData({
+export const metadata = generateMetadata({
     description:
-        'Read real client feedback and testimonials showcasing my reliability, dedication, and excellent communication. Discover how I’ve met client needs and delivered outstanding results across various projects.',
+        'Read feedback from clients who have worked with P. Thipayanate. See what real clients have to say about the quality, speed, and reliability of the work provided. Testimonials that highlight dedication and communication.',
     image: openGraph({
-        button: 'See More Reviews',
+        button: 'See Reviews',
         description:
-            'Read authentic feedback from clients showcasing my dedication and reliability in every project.',
-        title: 'Customer Reviews',
+            'Explore the reviews from clients highlighting P. Thipayanate’s reliability, speed, and dedication in delivering quality work.',
+        title: 'P. Thipayanate | Customer Reviews',
     }),
-    title: 'Customer Reviews | See What Clients Are Saying About My Work',
+    title: 'P. Thipayanate | Customer Reviews',
 });
 
 export default function Page() {

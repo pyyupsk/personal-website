@@ -1,18 +1,16 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 
-export const metadata: Metadata = commonMetaData({
+export const metadata = generateMetadata({
     description:
-        'Meet Pongsakorn Thipayanate, a self-taught coder passionate about Node.js and web development. Explore my projects, blog, and connect via GitHub, Twitter, or email.',
+        'Self-taught developer with a focus on Node.js and web solutions. Explore my projects and insights on my website. Passionate about creating efficient, scalable, and user-friendly solutions.',
     image: openGraph({
-        button: 'View My Work',
+        button: 'Visit My Portfolio',
         description:
-            'Discover more about Pongsakorn Thipayanate, an independent programmer specializing in Node.js and web solutions.',
-        title: 'Pongsakorn Thipayanate',
+            'Pongsakorn Thipayanate is an independent programmer specializing in Node.js and web development. Check out his portfolio for projects and insights.',
+        title: 'P. Thipayanate',
     }),
-    title: 'Pongsakorn Thipayanate | Programmer & Web Developer',
+    title: 'Pongsakorn Thipayanate | Independent Programmer',
 });
 
 export default function Layout({ children }: { children: React.ReactNode }) {

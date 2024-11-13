@@ -38,3 +38,9 @@ const processMarkdownWithCache = cache(async (markdown: string) => {
 export async function processMarkdown(markdown: string) {
     return processMarkdownWithCache(markdown);
 }
+
+export async function convertMarkdownToPlainText(markdown: string): Promise<string> {
+    const html = await marked.parse(markdown);
+    const plainText = html.replace(/<\/?[^>]+(>|$)/g, '');
+    return plainText.replace(/\s+/g, ' ').trim();
+}

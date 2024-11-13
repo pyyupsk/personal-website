@@ -1,21 +1,19 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
 import { buttonVariants } from '@/components/ui/button';
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 import { ArrowLeftIcon } from 'lucide-react';
 import { Link } from 'next-view-transitions';
 
-export const metadata: Metadata = commonMetaData({
+export const metadata = generateMetadata({
     description:
-        'Sorry, the page you’re looking for doesn’t exist. Return to the homepage or explore my latest posts and projects for more insights and updates.',
+        "Sorry, the page you're looking for doesn't exist. You can go back to the homepage or explore other sections of the website.",
     image: openGraph({
-        button: 'Go Home',
+        button: 'Go to Homepage',
         description:
-            'Oops! The page you’re looking for doesn’t exist. Return to the homepage to find what you need.',
-        title: '404 - Page Not Found',
+            "Pongsakorn Thipayanate's website. The requested page doesn't exist. Return to the homepage or explore the other sections.",
+        title: 'Page Not Found | P. Thipayanate',
     }),
-    title: 'Page Not Found - Pongsakorn Thipayanate',
+    title: 'Page Not Found | Pongsakorn Thipayanate',
 });
 
 export default function Custom404() {

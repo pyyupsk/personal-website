@@ -1,26 +1,23 @@
-import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
-
 import { buttonVariants } from '@/components/ui/button';
 import { highlights } from '@/constants/highlights';
 import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
-import { commonMetaData } from '@/lib/meta';
+import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
 
 import { Clock } from './_components/clock';
 import { DiscordProfile } from './_components/discord-profile';
 
-const experience = new Date().getFullYear() - 2019;
-
-export const metadata: Metadata = commonMetaData({
-    description: `Passionate software engineer with ${experience} years of experience in web development. Specializing in React, Node.js, and cloud tech, I create scalable, user-friendly solutions. Explore my diverse projects and skills in JavaScript, Python, and DevOps.`,
+export const metadata = generateMetadata({
+    description:
+        'P. Thipayanate (pyyupsk) is an independent software engineer with 5 years of experience specializing in web applications using React, Node.js, and cloud technologies. Explore his portfolio, projects, and insights on software development.',
     image: openGraph({
-        button: 'Let’s Collaborate',
+        button: 'View Projects',
         description:
-            'Experienced software engineer specializing in React, Node.js, and scalable solutions.',
-        title: 'Independent Programmer',
+            "P. Thipayanate's portfolio showcases expertise in scalable and user-friendly web applications.",
+        title: 'P. Thipayanate | Software Engineer',
     }),
-    title: 'Independent Programmer | Pongsakorn Thipayanate',
+    title: 'P. Thipayanate | Software Engineer & Independent Programmer',
 });
 
 export default function Page() {
@@ -33,10 +30,10 @@ export default function Page() {
             <section className="space-y-3">
                 <p className="text-xl">Independent Programmer</p>
                 <p className="leading-relaxed">
-                    I&apos;m a passionate software engineer with {experience} years of experience in
-                    building web applications. I specialize in React, Node.js, and cloud
-                    technologies. My goal is to create efficient, scalable, and user-friendly
-                    solutions that make a positive impact.
+                    I&apos;m a passionate software engineer with {new Date().getFullYear() - 2019}{' '}
+                    years of experience in building web applications. I specialize in React,
+                    Node.js, and cloud technologies. My goal is to create efficient, scalable, and
+                    user-friendly solutions that make a positive impact.
                 </p>
             </section>
             <section className="space-y-3">
