@@ -55,7 +55,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
                         return headers;
                     },
                     transformer: SuperJSON,
-                    url: getBaseUrl() + '/api/trpc',
+                    url: new URL('/api/trpc', getBaseUrl()),
                 }),
             ],
         }),

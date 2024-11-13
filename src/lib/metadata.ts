@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { BASE_URL } from '@/constants/base-url';
+import { env } from '@/env';
 
 type MetadataOptions = {
     additionalMetadata?: Partial<Metadata>;
@@ -58,6 +59,9 @@ export function generateMetadata({
         twitter: {
             card: 'summary_large_image',
             creator: TWITTER_HANDLE,
+        },
+        verification: {
+            google: env.GOOGLE_VERIFICATION,
         },
     };
 

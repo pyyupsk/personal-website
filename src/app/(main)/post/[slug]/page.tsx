@@ -24,7 +24,7 @@ export async function generateMetadata(props: Props) {
     const description =
         post.description ||
         (post.postContent?.content
-            ? (await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160) + '...'
+            ? `${(await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160)}...`
             : '');
     const title = `${post.title} | P. Thipayanate's Blog`;
 
@@ -52,7 +52,7 @@ export default async function Page({ params }: Props) {
     const description =
         post.description ||
         (post.postContent?.content
-            ? (await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160) + '...'
+            ? `${(await convertMarkdownToPlainText(post.postContent.content)).slice(0, 160)}...`
             : '');
 
     const jsonLd: WithContext<BlogPosting> = {
@@ -66,16 +66,17 @@ export default async function Page({ params }: Props) {
         datePublished: new Date(post.publishDate).toISOString(),
         description,
         headline: post.title,
-        image:
-            BASE_URL +
+        image: new URL(
             openGraph({
                 button: formatDateVerbose(post.publishDate),
-                description: description || 'No description available.',
+                description,
                 title: 'Insights & Tutorials',
             }),
+            BASE_URL,
+        ).href,
         isAccessibleForFree: true,
         mainEntityOfPage: {
-            '@id': new URL(`/post/${slug}`, BASE_URL).toString(),
+            '@id': new URL(`/post/${slug}`, BASE_URL).href,
             '@type': 'WebPage',
         },
     };

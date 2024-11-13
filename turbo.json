@@ -1,6 +1,14 @@
 {
     "$schema": "https://turbo.build/schema.json",
-    "globalEnv": ["ANALYZE", "DATABASE_URL", "FASTWORK_USER_ID", "NODE_ENV", "VERCEL_URL", "PORT"],
+    "globalEnv": [
+        "ANALYZE",
+        "DATABASE_URL",
+        "FASTWORK_USER_ID",
+        "GOOGLE_VERIFICATION",
+        "NODE_ENV",
+        "VERCEL_URL",
+        "PORT"
+    ],
     "tasks": {
         "build": {
             "dependsOn": ["^build"],
