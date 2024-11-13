@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/constants/base-url';
 import { cors } from '@/lib/cors';
 import { ImageResponse } from 'next/og';
 
@@ -154,7 +155,7 @@ export async function GET(request: Request) {
         ),
         {
             methods: 'GET',
-            origin: 'https://pyyupsk.vercel.app',
+            origin: BASE_URL,
         },
     );
 }

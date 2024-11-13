@@ -3,6 +3,8 @@ import { MdiAt } from '@/components/icons/MdiAt';
 import { MdiGithub } from '@/components/icons/MdiGithub';
 import { Globe } from 'lucide-react';
 
+import { BASE_URL } from './base-url';
+
 type Social = {
     description: string;
     href: string;
@@ -19,7 +21,7 @@ export const email: Social = {
 
 export const portfolio: Social = {
     description: 'Discover my work and read my latest posts.',
-    href: 'https://pyyupsk.vercel.app',
+    href: BASE_URL,
     icon: Globe,
     name: 'Portfolio & Blog',
 };

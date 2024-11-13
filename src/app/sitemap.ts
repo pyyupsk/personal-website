@@ -1,8 +1,8 @@
 import type { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
 
+import { BASE_URL } from '@/constants/base-url';
 import { api } from '@/trpc/server';
 
-const BASE_URL = 'https://pyyupsk.vercel.app';
 const POSTS_PER_PAGE = 5;
 
 type Sitemap = {

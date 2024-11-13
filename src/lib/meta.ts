@@ -1,6 +1,8 @@
 import type { Metadata } from 'next/dist/lib/metadata/types/metadata-interface';
 import type { TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 
+import { BASE_URL } from '@/constants/base-url';
+
 type CommonMetaData = {
     description: string;
     image?: string;
@@ -11,7 +13,7 @@ export function commonMetaData({ description, image, title }: CommonMetaData): M
     return {
         authors: [{ name: '@pyyupsk' }],
         description,
-        metadataBase: new URL('https://pyyupsk.vercel.app'),
+        metadataBase: new URL(BASE_URL),
         openGraph: {
             description,
             images: image
@@ -24,19 +26,6 @@ export function commonMetaData({ description, image, title }: CommonMetaData): M
                   ]
                 : undefined,
             title,
-        },
-        robots: {
-            follow: true,
-            googleBot: {
-                follow: false,
-                index: true,
-                'max-image-preview': 'large',
-                'max-snippet': -1,
-                'max-video-preview': -1,
-                noimageindex: true,
-            },
-            index: false,
-            nocache: true,
         },
         title,
     };
