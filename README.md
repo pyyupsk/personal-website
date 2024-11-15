@@ -28,7 +28,7 @@ To get started with this repository, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   https://github.com/pyyupsk/personal-website.git
+   git clone https://github.com/pyyupsk/personal-website.git
    cd personal-website
    ```
 
