@@ -34,8 +34,8 @@ export default async function Page({ params }: { params: Promise<{ page: string 
             <JsonLd code={jsonLd} />
             <div className="space-y-6">
                 <section className={cn('space-y-3', page !== '1' && 'hidden')}>
-                    <p className="text-xl text-foreground">Insights and Reflections</p>
-                    <p className="leading-relaxed">
+                    <p className="text-xl">Insights and Reflections</p>
+                    <p className="leading-relaxed text-muted-foreground">
                         Welcome to my collection of posts where I share insights, tutorials, and
                         reflections on programming, technology, and personal growth. Dive into
                         articles that explore various aspects of coding, project experiences, and my

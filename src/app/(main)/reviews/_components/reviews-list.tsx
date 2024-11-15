@@ -47,7 +47,7 @@ export async function ReviewsList() {
                             </AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col">
-                            <p className="text-foreground group-hover:underline">
+                            <p className="group-hover:underline">
                                 {comment.is_anonymous ? 'anonymous' : comment.reviewer.display_name}
                             </p>
                             <time
@@ -64,7 +64,7 @@ export async function ReviewsList() {
                                         'size-4 transition-all group-hover:scale-105',
                                         i < comment.rating
                                             ? 'fill-yellow-400 text-yellow-400'
-                                            : 'text-gray-400',
+                                            : 'fill-muted text-muted',
                                     )}
                                     key={i}
                                 />
@@ -72,9 +72,7 @@ export async function ReviewsList() {
                         </div>
                     </div>
                     {comment.description && (
-                        <p className="text-sm text-muted-foreground transition-all group-hover:text-foreground">
-                            {comment.description}
-                        </p>
+                        <p className="text-sm text-muted-foreground">{comment.description}</p>
                     )}
                 </div>
             ))}

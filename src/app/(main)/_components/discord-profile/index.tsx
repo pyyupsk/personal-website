@@ -38,7 +38,7 @@ export function DiscordProfile() {
                     rel="noreferrer"
                     target="_blank"
                 >
-                    <span className="text-foreground">{user.global_name || user.username}</span>
+                    <span>{user.global_name || user.username}</span>
                     {user.global_name && (
                         <span className="hidden text-sm font-normal sm:inline">
                             (@

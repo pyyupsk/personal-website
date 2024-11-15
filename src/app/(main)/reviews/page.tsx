@@ -21,15 +21,15 @@ export default function Page() {
     return (
         <div className="space-y-6">
             <section className="space-y-3">
-                <p className="text-xl text-foreground">Customer Reviews</p>
-                <p className="leading-relaxed">
+                <p className="text-xl">Customer Reviews</p>
+                <p className="leading-relaxed text-muted-foreground">
                     The feedback from real clients I have worked with demonstrates my reliability in
                     my work and communication. On each job, it demonstrates my dedication to the job
                     and meeting the client&apos;s needs. These comments highlight my work experience
                     and the value I bring to every client.
                 </p>
                 <a
-                    className="relative underline after:content-['_↗'] hover:text-foreground"
+                    className="relative underline"
                     href="https://fastwork.co/user/firstpsk"
                     rel="noreferrer"
                     target="_blank"

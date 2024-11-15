@@ -19,7 +19,9 @@ export function Footer() {
     return (
         <footer className="container border-t bg-background py-6 sm:pb-20">
             <div className="flex items-center justify-between gap-3">
-                <p className="text-sm">© {copyrightYearRange} First, All rights reserved.</p>
+                <p className="text-sm text-muted-foreground">
+                    © {copyrightYearRange} First, All rights reserved.
+                </p>
                 <ThemeSwitcher />
             </div>
             <nav className="mt-3 flex items-center justify-between">

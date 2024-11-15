@@ -1,9 +1,11 @@
+import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { highlights } from '@/constants/highlights';
 import { skills } from '@/constants/skills';
 import { email } from '@/constants/socials';
 import { generateMetadata } from '@/lib/metadata';
 import { openGraph } from '@/lib/open-graph';
+import { Send } from 'lucide-react';
 
 import { Clock } from './_components/clock';
 import { DiscordProfile } from './_components/discord-profile';
@@ -28,8 +30,8 @@ export default function Page() {
                 <Clock />
             </section>
             <section className="space-y-3">
-                <p className="text-xl">Independent Programmer</p>
-                <p className="leading-relaxed">
+                <p className="text-xl">Independent Developer</p>
+                <p className="leading-relaxed text-muted-foreground">
                     I&apos;m a passionate software engineer with {new Date().getFullYear() - 2019}{' '}
                     years of experience in building web applications. I specialize in React,
                     Node.js, and cloud technologies. My goal is to create efficient, scalable, and
@@ -43,17 +45,26 @@ export default function Page() {
                 </p>
                 <ul className="list-inside list-disc space-y-1.5">
                     {highlights.map((highlight) => (
-                        <li key={highlight}>{highlight}</li>
+                        <li className="text-muted-foreground" key={highlight}>
+                            {highlight}
+                        </li>
                     ))}
                 </ul>
             </section>
             <section className="space-y-3">
                 <p className="leading-relaxed">My key skills include:</p>
-                <ul className="list-inside list-disc space-y-1.5">
-                    {skills.map((skill) => (
-                        <li key={skill}>{skill}</li>
-                    ))}
-                </ul>
+                {Object.entries(skills).map(([category, items]) => (
+                    <div className="space-y-2" key={category}>
+                        <p className="text-muted-foreground">{category}:</p>
+                        <div className="flex flex-wrap gap-1.5">
+                            {items.map((skill, index) => (
+                                <Badge key={index} variant="secondary">
+                                    {skill}
+                                </Badge>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </section>
             <section className="space-y-3">
                 <p className="leading-relaxed">
@@ -61,6 +72,7 @@ export default function Page() {
                     to discuss a project or just want to connect, feel free to reach out.
                 </p>
                 <a className={buttonVariants()} href={email.href} rel="noreferrer" target="_blank">
+                    <Send className="mr-3 size-4" />
                     Get in touch
                 </a>
             </section>

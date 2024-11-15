@@ -1,7 +1,6 @@
 type Navigation = {
     href: string;
-    // eslint-disable-next-line no-unused-vars
-    match?: (pathname: string) => boolean;
+    match: (_pathname: string) => boolean;
     name: string;
 };
 

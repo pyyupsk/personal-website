@@ -19,9 +19,11 @@ export const metadata = generateMetadata({
 export default function Custom404() {
     return (
         <div className="flex min-h-screen flex-col items-center justify-center">
-            <h1 className="!text-6xl font-bold">404</h1>
-            <p className="mt-3 !text-xl !text-foreground">Page Not Found</p>
-            <p className="mt-3 !text-lg">The page you are looking for does not exist.</p>
+            <h1 className="text-6xl font-bold">404</h1>
+            <p className="mt-3 text-xl">Page Not Found</p>
+            <p className="mt-3 text-lg text-muted-foreground">
+                The page you are looking for does not exist.
+            </p>
             <Link className={buttonVariants({ className: 'mt-6', variant: 'outline' })} href="/">
                 <ArrowLeftIcon className="mr-2 size-4" />
                 Go back home

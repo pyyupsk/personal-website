@@ -5,5 +5,4 @@ export const highlights: string[] = [
     'Integrated databases for efficient data management.',
     'Automated testing and deployment processes.',
     'Engaged in agile development and open-source contributions.',
-    'Developed personal projects to explore new technologies.',
 ];

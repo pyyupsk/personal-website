@@ -75,12 +75,14 @@ export function ProjectsFeed({ projects }: { projects: ListOutput }) {
                         target="_blank"
                     >
                         <div className="flex items-center justify-between gap-3">
-                            <h3>{project.title}</h3>
+                            <p className="">{project.title}</p>
                             <Badge className={cn('rounded-full', getStatusColor(project.status))}>
                                 {project.status.replace('_', ' ')}
                             </Badge>
                         </div>
-                        <p className="mt-2 line-clamp-3 text-sm">{project.description}</p>
+                        <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                            {project.description}
+                        </p>
                     </a>
                 ))}
             </section>
