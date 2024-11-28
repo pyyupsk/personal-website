@@ -9,6 +9,7 @@ export const metadata = generateMetadata({
     description:
         'Read feedback from clients who have worked with P. Thipayanate. See what real clients have to say about the quality, speed, and reliability of the work provided. Testimonials that highlight dedication and communication.',
     image: openGraph({
+        badge: 'Reviews',
         button: 'See Reviews',
         description:
             'Explore the reviews from clients highlighting P. Thipayanate’s reliability, speed, and dedication in delivering quality work.',

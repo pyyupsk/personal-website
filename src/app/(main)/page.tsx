@@ -14,7 +14,8 @@ export const metadata = generateMetadata({
     description:
         'P. Thipayanate (pyyupsk) is an independent software engineer with 5 years of experience specializing in web applications using React, Node.js, and cloud technologies. Explore his portfolio, projects, and insights on software development.',
     image: openGraph({
-        button: 'View Projects',
+        badge: 'Software Engineer',
+        button: 'View Portfolio',
         description:
             "P. Thipayanate's portfolio showcases expertise in scalable and user-friendly web applications.",
         title: 'P. Thipayanate | Software Engineer',

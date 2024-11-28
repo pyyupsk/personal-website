@@ -13,6 +13,7 @@ export const metadata = generateMetadata({
     description:
         'Dive into the first post by P. Thipayanate where he shares insights, tutorials, and reflections on programming, technology, and personal growth as a self-taught developer. Explore the journey of coding and the lessons learned along the way.',
     image: openGraph({
+        badge: 'Posts',
         button: 'Read Post',
         description:
             "P. Thipayanate's post on programming, technology, and personal growth offers valuable insights into the journey of a self-taught developer.",

@@ -1,11 +1,12 @@
 interface Props {
+    badge: string;
     button: string;
     description: string;
     title: string;
 }
 
-export function openGraph({ button, description, title }: Props) {
-    return `/api/og?button=${encodeURIComponent(button)}&description=${encodeURIComponent(
+export function openGraph({ badge, button, description, title }: Props) {
+    return `/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(
         description,
-    )}&title=${encodeURIComponent(title)}`;
+    )}&button=${encodeURIComponent(button)}&badge=${encodeURIComponent(badge)}`;
 }

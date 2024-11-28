@@ -33,6 +33,7 @@ export async function generateMetadata(props: Props) {
     return commonMetaData({
         description,
         image: openGraph({
+            badge: 'Blog',
             button: formatDate,
             description: description || 'No description available.',
             title: 'Insights & Tutorials',
@@ -68,6 +69,7 @@ export default async function Page({ params }: Props) {
         headline: post.title,
         image: new URL(
             openGraph({
+                badge: 'Blog',
                 button: formatDateVerbose(post.publishDate),
                 description,
                 title: 'Insights & Tutorials',

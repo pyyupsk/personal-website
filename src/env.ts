@@ -16,6 +16,8 @@ export const env = createEnv({
         DATABASE_URL: z.string(),
         FASTWORK_USER_ID: z.string(),
         GOOGLE_VERIFICATION: z.string(),
+    },
+    shared: {
         NODE_ENV: z.enum(['development', 'test', 'production']),
     },
 });

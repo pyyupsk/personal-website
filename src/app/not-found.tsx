@@ -8,6 +8,7 @@ export const metadata = generateMetadata({
     description:
         "Sorry, the page you're looking for doesn't exist. You can go back to the homepage or explore other sections of the website.",
     image: openGraph({
+        badge: '404',
         button: 'Go to Homepage',
         description:
             "Pongsakorn Thipayanate's website. The requested page doesn't exist. Return to the homepage or explore the other sections.",

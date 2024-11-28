@@ -7,6 +7,7 @@ export async function GET(request: Request) {
     const title = searchParams.get('title') || 'Default Title';
     const description = searchParams.get('description') || 'Default Description';
     const button = searchParams.get('button') || 'Default Button';
+    const badge = searchParams.get('badge') || 'Default Badge';
 
     return cors(
         request,
@@ -14,137 +15,77 @@ export async function GET(request: Request) {
             (
                 <div
                     style={{
-                        alignItems: 'center',
-                        backgroundColor: 'hsl(240 7% 8%)',
+                        alignItems: 'flex-start',
+                        backgroundColor: '#131316',
+                        backgroundImage:
+                            'radial-gradient(circle at 25px 25px, #303036 2%, transparent 0%), radial-gradient(circle at 75px 75px, #303036 2%, transparent 0%)',
+                        backgroundSize: '100px 100px',
                         display: 'flex',
                         flexDirection: 'column',
-                        fontFamily: 'system-ui',
                         height: '100%',
-                        justifyContent: 'center',
+                        justifyContent: 'flex-end',
                         width: '100%',
                     }}
                 >
-                    {/* Background pattern */}
-                    <div
-                        style={{
-                            backgroundImage: `
-                radial-gradient(circle at 10% 10%, rgba(48, 48, 54, 0.8) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(199, 199, 199, 0.3) 0%, transparent 40%)
-                `,
-                            bottom: 0,
-                            left: 0,
-                            position: 'absolute',
-                            right: 0,
-                            top: 0,
-                        }}
-                    />
-
-                    {/* Content container */}
                     <div
                         style={{
                             alignItems: 'flex-start',
-                            backgroundColor: 'hsla(240, 7%, 6%, 0.8)',
-                            borderRadius: '0.5rem',
                             display: 'flex',
                             flexDirection: 'column',
-                            height: '90%',
-                            justifyContent: 'center',
-                            padding: '60px',
-                            position: 'relative',
-                            width: '90%',
+                            marginBottom: 80,
+                            marginLeft: 80,
+                            marginRight: 80,
+                            maxWidth: '70%',
                         }}
                     >
-                        {/* Decorative element */}
                         <div
                             style={{
-                                background: '#1b1b1f',
-                                borderRadius: '50%',
-                                height: 80,
-                                left: 40,
-                                position: 'absolute',
-                                top: 40,
-                                width: 80,
+                                backgroundColor: '#c7c7c7',
+                                borderRadius: '4px',
+                                color: '#131316',
+                                fontSize: 24,
+                                fontWeight: 'bold',
+                                marginBottom: 32,
+                                padding: '8px 24px',
                             }}
-                        />
-
-                        {/* Title */}
+                        >
+                            {badge}
+                        </div>
                         <h1
                             style={{
-                                color: 'hsl(0, 0%, 78%)',
-                                fontSize: 72,
+                                color: '#c7c7c7',
+                                fontSize: 64,
                                 fontWeight: 'bold',
-                                lineHeight: 1.2,
+                                lineHeight: 1.1,
                                 margin: 0,
-                                marginBottom: 20,
-                                maxWidth: '80%',
+                                marginBottom: 24,
                             }}
                         >
                             {title}
                         </h1>
-
-                        {/* Description */}
                         <p
                             style={{
-                                color: 'hsl(0, 0%, 55.66%)',
+                                color: '#8e8e8e',
                                 fontSize: 32,
                                 lineHeight: 1.4,
                                 margin: 0,
-                                marginBottom: 40,
-                                maxWidth: '70%',
+                                marginBottom: 32,
                             }}
                         >
                             {description}
                         </p>
-
-                        {/* Button container */}
                         <div
                             style={{
-                                alignItems: 'center',
-                                background: 'hsl(240, 5.88%, 20%)',
-                                borderRadius: '0.5rem',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                marginTop: 'auto',
-                                padding: '12px 24px',
+                                backgroundColor: '#c7c7c7',
+                                borderRadius: '4px',
+                                color: '#131316',
+                                fontSize: 24,
+                                fontWeight: 'bold',
+                                padding: '16px 32px',
                             }}
                         >
-                            <p
-                                style={{
-                                    color: 'hsl(0, 0%, 85%)',
-                                    fontSize: 24,
-                                    fontWeight: 'bold',
-                                    margin: 0,
-                                }}
-                            >
-                                {button}
-                            </p>
+                            {button}
                         </div>
-
-                        {/* Decorative lines */}
-                        <div
-                            style={{
-                                background: 'hsl(0, 0%, 78%)',
-                                bottom: 40,
-                                height: 3,
-                                opacity: 0.6,
-                                position: 'absolute',
-                                right: 40,
-                                transform: 'rotate(45deg)',
-                                width: 120,
-                            }}
-                        />
-                        <div
-                            style={{
-                                background: 'hsl(0, 0%, 55.66%)',
-                                bottom: 60,
-                                height: 3,
-                                opacity: 0.4,
-                                position: 'absolute',
-                                right: 60,
-                                transform: 'rotate(45deg)',
-                                width: 80,
-                            }}
-                        />
                     </div>
                 </div>
             ),
