@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss';
 
 import tailwindTypography from '@tailwindcss/typography';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 import tailwindAnimate from 'tailwindcss-animate';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const config = {
     content: [
@@ -93,11 +93,11 @@ const config = {
             typography: {
                 DEFAULT: {
                     css: {
+                        '--tw-prose-quote-borders': 'hsl(var(--muted-foreground)) !important',
                         ':not(pre) > code': {
                             '@apply whitespace-break-spaces rounded bg-muted px-[0.2em] py-[0.15em] text-[85%]':
                                 {},
                         },
-                        '--tw-prose-quote-borders': 'hsl(var(--muted-foreground)) !important',
                         a: {
                             '@apply transition-all duration-100 hover:text-foreground': {},
                         },

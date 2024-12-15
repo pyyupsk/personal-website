@@ -7,11 +7,19 @@
     "scripts": {
         "analyze": "cross-env ANALYZE=true next build",
         "build": "next build",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:pull": "drizzle-kit pull",
+        "db:push": "drizzle-kit push",
+        "db:studio": "drizzle-kit studio",
         "dev": "next",
-        "format": "prettier --write src/ --cache",
-        "lint": "prettier --check src/ && next lint --fix",
+        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx,json}\" --cache",
+        "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx,json}\" --cache",
+        "lint": "next lint",
+        "lint:fix": "next lint --fix",
         "prepare": "husky",
-        "start": "next start"
+        "start": "next start",
+        "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "@neondatabase/serverless": "^0.10.4",
