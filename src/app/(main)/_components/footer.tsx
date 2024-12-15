@@ -6,8 +6,8 @@ import { ThemeSwitcher } from '@/components/theme-switcher';
 import { navigation } from '@/constants/navigation';
 import { socials } from '@/constants/socials';
 import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
     const pathname = usePathname();

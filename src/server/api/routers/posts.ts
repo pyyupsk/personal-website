@@ -91,8 +91,7 @@ export const postsRouter = createTRPCRouter({
     }),
 });
 
-export type PostsRouter = inferRouterOutputs<typeof postsRouter>;
-
-export type BlogOutput = PostsRouter['blog'];
 export type ListOutput = PostsRouter['list'];
+
 export type PostOutput = ListOutput['posts'][number];
+type PostsRouter = inferRouterOutputs<typeof postsRouter>;

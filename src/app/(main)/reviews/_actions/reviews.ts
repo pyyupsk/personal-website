@@ -1,10 +1,6 @@
 import 'server-only';
 import { env } from '@/env';
 
-interface Reviews {
-    data: Comment[];
-}
-
 interface Comment {
     created_at: string;
     description: null | string;
@@ -18,15 +14,19 @@ interface Comment {
     updated_at: string;
 }
 
+interface Response {
+    data: Comment[];
+    error: null | string;
+}
+
 interface Reviewer {
     display_name: string;
     id: string;
     image: string;
 }
 
-interface Response {
+interface Reviews {
     data: Comment[];
-    error: null | string;
 }
 
 export async function getReviews(): Promise<Response> {

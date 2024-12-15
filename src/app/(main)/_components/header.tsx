@@ -4,8 +4,8 @@ import type { Route } from 'next';
 
 import { navigation } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
     const pathname = usePathname();

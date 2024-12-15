@@ -5,7 +5,6 @@
         "esbenp.prettier-vscode",
         "rvest.vs-code-prettier-eslint",
         "YoavBls.pretty-ts-errors",
-        "Prisma.prisma",
         "bradlc.vscode-tailwindcss"
     ]
 }

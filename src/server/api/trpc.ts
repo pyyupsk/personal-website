@@ -47,7 +47,10 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
             },
         };
     },
-    transformer: superjson,
+    transformer: {
+        input: superjson,
+        output: superjson,
+    },
 });
 
 /**

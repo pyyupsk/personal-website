@@ -30,7 +30,6 @@ export const projectsRouter = createTRPCRouter({
     }),
 });
 
-export type ProjectsRouter = inferRouterOutputs<typeof projectsRouter>;
-
 export type ListOutput = ProjectsRouter['list'];
-export type PostOutput = ListOutput[number];
+
+type ProjectsRouter = inferRouterOutputs<typeof projectsRouter>;

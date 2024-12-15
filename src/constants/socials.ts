@@ -19,21 +19,21 @@ export const email: Social = {
     name: 'Email',
 };
 
-export const portfolio: Social = {
+const portfolio: Social = {
     description: 'Discover my work and read my latest posts.',
     href: BASE_URL,
     icon: Globe,
     name: 'Portfolio & Blog',
 };
 
-export const gitHub: Social = {
+const gitHub: Social = {
     description: 'Check out my repositories and code.',
     href: 'https://github.com/pyyupsk',
     icon: MdiGithub,
     name: 'GitHub',
 };
 
-export const x: Social = {
+const x: Social = {
     description: 'Follow me for tech insights and updates.',
     href: 'https://x.com/pyyupsk_',
     icon: Fa6BrandsXTwitter,

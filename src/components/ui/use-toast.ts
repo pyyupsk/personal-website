@@ -8,26 +8,14 @@ import * as React from 'react';
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
-type ToasterToast = {
+type ToasterToast = ToastProps & {
     action?: ToastActionElement;
     description?: React.ReactNode;
     id: string;
     title?: React.ReactNode;
-} & ToastProps;
+};
 
 let count = 0;
-
-function genId() {
-    count = (count + 1) % Number.MAX_SAFE_INTEGER;
-    return count.toString();
-}
-
-type ActionType = {
-    ADD_TOAST: 'ADD_TOAST';
-    DISMISS_TOAST: 'DISMISS_TOAST';
-    REMOVE_TOAST: 'REMOVE_TOAST';
-    UPDATE_TOAST: 'UPDATE_TOAST';
-};
 
 type Action =
     | {
@@ -47,8 +35,20 @@ type Action =
           type: ActionType['REMOVE_TOAST'];
       };
 
+type ActionType = {
+    ADD_TOAST: 'ADD_TOAST';
+    DISMISS_TOAST: 'DISMISS_TOAST';
+    REMOVE_TOAST: 'REMOVE_TOAST';
+    UPDATE_TOAST: 'UPDATE_TOAST';
+};
+
 interface State {
     toasts: ToasterToast[];
+}
+
+function genId() {
+    count = (count + 1) % Number.MAX_SAFE_INTEGER;
+    return count.toString();
 }
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
@@ -69,7 +69,7 @@ const addToRemoveQueue = (toastId: string) => {
     toastTimeouts.set(toastId, timeout);
 };
 
-export const reducer = (state: State, action: Action): State => {
+const reducer = (state: State, action: Action): State => {
     switch (action.type) {
         case 'ADD_TOAST':
             return {
@@ -127,14 +127,14 @@ const listeners: Array<(state: State) => void> = [];
 
 let memoryState: State = { toasts: [] };
 
+type Toast = Omit<ToasterToast, 'id'>;
+
 function dispatch(action: Action) {
     memoryState = reducer(memoryState, action);
     listeners.forEach((listener) => {
         listener(memoryState);
     });
 }
-
-type Toast = Omit<ToasterToast, 'id'>;
 
 function toast({ ...props }: Toast) {
     const id = genId();
@@ -185,4 +185,4 @@ function useToast() {
     };
 }
 
-export { toast, useToast };
+export { useToast };
